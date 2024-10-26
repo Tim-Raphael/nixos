@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
   services.xserver = {
     enable = true;
 
@@ -11,8 +9,18 @@
     };
 
     # GDM display manager
-    displayManager = {
-      gdm.enable = true;
+    displayManager = { gdm.enable = true; };
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        i3status
+        i3lock
+        i3blocks
+        networkmanagerapplet
+        lxappearance
+        dmenu
+        dunst
+      ];
     };
 
     # X11 keyboard layout
@@ -22,4 +30,3 @@
     };
   };
 }
-

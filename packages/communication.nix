@@ -1,9 +1,3 @@
-{ config, pkgs, ... }:
-
-{
-  environment.systemPackages = with pkgs; [
-    discord
-    thunderbird       
-  ];
+{ config, pkgs, ... }: {
+  environment.systemPackages = with pkgs; [ discord thunderbird ];
 }
-

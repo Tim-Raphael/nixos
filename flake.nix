@@ -15,10 +15,15 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./configuration.nix ];
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
+      nixosConfigurations = {
+        default = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/default/configuration.nix
+            inputs.home-manager.nixosModules.home-manager
+          ];
+        };
       };
     };
 }

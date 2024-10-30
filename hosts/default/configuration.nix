@@ -1,4 +1,7 @@
-{ config, pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }: {
+
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
   imports = [
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
@@ -11,6 +14,8 @@
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
     ../../modules/system/services.nix
+
+    ../../overlays/nvim.nix
 
     ../../modules/packages/editor.nix
     ../../modules/packages/development.nix

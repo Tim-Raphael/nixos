@@ -13,6 +13,7 @@
     blueman
     wineWowPackages.full
     ollama
+    sshfs
   ];
 
   programs.fish.enable = true;

@@ -5,7 +5,6 @@
     firefox
     fish
     alacritty
-    xclip
     ripgrep
     ranger
     neofetch

@@ -8,14 +8,9 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    plugins = with pkgs.vimPlugins;
-      [
-
-      ];
-
-    extraLuaConfig = ''
-      ${builtins.readFile ./nvim/options.lua}
-    '';
+    extraPackages = with pkgs; [ xclip ];
   };
+
+  home.file = { ".config/nvim" = { source = ./nvim; }; };
 }
 

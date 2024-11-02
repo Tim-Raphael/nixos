@@ -51,7 +51,7 @@ return {
                     },
                 },
             }
-       end,
+        end,
     },
     {
         "hrsh7th/nvim-cmp",
@@ -63,17 +63,16 @@ return {
         },
         config = function()
             local cmp = require("cmp")
-            local lspconfig = require("lspconfig")
 
             cmp.setup({
                 mapping = cmp.mapping.preset.insert({
-                      ["<C-Space>"] = cmp.mapping.complete(),
-                      ["<C-e>"] = cmp.mapping.abort(),
-                      ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
-                }, {{ name = "buffer" }}),
+                }, { { name = "buffer" } }),
             })
 
             -- Additional completion settings for command mode ("/", "?")
@@ -92,12 +91,6 @@ return {
                     { name = "cmdline" },
                 }),
             })
-
-            -- Apply capabilities to each configured language server
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            lspconfig.lua_ls.setup({ capabilities = capabilities })
-            lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-            lspconfig.nixd.setup({ capabilities = capabilities })
         end,
     },
 }

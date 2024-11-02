@@ -14,6 +14,8 @@
 
             # LSP
             lua-language-server 
+            rust-analyzer
+            nixd
         ];
     };
 

@@ -12,12 +12,12 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>")
 
 -- Editor settings
-vim.o.expandtab = true
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
+vim.o.expandtab      = true
+vim.o.tabstop        = 4
+vim.o.softtabstop    = 4
+vim.o.shiftwidth     = 4
 vim.o.relativenumber = true
-vim.o.wrap = true
-vim.o.linebreak = true
-vim.o.breakindent  = true
-vim.o.showbreak = ͱ
+vim.o.wrap           = true
+vim.o.linebreak      = true
+vim.o.breakindent    = true
+vim.o.showbreak      = "ͱ"

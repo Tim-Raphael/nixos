@@ -20,6 +20,7 @@
         default = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
+            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
             ./hosts/default/configuration.nix
             inputs.home-manager.nixosModules.home-manager
           ];

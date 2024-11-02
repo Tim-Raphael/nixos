@@ -1,5 +1,6 @@
 return {
-    "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",
+    "nvim-treesitter/nvim-treesitter", 
+    build = ":TSUpdate",
     config = function()
         local telescopeconfig = require("nvim-treesitter.configs")
         telescopeconfig.setup({

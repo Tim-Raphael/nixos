@@ -1,29 +1,29 @@
 { pkgs, ... }:
 
 {
-    programs.neovim = {
-        enable = true;
+  programs.neovim = {
+    enable = true;
 
-        viAlias = true;
-        vimAlias = true;
-        vimdiffAlias = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
 
-        extraPackages = with pkgs; [ 
-            xclip 
-            ripgrep 
+    extraPackages = with pkgs; [
+      xclip
+      ripgrep
 
-            # LSP
-            lua-language-server 
-            rust-analyzer
-            nixd
+      # LSP
+      lua-language-server
+      rust-analyzer
+      nixd
 
-            nodePackages.typescript
-            nodePackages.typescript-language-server
+      nodePackages.typescript
+      nodePackages.typescript-language-server
 
-            vscode-langservers-extracted 
-        ];
-    };
+      vscode-langservers-extracted
+    ];
+  };
 
-    home.file = { ".config/nvim" = { source = ./nvim; }; };
+  home.file = { ".config/nvim" = { source = ./nvim; }; };
 }
 

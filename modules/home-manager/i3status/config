@@ -63,3 +63,4 @@ cpu_temperature 0 {
 disk "/" {
     format = "FREE: %free"
 }
+

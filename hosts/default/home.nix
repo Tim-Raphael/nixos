@@ -8,13 +8,10 @@
 
   home.sessionVariables = { };
 
-  home.file = {
-    ".config/i3/config" = { source = ../../config/i3/config; };
-    ".config/i3status/config" = { source = ../../config/i3status/config; };
-    ".config/fish/config.fish" = { source = ../../config/fish/config.fish; };
-  };
+  home.file = { };
 
-  imports = [ ../../modules/home-manager/nvim.nix ];
+  imports =
+    [ ../../modules/home-manager/nvim.nix ../../modules/home-manager/i3.nix ];
 
   programs.home-manager.enable = true;
 }

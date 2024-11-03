@@ -17,11 +17,24 @@ return {
                 end
             end
 
-            -- Lua Language Server
+            -- Lua
             lspconfig.lua_ls.setup {
                 cmd = { "lua-language-server" },
                 on_attach = on_attach,
                 capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = "LuaJIT",
+                        },
+                        diagnostics = {
+                            globals = { "vim" },
+                        },
+                        telemetry = {
+                            enable = false,
+                        }
+                    }
+                }
             }
 
             -- Rust Analyzer
@@ -38,7 +51,7 @@ return {
                 }
             }
 
-            -- Nix Language Server
+            -- Nix
             lspconfig.nixd.setup {
                 cmd = { "nixd" },
                 on_attach = on_attach,
@@ -51,6 +64,30 @@ return {
                     },
                 },
             }
+
+            -- JavaScript / Typescript
+            lspconfig.ts_ls.setup {
+                cmd = { "typescript-language-server", "--stdio" },
+                on_attach = on_attach,
+                capabilities = capabilities,
+                filetypes = { "javascript", "typescript" },
+            }
+
+            -- CSS / SCSS
+            lspconfig.cssls.setup {
+                cmd = { "vscode-css-language-server", "--stdio" },
+                on_attach = on_attach,
+                capabilities = capabilities,
+                filetypes = { "css", "scss" },
+            }
+
+            -- HTML
+            lspconfig.html.setup {
+                cmd = { "vscode-html-language-server", "--stdio" },
+                on_attach = on_attach,
+                capabilities = capabilities,
+                filetypes = { "html" },
+            }
         end,
     },
     {
@@ -60,11 +97,22 @@ return {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
+
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
         },
         config = function()
             local cmp = require("cmp")
 
+            require("luasnip.loaders.from_vscode").lazy_load()
+
             cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
+                    end,
+                },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
@@ -72,6 +120,7 @@ return {
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
+                    { name = "luasnip" },
                 }, { { name = "buffer" } }),
             })
 

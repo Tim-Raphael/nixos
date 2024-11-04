@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ steam minecraft prismlauncher ];
+  environment.systemPackages = with pkgs; [ steam ];
 
   programs.steam = {
     enable = true;

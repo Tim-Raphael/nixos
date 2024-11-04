@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ neofetch ];
+  home.packages = with pkgs; [ neofetch sshfs ranger tree ];
+
+  programs.alacritty = { enable = true; };
 
   programs.fish = {
     enable = true;

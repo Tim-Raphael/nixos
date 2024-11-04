@@ -1,4 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+
+{
   nixpkgs.overlays = [
     (self: super: {
       neovim-unwrapped = super.neovim-unwrapped.overrideAttrs (_: {

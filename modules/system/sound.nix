@@ -1,4 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+
+{
   # Disable pulseaudio, enable pipewire
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;

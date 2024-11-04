@@ -1,4 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+
+{
   environment.systemPackages = with pkgs; [ steam minecraft prismlauncher ];
 
   programs.steam = {

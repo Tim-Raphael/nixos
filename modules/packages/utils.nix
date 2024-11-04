@@ -1,9 +1,10 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+
+{
   environment.systemPackages = with pkgs; [
     unzip
     chromium
     firefox
-    fish
     alacritty
     ripgrep
     ranger
@@ -14,6 +15,4 @@
     ollama
     sshfs
   ];
-
-  programs.fish.enable = true;
 }

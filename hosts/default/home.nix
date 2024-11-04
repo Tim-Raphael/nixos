@@ -10,8 +10,11 @@
 
   home.file = { };
 
-  imports =
-    [ ../../modules/home-manager/nvim.nix ../../modules/home-manager/i3.nix ];
+  imports = [
+    ../../modules/home-manager/nvim.nix
+    ../../modules/home-manager/i3.nix
+    ../../modules/home-manager/fish.nix
+  ];
 
   programs.home-manager.enable = true;
 }

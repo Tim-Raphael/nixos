@@ -16,10 +16,8 @@
       lua-language-server
       rust-analyzer
       nixd
-
       nodePackages.typescript
       nodePackages.typescript-language-server
-
       vscode-langservers-extracted
     ];
   };

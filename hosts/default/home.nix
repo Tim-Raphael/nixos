@@ -12,8 +12,8 @@
 
   home.file = { };
 
-    nixpkgs.config.allowUnfree = true;
-    nixpkgs.config.allowBroken = true;
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;
 
   imports = [
     ../../modules/home-manager/nvim.nix

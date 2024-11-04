@@ -12,5 +12,5 @@
     # libgccjit
     binutils
     nodejs_22
-];
+  ];
 }

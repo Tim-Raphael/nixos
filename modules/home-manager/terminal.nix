@@ -3,14 +3,7 @@
 {
   home.packages = with pkgs; [ neofetch sshfs ranger tree ];
 
-  programs.alacritty = { enable = true; };
-
-  programs.fish = {
-    enable = true;
-
-    interactiveShellInit = ''
-      set fish_greeting
-      neofetch
-    '';
+  home.file = {
+    ".config/fish/config.fish" = { source = ./fish/config.fish; };
   };
 }

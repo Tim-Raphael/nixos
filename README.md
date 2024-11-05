@@ -1,7 +1,32 @@
-# WORK IN PROGRESS...
+# Config  
+A modular configuration for NixOS using flakes.
 
-I'm currently restructuring my configuration.  
-I've just added Home Manager, but I haven't had the time to sort everything quite yet.  
-That's also the reason why I'm loading everything as an system package for now.
+## Folder Structrue 
+```
+├── flake.lock
+├── flake.nix 
+├── hosts 
+│   └── default 
+├── modules
+│   ├── home-manager
+│   └── system
+│       └─── packages
+└── overlays
+```
 
+### `hosts`
+Per-Host system configuration.
 
+- **default**: The primary host configuration.
+
+### `modules`
+Contains reusable modules organnized into `home-manager` and `system`.
+
+- **home-manager**: Configuration for user-specific programs. Gets built together with the system. 
+- **system**: Core system modules.
+
+### `overlays`
+Contains Nix overlays.
+
+## Usage
+```sudo nixos-rebuild switch --flake ./nixos#default```

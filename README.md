@@ -29,4 +29,4 @@ Contains reusable modules organnized into `home-manager` and `system`.
 Contains Nix overlays.
 
 ## Usage
-```sudo nixos-rebuild switch --flake ./nixos#default```
+`sudo nixos-rebuild switch --flake ./nixos#default`

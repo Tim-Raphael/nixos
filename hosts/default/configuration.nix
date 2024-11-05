@@ -19,6 +19,7 @@
     ../../modules/system/services.nix
 
     ../../modules/system/packages/terminal.nix
+    ../../modules/system/packages/kanata.nix
     ../../modules/system/packages/steam.nix
     ../../modules/system/packages/ollama.nix
   ];

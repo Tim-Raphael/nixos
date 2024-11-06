@@ -8,9 +8,6 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
--- Open Neotree
-vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>")
-
 -- Editor settings
 vim.o.expandtab      = true
 vim.o.tabstop        = 4

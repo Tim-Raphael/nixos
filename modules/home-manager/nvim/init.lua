@@ -8,8 +8,8 @@ if not vim.loop.fs_stat(lazypath) then
         "--branch=stable",
         lazypath,
     })
-    end
+end
 vim.opt.rtp:prepend(lazypath)
 
-require("settings")
 require("lazy").setup("plugins")
+require("settings")

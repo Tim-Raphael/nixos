@@ -56,6 +56,9 @@ return {
                 cmd = { "nixd" },
                 on_attach = on_attach,
                 capabilities = capabilities,
+                nixpkgs = {
+                    expr = "import <nixpkgs> { }"
+                },
                 settings = {
                     nixd = {
                         formatting = {

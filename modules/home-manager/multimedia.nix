@@ -8,5 +8,7 @@
     shotcut
     obsidian
     imagemagick
+    ffmpeg_7
   ];
 }
+

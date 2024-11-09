@@ -10,7 +10,6 @@ A modular configuration for NixOS using flakes.
 ├── modules
 │   ├── home-manager
 │   └── system
-│       └─── packages
 └── overlays
 ```
 

@@ -18,11 +18,11 @@
     ../../modules/system/sound.nix
     ../../modules/system/services.nix
 
-    ../../modules/system/packages/terminal.nix
-    ../../modules/system/packages/kanata.nix
-    ../../modules/system/packages/via.nix
-    ../../modules/system/packages/steam.nix
-    ../../modules/system/packages/ollama.nix
+    ../../modules/system/terminal.nix
+    ../../modules/system/kanata.nix
+    ../../modules/system/via.nix
+    ../../modules/system/steam.nix
+    ../../modules/system/ollama.nix
   ];
 
   home-manager = {

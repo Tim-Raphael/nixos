@@ -46,7 +46,13 @@ return {
                     ["rust-analyzer"] = {
                         cargo = {
                             allFeatures = true,
-                        }
+                        },
+                        checkOnSave = {
+                            command = "clippy"
+                        },
+                        formatting = {
+                            enable = true,
+                        },
                     }
                 }
             }

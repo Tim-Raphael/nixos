@@ -15,6 +15,8 @@
       # LSP
       lua-language-server
       rust-analyzer
+      rustfmt
+      clippy
       nixd
       nixfmt
       nodePackages.typescript-language-server

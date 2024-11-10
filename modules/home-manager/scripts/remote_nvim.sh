@@ -5,9 +5,9 @@ if [ -z "$1" ] || [ -z "$2" ]; then
     exit 1
 fi
 
-USER="${1}"
-HOST="${2}"
-CLIENT_ID="${3}"
+USER=$1
+HOST=$2
+CLIENT_ID=$3
 
 REMOTE_PATH="/var/DFSWORK/${CLIENT_ID}/work/"
 LOCAL_PATH="$HOME/remote/${CLIENT_ID}"

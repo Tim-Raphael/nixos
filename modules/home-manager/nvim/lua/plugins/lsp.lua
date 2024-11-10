@@ -7,13 +7,18 @@ return {
             -- Extend LSP capabilities for `nvim-cmp` integration
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            -- Function to attach autoformat on save
             local on_attach = function(client, bufnr)
+                -- Autoformat on save
                 if client.server_capabilities.documentFormattingProvider then
                     vim.api.nvim_create_autocmd("BufWritePre", {
                         buffer = bufnr,
                         callback = function() vim.lsp.buf.format({ async = false }) end,
                     })
+                end
+
+                -- Enable inlay hints
+                if vim.lsp.inlay_hint then
+                    vim.lsp.inlay_hint.enable(true, { bufnr })
                 end
             end
 
@@ -49,6 +54,17 @@ return {
                         },
                         checkOnSave = {
                             command = "clippy"
+                        },
+                        inlayHints = {
+                            typeHints = {
+                                enable = true,
+                            },
+                            chainingHints = {
+                                enable = true,
+                            },
+                            parameterHints = {
+                                enable = true,
+                            },
                         },
                         formatting = {
                             enable = true,
@@ -113,20 +129,52 @@ return {
         },
         config = function()
             local cmp = require("cmp")
-
+            local luasnip = require("luasnip")
             require("luasnip.loaders.from_vscode").lazy_load()
 
             cmp.setup({
                 snippet = {
                     expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
+                        luasnip.lsp_expand(args.body)
                     end,
                 },
+
                 mapping = cmp.mapping.preset.insert({
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<CR>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            if luasnip.expandable() then
+                                luasnip.expand()
+                            else
+                                cmp.confirm({
+                                    select = true,
+                                })
+                            end
+                        else
+                            fallback()
+                        end
+                    end),
+
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        elseif luasnip.locally_jumpable(1) then
+                            luasnip.jump(1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif luasnip.locally_jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
                 }),
+
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
                     { name = "luasnip" },

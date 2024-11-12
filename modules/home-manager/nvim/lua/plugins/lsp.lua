@@ -16,14 +16,19 @@ return {
                     })
                 end
 
-                -- Enable inlay hints
-                if vim.lsp.inlay_hint then
-                    vim.lsp.inlay_hint.enable(true, { bufnr })
+                -- (trying to) enable inlay hints
+                if client.server_capabilities.inlayHintProvider then
+                    vim.api.nvim_create_autocmd("CursorHold", {
+                        buffer = bufnr,
+                        callback = function()
+                            vim.lsp.inlay_hint.enable(true, { bufnr })
+                        end,
+                    })
                 end
             end
 
             -- Lua
-            lspconfig.lua_ls.setup {
+            lspconfig.lua_ls.setup({
                 cmd = { "lua-language-server" },
                 on_attach = on_attach,
                 capabilities = capabilities,
@@ -40,10 +45,10 @@ return {
                         }
                     }
                 }
-            }
+            })
 
             -- Rust Analyzer
-            lspconfig.rust_analyzer.setup {
+            lspconfig.rust_analyzer.setup({
                 cmd = { "rust-analyzer" },
                 on_attach = on_attach,
                 capabilities = capabilities,
@@ -71,10 +76,10 @@ return {
                         },
                     }
                 }
-            }
+            })
 
             -- Nix
-            lspconfig.nixd.setup {
+            lspconfig.nixd.setup({
                 cmd = { "nixd" },
                 on_attach = on_attach,
                 capabilities = capabilities,
@@ -88,31 +93,31 @@ return {
                         },
                     },
                 },
-            }
+            })
 
             -- JavaScript / Typescript
-            lspconfig.ts_ls.setup {
+            lspconfig.ts_ls.setup({
                 cmd = { "typescript-language-server", "--stdio" },
                 on_attach = on_attach,
                 capabilities = capabilities,
                 filetypes = { "javascript", "typescript" },
-            }
+            })
 
             -- CSS / SCSS
-            lspconfig.cssls.setup {
+            lspconfig.cssls.setup({
                 cmd = { "vscode-css-language-server", "--stdio" },
                 on_attach = on_attach,
                 capabilities = capabilities,
                 filetypes = { "css", "scss" },
-            }
+            })
 
             -- HTML
-            lspconfig.html.setup {
+            lspconfig.html.setup({
                 cmd = { "vscode-html-language-server", "--stdio" },
                 on_attach = on_attach,
                 capabilities = capabilities,
                 filetypes = { "html" },
-            }
+            })
         end,
     },
     {

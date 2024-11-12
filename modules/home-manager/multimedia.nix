@@ -6,9 +6,11 @@
     darktable
     inkscape
     shotcut
-    obsidian
     imagemagick
     ffmpeg_7
+    pandoc
+    obsidian
+    texliveSmall
   ];
 }
 

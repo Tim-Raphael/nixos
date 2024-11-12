@@ -19,11 +19,14 @@
       clippy
       nixd
       nixfmt
-      nodePackages.typescript-language-server
+      nodePackages_latest.typescript-language-server
       vscode-langservers-extracted
     ];
   };
 
-  home.file = { ".config/nvim" = { source = ./nvim; }; };
+  home.file = {
+    ".config/nvim/init.lua" = { source = ./nvim/init.lua; };
+    ".config/nvim/lua" = { source = ./nvim/lua; };
+  };
 }
 

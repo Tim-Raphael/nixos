@@ -8,6 +8,7 @@ general {
 }
 
 order += "path_exists VPN"
+order += "ethernet enp4s0f3u1u2c2"
 order += "wireless wlo1"
 order += "cpu_temperature 0"
 order += "cpu_usage 0"
@@ -16,6 +17,11 @@ order += "tztime local1"
 order += "tztime local2"
 order += "volume master"
 order += "battery 1"
+
+ethernet enp4s0f3u1u2c2 {
+    format_up = "E: %ip"
+        format_down = "E: down"
+}
 
 wireless wlo1 {
     format_up = "W: (%quality at %essid, %bitrate) %ip"

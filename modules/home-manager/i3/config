@@ -50,6 +50,9 @@ bindsym $mod+Return exec "alacritty -o font.size=10"
 bindsym $mod+d exec "dmenu_run -nf '#FBF1C7' -nb '#282828' -sb '#B8BB26' -sf '#282828' -fn 'SourceSans-10' -p 'dmenu:'"
 # start dmenu (a program launcher)
 
+# lock screen
+bindsym $mod+Escape exec i3lock
+
 # kill focused window
 bindsym $mod+Shift+q kill
 

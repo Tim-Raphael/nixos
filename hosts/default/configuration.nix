@@ -21,6 +21,7 @@
     ../../modules/system/terminal.nix
     ../../modules/system/kanata.nix
     ../../modules/system/via.nix
+    ../../modules/system/virtualisation.nix
     ../../modules/system/steam.nix
     ../../modules/system/ollama.nix
   ];

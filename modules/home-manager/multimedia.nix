@@ -5,6 +5,7 @@
     gimp
     darktable
     inkscape
+    scribus
     shotcut
     imagemagick
     ffmpeg_7

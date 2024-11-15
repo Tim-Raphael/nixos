@@ -16,15 +16,12 @@ return {
                     })
                 end
 
-                -- (trying to) enable inlay hints
-                if client.server_capabilities.inlayHintProvider then
-                    vim.api.nvim_create_autocmd("CursorHold", {
-                        buffer = bufnr,
-                        callback = function()
-                            vim.lsp.inlay_hint.enable(true, { bufnr })
-                        end,
-                    })
-                end
+                -- Toggle inlay hints
+                vim.keymap.set("n", "<leader>i", function()
+                    if client.server_capabilities.inlayHintProvider then
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                    end
+                end, { noremap = true, silent = true })
             end
 
             -- Lua
@@ -98,6 +95,13 @@ return {
             -- JavaScript / Typescript
             lspconfig.ts_ls.setup({
                 cmd = { "typescript-language-server", "--stdio" },
+                on_attach = on_attach,
+                capabilities = capabilities,
+                filetypes = { "javascript", "typescript" },
+            })
+
+            lspconfig.eslint.setup({
+                cmd = { "vscode-eslint-language-server", "--stdio" },
                 on_attach = on_attach,
                 capabilities = capabilities,
                 filetypes = { "javascript", "typescript" },

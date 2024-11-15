@@ -22,7 +22,6 @@
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/scripts.nix
     ../../modules/home-manager/utils.nix
-    ../../modules/home-manager/virtualization.nix
     ../../modules/home-manager/browser.nix
     ../../modules/home-manager/communication.nix
     ../../modules/home-manager/multimedia.nix

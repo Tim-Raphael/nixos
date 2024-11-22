@@ -4,6 +4,9 @@
   home.packages = with pkgs; [
     git
     gh
+    websocat
+    postman
+    yarn
     cargo
     rustc
     gcc

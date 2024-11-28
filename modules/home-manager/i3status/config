@@ -7,9 +7,14 @@ general {
         color_bad       = '#FB4934'
 }
 
-order += "path_exists VPN"
-order += "ethernet enp4s0f3u1u2c2"
-order += "wireless wlo1"
+# thinkpad
+order += "ethernet enp58s0u1u1u4c2"
+order += "wireless wlp0s20f3"
+
+# hp laptop
+# order += "ethernet enp4s0f3u1u2c2"
+# order += "wireless wlo1"
+
 order += "cpu_temperature 0"
 order += "cpu_usage 0"
 order += "disk /"
@@ -18,14 +23,24 @@ order += "tztime local2"
 order += "volume master"
 order += "battery 1"
 
+ethernet enp58s0u1u1u4c2 {
+    format_up = "E: %ip"
+    format_down = "E: down"
+}
+
 ethernet enp4s0f3u1u2c2 {
     format_up = "E: %ip"
-        format_down = "E: down"
+    format_down = "E: down"
+}
+
+wireless wlp0s20f3 {
+    format_up = "W: (%quality at %essid, %bitrate) %ip"
+    format_down = "W: down"
 }
 
 wireless wlo1 {
     format_up = "W: (%quality at %essid, %bitrate) %ip"
-        format_down = "W: down"
+    format_down = "W: down"
 }
 
 path_exists VPN {

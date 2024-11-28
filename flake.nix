@@ -26,6 +26,15 @@
             inputs.home-manager.nixosModules.home-manager
           ];
         };
+
+        thinkpad = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
+            ./hosts/thinkpad/configuration.nix
+            inputs.home-manager.nixosModules.home-manager
+          ];
+        };
       };
     };
 }

@@ -12,6 +12,7 @@
     pandoc
     obsidian
     texliveSmall
+    vlc
   ];
 }
 

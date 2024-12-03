@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [ kanata ];
 
   services.kanata = {
@@ -12,6 +10,9 @@
           "/dev/input/by-id/usb-SONiX_USB_DEVICE-event-kbd"
           "/dev/input/by-id/usb-Keychron_Keychron_V10-event-kbd"
           "/dev/input/by-id/usb-Keychron_Keychron_V10-if02-event-kbd"
+          "/dev/input/by-id/usb-Ducky_Ducky_One_3̠_DK-V1.11-220819-event-if04"
+          "/dev/input/by-id/usb-Ducky_Ducky_One_3̠_DK-V1.11-220819-if01-event-kbd"
+          "/dev/input/by-id/usb-Ducky_Ducky_One_3̠_DK-V1.11-220819-if03-event-kbd"
           "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
         ];
         extraDefCfg = "process-unmapped-keys yes";

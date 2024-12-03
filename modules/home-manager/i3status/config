@@ -7,6 +7,8 @@ general {
         color_bad       = '#FB4934'
 }
 
+order += "path_exists VPN"
+
 # thinkpad
 order += "ethernet enp58s0u1u1u4c2"
 order += "wireless wlp0s20f3"

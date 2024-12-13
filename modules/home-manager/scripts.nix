@@ -2,8 +2,8 @@
 
 {
   home.file = {
-    ".local/bin/remote_nvim" = {
-      source = ./scripts/remote_nvim.sh;
+    ".local/bin/remote" = {
+      source = ./scripts/remote.sh;
       executable = true;
     };
     ".local/bin/volume" = {
@@ -12,6 +12,14 @@
     };
     ".local/bin/brightness" = {
       source = ./scripts/brightness.sh;
+      executable = true;
+    };
+    ".local/bin/fm" = {
+      source = ./scripts/fm.sh;
+      executable = true;
+    };
+    ".local/bin/nt" = {
+      source = ./scripts/nt.sh;
       executable = true;
     };
   };

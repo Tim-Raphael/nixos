@@ -13,6 +13,10 @@
     obsidian
     texliveSmall
     vlc
+    libreoffice-qt
+    hunspell
+    hunspellDicts.de_DE
+    hunspellDicts.en_US
   ];
 }
 

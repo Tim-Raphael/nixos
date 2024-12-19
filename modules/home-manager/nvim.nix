@@ -21,6 +21,7 @@
       nixfmt
       nodePackages_latest.typescript-language-server
       vscode-langservers-extracted
+      intelephense
     ];
   };
 

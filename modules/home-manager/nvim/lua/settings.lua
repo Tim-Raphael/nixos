@@ -20,3 +20,6 @@ vim.o.wrap           = true
 vim.o.linebreak      = true
 vim.o.breakindent    = true
 vim.o.showbreak      = "ͱ"
+
+-- Disable automatic line breaking when hitting textwidth
+vim.opt.formatoptions:remove("t")

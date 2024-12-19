@@ -122,6 +122,14 @@ return {
                 capabilities = capabilities,
                 filetypes = { "html" },
             })
+
+            -- PHP
+            lspconfig.intelephense.setup({
+                cmd = { "intelephense", "--stdio" },
+                on_attach = on_attach,
+                capabilities = capabilities,
+                filetypes = { "php" },
+            })
         end,
     },
     {

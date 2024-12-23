@@ -9,6 +9,7 @@
 
     ../../overlays/nvim.nix
 
+    ../../modules/drivers/intel.nix
     ../../modules/system/base.nix
     ../../modules/system/bootloader.nix
     ../../modules/system/networking.nix

@@ -8,6 +8,7 @@ A modular configuration for NixOS using flakes.
 ├── hosts 
 │   └── default 
 ├── modules
+│   ├── drivers 
 │   ├── home-manager
 │   └── system
 └── overlays
@@ -21,6 +22,7 @@ Per-Host system configuration.
 ### `modules`
 Contains reusable modules organnized into `home-manager` and `system`.
 
+- **drivers**: Hardware specific drivers.
 - **home-manager**: Configuration for user-specific programs. Gets built together with the system. 
 - **system**: Core system modules.
 

@@ -35,6 +35,15 @@
             inputs.home-manager.nixosModules.home-manager
           ];
         };
+
+        tower = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
+            ./hosts/tower/configuration.nix
+            inputs.home-manager.nixosModules.home-manager
+          ];
+        };
       };
     };
 }

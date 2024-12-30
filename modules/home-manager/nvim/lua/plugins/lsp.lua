@@ -97,14 +97,12 @@ return {
                 cmd = { "typescript-language-server", "--stdio" },
                 on_attach = on_attach,
                 capabilities = capabilities,
-                filetypes = { "javascript", "typescript" },
             })
 
             lspconfig.eslint.setup({
                 cmd = { "vscode-eslint-language-server", "--stdio" },
                 on_attach = on_attach,
                 capabilities = capabilities,
-                filetypes = { "javascript", "typescript" },
             })
 
             -- CSS / SCSS
@@ -112,15 +110,19 @@ return {
                 cmd = { "vscode-css-language-server", "--stdio" },
                 on_attach = on_attach,
                 capabilities = capabilities,
-                filetypes = { "css", "scss" },
             })
 
+            -- Tailwind
+            lspconfig.tailwindcss.setup({
+                cmd = { "tailwindcss-language-server", "--stdio" },
+                on_attach = on_attach,
+                capabilities = capabilities,
+            })
             -- HTML
             lspconfig.html.setup({
                 cmd = { "vscode-html-language-server", "--stdio" },
                 on_attach = on_attach,
                 capabilities = capabilities,
-                filetypes = { "html" },
             })
 
             -- PHP
@@ -128,7 +130,6 @@ return {
                 cmd = { "intelephense", "--stdio" },
                 on_attach = on_attach,
                 capabilities = capabilities,
-                filetypes = { "php" },
             })
         end,
     },

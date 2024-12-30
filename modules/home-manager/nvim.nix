@@ -13,15 +13,16 @@
       ripgrep
 
       # LSP
-      lua-language-server
       rust-analyzer
       rustfmt
       clippy
       nixd
       nixfmt
-      nodePackages_latest.typescript-language-server
-      vscode-langservers-extracted
       intelephense
+      lua-language-server
+      typescript-language-server
+      tailwindcss-language-server
+      vscode-langservers-extracted
     ];
   };
 

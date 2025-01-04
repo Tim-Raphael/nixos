@@ -26,6 +26,7 @@
     ../../modules/home-manager/communication.nix
     ../../modules/home-manager/multimedia.nix
     ../../modules/home-manager/gaming.nix
+    ../../modules/home-manager/pass.nix
   ];
 
   programs.home-manager.enable = true;

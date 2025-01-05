@@ -17,6 +17,7 @@
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
     ../../modules/system/services.nix
+    ../../modules/system/android.nix
 
     ../../modules/system/terminal.nix
     ../../modules/system/kanata.nix

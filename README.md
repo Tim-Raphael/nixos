@@ -8,7 +8,7 @@ A modular configuration for NixOS using flakes.
 ├── hosts 
 │   └── default 
 ├── modules
-│   ├── drivers 
+│   ├── driver 
 │   ├── home-manager
 │   └── system
 └── overlays

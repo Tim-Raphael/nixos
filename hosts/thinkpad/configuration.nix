@@ -22,7 +22,6 @@
     ../../modules/system/kanata.nix
     ../../modules/system/via.nix
     ../../modules/system/docker.nix
-    ../../modules/system/virtualbox.nix
     ../../modules/system/steam.nix
     ../../modules/system/ollama.nix
   ];

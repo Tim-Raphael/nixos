@@ -3,15 +3,12 @@
 {
   home.packages = with pkgs; [ pass gnupg pinentry-tty git ];
 
+  programs.gpg = { enable = true; };
+
   services.gpg-agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-tty;
-    extraConfig = ''
-      default-cache-ttl 14400
-      max-chache-ttl 28800
-      enable-shh-support
-    '';
+    defaultCacheTtl = 14400;
+    maxCacheTtl = 28800;
   };
-
-  programs.gpg = { enable = true; };
 }

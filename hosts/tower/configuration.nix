@@ -7,8 +7,6 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
 
-    ../../overlays/nvim.nix
-
     ../../modules/system/base.nix
     ../../modules/system/bootloader.nix
     ../../modules/system/networking.nix
@@ -23,7 +21,6 @@
     ../../modules/system/kanata.nix
     ../../modules/system/via.nix
     ../../modules/system/docker.nix
-    ../../modules/system/steam.nix
     ../../modules/system/ollama.nix
   ];
 

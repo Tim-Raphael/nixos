@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ neofetch sshfs ranger tree tealdeer ];
+  home.packages = with pkgs; [ git neofetch sshfs ranger tree tealdeer ];
 
   xdg.configFile."fish/config.fish".text = ''
     if status is-interactive

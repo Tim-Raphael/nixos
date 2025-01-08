@@ -17,12 +17,13 @@ A modular configuration for NixOS using flakes.
 ### `hosts`
 Per-Host system configuration.
 
-- **default**: The primary host configuration.
+- **default**: The default host configuration used to build the system for the
+first time.
 
 ### `modules`
 Contains reusable modules organnized into `home-manager` and `system`.
 
-- **drivers**: Hardware specific drivers.
+- **driver**: Hardware specific driver.
 - **home-manager**: Configuration for user-specific programs. Gets built together with the system. 
 - **system**: Core system modules.
 
@@ -30,4 +31,8 @@ Contains reusable modules organnized into `home-manager` and `system`.
 Contains Nix overlays.
 
 ## Usage
-`sudo nixos-rebuild switch --flake ./nixos#default`
+`sudo nixos-rebuild switch --impure --flake github:Tim-Raphael/nixos#default`
+
+I'm using the --impure flag because the access to a absolute path
+(/etc/nixos/hardware-configuration.nix) is forbidden in pure evaluation mode.
+

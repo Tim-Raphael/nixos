@@ -11,7 +11,8 @@
     rustc
     gcc
     binutils
-    nodejs_22
+    nodejs_23
+    pnpm_10
     nodePackages.typescript
     nodePackages.live-server
   ];

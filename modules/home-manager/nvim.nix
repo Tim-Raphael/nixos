@@ -11,6 +11,7 @@
     extraPackages = with pkgs; [
       xclip
       ripgrep
+      nodejs_23
 
       # LSP
       rust-analyzer

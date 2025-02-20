@@ -17,6 +17,7 @@
     ../../modules/system/services.nix
     ../../modules/system/android.nix
 
+    ../../modules/system/steam.nix
     ../../modules/system/terminal.nix
     ../../modules/system/kanata.nix
     ../../modules/system/via.nix

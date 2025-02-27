@@ -4,7 +4,7 @@
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   imports = [
-    ./hardware-configuration.nix
+    /etc/nixos/hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
 
     ../../modules/system/base.nix
@@ -15,13 +15,9 @@
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
     ../../modules/system/services.nix
-    ../../modules/system/android.nix
 
-    ../../modules/system/steam.nix
     ../../modules/system/terminal.nix
     ../../modules/system/kanata.nix
-    ../../modules/system/via.nix
-    ../../modules/system/docker.nix
   ];
 
   home-manager = {

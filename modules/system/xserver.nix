@@ -17,9 +17,6 @@
     windowManager.i3.enable = true;
 
     # X11 keyboard layout
-    xkb = {
-      layout = "de";
-      variant = "";
-    };
+    xkb = { layout = "de"; };
   };
 }

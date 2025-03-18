@@ -7,5 +7,6 @@
     thunderbird
     mumble
     fractal
+    element-desktop
   ];
 }

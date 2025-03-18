@@ -54,9 +54,6 @@ return {
                         cargo = {
                             allFeatures = true,
                         },
-                        checkOnSave = {
-                            command = "clippy"
-                        },
                         inlayHints = {
                             typeHints = {
                                 enable = true,
@@ -68,11 +65,15 @@ return {
                                 enable = true,
                             },
                         },
-                        formatting = {
-                            enable = true,
-                        },
                     }
                 }
+            })
+
+            -- Taplo
+            lspconfig.taplo.setup({
+                cmd = { "taplo", "lsp", "stdio" },
+                on_attach = on_attach,
+                capabilities = capabilities,
             })
 
             -- Nix

@@ -16,6 +16,7 @@
     ../../modules/system/sound.nix
     ../../modules/system/printer.nix
     ../../modules/system/services.nix
+    ../../modules/system/docker.nix
 
     ../../modules/system/terminal.nix
   ];

@@ -5,15 +5,8 @@
   users.users.raphael = {
     isNormalUser = true;
     description = "raphael";
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "uinput"
-      "docker"
-      "vboxusers"
-      "kvm"
-      "adbusers"
-    ];
+    extraGroups =
+      [ "wheel" "networkmanager" "uinput" "vboxusers" "kvm" "adbusers" ];
     ignoreShellProgramCheck = true;
     shell = pkgs.fish;
   };

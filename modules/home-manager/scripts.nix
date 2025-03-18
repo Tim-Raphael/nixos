@@ -2,8 +2,8 @@
 
 {
   home.file = {
-    ".local/bin/remote" = {
-      source = ./scripts/remote.sh;
+    ".local/bin/pre_commit" = {
+      source = ./scripts/pre_commit.sh;
       executable = true;
     };
     ".local/bin/volume" = {

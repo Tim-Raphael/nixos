@@ -9,6 +9,7 @@
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
+      gcc
       xclip
       ripgrep
       nodejs_23

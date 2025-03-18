@@ -14,6 +14,7 @@
     ../../modules/system/xserver.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
+    ../../modules/system/printer.nix
     ../../modules/system/services.nix
     ../../modules/system/docker.nix
     ../../modules/system/terminal.nix

@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ pass gnupg pinentry-tty git ];
-
   programs.gpg = { enable = true; };
 
   services.gpg-agent = {

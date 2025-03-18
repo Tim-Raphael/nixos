@@ -4,7 +4,7 @@
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   imports = [
-    /etc/nixos/hardware-configuration.nix
+    ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
 
     ../../modules/system/base.nix
@@ -14,11 +14,23 @@
     ../../modules/system/xserver.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
+    ../../modules/system/printer.nix
     ../../modules/system/services.nix
-
+    ../../modules/system/docker.nix
     ../../modules/system/terminal.nix
-    ../../modules/system/kanata.nix
+    ../../modules/system/printer.nix
   ];
+
+  # Printer configuration
+  hardware.printers = {
+    ensurePrinters = [{
+      name = "OG1-B1_MFC_L2710_sw";
+      location = "OG1-B1 OpenTalk";
+      deviceUri = "socket://192.168.100.209:9100";
+      model = "drv:///brlaser.drv/brl2710w.ppd";
+    }];
+    ensureDefaultPrinter = "OG1-B1_MFC_L2710_sw";
+  };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

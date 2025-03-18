@@ -20,7 +20,8 @@
     ../../modules/home-manager/i3.nix
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/browser.nix
-    ../../modules/home-manager/pass.nix
+    ../../modules/home-manager/password.nix
+    ../../modules/home-manager/crypt.nix
   ];
 
   programs.home-manager.enable = true;

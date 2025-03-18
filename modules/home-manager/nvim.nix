@@ -9,6 +9,7 @@
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
+      gcc
       xclip
       ripgrep
       nodejs_23
@@ -16,9 +17,10 @@
       # LSP
       rust-analyzer
       rustfmt
+      taplo-cli
       clippy
       nixd
-      nixfmt
+      nixfmt-rfc-style
       intelephense
       lua-language-server
       typescript-language-server
@@ -28,8 +30,11 @@
   };
 
   home.file = {
-    ".config/nvim/init.lua" = { source = ./nvim/init.lua; };
-    ".config/nvim/lua" = { source = ./nvim/lua; };
+    ".config/nvim/init.lua" = {
+      source = ./nvim/init.lua;
+    };
+    ".config/nvim/lua" = {
+      source = ./nvim/lua;
+    };
   };
 }
-

@@ -20,3 +20,13 @@ vim.o.wrap           = true
 vim.o.linebreak      = true
 vim.o.breakindent    = true
 vim.o.showbreak      = "ͱ"
+
+-- Jump to next LSP error
+vim.keymap.set("n", "<leader>gj", function()
+    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+end, { desc = "Jump to next error" })
+
+-- Jump to previous LSP error
+vim.keymap.set("n", "<leader>gk", function()
+    vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end, { desc = "Jump to previous error" })

@@ -22,7 +22,12 @@ return {
                         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
                     end
                 end, { noremap = true, silent = true })
+
+                -- Trigger Code Action
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
             end
+
+
 
             -- Lua
             lspconfig.lua_ls.setup({
@@ -53,6 +58,10 @@ return {
                     ["rust-analyzer"] = {
                         cargo = {
                             allFeatures = true,
+                        },
+                        assist = {
+                            importGranularity = "module",
+                            importPrefix = "crate",
                         },
                         inlayHints = {
                             typeHints = {
@@ -175,6 +184,8 @@ return {
                             fallback()
                         end
                     end),
+
+                    ["<C-Space"] = cmp.mapping.complete(),
 
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then

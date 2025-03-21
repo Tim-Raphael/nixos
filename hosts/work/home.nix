@@ -19,6 +19,7 @@
     ../../modules/home-manager/nvim.nix
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/i3.nix
+    ../../modules/home-manager/wayland.nix
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/scripts.nix
     ../../modules/home-manager/utils.nix

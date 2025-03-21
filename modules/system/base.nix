@@ -2,7 +2,7 @@
 
 {
   # System version
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
 
   # Time zone
   time.timeZone = "Europe/Berlin";
@@ -28,6 +28,8 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }
-

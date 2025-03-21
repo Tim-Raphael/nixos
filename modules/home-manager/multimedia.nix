@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    pdfarranger
     gimp
     darktable
     inkscape

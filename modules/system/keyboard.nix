@@ -7,8 +7,12 @@
   # Console keymap
   console = {
     enable = true;
-    useXkbConfig = true;
+    keyMap = "de";
     earlySetup = true;
+  };
+
+  environment.sessionVariables = {
+    XKB_DEFAULT_LAYOUT = "de"; # Ensure Wayland uses the right layout
   };
 
   environment.systemPackages = with pkgs; [ kanata ];

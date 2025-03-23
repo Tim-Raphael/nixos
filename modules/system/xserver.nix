@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ autorandr ];
-
   services.xserver = {
     enable = true;
 

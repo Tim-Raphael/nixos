@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  nix-colors,
+  ...
+}:
 
 {
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
@@ -12,12 +17,12 @@
     ../../modules/system/networking.nix
     ../../modules/system/users.nix
     ../../modules/system/xserver.nix
-    ../../modules/system/wayland.nix
+    ../../modules/system/security.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
-    ../../modules/system/docker.nix
+    ../../modules/system/virtualisation.nix
     ../../modules/system/terminal.nix
     ../../modules/system/printer.nix
   ];
@@ -36,7 +41,10 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit nix-colors;
+    };
     users = {
       "raphael" = import ./home.nix;
     };

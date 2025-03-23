@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # access keyboard configuration
-  hardware.keyboard.qmk.enable = true;
-
   # Console keymap
   console = {
     enable = true;
@@ -14,6 +11,11 @@
   environment.sessionVariables = {
     XKB_DEFAULT_LAYOUT = "de"; # Ensure Wayland uses the right layout
   };
+
+  # access keyboard configuration
+  hardware.keyboard.qmk.enable = true;
+
+  services.udev.packages = with pkgs; [ via ];
 
   environment.systemPackages = with pkgs; [ kanata ];
 

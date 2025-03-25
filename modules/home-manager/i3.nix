@@ -4,9 +4,9 @@
   home.packages = with pkgs; [
     networkmanagerapplet
     lxappearance
-    waybar
-    wlr-randr
   ];
+
+  xsession.windowManager.i3.enabled = true;
 
   home.file = {
     ".config/i3" = {

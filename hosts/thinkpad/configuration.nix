@@ -22,6 +22,7 @@
     ../../modules/system/ssh.nix
     ../../modules/system/security.nix
     ../../modules/system/hardware.nix
+    ../../modules/system/xserver.nix
 
     ../../modules/system/greetd.nix
 

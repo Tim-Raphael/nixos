@@ -8,6 +8,20 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
+-- Jump to next LSP error
+vim.keymap.set("n", "<leader>gj", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end,
+    { desc = "Jump to next error" })
+
+-- Jump to previous LSP error
+vim.keymap.set("n", "<leader>gk", function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end,
+    { desc = "Jump to previous error" })
+
+-- Trigger Code Action
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+
+-- Goto Defintion
+vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "LSP Goto Definition" })
+
 -- Editor settings
 vim.o.relativenumber = true
 vim.o.expandtab      = true
@@ -20,13 +34,3 @@ vim.o.wrap           = true
 vim.o.linebreak      = true
 vim.o.breakindent    = true
 vim.o.showbreak      = "ͱ"
-
--- Jump to next LSP error
-vim.keymap.set("n", "<leader>gj", function()
-    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
-end, { desc = "Jump to next error" })
-
--- Jump to previous LSP error
-vim.keymap.set("n", "<leader>gk", function()
-    vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
-end, { desc = "Jump to previous error" })

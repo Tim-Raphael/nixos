@@ -26,6 +26,7 @@
     ../../modules/home-manager/password.nix
     ../../modules/home-manager/crypt.nix
     ../../modules/home-manager/communication.nix
+    ../../modules/home-manager/multimedia.nix
   ];
 
   programs.home-manager.enable = true;

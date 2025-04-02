@@ -3,9 +3,11 @@
 set -e
 
 echo "Running rustfmt..."
-cargo fmt --all -- --check
+cargo fmt 
+cargo fmt --check
 
 echo "Running taplo..."
+taplo fmt
 taplo fmt --check
 
 echo "Running cargo check with all features..."

@@ -24,6 +24,7 @@ vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "LSP Goto Def
 
 -- Editor settings
 vim.o.relativenumber = true
+vim.o.number         = true
 vim.o.expandtab      = true
 vim.o.tabstop        = 4
 vim.o.softtabstop    = 4
@@ -34,3 +35,4 @@ vim.o.wrap           = true
 vim.o.linebreak      = true
 vim.o.breakindent    = true
 vim.o.showbreak      = "ͱ"
+vim.o.swapfile       = false

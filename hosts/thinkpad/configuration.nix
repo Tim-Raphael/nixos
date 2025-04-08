@@ -17,12 +17,13 @@
     ../../modules/system/services.nix
 
     ../../modules/system/terminal.nix
-    ../../modules/system/via.nix
     ../../modules/system/docker.nix
   ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = { "raphael" = import ./home.nix; };
+    users = {
+      "raphael" = import ./home.nix;
+    };
   };
 }

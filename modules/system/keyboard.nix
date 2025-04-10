@@ -46,20 +46,32 @@
         ];
         extraDefCfg = "process-unmapped-keys yes";
         config = ''
-          (defsrc
-           caps 
-          )
-          (defvar
-           tap-time 200 
-           hold-time 250
-          )
-          (defalias
-           caps (tap-hold $tap-time $hold-time esc ralt)
-          )
-          (deflayer base
-           @caps 
+          (deflocalkeys-linux
+            ü    26 
+            ö    39 
+            ß    12 
+            ä    40 
           )
 
+          (defsrc
+            caps 
+            ä
+          ) 
+
+          (defvar
+            tap-time 200 
+            hold-time 250
+          )
+
+          (defalias
+            caps (tap-hold $tap-time $hold-time esc ralt)
+            ä RA-a
+          )
+
+          (deflayer base
+            @caps 
+            ä
+          )
         '';
       };
     };

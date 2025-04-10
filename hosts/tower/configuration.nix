@@ -14,7 +14,7 @@
     ../../modules/system/xserver.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
-    ../../modules/system/services.nix
+    ../../modules/system/ssh.nix
     ../../modules/system/android.nix
 
     ../../modules/system/steam.nix

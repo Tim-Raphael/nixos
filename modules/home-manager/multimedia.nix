@@ -18,6 +18,6 @@
     hunspellDicts.de_DE
     hunspellDicts.en_US
     obs-studio
+    pdfarranger
   ];
 }
-

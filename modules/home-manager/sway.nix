@@ -9,12 +9,16 @@
     gtk4 # toolkit for creating graphical interfaces
     i3status
     waybar
+    networkmanagerapplet
+    blueman
   ];
 
   wayland = {
+
     windowManager.sway = {
       enable = true;
       checkConfig = true;
+      systemd.enable = true;
 
       wrapperFeatures = {
         gtk = true;
@@ -24,6 +28,16 @@
         modifier = "Mod4";
         terminal = "alacritty";
         defaultWorkspace = "workspace number 1";
+        startup = [
+          {
+            command = "nm-applet";
+            always = true;
+          }
+          {
+            command = "blueman-applet";
+            always = true;
+          }
+        ];
         # menu = "${pkgs.dmenu}/bin/dmenu -b -fn BigBlueTerm437 Nerd Font Mono -nb #${config.colorScheme.palette.base00} -nf #${config.colorScheme.palette.base07} -sb #${config.colorScheme.palette.base07} -sf #${config.colorScheme.palette.base00}";
 
         fonts = {

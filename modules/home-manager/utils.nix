@@ -1,5 +1,9 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ unzip wineWowPackages.full blueman ];
+  home.packages = with pkgs; [
+    nautilus
+    unzip
+    wineWowPackages.full
+  ];
 }

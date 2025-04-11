@@ -15,7 +15,6 @@
     ../../modules/system/bootloader.nix
     ../../modules/system/networking.nix
     ../../modules/system/users.nix
-    ../../modules/system/xserver.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
     ../../modules/system/ssh.nix

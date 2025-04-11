@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  services.xserver.xkb = {
-    layout = "us";
-  };
-
   # Console keymap
   console = {
     enable = true;

@@ -41,7 +41,7 @@
         # menu = "${pkgs.dmenu}/bin/dmenu -b -fn BigBlueTerm437 Nerd Font Mono -nb #${config.colorScheme.palette.base00} -nf #${config.colorScheme.palette.base07} -sb #${config.colorScheme.palette.base07} -sf #${config.colorScheme.palette.base00}";
 
         fonts = {
-          names = [ "BigBlueTerm437 Nerd Font Mono" ];
+          names = [ "JetBrainsMono Nerd Font Mono" ];
           style = "Regular";
           size = 10.0;
         };
@@ -95,7 +95,7 @@
             statusCommand = "${pkgs.i3status}/bin/i3status";
 
             fonts = {
-              names = [ "BigBlueTerm437 Nerd Font Mono" ];
+              names = [ "JetBrainsMono Nerd Font Mono" ];
               style = "Regular";
               size = 10.0;
             };

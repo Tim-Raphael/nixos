@@ -32,7 +32,7 @@
       "wireless wlp0s20f3" = {
         position = 2;
         settings = {
-          format_up = "W: (%quality at %essid, %bitrate) %ip";
+          format_up = "W: %ip";
           format_down = "W: down";
         };
       };
@@ -44,7 +44,7 @@
         };
       };
 
-      "cpu_usage 0" = {
+      "cpu_usage" = {
         position = 4;
         settings = {
           format = "CPU: %usage";
@@ -55,13 +55,6 @@
         position = 5;
         settings = {
           format = "FREE: %free";
-        };
-      };
-
-      "tztime local1" = {
-        position = 6;
-        settings = {
-          format = "DATE: %d.%m.%Y";
         };
       };
 
@@ -76,7 +69,6 @@
         position = 8;
         settings = {
           format = "VOL: %volume";
-          format_muted = " ";
           device = "default";
           mixer = "Master";
           mixer_idx = 0;
@@ -86,8 +78,7 @@
       "battery 0" = {
         position = 9;
         settings = {
-          format_up = "%status: %percentage %remaining";
-          format_down = "";
+          format = "BAT: %percentage";
           last_full_capacity = true;
           integer_battery_capacity = true;
           low_threshold = 20;

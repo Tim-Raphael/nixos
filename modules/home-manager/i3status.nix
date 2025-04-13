@@ -32,7 +32,7 @@
       "wireless wlp0s20f3" = {
         position = 2;
         settings = {
-          format_up = "W: (%quality at %essid, %bitrate) %ip";
+          format_up = "W: %ip";
           format_down = "W: down";
         };
       };
@@ -58,13 +58,6 @@
         };
       };
 
-      "tztime local1" = {
-        position = 6;
-        settings = {
-          format = "DATE: %d.%m.%Y";
-        };
-      };
-
       "tztime local2" = {
         position = 7;
         settings = {
@@ -85,7 +78,7 @@
       "battery 0" = {
         position = 9;
         settings = {
-          format = "%status: %percentage %remaining";
+          format = "BAT: %percentage";
           last_full_capacity = true;
           integer_battery_capacity = true;
           low_threshold = 20;

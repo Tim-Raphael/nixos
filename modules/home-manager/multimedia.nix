@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    base16-shell-preview
     pdfarranger
     gimp
     darktable

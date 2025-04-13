@@ -44,7 +44,7 @@
         };
       };
 
-      "cpu_usage 0" = {
+      "cpu_usage" = {
         position = 4;
         settings = {
           format = "CPU: %usage";
@@ -76,7 +76,6 @@
         position = 8;
         settings = {
           format = "VOL: %volume";
-          format_muted = " ";
           device = "default";
           mixer = "Master";
           mixer_idx = 0;
@@ -86,8 +85,7 @@
       "battery 0" = {
         position = 9;
         settings = {
-          format_up = "%status: %percentage %remaining";
-          format_down = "";
+          format = "%status: %percentage %remaining";
           last_full_capacity = true;
           integer_battery_capacity = true;
           low_threshold = 20;

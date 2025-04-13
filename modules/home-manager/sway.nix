@@ -90,17 +90,6 @@
           };
         };
 
-        gaps = {
-          bottom = 10;
-          horizontal = 10;
-          inner = 0;
-          left = 10;
-          outer = 0;
-          right = 10;
-          top = 10;
-          vertical = 10;
-        };
-
         bars = [
           {
             statusCommand = "${pkgs.i3status}/bin/i3status";

@@ -7,9 +7,9 @@
 
     general = {
       colors = true;
-      color_good = "#${config.colorScheme.palette.base02}";
-      color_degraded = "#${config.colorScheme.palette.base03}";
-      color_bad = "#${config.colorScheme.palette.base01}";
+      color_good = "#${config.colorScheme.palette.base0B}";
+      color_degraded = "#${config.colorScheme.palette.base0A}";
+      color_bad = "#${config.colorScheme.palette.base08}";
       interval = 1;
     };
 

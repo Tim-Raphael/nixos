@@ -1,34 +1,26 @@
 {
   pkgs,
-  config,
+  lib,
   nix-colors,
   ...
 }:
 
 {
-  home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
-  fonts.fontconfig.enable = true;
-
   imports = [
     nix-colors.homeManagerModules.default
   ];
 
-  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+  config = {
+    colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
 
-  gtk = {
-    enable = true;
+    home.packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+    ];
+  };
 
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
-    };
-
-    cursorTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
-    };
+  options.fonts.systemFont.main = lib.mkOption {
+    type = lib.types.str;
+    default = "JetBrainsMono Nerd Font Mono";
+    description = "The main system font used across the system.";
   };
 }

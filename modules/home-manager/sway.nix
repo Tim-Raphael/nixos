@@ -16,6 +16,8 @@
     waybar
     networkmanagerapplet
     blueman
+    dmenu-wayland
+    swaylock
   ];
 
   wayland = {
@@ -50,11 +52,11 @@
           keybindings = lib.mkOptionDefault {
             "${modifier}+Escape" = "exec swaylock";
             "${modifier}+d" =
-              "exec ${pkgs.dmenu}/bin/dmenu -b -fn JetBrainsMono Nerd Font Mono -nb #${config.colorScheme.palette.base00} -nf #${config.colorScheme.palette.base07} -sb #${config.colorScheme.palette.base07} -sf #${config.colorScheme.palette.base00}";
+              "exec dmenu-wl_run -b -fn '${config.fonts.systemFont.main}' -nb '#${config.colorScheme.palette.base00}' -nf '#${config.colorScheme.palette.base07}' -sb '#${config.colorScheme.palette.base07}' -sf '#${config.colorScheme.palette.base00}'";
           };
 
           fonts = {
-            names = [ "JetBrainsMono Nerd Font Mono" ];
+            names = [ "${config.fonts.systemFont.main}" ];
             style = "Regular";
             size = 10.0;
           };
@@ -108,7 +110,7 @@
               statusCommand = "${pkgs.i3status}/bin/i3status";
 
               fonts = {
-                names = [ "JetBrainsMono Nerd Font Mono" ];
+                names = [ "${config.fonts.systemFont.main}" ];
                 style = "Regular";
                 size = 10.0;
               };

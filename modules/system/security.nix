@@ -10,4 +10,5 @@
   # process, but rather allows a finer level of control of centralized system
   # policy.
   security.polkit.enable = true;
+  security.pam.services.swaylock = { };
 }

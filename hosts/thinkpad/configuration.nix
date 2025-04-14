@@ -17,6 +17,7 @@
     ../../modules/system/virtualisation.nix
     ../../modules/system/users.nix
     ../../modules/system/networking.nix
+    ../../modules/system/dconf.nix
     ../../modules/system/bluetooth.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix

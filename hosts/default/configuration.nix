@@ -19,6 +19,7 @@
     ../../modules/system/security.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
+    ../../modules/system/dconf.nix
     ../../modules/system/ssh.nix
     ../../modules/system/terminal.nix
 

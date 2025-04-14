@@ -16,6 +16,7 @@
     ../../modules/system/networking.nix
     ../../modules/system/bluetooth.nix
     ../../modules/system/users.nix
+    ../../modules/system/security.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
     ../../modules/system/ssh.nix

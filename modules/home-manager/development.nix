@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    git
     gh
     glab
     websocat
@@ -27,6 +26,22 @@
     nodePackages.typescript
     nodePackages.live-server
   ];
+
+  programs.git = {
+    enable = true;
+
+    userName = "Tim-Raphael";
+    userEmail = "mail@tim-raphael.dev";
+
+    extraConfig = {
+      pull = {
+        rebase = false;
+      };
+      core = {
+        editor = "nvim";
+      };
+    };
+  };
 
   home.file.".cargo/config.toml".text = ''
     [target.x86_64-unknown-linux-gnu]

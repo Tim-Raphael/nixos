@@ -1,5 +1,9 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ alacritty fish ];
+  environment.systemPackages = with pkgs; [
+    gruvbox-gtk-theme
+    alacritty
+    fish
+  ];
 }

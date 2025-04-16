@@ -23,6 +23,23 @@
       nerd-fonts.jetbrains-mono
     ];
 
+    home.file = {
+      ".icons/oomox-gruvbox-dark" = {
+        source = "${pkgs.gruvbox-dark-icons-gtk}/share/icons/oomox-gruvbox-dark";
+      };
+      ".themes" = {
+        source = "${
+          (pkgs.gruvbox-gtk-theme.override {
+            colorVariants = [ "dark" ];
+            sizeVariants = [ "standard" ];
+            themeVariants = [ "green" ];
+            tweakVariants = [ "outline" ];
+            iconVariants = [ "Dark" ];
+          })
+        }/share/themes";
+      };
+    };
+
     home.pointerCursor = {
       enable = true;
 
@@ -39,20 +56,14 @@
     gtk = {
       enable = true;
 
-      cursorTheme = {
-        size = 16;
-        name = "Adwaita";
-        package = pkgs.adwaita-icon-theme;
-      };
-
       iconTheme = {
-        name = "oomox-gruvbox_dark";
+        name = "oomox-gruvbox-dark";
         package = pkgs.gruvbox-dark-icons-gtk;
       };
 
       theme = {
-        name = "Gruvbox";
-        package = pkgs.gruvbox-dark-gtk;
+        name = "Gruvbox-Dark";
+        package = pkgs.gruvbox-gtk-theme;
       };
     };
   };

@@ -15,6 +15,7 @@
     ../../modules/system/bootloader.nix
     ../../modules/system/networking.nix
     ../../modules/system/bluetooth.nix
+    ../../modules/system/dconf.nix
     ../../modules/system/users.nix
     ../../modules/system/security.nix
     ../../modules/system/keyboard.nix

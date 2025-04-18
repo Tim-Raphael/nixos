@@ -21,7 +21,7 @@
     ../../modules/system/sound.nix
     ../../modules/system/ssh.nix
     ../../modules/system/android.nix
-    # ../../modules/system/dconf.nix
+    ../../modules/system/dconf.nix
     ../../modules/system/steam.nix
     ../../modules/system/terminal.nix
     ../../modules/system/virtualisation.nix

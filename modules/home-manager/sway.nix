@@ -53,7 +53,7 @@
           keybindings = lib.mkOptionDefault {
             "${modifier}+Escape" = "exec swaylock";
             "${modifier}+d" =
-              "exec dmenu-wl_run -b -fn '${config.fonts.systemFont.main}' -nb '#${config.colorScheme.palette.base00}' -nf '#${config.colorScheme.palette.base0B}' -sb '#${config.colorScheme.palette.base0B}' -sf '#${config.colorScheme.palette.base00}'";
+              "exec dmenu-wl_run -b -fn '${config.fonts.systemFont.main}' -nb '#${config.colorScheme.palette.base00}' -nf '#${config.colorScheme.palette.base07}' -sb '#${config.colorScheme.palette.base0B}' -sf '#${config.colorScheme.palette.base00}'";
           };
 
           fonts = {
@@ -81,7 +81,7 @@
 
             focusedInactive = {
               background = "#${config.colorScheme.palette.base00}";
-              border = "#${config.colorScheme.palette.base07}";
+              border = "#${config.colorScheme.palette.base00}";
               childBorder = "#${config.colorScheme.palette.base00}";
               indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
@@ -89,7 +89,7 @@
 
             placeholder = {
               background = "#${config.colorScheme.palette.base00}";
-              border = "#${config.colorScheme.palette.base07}";
+              border = "#${config.colorScheme.palette.base00}";
               childBorder = "#${config.colorScheme.palette.base00}";
               indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
@@ -97,7 +97,7 @@
 
             unfocused = {
               background = "#${config.colorScheme.palette.base00}";
-              border = "#${config.colorScheme.palette.base07}";
+              border = "#${config.colorScheme.palette.base00}";
               childBorder = "#${config.colorScheme.palette.base00}";
               indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
@@ -105,7 +105,7 @@
 
             urgent = {
               background = "#${config.colorScheme.palette.base00}";
-              border = "#${config.colorScheme.palette.base07}";
+              border = "#${config.colorScheme.palette.base00}";
               childBorder = "#${config.colorScheme.palette.base00}";
               indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
@@ -146,19 +146,19 @@
 
                 activeWorkspace = {
                   background = "#${config.colorScheme.palette.base00}";
-                  border = "#${config.colorScheme.palette.base07}";
+                  border = "#${config.colorScheme.palette.base00}";
                   text = "#${config.colorScheme.palette.base07}";
                 };
 
                 inactiveWorkspace = {
                   background = "#${config.colorScheme.palette.base00}";
-                  border = "#${config.colorScheme.palette.base07}";
+                  border = "#${config.colorScheme.palette.base00}";
                   text = "#${config.colorScheme.palette.base07}";
                 };
 
                 bindingMode = {
                   background = "#${config.colorScheme.palette.base00}";
-                  border = "#${config.colorScheme.palette.base07}";
+                  border = "#${config.colorScheme.palette.base00}";
                   text = "#${config.colorScheme.palette.base07}";
                 };
               };
@@ -166,6 +166,16 @@
           ];
         };
     };
+  };
+
+  programs.mako = {
+    enable = true;
+
+    defaultTimeout = 5000;
+
+    font = "${config.fonts.systemFont.main}";
+    borderColor = "${config.colorScheme.palette.base07}";
+    backgroundColor = "${config.colorScheme.palette.base00}";
   };
 
   programs.swaylock = {

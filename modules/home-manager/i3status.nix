@@ -3,14 +3,13 @@
 {
   programs.i3status = {
     enable = true;
-    enableDefault = true;
 
     general = {
       colors = true;
       color_good = "#${config.colorScheme.palette.base0B}";
       color_degraded = "#${config.colorScheme.palette.base0A}";
       color_bad = "#${config.colorScheme.palette.base08}";
-      interval = 1;
+      interval = 5;
     };
 
     modules = {
@@ -59,14 +58,14 @@
       };
 
       "tztime local2" = {
-        position = 7;
+        position = 6;
         settings = {
           format = "TIME: %H:%M:%S";
         };
       };
 
       "volume master" = {
-        position = 8;
+        position = 7;
         settings = {
           format = "VOL: %volume";
           device = "default";
@@ -76,7 +75,7 @@
       };
 
       "battery 0" = {
-        position = 9;
+        position = 8;
         settings = {
           format = "BAT: %percentage";
           last_full_capacity = true;

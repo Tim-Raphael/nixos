@@ -38,6 +38,7 @@
           inherit modifier;
           terminal = "alacritty";
           defaultWorkspace = "workspace number 1";
+
           startup = [
             {
               command = "nm-applet";
@@ -52,13 +53,19 @@
           keybindings = lib.mkOptionDefault {
             "${modifier}+Escape" = "exec swaylock";
             "${modifier}+d" =
-              "exec dmenu-wl_run -b -fn '${config.fonts.systemFont.main}' -nb '#${config.colorScheme.palette.base00}' -nf '#${config.colorScheme.palette.base07}' -sb '#${config.colorScheme.palette.base07}' -sf '#${config.colorScheme.palette.base00}'";
+              "exec dmenu-wl_run -b -fn '${config.fonts.systemFont.main}' -nb '#${config.colorScheme.palette.base00}' -nf '#${config.colorScheme.palette.base0B}' -sb '#${config.colorScheme.palette.base0B}' -sf '#${config.colorScheme.palette.base00}'";
           };
 
           fonts = {
             names = [ "${config.fonts.systemFont.main}" ];
             style = "Regular";
             size = 10.0;
+          };
+
+          output = {
+            "*" = {
+              bg = "#${config.colorScheme.palette.base00} solid_color";
+            };
           };
 
           colors = {
@@ -68,7 +75,7 @@
               background = "#${config.colorScheme.palette.base07}";
               border = "#${config.colorScheme.palette.base07}";
               childBorder = "#${config.colorScheme.palette.base07}";
-              indicator = "#${config.colorScheme.palette.base07}";
+              indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base00}";
             };
 
@@ -76,7 +83,7 @@
               background = "#${config.colorScheme.palette.base00}";
               border = "#${config.colorScheme.palette.base07}";
               childBorder = "#${config.colorScheme.palette.base00}";
-              indicator = "#${config.colorScheme.palette.base00}";
+              indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
             };
 
@@ -84,7 +91,7 @@
               background = "#${config.colorScheme.palette.base00}";
               border = "#${config.colorScheme.palette.base07}";
               childBorder = "#${config.colorScheme.palette.base00}";
-              indicator = "#${config.colorScheme.palette.base00}";
+              indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
             };
 
@@ -92,7 +99,7 @@
               background = "#${config.colorScheme.palette.base00}";
               border = "#${config.colorScheme.palette.base07}";
               childBorder = "#${config.colorScheme.palette.base00}";
-              indicator = "#${config.colorScheme.palette.base00}";
+              indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
             };
 
@@ -100,7 +107,7 @@
               background = "#${config.colorScheme.palette.base00}";
               border = "#${config.colorScheme.palette.base07}";
               childBorder = "#${config.colorScheme.palette.base00}";
-              indicator = "#${config.colorScheme.palette.base00}";
+              indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
             };
           };
@@ -163,5 +170,17 @@
 
   programs.swaylock = {
     enable = true;
+    settings = {
+      font = "${config.fonts.systemFont.main}";
+
+      color = "${config.colorScheme.palette.base00}";
+      inside-color = "${config.colorScheme.palette.base00}";
+      separator-color = "${config.colorScheme.palette.base07}";
+      ring-color = "${config.colorScheme.palette.base07}";
+      text-color = "${config.colorScheme.palette.base07}";
+      key-hl-color = "${config.colorScheme.palette.base0B}";
+
+      line-uses-inside = true;
+    };
   };
 }

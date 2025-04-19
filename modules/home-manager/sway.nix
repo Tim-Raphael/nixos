@@ -30,16 +30,26 @@
         gtk = true;
       };
 
+      extraConfig = ''
+        default_border pixel 2 
+        default_floating_border pixel 2 
+      '';
+
       config =
         let
           modifier = "Mod4";
         in
         {
           inherit modifier;
+
           terminal = "alacritty";
           defaultWorkspace = "workspace number 1";
 
           startup = [
+            {
+              command = "alacritty";
+              always = true;
+            }
             {
               command = "nm-applet";
               always = true;
@@ -68,13 +78,19 @@
             };
           };
 
+          gaps = {
+            smartBorders = "on";
+            smartGaps = true;
+            inner = 16;
+          };
+
           colors = {
             background = "#${config.colorScheme.palette.base00}";
 
             focused = {
               background = "#${config.colorScheme.palette.base07}";
               border = "#${config.colorScheme.palette.base07}";
-              childBorder = "#${config.colorScheme.palette.base07}";
+              childBorder = "#${config.colorScheme.palette.base0B}";
               indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base00}";
             };
@@ -82,7 +98,7 @@
             focusedInactive = {
               background = "#${config.colorScheme.palette.base00}";
               border = "#${config.colorScheme.palette.base00}";
-              childBorder = "#${config.colorScheme.palette.base00}";
+              childBorder = "#${config.colorScheme.palette.base03}";
               indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
             };
@@ -90,7 +106,7 @@
             placeholder = {
               background = "#${config.colorScheme.palette.base00}";
               border = "#${config.colorScheme.palette.base00}";
-              childBorder = "#${config.colorScheme.palette.base00}";
+              childBorder = "#${config.colorScheme.palette.base03}";
               indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
             };
@@ -98,16 +114,16 @@
             unfocused = {
               background = "#${config.colorScheme.palette.base00}";
               border = "#${config.colorScheme.palette.base00}";
-              childBorder = "#${config.colorScheme.palette.base00}";
+              childBorder = "#${config.colorScheme.palette.base03}";
               indicator = "#${config.colorScheme.palette.base08}";
               text = "#${config.colorScheme.palette.base07}";
             };
 
             urgent = {
-              background = "#${config.colorScheme.palette.base00}";
-              border = "#${config.colorScheme.palette.base00}";
-              childBorder = "#${config.colorScheme.palette.base00}";
-              indicator = "#${config.colorScheme.palette.base08}";
+              background = "#${config.colorScheme.palette.base08}";
+              border = "#${config.colorScheme.palette.base08}";
+              childBorder = "#${config.colorScheme.palette.base08}";
+              indicator = "#${config.colorScheme.palette.base0A}";
               text = "#${config.colorScheme.palette.base07}";
             };
           };
@@ -139,8 +155,8 @@
                 };
 
                 focusedWorkspace = {
-                  background = "#${config.colorScheme.palette.base07}";
-                  border = "#${config.colorScheme.palette.base07}";
+                  background = "#${config.colorScheme.palette.base0B}";
+                  border = "#${config.colorScheme.palette.base0B}";
                   text = "#${config.colorScheme.palette.base00}";
                 };
 
@@ -168,7 +184,7 @@
     };
   };
 
-  programs.mako = {
+  services.mako = {
     enable = true;
 
     defaultTimeout = 5000;
@@ -182,13 +198,23 @@
     enable = true;
     settings = {
       font = "${config.fonts.systemFont.main}";
+      font-size = 10;
 
       color = "${config.colorScheme.palette.base00}";
+
       inside-color = "${config.colorScheme.palette.base00}";
+      inside-clear-color = "${config.colorScheme.palette.base07}";
+      inside-ver-color = "${config.colorScheme.palette.base0D}";
+      inside-wrong-color = "${config.colorScheme.palette.base08}";
+
       separator-color = "${config.colorScheme.palette.base07}";
+
       ring-color = "${config.colorScheme.palette.base07}";
+
       text-color = "${config.colorScheme.palette.base07}";
+
       key-hl-color = "${config.colorScheme.palette.base0B}";
+      bs-hl-color = "${config.colorScheme.palette.base08}";
 
       line-uses-inside = true;
     };

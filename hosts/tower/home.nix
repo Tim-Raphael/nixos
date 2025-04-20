@@ -30,6 +30,7 @@
     ../../modules/home-manager/gaming.nix
     ../../modules/home-manager/password.nix
     ../../modules/home-manager/crypt.nix
+    ../../modules/home-manager/kanshi.nix
   ];
 
   programs.home-manager.enable = true;

@@ -19,7 +19,24 @@
     hunspellDicts.en_US
     obs-studio
     pdfarranger
-    texliveSmall
+    (texlive.combine {
+      inherit (texlive)
+        apa
+        biblatex
+        biblatex-apa
+        csquotes
+        glossaries
+        fontaxes
+        hyphenat
+        latexindent
+        latexmk
+        lipsum
+        listing
+        plex
+        scheme-full
+        textpos
+        ;
+    })
     setzer
   ];
 }

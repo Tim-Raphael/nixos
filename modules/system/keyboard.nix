@@ -61,12 +61,20 @@
             lctl  lmet lalt           spc            ralt rmet rctl
           )  
 
-          (deflayer umlaute 
-            grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
-            tab   q    w    e    r    t    y    @ue  i    @oe  p    [    ]    \
-            @caps @ae  @ss  d    f    g    h    j    k    l    ;    '    ret
-            lsft  z    x    c    v    b    n    m    ,    .    /    rsft
-            lctl  lmet lalt           spc            ralt rmet rctl
+          (deflayer umlauts 
+              -     -    -    -    -    -    -    -    -    -    -    -    -    -
+              -     -    -    -    -    -    -    @ue  -    @oe  -    -    -    -
+              @caps @ae  @ss  -    -    -    -    -    -    -    -    -    -
+              @lsft -    -    -    -    -    -    -    -    -    -    -
+              -     -    -              -              -    -    -
+          )
+
+          (deflayer umlautscap 
+              -     -    -    -    -    -    -    -    -    -    -    -    -    -
+              -     -    -    -    -    -    -    @Ue  -    @Oe  -    -    -    -
+              -     @Ae  -    -    -    -    -    -    -    -    -    -    -
+              -     -    -    -    -    -    -    -    -    -    -    -
+              -     -    -              -         -    -    -
           )
 
           (defvar
@@ -79,8 +87,15 @@
              oe (unicode ö)
              ue (unicode ü)
              ae (unicode ä)
-             swtlyr (layer-while-held umlaute)
-             caps (tap-hold $tap-time $hold-time esc @swtlyr)
+             Oe (unicode Ö)
+             Ue (unicode Ü)
+             Ae (unicode Ä)
+
+             swtlyrumlauts (layer-while-held umlauts)
+             swtlyrumlautscap (layer-while-held umlautscap)
+
+             caps (tap-hold $tap-time $hold-time esc @swtlyrumlauts)
+             lsft (tap-hold $tap-time $hold-time - @swtlyrumlautscap)
           )
         '';
       };

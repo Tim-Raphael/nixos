@@ -53,29 +53,30 @@
             lctl lmet lalt           spc            ralt rmet rctl
           ) 
 
-          (deflayer base
-            grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
-            tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
-            @caps a    s    d    f    g    h    j    k    l    ;    '    ret
-            lsft  z    x    c    v    b    n    m    ,    .    /    rsft
-            lctl  lmet lalt           spc            ralt rmet rctl
-          )  
+          (deflayer base 
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             @caps _    _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _
+             _     _    _              _         _    _    _
+          )
 
           (deflayer umlauts 
-              -     -    -    -    -    -    -    -    -    -    -    @dsh -    -
-              -     -    -    -    -    -    -    @ue  -    @oe  -    -    -    -
-              @caps @ae  @ss  -    -    -    -    -    -    -    -    -    -
-              @lsft -    -    -    -    -    -    -    -    -    -    -
-              -     -    -              -              -    -    -
+             _     _    _    _    _    _    _    _    _    _    _    @dsh _    _
+             _     _    _    _    _    _    _    @ue  _    @oe  _    _    _    _
+             @caps @ae  @ss  _    _    _    _    _    _    _    _    _    _
+             @lsft _    _    _    _    _    _    _    _    _    _    _
+             _     _    _              _              _    _    _
           )
 
           (deflayer umlautscap 
-              -     -    -    -    -    -    -    -    -    -    -    -    -    -
-              -     -    -    -    -    -    -    @Ue  -    @Oe  -    -    -    -
-              -     @Ae  -    -    -    -    -    -    -    -    -    -    -
-              -     -    -    -    -    -    -    -    -    -    -    -
-              -     -    -              -         -    -    -
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    @Ue  _    @Oe  _    _    _    _
+             _     @Ae  _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _
+             _     _    _              _         _    _    _
           )
+
 
           (defvar
             tap-time 200 

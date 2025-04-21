@@ -62,7 +62,7 @@
           )  
 
           (deflayer umlauts 
-              -     -    -    -    -    -    -    -    -    -    -    -    -    -
+              -     -    -    -    -    -    -    -    -    -    -    @dsh -    -
               -     -    -    -    -    -    -    @ue  -    @oe  -    -    -    -
               @caps @ae  @ss  -    -    -    -    -    -    -    -    -    -
               @lsft -    -    -    -    -    -    -    -    -    -    -
@@ -90,6 +90,7 @@
              Oe (unicode Ö)
              Ue (unicode Ü)
              Ae (unicode Ä)
+             dsh (unicode –)
 
              swtlyrumlauts (layer-while-held umlauts)
              swtlyrumlautscap (layer-while-held umlautscap)

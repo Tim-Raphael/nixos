@@ -16,8 +16,10 @@
   nixpkgs.config.allowBroken = true;
 
   imports = [
+    ../../modules/home-manager/theme.nix
     ../../modules/home-manager/nvim.nix
-    ../../modules/home-manager/i3.nix
+    ../../modules/home-manager/sway.nix
+    ../../modules/home-manager/i3status.nix
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/scripts.nix

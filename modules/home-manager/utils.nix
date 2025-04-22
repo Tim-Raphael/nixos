@@ -1,5 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ unzip wineWowPackages.full blueman ];
+  home.packages = with pkgs; [
+    openfortivpn
+    jmtpfs
+    nautilus
+    unzip
+    wineWowPackages.full
+  ];
 }

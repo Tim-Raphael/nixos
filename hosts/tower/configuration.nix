@@ -1,29 +1,41 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  nix-colors,
+  ...
+}:
 
 {
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   imports = [
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.home-manager
 
     ../../modules/system/base.nix
     ../../modules/system/bootloader.nix
     ../../modules/system/networking.nix
+    ../../modules/system/bluetooth.nix
     ../../modules/system/users.nix
-    ../../modules/system/xserver.nix
+    ../../modules/system/security.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/sound.nix
     ../../modules/system/ssh.nix
     ../../modules/system/android.nix
-
+    ../../modules/system/dconf.nix
     ../../modules/system/steam.nix
     ../../modules/system/terminal.nix
-    ../../modules/system/docker.nix
+    ../../modules/system/virtualisation.nix
+    ../../modules/system/ssh.nix
+    ../../modules/system/greetd.nix
+
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit nix-colors;
+    };
     users = {
       "raphael" = import ./home.nix;
     };

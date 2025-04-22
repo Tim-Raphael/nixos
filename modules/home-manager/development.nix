@@ -33,6 +33,13 @@
     userName = "Tim-Raphael";
     userEmail = "mail@tim-raphael.dev";
 
+    includes = [
+      {
+        condition = "gitdir:~/Documents/work/";
+        path = "~/Documents/work/.gitconfig";
+      }
+    ];
+
     extraConfig = {
       pull = {
         rebase = false;

@@ -5,6 +5,9 @@
   ...
 }:
 
+let
+  maybeSettings = if builtins.pathExists ./settings.nix then [ ./settings.nix ] else [ ];
+in
 {
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
@@ -29,20 +32,7 @@
     ../../modules/system/greetd.nix
 
     inputs.home-manager.nixosModules.home-manager
-  ];
-
-  # Printer configuration
-  hardware.printers = {
-    ensurePrinters = [
-      {
-        name = "OG1-B1_MFC_L2710_sw";
-        location = "OG1-B1 OpenTalk";
-        deviceUri = "socket://192.168.100.209:9100";
-        model = "drv:///brlaser.drv/brl2710w.ppd";
-      }
-    ];
-    ensureDefaultPrinter = "OG1-B1_MFC_L2710_sw";
-  };
+  ] ++ maybeSettings;
 
   home-manager = {
     extraSpecialArgs = {

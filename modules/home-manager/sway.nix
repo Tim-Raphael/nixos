@@ -189,9 +189,12 @@
 
     defaultTimeout = 5000;
 
-    font = "${config.fonts.systemFont.main}";
-    borderColor = "${config.colorScheme.palette.base07}";
-    backgroundColor = "${config.colorScheme.palette.base00}";
+    font = "#${config.fonts.systemFont.main}";
+    borderColor = "#${config.colorScheme.palette.base07}";
+    backgroundColor = "#${config.colorScheme.palette.base00}";
+
+    padding = "10";
+    borderRadius = 10;
   };
 
   programs.swaylock = {

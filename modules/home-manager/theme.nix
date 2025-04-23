@@ -6,12 +6,27 @@
 }:
 
 let
-  gruvboxTheme = pkgs.gruvbox-gtk-theme.override {
-    colorVariants = [ "dark" ];
-    sizeVariants = [ "standard" ];
-    themeVariants = [ "green" ];
-    tweakVariants = [ "outline" ];
-    iconVariants = [ "Dark" ];
+  font = {
+    name = "JetBrainsMono Nerd Font Mono";
+    pkg = pkgs.nerd-fonts.jetbrains-mono;
+  };
+
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+
+  theme = {
+    name = "Gruvbox-Green-Dark";
+    pkg = pkgs.gruvbox-gtk-theme.override {
+      colorVariants = [ "dark" ];
+      sizeVariants = [ "standard" ];
+      themeVariants = [ "green" ];
+      tweakVariants = [ "outline" ];
+      iconVariants = [ "Dark" ];
+    };
+  };
+
+  icons = {
+    name = "oomox-gruvbox-dark";
+    pkg = pkgs.gruvbox-dark-icons-gtk;
   };
 in
 {
@@ -21,43 +36,56 @@ in
 
   options.fonts.systemFont.main = lib.mkOption {
     type = lib.types.str;
-    default = "JetBrainsMono Nerd Font Mono";
+    default = font.name;
     description = "The main system font used across the system.";
   };
 
   config = {
-    colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+    colorScheme = colorScheme;
 
-    home.packages = with pkgs; [
-      nerd-fonts.jetbrains-mono
+    home.packages = [
+      font.pkg
     ];
 
     home.file = {
-      ".icons/oomox-gruvbox-dark" = {
-        source = "${pkgs.gruvbox-dark-icons-gtk}/share/icons/oomox-gruvbox-dark";
+      ".themes/${theme.name}" = {
+        source = "${theme.pkg}/share/themes/${theme.name}";
       };
 
-      ".themes" = {
-        source = "${gruvboxTheme}/share/themes";
+      ".icons/${icons.name}" = {
+        source = "${icons.pkg}/share/icons/${icons.name}";
       };
 
-      ".config/gtk-2.0/" = {
-        source = "${gruvboxTheme}/share/themes/Gruvbox-Green-Dark/gtk-2.0";
+      ".gtkrc-2.0" = {
+        text = ''
+          gtk-theme-name="${theme.name}"
+          gtk-icon-theme-name="${icons.name}"
+          gtk-font-name="${font.name} 10"
+        '';
       };
 
-      ".config/gtk-3.0/" = {
-        source = "${gruvboxTheme}/share/themes/Gruvbox-Green-Dark/gtk-3.0";
+      ".config/gtk-3.0/settings.ini" = {
+        text = ''
+          [Settings]
+          gtk-theme-name=${theme.name}
+          gtk-icon-theme-name=${icons.name}
+          gtk-font-name=${font.name} 10
+        '';
       };
 
-      ".config/gtk-4.0/" = {
-        source = "${gruvboxTheme}/share/themes/Gruvbox-Green-Dark/gtk-4.0";
+      ".config/gtk-4.0/settings.ini" = {
+        text = ''
+          [Settings]
+          gtk-theme-name=${theme.name}
+          gtk-icon-theme-name=${icons.name}
+          gtk-font-name=${font.name} 10
+        '';
       };
 
       ".profile" = {
-        text = ''
-          export GTK_THEME=Gruvbox-Green-Dark
-        '';
+        text = "export GTK_THEME=${theme.name}";
       };
+
     };
 
     home.pointerCursor = {

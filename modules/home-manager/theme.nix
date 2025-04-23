@@ -27,6 +27,7 @@
       ".icons/oomox-gruvbox-dark" = {
         source = "${pkgs.gruvbox-dark-icons-gtk}/share/icons/oomox-gruvbox-dark";
       };
+
       ".themes" = {
         source = "${
           (pkgs.gruvbox-gtk-theme.override {
@@ -37,6 +38,24 @@
             iconVariants = [ "Dark" ];
           })
         }/share/themes";
+      };
+
+      ".config/gtk-4.0/" = {
+        source = "${
+          (pkgs.gruvbox-gtk-theme.override {
+            colorVariants = [ "dark" ];
+            sizeVariants = [ "standard" ];
+            themeVariants = [ "green" ];
+            tweakVariants = [ "outline" ];
+            iconVariants = [ "Dark" ];
+          })
+        }/share/themes/Gruvbox-Green-Dark/gtk-4.0";
+      };
+
+      ".profile" = {
+        text = ''
+          export GTK_THEME=Gruvbox-Green-Dark
+        '';
       };
     };
 
@@ -51,20 +70,6 @@
 
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
-    };
-
-    gtk = {
-      enable = true;
-
-      iconTheme = {
-        name = "oomox-gruvbox-dark";
-        package = pkgs.gruvbox-dark-icons-gtk;
-      };
-
-      theme = {
-        name = "Gruvbox-Green-Dark";
-        package = pkgs.gruvbox-gtk-theme;
-      };
     };
   };
 }

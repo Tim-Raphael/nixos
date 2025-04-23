@@ -20,7 +20,7 @@
     ../../modules/system/dconf.nix
     ../../modules/system/bluetooth.nix
     ../../modules/system/keyboard.nix
-    ../../modules/system/sound.nix
+    ../../modules/system/media.nix
     ../../modules/system/ssh.nix
     ../../modules/system/security.nix
     ../../modules/system/hardware.nix

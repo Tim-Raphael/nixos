@@ -22,7 +22,7 @@ in
     ../../modules/system/users.nix
     ../../modules/system/security.nix
     ../../modules/system/keyboard.nix
-    ../../modules/system/sound.nix
+    ../../modules/system/media.nix
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
     ../../modules/system/virtualisation.nix

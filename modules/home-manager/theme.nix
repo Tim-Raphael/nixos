@@ -5,6 +5,15 @@
   ...
 }:
 
+let
+  gruvboxTheme = pkgs.gruvbox-gtk-theme.override {
+    colorVariants = [ "dark" ];
+    sizeVariants = [ "standard" ];
+    themeVariants = [ "green" ];
+    tweakVariants = [ "outline" ];
+    iconVariants = [ "Dark" ];
+  };
+in
 {
   imports = [
     nix-colors.homeManagerModules.default
@@ -27,16 +36,27 @@
       ".icons/oomox-gruvbox-dark" = {
         source = "${pkgs.gruvbox-dark-icons-gtk}/share/icons/oomox-gruvbox-dark";
       };
+
       ".themes" = {
-        source = "${
-          (pkgs.gruvbox-gtk-theme.override {
-            colorVariants = [ "dark" ];
-            sizeVariants = [ "standard" ];
-            themeVariants = [ "green" ];
-            tweakVariants = [ "outline" ];
-            iconVariants = [ "Dark" ];
-          })
-        }/share/themes";
+        source = "${gruvboxTheme}/share/themes";
+      };
+
+      ".config/gtk-2.0/" = {
+        source = "${gruvboxTheme}/share/themes/Gruvbox-Green-Dark/gtk-2.0";
+      };
+
+      ".config/gtk-3.0/" = {
+        source = "${gruvboxTheme}/share/themes/Gruvbox-Green-Dark/gtk-3.0";
+      };
+
+      ".config/gtk-4.0/" = {
+        source = "${gruvboxTheme}/share/themes/Gruvbox-Green-Dark/gtk-4.0";
+      };
+
+      ".profile" = {
+        text = ''
+          export GTK_THEME=Gruvbox-Green-Dark
+        '';
       };
     };
 
@@ -51,20 +71,6 @@
 
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
-    };
-
-    gtk = {
-      enable = true;
-
-      iconTheme = {
-        name = "oomox-gruvbox-dark";
-        package = pkgs.gruvbox-dark-icons-gtk;
-      };
-
-      theme = {
-        name = "Gruvbox-Green-Dark";
-        package = pkgs.gruvbox-gtk-theme;
-      };
     };
   };
 }

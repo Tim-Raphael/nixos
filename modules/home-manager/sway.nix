@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     wlr-randr # screenmanager util
+    slurp
     mako # notification system developed by swaywm maintainer
     shotman # screenshot util
     gtk4 # toolkit for creating graphical interfaces

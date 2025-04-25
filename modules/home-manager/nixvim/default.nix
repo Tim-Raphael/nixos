@@ -8,6 +8,10 @@
 {
 	imports = [
 		inputs.nixvim.homeManagerModules.nixvim	
+
+      		./config/keymaps.nix
+      		./config/options.nix
+      		./config/plugins.nix
 	];
 
   programs.nixvim = {
@@ -15,11 +19,5 @@
 
     globals.mapleader = " ";
     globals.localmapleader = " ";
-
-    imports = [
-      ./config/keymaps.nix
-      ./config/options.nix
-      ./config/plugins.nix
-    ];
   };
 }

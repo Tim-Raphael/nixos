@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./plugins/lualine.nix
+  	./plugins/oil.nix	
   ];
 }

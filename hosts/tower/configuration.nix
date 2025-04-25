@@ -33,7 +33,7 @@
 
   home-manager = {
     extraSpecialArgs = {
-      inherit inputs;
+      inherit inputs nix-colors;
     };
     users = {
       "raphael" = import ./home.nix;

@@ -2,7 +2,7 @@
 
 {
   # Editor options
-  options = {
+  programs.nixvim.options = {
     relativenumber = true;
     number = true;
     expandtab = true;

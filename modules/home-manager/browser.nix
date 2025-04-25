@@ -8,7 +8,7 @@
   programs.chromium = {
     enable = true;
 
-    dictonarys = with pkgs; [
+    dictionaries = with pkgs; [
       hunspellDictsChromium.en_US
       hunspellDictsChromium.de_DE
     ];

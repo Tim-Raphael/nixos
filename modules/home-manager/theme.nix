@@ -1,7 +1,7 @@
 {
+  inputs,
   pkgs,
   lib,
-  nix-colors,
   ...
 }:
 
@@ -11,6 +11,7 @@ let
     pkg = pkgs.nerd-fonts.jetbrains-mono;
   };
 
+  nix-colors = inputs.nix-colors;
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
 
   theme = {
@@ -30,9 +31,10 @@ let
   };
 in
 {
-  imports = [
-    nix-colors.homeManagerModules.default
-  ];
+	imports = [
+		nix-colors.homeManagerModules.default;
+	];
+
 
   options.fonts.systemFont.main = lib.mkOption {
     type = lib.types.str;

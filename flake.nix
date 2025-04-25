@@ -21,7 +21,6 @@
     {
       self,
       nixpkgs,
-      nix-colors,
       ...
     }@inputs:
     {
@@ -29,7 +28,6 @@
         default = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
@@ -42,7 +40,6 @@
 
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
@@ -53,7 +50,6 @@
 
         thinkpad = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit nix-colors;
             inherit inputs;
           };
           modules = [
@@ -66,7 +62,6 @@
         tower = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }

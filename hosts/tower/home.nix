@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
   home.username = "raphael";
@@ -18,7 +22,7 @@
   imports = [
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/nvim.nix
-    ../../modules/home-manager/nixvim.nix
+    ../../modules/home-manager/nixvim/default.nix
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/i3status.nix
     ../../modules/home-manager/terminal.nix

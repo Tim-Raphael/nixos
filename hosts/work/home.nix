@@ -23,6 +23,7 @@
   imports = [
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/nvim.nix
+    ../../modules/home-manager/nixvim.nix
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/terminal.nix

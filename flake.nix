@@ -2,11 +2,21 @@
   description = "Ahh yes, a flake";
 
   inputs = {
+<<<<<<< HEAD
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+=======
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
+>>>>>>> 3fc8cb6 (refactor(nixvim): migrate from `nvim` to `nixvim`)
     nix-colors.url = "github:misterio77/nix-colors";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

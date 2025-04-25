@@ -9,6 +9,30 @@
 
     settings = [
       {
+        profile.name = "home_docked";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+          {
+            criteria = "DP-4";
+            status = "enable";
+            mode = "1920x1080@144.013000Hz";
+            position = "0,0";
+            scale = 1.0;
+          }
+          {
+            criteria = "DP-3";
+            status = "enable";
+            mode = "1920x1080@60.000000Hz";
+            position = "1920,0";
+            scale = 1.0;
+          }
+        ];
+      }
+
+      {
         profile.name = "home";
         profile.outputs = [
           {
@@ -27,8 +51,9 @@
           }
         ];
       }
+
       {
-        profile.name = "wd";
+        profile.name = "work_docked";
         profile.outputs = [
           {
             criteria = "eDP-1";
@@ -52,7 +77,7 @@
       }
 
       {
-        profile.name = "w";
+        profile.name = "work";
         profile.outputs = [
           {
             criteria = "eDP-1";

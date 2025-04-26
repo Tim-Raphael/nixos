@@ -73,6 +73,12 @@
             size = 10.0;
           };
 
+          input = {
+            "*" = {
+              accel_profile = "flat";
+            };
+          };
+
           output = {
             "*" = {
               bg = "#${config.colorScheme.palette.base00} solid_color";

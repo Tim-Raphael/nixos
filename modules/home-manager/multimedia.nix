@@ -13,6 +13,7 @@
     pandoc
     obsidian
     vlc
+    opentabletdriver
     libreoffice-qt
     hunspell
     hunspellDicts.de_DE
@@ -39,4 +40,20 @@
     })
     setzer
   ];
+
+  systemd.user.services.opentabletdriver = {
+    Unit = {
+      Description = "OpenTabletDriver Daemon";
+      After = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.opentabletdriver}/bin/otd-daemon";
+      Restart = "on-failure";
+    };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
 }

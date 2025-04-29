@@ -67,7 +67,8 @@
       "battery 0" = {
         position = 7;
         settings = {
-          format = "BAT: %percentage";
+          format = "BAT: %percentage %remaining";
+          format_down = "";
           last_full_capacity = true;
           integer_battery_capacity = true;
           low_threshold = 20;
@@ -79,7 +80,7 @@
       "wireless wlp2s0" = {
         position = 8;
         settings = {
-          format_up = "WLS: %quality at %essid, %ip";
+          format_up = "WLS:%quality at %essid, %ip";
           format_down = "";
         };
       };
@@ -87,7 +88,7 @@
       "ethernet enp1s0f0" = {
         position = 9;
         settings = {
-          format_up = "ETH: %quality at %essid, %ip";
+          format_up = "ETH:%quality at %essid, %ip";
           format_down = "";
         };
       };

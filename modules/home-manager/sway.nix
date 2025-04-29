@@ -134,6 +134,10 @@
             {
               statusCommand = "${pkgs.i3status}/bin/i3status";
 
+              # Disabled for now, because some programs always spams my tray
+              # with sad smileys (heulis).
+              trayOutput = "none";
+
               fonts = {
                 names = [ "${config.fonts.systemFont.main}" ];
                 style = "Regular";

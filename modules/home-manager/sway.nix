@@ -15,7 +15,6 @@
     gtk4 # toolkit for creating graphical interfaces
     i3status
     waybar
-    networkmanagerapplet
     blueman
     dmenu-wayland
     swaylock
@@ -49,10 +48,6 @@
           startup = [
             {
               command = "alacritty";
-              always = true;
-            }
-            {
-              command = "nm-applet";
               always = true;
             }
             {

@@ -16,14 +16,14 @@
             status = "disable";
           }
           {
-            criteria = "DP-4";
+            criteria = "DP-8";
             status = "enable";
             mode = "1920x1080@144.013000Hz";
             position = "0,0";
             scale = 1.0;
           }
           {
-            criteria = "DP-3";
+            criteria = "DP-7";
             status = "enable";
             mode = "1920x1080@60.000000Hz";
             position = "1920,0";

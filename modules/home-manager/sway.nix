@@ -18,6 +18,7 @@
     blueman
     dmenu-wayland
     swaylock
+    brightnessctl
   ];
 
   wayland = {

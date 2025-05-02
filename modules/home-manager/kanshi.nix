@@ -59,7 +59,7 @@
             criteria = "DP-2";
             status = "enable";
             mode = "2560x1440@59.951000Hz";
-            position = "1920,0";
+            position = "1280,0"; # 1920 / 1.5 = 1280
             scale = 1.0;
           }
           {

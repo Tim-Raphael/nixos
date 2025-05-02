@@ -67,7 +67,7 @@
             status = "enable";
             mode = "1920x1200@60.000999Hz";
             position = "0,0";
-            scale = 1.0;
+            scale = 1.5;
           }
         ];
       }

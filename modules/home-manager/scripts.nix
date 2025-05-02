@@ -10,10 +10,6 @@
       source = ./scripts/volume.sh;
       executable = true;
     };
-    ".local/bin/brightness" = {
-      source = ./scripts/brightness.sh;
-      executable = true;
-    };
     ".local/bin/fm" = {
       source = ./scripts/fm.sh;
       executable = true;

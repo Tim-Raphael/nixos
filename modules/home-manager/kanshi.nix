@@ -53,51 +53,20 @@
       }
 
       {
-        profile.name = "work_docked";
+        profile.name = "work";
         profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "disable";
-          }
-          {
-            criteria = "DP-1";
-            status = "enable";
-            mode = "2560x1440@74.971001Hz";
-            position = "0,0";
-            scale = 1.0;
-          }
           {
             criteria = "DP-2";
             status = "enable";
-            mode = "2560x1440@74.971001Hz";
-            position = "2560,0";
+            mode = "2560x1440@59.951000Hz";
+            position = "1920,0";
             scale = 1.0;
           }
-        ];
-      }
-
-      {
-        profile.name = "work";
-        profile.outputs = [
           {
             criteria = "eDP-1";
             status = "enable";
             mode = "1920x1200@60.000999Hz";
             position = "0,0";
-            scale = 1.0;
-          }
-          {
-            criteria = "DP-1";
-            status = "enable";
-            mode = "2560x1440@74.971001Hz";
-            position = "1920,0";
-            scale = 1.0;
-          }
-          {
-            criteria = "DP-2";
-            status = "enable";
-            mode = "2560x1440@74.971001Hz";
-            position = "4480,0";
             scale = 1.0;
           }
         ];

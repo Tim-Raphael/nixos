@@ -63,6 +63,17 @@
             ./hosts/tower/configuration.nix
           ];
         };
+
+        notebook = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            inherit nix-colors;
+          };
+          modules = [
+            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
+            ./hosts/notebook/configuration.nix
+          ];
+        };
       };
     };
 }

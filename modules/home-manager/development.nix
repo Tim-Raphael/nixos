@@ -21,7 +21,6 @@
     commitlint
     # gcc
     # binutils
-    nodejs_23
     pnpm_10
     nodePackages.typescript
     nodePackages.live-server

@@ -194,14 +194,16 @@
   services.mako = {
     enable = true;
 
-    defaultTimeout = 5000;
+    settings = {
+      default-timeout = 5000;
 
-    font = "#${config.fonts.systemFont.main}";
-    borderColor = "#${config.colorScheme.palette.base07}";
-    backgroundColor = "#${config.colorScheme.palette.base00}";
+      font = "#${config.fonts.systemFont.main}";
+      border-color = "#${config.colorScheme.palette.base07}";
+      background-color = "#${config.colorScheme.palette.base00}";
 
-    padding = "10";
-    borderRadius = 10;
+      padding = "10";
+      border-radius = 10;
+    };
   };
 
   programs.swaylock = {

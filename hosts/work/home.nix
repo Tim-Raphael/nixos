@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   home.username = "raphael";
@@ -20,7 +25,6 @@
     ../../modules/home-manager/nvim.nix
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/sway.nix
-    ../../modules/home-manager/i3status.nix
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/scripts.nix
     ../../modules/home-manager/utils.nix
@@ -30,6 +34,11 @@
     ../../modules/home-manager/communication.nix
     ../../modules/home-manager/multimedia.nix
     ../../modules/home-manager/kanshi.nix
+
+    (import ../../modules/home-manager/i3status.nix {
+      inherit pkgs lib config;
+      extraModuleList = [ ];
+    })
   ];
 
   programs.home-manager.enable = true;

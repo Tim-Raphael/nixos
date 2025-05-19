@@ -71,6 +71,7 @@
 
           input = {
             "*" = {
+              pointer_accel = "1";
               accel_profile = "flat";
             };
           };

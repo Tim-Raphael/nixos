@@ -48,7 +48,7 @@
 
           startup = [
             {
-              command = "alacritty";
+              command = "alacritty --command ssh-add";
               always = true;
             }
             {

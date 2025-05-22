@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     wlr-randr # screenmanager util
+    grim
     slurp
     mako # notification system developed by swaywm maintainer
     shotman # screenshot util
@@ -59,6 +60,7 @@
 
           keybindings = lib.mkOptionDefault {
             "${modifier}+Escape" = "exec swaylock";
+            "${modifier}+Shift+s" = "exec grim -g $(slurp)";
             "${modifier}+d" =
               "exec dmenu-wl_run -b -fn '${config.fonts.systemFont.main}' -nb '#${config.colorScheme.palette.base00}' -nf '#${config.colorScheme.palette.base07}' -sb '#${config.colorScheme.palette.base0B}' -sf '#${config.colorScheme.palette.base00}'";
           };

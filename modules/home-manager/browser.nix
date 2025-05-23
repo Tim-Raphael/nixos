@@ -22,6 +22,9 @@
 
       # React Developer Tools
       { id = "fmkadmapgofadopljbjfkapdkoienihi"; }
+
+      # LanguageTool
+      { id = "oldceeleldhonbafppcapldpdifcinji"; }
     ];
   };
 }

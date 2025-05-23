@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    languagetool
     pdfarranger
     gimp
     darktable
@@ -49,6 +50,22 @@
 
     Service = {
       ExecStart = "${pkgs.opentabletdriver}/bin/otd-daemon";
+      Restart = "on-failure";
+    };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
+  systemd.user.services.languagetool-http-server = {
+    Unit = {
+      Description = "Languagetool HTTP Server";
+      After = [ "network.target" ];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.languagetool}/bin/languagetool-http-server --port 1470";
       Restart = "on-failure";
     };
 

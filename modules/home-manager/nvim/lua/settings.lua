@@ -36,3 +36,13 @@ vim.o.linebreak      = true
 vim.o.breakindent    = true
 vim.o.showbreak      = "ͱ"
 vim.o.swapfile       = false
+
+-- Special treatment for TS
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "typescript", "typescriptreact" },
+    callback = function()
+        vim.bo.shiftwidth = 2
+        vim.bo.tabstop = 2
+        vim.bo.expandtab = true
+    end,
+})

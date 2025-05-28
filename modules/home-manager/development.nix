@@ -22,8 +22,10 @@
     # gcc
     # binutils
     pnpm_10
-    nodePackages.typescript
-    nodePackages.live-server
+    nodejs
+    pre-commit
+    postgresql
+    pgadmin4-desktopmode
   ];
 
   programs.git = {

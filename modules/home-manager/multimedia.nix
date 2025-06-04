@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    languagetool
     pdfarranger
     gimp
     darktable
@@ -16,11 +15,11 @@
     vlc
     opentabletdriver
     libreoffice-qt
+    languagetool
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_US
     obs-studio
-    pdfarranger
     (texlive.combine {
       inherit (texlive)
         apa

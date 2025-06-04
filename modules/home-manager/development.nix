@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    tig
     gh
     glab
     websocat
@@ -25,6 +26,7 @@
     nodejs
     pre-commit
     postgresql
+    postgresql.lib
     pgadmin4-desktopmode
   ];
 

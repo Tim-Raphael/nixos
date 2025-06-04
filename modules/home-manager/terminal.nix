@@ -3,9 +3,10 @@
 {
   home.packages = with pkgs; [
     tmate
+    tig
     git
+    gh
     sshfs
-    ranger
     tree
     tealdeer
   ];

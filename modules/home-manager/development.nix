@@ -24,6 +24,7 @@
     # binutils
     pnpm_10
     nodejs
+    live-server
     pre-commit
     postgresql
     postgresql.lib

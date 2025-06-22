@@ -74,6 +74,16 @@
             ./hosts/notebook/configuration.nix
           ];
         };
+
+        server = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
+            ./hosts/server/configuration.nix
+          ];
+        };
       };
     };
 }

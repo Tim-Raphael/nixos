@@ -13,6 +13,7 @@
       "kvm"
       "adbusers"
       "docker"
+      "podman"
     ];
     ignoreShellProgramCheck = true;
     shell = pkgs.fish;

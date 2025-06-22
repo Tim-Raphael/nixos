@@ -9,8 +9,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedUDPPorts = [ 8080 3000 ];
-    allowedTCPPorts = [ 8080 3000 ];
+    # allowedUDPPorts = [ 8080 3000 ];
+    # allowedTCPPorts = [ 8080 3000 ];
   };
 
   # Optional proxy configuration

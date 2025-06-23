@@ -29,6 +29,9 @@
     postgresql
     postgresql.lib
     pgadmin4-desktopmode
+    lazydocker
+    podman-compose
+    podman-tui
   ];
 
   programs.git = {

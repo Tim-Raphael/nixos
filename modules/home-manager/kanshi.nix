@@ -9,6 +9,15 @@
 
     settings = [
       {
+        profile.name = "undocked";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "enable";
+          }
+        ];
+      }
+      {
         profile.name = "home_docked";
         profile.outputs = [
           {

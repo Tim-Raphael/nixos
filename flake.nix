@@ -2,12 +2,7 @@
   description = "Ahh yes, a flake";
 
   inputs = {
-<<<<<<< HEAD
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
-=======
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
->>>>>>> 3fc8cb6 (refactor(nixvim): migrate from `nvim` to `nixvim`)
     nix-colors.url = "github:misterio77/nix-colors";
 
     home-manager = {
@@ -16,7 +11,7 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/nixos-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -25,7 +20,6 @@
     {
       self,
       nixpkgs,
-      nix-colors,
       ...
     }@inputs:
     {
@@ -33,7 +27,6 @@
         default = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
@@ -44,7 +37,6 @@
         work = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
@@ -54,7 +46,6 @@
 
         thinkpad = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit nix-colors;
             inherit inputs;
           };
           modules = [
@@ -66,7 +57,6 @@
         tower = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
@@ -77,7 +67,6 @@
         notebook = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }

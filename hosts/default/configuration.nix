@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  nix-colors,
   ...
 }:
 
@@ -29,7 +28,6 @@
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
-      inherit nix-colors;
     };
     users = {
       "raphael" = import ./home.nix;

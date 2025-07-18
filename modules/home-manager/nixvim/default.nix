@@ -1,20 +1,22 @@
-{ config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
+
   programs.nixvim = {
     enable = true;
 
-    colorschemes = config.colorSchemes.slug;
+    colorschemes.gruvbox.enable = true;
 
     globals.mapleader = " ";
     globals.localmapleader = " ";
-
-    imports = [
-      ./modules/options.nix
-    ];
-  };
-
-  programs.nixvim = {
 
     keymaps = [
       # Window navigation
@@ -104,6 +106,7 @@
 
     plugins = {
       lualine.enable = true;
+      oil.enable = true;
     };
   };
 }

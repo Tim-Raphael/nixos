@@ -9,12 +9,13 @@
 
     # SETTINGS
     ./modules/globals.nix
+    ./modules/opts.nix
     ./modules/keymaps.nix
     ./modules/colorschemes.nix
 
     # PLUGINS
     ./modules/plugins.nix
-    ./modules/treesitter.nix
+    #./modules/treesitter.nix
     ./modules/telescope.nix
   ];
 

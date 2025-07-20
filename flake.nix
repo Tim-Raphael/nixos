@@ -9,13 +9,17 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      nix-colors,
       ...
     }@inputs:
     {
@@ -23,7 +27,6 @@
         default = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
@@ -34,7 +37,6 @@
         work = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
@@ -44,7 +46,6 @@
 
         thinkpad = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit nix-colors;
             inherit inputs;
           };
           modules = [
@@ -56,7 +57,6 @@
         tower = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
@@ -67,7 +67,6 @@
         notebook = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit nix-colors;
           };
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }

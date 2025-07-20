@@ -1,8 +1,7 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  # Editor options
-  programs.nixvim.options = {
+  programs.nixvim.opts = {
     relativenumber = true;
     number = true;
     expandtab = true;

@@ -17,8 +17,9 @@
 
   imports = [
     ../../modules/home-manager/theme.nix
-    ../../modules/home-manager/nvim.nix
+    ../../modules/home-manager/nixvim
     ../../modules/home-manager/kanshi.nix
+    ../../modules/home-manager/nixvim.nix
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/i3status.nix
     ../../modules/home-manager/terminal.nix

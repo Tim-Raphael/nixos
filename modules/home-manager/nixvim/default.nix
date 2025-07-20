@@ -19,6 +19,9 @@
     ./modules/conform.nix
     ./modules/treesitter.nix
     ./modules/telescope.nix
+    ./modules/lsp.nix
+    ./modules/cmp.nix
+    ./modules/alpha.nix
   ];
 
   programs.nixvim.enable = true;

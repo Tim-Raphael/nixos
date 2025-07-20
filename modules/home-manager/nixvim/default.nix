@@ -15,7 +15,9 @@
 
     # PLUGINS
     ./modules/plugins.nix
-    #./modules/treesitter.nix
+    ./modules/oil.nix
+    ./modules/conform.nix
+    ./modules/treesitter.nix
     ./modules/telescope.nix
   ];
 

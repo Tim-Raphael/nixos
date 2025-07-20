@@ -2,49 +2,36 @@
 
 {
   programs.nixvim = {
-    plugins.treesitter = {
-      enable = true;
-      nixGrammars = true;
+    plugins = {
+      treesitter = {
+        enable = true;
+        settings = {
+          indent = {
+            enable = false;
+          };
+          highlight = {
+            enable = true;
+          };
+        };
+        nixvimInjections = true;
+        grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
+      };
 
-      grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-        bash
-        c
-        cpp
-        css
-        csv
-        dockerfile
-        haskell
-        html
-        javascript
-        json
-        lua
-        lua
-        make
-        markdown
-        nix
-        proto
-        python
-        regex
-        rust
-        sql
-        terraform
-        toml
-        typescript
-        vim
-        vimdoc
-        xml
-        yaml
-      ];
+      treesitter-context = {
+        enable = false;
+      };
 
-      settings = {
-        auto_install = true;
-        ensure_installed = "all";
-        highlight.enable = true;
+      treesitter-textobjects = {
+        enable = true;
+        select = {
+          enable = true;
+          lookahead = true;
+        };
       };
     };
 
     extraConfigLua = ''
-      vim.cmd("syntax on")
+      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
     '';
   };
 }

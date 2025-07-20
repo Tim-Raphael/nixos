@@ -1,7 +1,8 @@
 { ... }:
 
 {
-  programs.nixvim.plugins.oil = {
+  programs.nixvim = {
+    plugins.oil = {
       enable = true;
 
       settings = {
@@ -10,6 +11,12 @@
         view_options = {
           show_hidden = false;
         };
-      };
-}
 
+        keymaps = {
+          "<C-n>" = "actions.parent";
+        };
+      };
+    };
+
+  };
+}

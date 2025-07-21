@@ -1,150 +1,132 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
-  programs.nixvim.plugins.telescope = {
-    enable = true;
+  programs.nixvim = {
+    extraPackages = with pkgs; [ ripgrep ];
 
-    extensions = {
-      project = {
-        enable = true;
-        settings = {
-          order_by = "asc";
-          search_by = "title";
-          mappings = { };
-        };
-      };
+    plugins.telescope = {
+      enable = true;
 
-      fzf-native = {
-        enable = true;
-        settings = {
-          fuzzy = true;
-          override_generic_sorter = true;
-          override_file_sorter = true;
-          case_mode = "smart_case";
-        };
-      };
-
-      ui-select = {
-        enable = true;
-        settings = {
-          specific_opts = {
-            codeactions = true;
+      extensions = {
+        project = {
+          enable = true;
+          settings = {
+            base_dirs = [
+              "~/Documents"
+              "~/nixos"
+            ];
+            order_by = "asc";
+            search_by = "title";
+            mappings = { };
           };
         };
-      };
-    };
 
-    settings = {
-      defaults = {
-        layout_strategy = "horizontal";
+        fzf-native = {
+          enable = true;
+          settings = {
+            fuzzy = true;
+            override_generic_sorter = true;
+            override_file_sorter = true;
+            case_mode = "smart_case";
+          };
+        };
 
-        mappings = {
-          i = {
-            "<esc>" = {
-              __raw = ''
-                function(...)
-                  return require("telescope.actions").close(...)
-                end'';
+        ui-select = {
+          enable = true;
+          settings = {
+            specific_opts = {
+              codeactions = true;
             };
           };
         };
       };
 
-      pickers = {
-        colorscheme = {
-          enable_preview = true;
+      settings = {
+        defaults = {
+          layout_strategy = "horizontal";
         };
 
-        buffrs = {
-          sort_lastused = true;
+        pickers = {
+          colorscheme = {
+            enable_preview = true;
+          };
+
+          buffrs = {
+            sort_lastused = true;
+          };
         };
       };
-    };
 
-    keymaps = {
-      "<leader>f" = {
-        action = "find_files";
-        options.desc = "Find project files";
-      };
+      keymaps = {
+        "<leader>ff" = {
+          action = "find_files";
+          options.desc = "Find project files";
+        };
 
-      "<leader>o" = {
-        action = "git_files";
-        options.desc = "Find git files";
-      };
+        "<leader>fg" = {
+          action = "live_grep";
+          options.desc = "Find Lines *Grep";
+        };
 
-      "<leader>s" = {
-        action = "live_grep";
-        options.desc = "Search";
-      };
+        "<leader>fs" = {
+          action = "treesitter";
+          options.desc = "Find Symbols";
+        };
 
-      "<leader>l" = {
-        action = "treesitter";
-        options.desc = "Symbols";
-      };
+        "<leader>fb" = {
+          action = "current_buffer_fuzzy_find";
+          options.desc = "Find Buffer";
+        };
 
-      "<C-t>" = {
-        action = "todo-comments";
-        options.desc = "See Todos";
-      };
+        "<leader>b" = {
+          action = "buffers";
+          options.desc = "Buffers";
+        };
 
-      "<C-p>" = {
-        action = "project";
-        options.desc = "Projects";
-      };
+        "<leader>p" = {
+          action = "project";
+          options.desc = "Projects";
+        };
 
-      "<leader>b" = {
-        action = "git_branches";
-        options.desc = "Git Branches";
-      };
+        "<leader>gb" = {
+          action = "git_branches";
+          options.desc = "Git Branches";
+        };
 
-      "<C-b>" = {
-        action = "buffers";
-        options.desc = "Buffers";
-      };
+        "<leader>gc" = {
+          action = "git_commits";
+          options.desc = "Git Commits";
+        };
 
-      "<leader>c" = {
-        action = "git_commits";
-        options.desc = "commits";
-      };
+        "<leader>gs" = {
+          action = "git_status";
+          options.desc = "Git Status";
+        };
 
-      "<leader>g" = {
-        action = "git_status";
-        options.desc = "Status";
-      };
+        "<leader>d" = {
+          action = "diagnostics bufnr=0";
+          options.desc = "Document Diagnostics";
+        };
 
-      "<leader>u" = {
-        action = "current_buffer_fuzzy_find";
-        options.desc = "Buffer";
-      };
+        "<leader>D" = {
+          action = "diagnostics";
+          options.desc = "Workspace diagnostics";
+        };
 
-      "<leader>d" = {
-        action = "diagnostics bufnr=0";
-        options.desc = "Document Diagnostics";
-      };
+        "<leader>H" = {
+          action = "help_tags";
+          options.desc = "Help pages";
+        };
 
-      "<leader>D" = {
-        action = "diagnostics";
-        options.desc = "Workspace diagnostics";
-      };
+        "<leader>K" = {
+          action = "keymaps";
+          options.desc = "Keymaps";
+        };
 
-      "<leader>H" = {
-        action = "help_tags";
-        options.desc = "Help pages";
-      };
-
-      "<leader>k" = {
-        action = "keymaps";
-        options.desc = "Keymaps";
-      };
-
-      "<leader>M" = {
-        action = "man_pages";
-        options.desc = "Man pages";
-      };
-
-      "<leader>m" = {
-        action = "marks";
-        options.desc = "Jump to Mark";
+        "<leader>M" = {
+          action = "man_pages";
+          options.desc = "Man pages";
+        };
       };
     };
   };

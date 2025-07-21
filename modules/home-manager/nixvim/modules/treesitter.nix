@@ -6,6 +6,7 @@
       treesitter = {
         enable = true;
         settings = {
+
           indent = {
             enable = false;
           };

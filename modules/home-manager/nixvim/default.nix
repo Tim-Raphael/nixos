@@ -10,6 +10,7 @@
     # SETTINGS
     ./modules/globals.nix
     ./modules/opts.nix
+    ./modules/clipboard.nix
     ./modules/keymaps.nix
     ./modules/colorschemes.nix
 

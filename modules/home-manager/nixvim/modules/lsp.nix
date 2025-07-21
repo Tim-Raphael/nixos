@@ -59,6 +59,10 @@
         };
       };
 
+      trouble.enable = true;
+      lspkind.enable = true;
+      nix.enable = true;
+
       none-ls = {
         enable = true;
         settings = {
@@ -81,10 +85,8 @@
         };
       };
 
-      lspkind.enable = true;
-
       lspsaga = {
-        enable = true;
+        enable = false;
 
         lightbulb.virtualText = false;
 
@@ -102,8 +104,6 @@
           };
         };
       };
-
-      trouble.enable = true;
 
       rustaceanvim = {
         enable = true;

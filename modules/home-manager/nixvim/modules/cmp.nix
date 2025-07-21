@@ -3,6 +3,7 @@
 {
   programs.nixvim = {
     extraPlugins = with pkgs.vimPlugins; [ friendly-snippets ];
+
     plugins = {
       cmp-nvim-lsp.enable = true;
       cmp-path.enable = true;

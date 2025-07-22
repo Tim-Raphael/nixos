@@ -14,6 +14,13 @@
     plugins.conform-nvim = {
       enable = true;
 
+      lazyLoad.settings = {
+        event = [
+          "BufReadPre"
+          "BufNewFile"
+        ];
+      };
+
       settings = {
         format_on_save = {
           lspFallback = true;

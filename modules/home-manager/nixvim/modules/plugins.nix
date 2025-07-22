@@ -2,7 +2,7 @@
 
 {
   programs.nixvim.plugins = {
-    lualine.enable = true;
+    lz-n.enable = true;
     neogit.enable = true;
     web-devicons.enable = true;
   };

@@ -12,8 +12,7 @@
           enable = true;
           settings = {
             base_dirs = [
-              "~/Documents"
-              "~/nixos"
+              "~/"
             ];
             order_by = "asc";
             search_by = "title";

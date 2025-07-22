@@ -7,6 +7,13 @@
         enable = true;
         inlayHints = true;
 
+        lazyLoad.settings = {
+          event = [
+            "BufReadPre"
+            "BufNewFile"
+          ];
+        };
+
         servers = {
           clangd = {
             enable = true;
@@ -43,10 +50,7 @@
           yamlls = {
             enable = true;
             settings = {
-              schemaStore = {
-                enable = false;
-                url = "";
-              };
+              schemaStore.enable = false;
             };
           };
         };
@@ -59,6 +63,7 @@
 
       none-ls = {
         enable = true;
+
         settings = {
           should_attach = ''
             function(bufnr)

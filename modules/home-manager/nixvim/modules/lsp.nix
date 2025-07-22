@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
+{ ... }:
 
 {
   programs.nixvim = {
@@ -27,9 +23,6 @@
           nixd = {
             enable = true;
             settings = {
-              formatting = {
-                command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
-              };
               options = {
                 nixpkgs.expr = "import <nixpkgs> { }";
               };
@@ -59,9 +52,10 @@
         };
       };
 
-      trouble.enable = true;
       lspkind.enable = true;
+
       nix.enable = true;
+      crates.enable = true;
 
       none-ls = {
         enable = true;
@@ -81,26 +75,6 @@
 
           diagnostics = {
             protolint.enable = true;
-          };
-        };
-      };
-
-      lspsaga = {
-        enable = false;
-
-        lightbulb.virtualText = false;
-
-        ui = {
-          codeAction = "";
-        };
-
-        definition = {
-          keys = {
-            edit = "<CR>";
-            vsplit = "v";
-            split = "h";
-            tabe = "t";
-            quit = "q";
           };
         };
       };
@@ -131,82 +105,55 @@
           };
         };
       };
-
-      crates.enable = true;
-      fidget.enable = true;
     };
 
     keymaps = [
       {
         mode = "n";
-        key = "gh";
+        key = "K";
         action = "<cmd>lua vim.lsp.buf.hover()<CR>";
       }
 
       {
         mode = "n";
-        key = "g?";
-        action = ":Trouble toggle diagnostics<CR>";
-      }
-
-      {
-        mode = "n";
-        key = "gf";
-        action = "<cmd> lua vim.diagnostic.open_float(nil, {focusable=false, source='always', border='rounded'})<cr>";
+        key = "gi";
+        action = "<cmd>lua lsp.inlay_hint.enable(0, not lsp.inlay_hint.is_enabled())<CR>";
       }
 
       {
         mode = "n";
         key = "gj";
-        action = "<cmd>lua vim.diagnostic.goto_next()<cr>";
+        action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
       }
 
       {
         mode = "n";
         key = "gk";
-        action = "<cmd>lua vim.diagnostic.goto_prev()<cr>";
+        action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
       }
 
       {
         mode = "n";
         key = "ga";
-        action = ":Lspsaga code_action<cr>";
+        action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
       }
 
       {
         mode = "n";
         key = "gd";
-        action = ":Lspsaga goto_definition<cr>";
-      }
-
-      {
-        mode = "n";
-        key = "gi";
-        action = ":Lspsaga finder imp<cr>";
-      }
-
-      {
-        mode = "n";
-        key = "gp";
-        action = ":Lspsaga peek_type_definition<cr>";
+        action = "<cmd>lua vim.lsp.buf.definition()<CR>";
       }
 
       {
         mode = "n";
         key = "gf";
-        action = "<cmd>lua require('telescope.builtin').lsp_references({})<cr>";
-      }
-
-      {
-        mode = "n";
-        key = "ge";
-        action = "<cmd>lua require('telescope.builtin').diagnostics({})<cr>";
+        action = "<cmd>lua vim.lsp.buf.references()<CR>";
       }
 
       {
         mode = "n";
         key = "gr";
-        action = "<cmd>lua vim.lsp.buf.rename()<cr>";
+        action = "<cmd>lua vim.lsp.buf.rename()<CR>";
       }
     ];
   };

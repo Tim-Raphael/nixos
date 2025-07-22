@@ -58,24 +58,19 @@
       };
 
       keymaps = {
-        "<leader>ff" = {
+        "<leader>f" = {
           action = "find_files";
-          options.desc = "Find project files";
+          options.desc = "Find Files";
         };
 
-        "<leader>fg" = {
+        "<leader>g" = {
           action = "live_grep";
-          options.desc = "Find Lines *Grep";
+          options.desc = "Search *Grep";
         };
 
-        "<leader>fs" = {
+        "<leader>s" = {
           action = "treesitter";
-          options.desc = "Find Symbols";
-        };
-
-        "<leader>fb" = {
-          action = "current_buffer_fuzzy_find";
-          options.desc = "Find Buffer";
+          options.desc = "Symbol Search";
         };
 
         "<leader>b" = {
@@ -88,17 +83,17 @@
           options.desc = "Projects";
         };
 
-        "<leader>gb" = {
+        "<leader>B" = {
           action = "git_branches";
           options.desc = "Git Branches";
         };
 
-        "<leader>gc" = {
+        "<leader>C" = {
           action = "git_commits";
           options.desc = "Git Commits";
         };
 
-        "<leader>gs" = {
+        "<leader>S" = {
           action = "git_status";
           options.desc = "Git Status";
         };
@@ -110,12 +105,12 @@
 
         "<leader>D" = {
           action = "diagnostics";
-          options.desc = "Workspace diagnostics";
+          options.desc = "Diagnostics";
         };
 
         "<leader>H" = {
           action = "help_tags";
-          options.desc = "Help pages";
+          options.desc = "Help Pages";
         };
 
         "<leader>K" = {
@@ -125,7 +120,7 @@
 
         "<leader>M" = {
           action = "man_pages";
-          options.desc = "Man pages";
+          options.desc = "Man Pages";
         };
       };
     };

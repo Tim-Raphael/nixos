@@ -62,13 +62,13 @@
             "${modifier}+Escape" = "exec swaylock";
             "${modifier}+Shift+s" = "exec grim -g $(slurp)";
             "${modifier}+d" =
-              "exec dmenu-wl_run -b -fn '${config.fonts.systemFont.main}' -nb '#${config.colorScheme.palette.base00}' -nf '#${config.colorScheme.palette.base07}' -sb '#${config.colorScheme.palette.base0B}' -sf '#${config.colorScheme.palette.base00}'";
+              "exec dmenu-wl_run -b -fn '${config.fonts.systemFont.main.name}' -nb '#${config.colorScheme.palette.base00}' -nf '#${config.colorScheme.palette.base07}' -sb '#${config.colorScheme.palette.base0B}' -sf '#${config.colorScheme.palette.base00}'";
           };
 
           fonts = {
-            names = [ "${config.fonts.systemFont.main}" ];
+            names = [ "${config.fonts.systemFont.main.name}" ];
             style = "Regular";
-            size = 10.0;
+            size = config.fonts.systemFont.main.size-small * 1.0; # little hack to convert into float
           };
 
           input = {
@@ -143,9 +143,9 @@
               trayOutput = "none";
 
               fonts = {
-                names = [ "${config.fonts.systemFont.main}" ];
+                names = [ "${config.fonts.systemFont.main.name}" ];
                 style = "Regular";
-                size = 10.0;
+                size = config.fonts.systemFont.main.size-small * 1.0; # little hack to convert into float
               };
 
               colors = {
@@ -200,20 +200,20 @@
     settings = {
       default-timeout = 5000;
 
-      font = "#${config.fonts.systemFont.main}";
+      font = "#${config.fonts.systemFont.main.name}";
       border-color = "#${config.colorScheme.palette.base07}";
       background-color = "#${config.colorScheme.palette.base00}";
 
       padding = "10";
-      border-radius = 10;
+      size = config.fonts.systemFont.main.size-small;
     };
   };
 
   programs.swaylock = {
     enable = true;
     settings = {
-      font = "${config.fonts.systemFont.main}";
-      font-size = 10;
+      font = "${config.fonts.systemFont.main.name}";
+      size = config.fonts.systemFont.main.size-small;
 
       color = "${config.colorScheme.palette.base00}";
 

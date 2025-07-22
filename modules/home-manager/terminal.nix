@@ -14,6 +14,11 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      font = {
+        normal.family = "${config.fonts.systemFont.main.name}";
+        size = config.fonts.systemFont.main.size-medium;
+      };
+
       colors = {
         primary = {
           background = "#${config.colorScheme.palette.base00}";

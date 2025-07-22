@@ -4,6 +4,7 @@
   programs.nixvim = {
     extraPackages = with pkgs; [
       biome
+      prettierd
       nixfmt-rfc-style
       rustfmt
       shfmt
@@ -26,8 +27,8 @@
           css = [ "biome" ];
           javascript = [ "biome" ];
           javascriptreact = [ "biome" ];
-          typescript = [ "biome" ];
-          typescriptreact = [ "biome" ];
+          typescript = [ "prettierd" ]; # Work
+          typescriptreact = [ "prettierd" ]; # Work
           nix = [ "nixfmt" ];
           rust = [ "rustfmt" ];
           markdown = [ "biome" ];

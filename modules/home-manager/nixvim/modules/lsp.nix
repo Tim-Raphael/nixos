@@ -117,7 +117,7 @@
       {
         mode = "n";
         key = "gi";
-        action = "<cmd>lua lsp.inlay_hint.enable(0, not lsp.inlay_hint.is_enabled())<CR>";
+        action = "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>";
       }
 
       {

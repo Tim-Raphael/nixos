@@ -13,6 +13,7 @@
     ./modules/clipboard.nix
     ./modules/keymaps.nix
     ./modules/colorschemes.nix
+    ./modules/extra-config-lua.nix
 
     # PLUGINS
     ./modules/plugins.nix

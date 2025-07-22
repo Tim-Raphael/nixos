@@ -31,11 +31,11 @@ in
 
       dashboard.section.buttons.val = {
           dashboard.button("<C-n>", "> File Explorer", ":Oil<CR>"),
-          dashboard.button("<leader>fg", "> Find Grep", ":Telescope live_grep<CR>"),
-          dashboard.button("<leader>ff", "> Find Files", ":Telescope find_files<CR>"),
-          dashboard.button("<leader>gs", "> Status", ":Telescope git_status<CR>"),
-          dashboard.button("<leader>gb", "> Branches", ":Telescope git_branches<CR>"),
-          dashboard.button("<leader>gc", "> Commits", ":Telescope git_commits<CR>"),
+          dashboard.button("<leader>g", "> Grep", ":Telescope live_grep<CR>"),
+          dashboard.button("<leader>f", "> Find", ":Telescope find_files<CR>"),
+          dashboard.button("<leader>S", "> Status", ":Telescope git_status<CR>"),
+          dashboard.button("<leader>B", "> Branches", ":Telescope git_branches<CR>"),
+          dashboard.button("<leader>C", "> Commits", ":Telescope git_commits<CR>"),
           dashboard.button("<leader>p", "> Projects", ":Telescope project<CR>"),
       }
 
@@ -44,7 +44,7 @@ in
       }
 
       dashboard.config.opts.noautocmd = true
-      vim.cmd[[autocmd User AlphaReady echo 'ready']]
+      vim.cmd[[autocmd User AlphaReady echo 'all set']]
       alpha.setup(dashboard.config)
     '';
   };

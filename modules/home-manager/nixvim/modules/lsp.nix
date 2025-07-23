@@ -61,28 +61,28 @@
       nix.enable = true;
       crates.enable = true;
 
-      none-ls = {
-        enable = true;
+      #none-ls = {
+      #  enable = true;
 
-        settings = {
-          should_attach = ''
-            function(bufnr)
-              local bufname = vim.fn.bufname(bufnr)
-              return not string.find(bufname, "%.git/")
-            end
-          '';
-        };
+      #  settings = {
+      #    should_attach = ''
+      #      function(bufnr)
+      #        local bufname = vim.fn.bufname(bufnr)
+      #        return not string.find(bufname, "%.git/")
+      #      end
+      #    '';
+      #  };
 
-        sources = {
-          completion = {
-            spell.enable = true;
-          };
+      #  sources = {
+      #    completion = {
+      #      spell.enable = true;
+      #    };
 
-          diagnostics = {
-            protolint.enable = true;
-          };
-        };
-      };
+      #    diagnostics = {
+      #      protolint.enable = true;
+      #    };
+      #  };
+      #};
 
       rustaceanvim = {
         enable = true;

@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   programs.nixvim = {
@@ -11,11 +11,18 @@
         view_options = {
           show_hidden = true;
         };
-
-        keymaps = {
-          "<C-n>" = "actions.parent";
-        };
       };
     };
+
+    keymaps = lib.mkAfter [
+      {
+        mode = "n";
+        key = "<C-n>";
+        action = "<CMD>Oil<CR>";
+        options = {
+          desc = "Open parent directory";
+        };
+      }
+    ];
   };
 }

@@ -39,16 +39,5 @@
         silent = true;
       };
     }
-
-    # Plugins
-      {
-        mode = "n";
-        key = "<C-n>";
-        action = "<CMD>Oil<CR>";
-        options = {
-          desc = "Open parent directory";
-        };
-	}
-
   ];
 }

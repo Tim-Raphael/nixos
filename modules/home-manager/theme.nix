@@ -9,7 +9,7 @@ let
   font = {
     name = "JetBrainsMono Nerd Font Mono";
     size-small = 12;
-    size-medium = 18;
+    size-medium = 16;
     size-large = 22;
     pkg = pkgs.nerd-fonts.jetbrains-mono;
   };

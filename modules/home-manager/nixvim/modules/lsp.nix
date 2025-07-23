@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   programs.nixvim = {
@@ -112,53 +112,53 @@
       };
     };
 
-    keymaps = [
+    keymaps = lib.mkAfter [
       {
         mode = "n";
         key = "K";
-        action = "<cmd>lua vim.lsp.buf.hover()<CR>";
+        action = "<CMD>lua vim.lsp.buf.hover()<CR>";
       }
 
       {
         mode = "n";
-        key = "gi";
-        action = "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>";
+        key = "th";
+        action = "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>";
       }
 
       {
         mode = "n";
         key = "gj";
-        action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
+        action = "<CMD>lua vim.diagnostic.goto_next()<CR>";
       }
 
       {
         mode = "n";
         key = "gk";
-        action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
+        action = "<CMD>lua vim.diagnostic.goto_prev()<CR>";
       }
 
       {
         mode = "n";
         key = "ga";
-        action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+        action = "<CMD>lua vim.lsp.buf.code_action()<CR>";
       }
 
       {
         mode = "n";
         key = "gd";
-        action = "<cmd>lua vim.lsp.buf.definition()<CR>";
+        action = "<CMD>lua vim.lsp.buf.definition()<CR>";
       }
 
       {
         mode = "n";
         key = "gf";
-        action = "<cmd>lua vim.lsp.buf.references()<CR>";
+        action = "<CMD>lua vim.lsp.buf.references()<CR>";
       }
 
       {
         mode = "n";
         key = "gr";
-        action = "<cmd>lua vim.lsp.buf.rename()<CR>";
+        action = "<CMD>lua vim.lsp.buf.rename()<CR>";
       }
     ];
   };

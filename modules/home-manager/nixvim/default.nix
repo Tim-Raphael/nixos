@@ -13,7 +13,6 @@
     ./modules/clipboard.nix
     ./modules/keymaps.nix
     ./modules/colorschemes.nix
-    ./modules/auto-indent.nix
 
     # PLUGINS
     ./modules/plugins.nix
@@ -25,6 +24,7 @@
     ./modules/cmp.nix
     ./modules/alpha.nix
     ./modules/lualine.nix
+    ./modules/indent-blankline.nix
   ];
 
   programs.nixvim.enable = true;

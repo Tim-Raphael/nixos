@@ -16,7 +16,6 @@
     breakindent = true;
     showbreak = "ͱ";
     swapfile = false;
-    cursorcolumn = true;
     scrolloff = 10; # scroll offset
     undofile = true; # enable persistent undo
     updatetime = 100; # faster completion

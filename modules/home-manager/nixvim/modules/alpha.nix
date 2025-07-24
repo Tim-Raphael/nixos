@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   alpha = pkgs.vimUtils.buildVimPlugin {
@@ -14,9 +14,9 @@ let
 in
 {
   programs.nixvim = {
-    extraPlugins = [ alpha ];
+    extraPlugins = lib.mkAfter [ alpha ];
 
-    extraConfigLuaPost = ''
+    extraConfigLua = ''
       local alpha = require'alpha'
       local dashboard = require'alpha.themes.dashboard'
 

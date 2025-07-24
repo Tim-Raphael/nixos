@@ -44,6 +44,16 @@
       settings = {
         defaults = {
           layout_strategy = "horizontal";
+          borderchars = [
+            "─"
+            "│"
+            "─"
+            "│"
+            "┌"
+            "┐"
+            "┘"
+            "└"
+          ];
         };
 
         pickers = {

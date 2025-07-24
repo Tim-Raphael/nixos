@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 {
   programs.nixvim.plugins.lualine = {
@@ -28,28 +28,47 @@
             '';
             color.__raw = ''
               function()
-                local hl = vim.api.nvim_get_hl(0, { name = "ModeMsg" }) or {}
-                local fg = hl.fg or 0xffffff  -- fallback to white
-                return { fg = string.format("#%06x", fg) }
-              end
+                local colors = require('base16-colorscheme').colors
+
+                local mode_color = {
+                    n = colors.base08,      -- red
+                    i = colors.base0B,      -- green
+                    v = colors.base0D,      -- blue
+                    [''] = colors.base0D, -- blue
+                    V = colors.base0D,      -- blue
+                    c = colors.base0E,      -- magenta
+                    no = colors.base08,     -- red
+                    s = colors.base09,      -- orange
+                    S = colors.base09,      -- orange
+                    [''] = colors.base09, -- orange
+                    ic = colors.base0A,     -- yellow
+                    R = colors.base0F,      -- violet
+                    Rv = colors.base0F,     -- violet
+                    cv = colors.base08,     -- red
+                    ce = colors.base08,     -- red
+                    r = colors.base0C,      -- cyan
+                    rm = colors.base0C,     -- cyan
+                    ['r?'] = colors.base0C, -- cyan
+                    ['!'] = colors.base08,  -- red
+                    t = colors.base08,      -- red
+                }
+
+                return { fg = mode_color[vim.fn.mode()] }
+              end,
             '';
           }
 
           {
             __unkeyed = "filename";
-            path = 0;
-            shorting_target = 40;
-            symbols = {
-              modified = "[+]";
-              readonly = "[-]";
-              unnamed = "[No Name]";
-              newfile = "[New]";
-            };
+          }
+
+          {
+            __unkeyed = "aerial";
           }
 
           {
             __unkeyed = "lsp_status";
-            icon = "";
+            icon = "";
             symbols = {
               spinner = [
                 "⠋"
@@ -72,10 +91,10 @@
             __unkeyed = "diagnostics";
             sources = [ "nvim_diagnostic" ];
             symbols = {
-              error = "E: ";
-              warn = "W: ";
-              info = "I: ";
-              hint = "H: ";
+              error = "⊝ ";
+              warn = "⚡ ";
+              info = "⊙ ";
+              hint = "⟲ ";
             };
           }
         ];
@@ -91,7 +110,11 @@
             };
           }
 
-          { __unkeyed = "branch"; }
+          {
+            __unkeyed = "branch";
+            icon = "";
+          }
+
         ];
       };
 

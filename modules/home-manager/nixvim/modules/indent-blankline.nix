@@ -32,9 +32,10 @@
     keymaps = lib.mkAfter [
       {
         mode = "n";
-        key = "ti";
+        key = "fi";
         action = "<CMD>IBLToggle<CR>";
         options = {
+          desc = "Toggle Ident-Guides";
           noremap = true;
           silent = true;
         };

@@ -28,7 +28,7 @@
     pre-commit
     postgresql
     postgresql.lib
-    pgadmin4-desktopmode
+    dbeaver-bin
     lazydocker
     podman-compose
     podman-tui

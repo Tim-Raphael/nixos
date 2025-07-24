@@ -57,32 +57,8 @@
       };
 
       lspkind.enable = true;
-
       nix.enable = true;
       crates.enable = true;
-
-      #none-ls = {
-      #  enable = true;
-
-      #  settings = {
-      #    should_attach = ''
-      #      function(bufnr)
-      #        local bufname = vim.fn.bufname(bufnr)
-      #        return not string.find(bufname, "%.git/")
-      #      end
-      #    '';
-      #  };
-
-      #  sources = {
-      #    completion = {
-      #      spell.enable = true;
-      #    };
-
-      #    diagnostics = {
-      #      protolint.enable = true;
-      #    };
-      #  };
-      #};
 
       rustaceanvim = {
         enable = true;
@@ -116,25 +92,25 @@
       {
         mode = "n";
         key = "K";
-        action = "<CMD>lua vim.lsp.buf.hover()<CR>";
+        action = "<CMD>lua vim.lsp.buf.hover({ border = 'single' })<CR>";
       }
 
       {
         mode = "n";
-        key = "th";
+        key = "fh";
         action = "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>";
       }
 
       {
         mode = "n";
         key = "gj";
-        action = "<CMD>lua vim.diagnostic.goto_next()<CR>";
+        action = "<CMD>lua vim.diagnostic.goto_next({ float = { border = 'single' }})<CR>";
       }
 
       {
         mode = "n";
         key = "gk";
-        action = "<CMD>lua vim.diagnostic.goto_prev()<CR>";
+        action = "<CMD>lua vim.diagnostic.goto_prev({ float = { border = 'single' }})<CR>";
       }
 
       {

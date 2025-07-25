@@ -9,12 +9,15 @@ let
   font = {
     name = "JetBrainsMono Nerd Font Mono";
     size-small = 12;
-    size-medium = 16;
+    size-medium = 18;
     size-large = 22;
     pkg = pkgs.nerd-fonts.jetbrains-mono;
   };
 
-  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+  # trying out new themes
+  #colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
+  colorScheme = inputs.nix-colors.colorSchemes.everforest;
+  #colorScheme = inputs.nix-colors.colorSchemes.nord;
 
   theme = {
     name = "Gruvbox-Green-Dark";

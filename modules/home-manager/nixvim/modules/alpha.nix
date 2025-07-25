@@ -44,7 +44,6 @@ in
       }
 
       dashboard.config.opts.noautocmd = true
-      vim.cmd[[autocmd User AlphaReady echo 'all set']]
       alpha.setup(dashboard.config)
     '';
   };

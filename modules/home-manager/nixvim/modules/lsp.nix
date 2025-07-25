@@ -5,7 +5,7 @@
     plugins = {
       lsp = {
         enable = true;
-        inlayHints = true;
+        inlayHints = false;
 
         lazyLoad.settings = {
           event = [
@@ -26,6 +26,8 @@
               "hpp"
             ];
           };
+
+          nil_ls.enable = true;
 
           nixd = {
             enable = true;
@@ -97,7 +99,7 @@
 
       {
         mode = "n";
-        key = "fh";
+        key = "th";
         action = "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>";
       }
 

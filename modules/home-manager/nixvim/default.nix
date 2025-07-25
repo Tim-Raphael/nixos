@@ -8,23 +8,24 @@
     inputs.nixvim.homeManagerModules.nixvim
 
     # SETTINGS
+    ./modules/colorschemes.nix
+    ./modules/clipboard.nix
     ./modules/globals.nix
     ./modules/opts.nix
-    ./modules/clipboard.nix
     ./modules/keymaps.nix
-    ./modules/colorschemes.nix
 
     # PLUGINS
-    ./modules/plugins.nix
-    ./modules/oil.nix
+    ./modules/alpha.nix
     ./modules/conform.nix
+    ./modules/cmp.nix
+    ./modules/fugitive.nix
+    ./modules/indent-blankline.nix
+    ./modules/lsp.nix
+    ./modules/lualine.nix
+    ./modules/oil.nix
+    ./modules/plugins.nix
     ./modules/treesitter.nix
     ./modules/telescope.nix
-    ./modules/lsp.nix
-    ./modules/cmp.nix
-    ./modules/alpha.nix
-    ./modules/lualine.nix
-    ./modules/indent-blankline.nix
   ];
 
   programs.nixvim.enable = true;

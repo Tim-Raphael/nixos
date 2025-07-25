@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     nix-colors.url = "github:misterio77/nix-colors";
 
     home-manager = {
@@ -22,67 +24,32 @@
       nixpkgs,
       ...
     }@inputs:
+    let
+      mkSystem =
+        hostPath:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
+            {
+              nixpkgs.overlays = [
+                (import ./overlays/unstable.nix { inherit inputs; })
+              ];
+            }
+            hostPath
+          ];
+        };
+    in
     {
       nixosConfigurations = {
-        default = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
-            ./hosts/default/configuration.nix
-          ];
-        };
-
-        work = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
-            ./hosts/work/configuration.nix
-          ];
-        };
-
-        thinkpad = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
-            ./hosts/thinkpad/configuration.nix
-          ];
-        };
-
-        tower = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
-            ./hosts/tower/configuration.nix
-          ];
-        };
-
-        notebook = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
-            ./hosts/notebook/configuration.nix
-          ];
-        };
-
-        server = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
-            ./hosts/server/configuration.nix
-          ];
-        };
+        default = mkSystem ./hosts/default/configuration.nix;
+        work = mkSystem ./hosts/work/configuration.nix;
+        thinkpad = mkSystem ./hosts/thinkpad/configuration.nix;
+        tower = mkSystem ./hosts/tower/configuration.nix;
+        notebook = mkSystem ./hosts/notebook/configuration.nix;
+        server = mkSystem ./hosts/server/configuration.nix;
       };
     };
 }

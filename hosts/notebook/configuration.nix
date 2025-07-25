@@ -5,8 +5,6 @@
 }:
 
 {
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
   imports = [
     ./hardware-configuration.nix
 
@@ -32,6 +30,7 @@
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
+      inherit pkgs;
     };
     users = {
       "raphael" = import ./home.nix;

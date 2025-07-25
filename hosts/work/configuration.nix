@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  nix-colors,
   ...
 }:
 
@@ -9,8 +8,6 @@ let
   maybeSettings = if builtins.pathExists ./settings.nix then [ ./settings.nix ] else [ ];
 in
 {
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
   imports = [
     ./hardware-configuration.nix
 
@@ -37,6 +34,7 @@ in
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
+      inherit pkgs;
     };
     users = {
       "raphael" = import ./home.nix;

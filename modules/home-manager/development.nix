@@ -2,36 +2,51 @@
 
 {
   home.packages = with pkgs; [
+    # Git
     tig
     gh
     glab
-    websocat
-    postman
-    yarn
-    rustup
-    cargo-deny
-    taplo
-    protobuf
-    pkg-config
-    openssl
-    postgresql.dev
-    mdl
-    lld
-    llvm
-    clang
+    pre-commit
     commitlint
-    # gcc
-    # binutils
+
+    # API
+    postman
+    websocat
+
+    # Web
+    yarn
     pnpm_10
     nodejs
     live-server
-    pre-commit
+
+    # Rust
+    unstable.rust-analyzer
+    unstable.cargo
+    unstable.clippy
+    unstable.cargo-deny
+    unstable.taplo
+
+    # C
+    clang
+    # gcc
+    # binutils
+
+    # DB
     postgresql
-    postgresql.lib
     dbeaver-bin
+
+    # Container
     lazydocker
     podman-compose
     podman-tui
+
+    # Misc
+    protobuf
+    pkg-config
+    openssl
+    mdl
+    lld
+    llvm
   ];
 
   programs.git = {

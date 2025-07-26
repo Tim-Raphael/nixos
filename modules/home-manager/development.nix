@@ -69,6 +69,9 @@
       core = {
         editor = "nvim";
       };
+      push = {
+        default = "current";
+      };
     };
   };
 

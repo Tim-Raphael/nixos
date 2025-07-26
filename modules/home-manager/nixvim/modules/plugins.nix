@@ -8,6 +8,7 @@
       lz-n.enable = true;
       indent-o-matic.enable = true;
       web-devicons.enable = true;
+      nvim-autopairs.enable = true;
     };
 
     keymaps = lib.mkAfter [

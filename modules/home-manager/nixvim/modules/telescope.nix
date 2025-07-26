@@ -17,7 +17,10 @@
             ];
             order_by = "asc";
             search_by = "title";
-            mappings = { };
+            show_workspace = false;
+            mappings = {
+              default = "change_working_directory";
+            };
           };
         };
 
@@ -75,7 +78,7 @@
 
         "<leader>g" = {
           action = "live_grep";
-          options.desc = "Search *Grep";
+          options.desc = "Grep";
         };
 
         "<leader>s" = {

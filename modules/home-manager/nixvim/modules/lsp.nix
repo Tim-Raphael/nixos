@@ -7,13 +7,6 @@
         enable = true;
         inlayHints = false;
 
-        lazyLoad.settings = {
-          event = [
-            "BufReadPre"
-            "BufNewFile"
-          ];
-        };
-
         servers = {
           clangd = {
             enable = true;
@@ -26,8 +19,6 @@
               "hpp"
             ];
           };
-
-          nil_ls.enable = true;
 
           nixd = {
             enable = true;
@@ -47,7 +38,6 @@
           pyright.enable = true;
           tailwindcss.enable = true;
           terraformls.enable = true;
-          ts_ls.enable = true;
 
           yamlls = {
             enable = true;
@@ -61,29 +51,116 @@
       lspkind.enable = true;
       nix.enable = true;
       crates.enable = true;
+      typescript-tools.enable = true;
 
       rustaceanvim = {
         enable = true;
-
         settings = {
           server = {
             cmd = [ "rust-analyzer" ];
             default_settings = {
               rust-analyzer = {
-                check = {
-                  command = "clippy";
+                # Reduce completion limit (default is null/unlimited)
+                completion = {
+                  limit = 50;
+                  postfix = {
+                    enable = false;
+                  };
                 };
 
+                # Optimize inlay hints
                 inlayHints = {
-                  enable = "always";
-
+                  maxLength = 20;
                   lifetimeElisionHints = {
-                    enable = "always";
+                    enable = "skip_trivial";
+                    useParameterNames = false;
+                  };
+                  closureReturnTypeHints = {
+                    enable = "with_block";
+                  };
+                  typeHints = {
+                    hideClosureInitialization = true;
+                    hideNamedConstructor = true;
+                  };
+                  chainingHints = {
+                    maxLength = 15; # Custom limit for performance
+                  };
+                  parameterHints = {
+                    maxLength = 15; # Custom limit for performance
+                  };
+                };
+
+                # Disable expensive lens features
+                lens = {
+                  references = {
+                    adt.enable = false;
+                    enumVariant.enable = false;
+                    method.enable = false;
+                    trait.enable = false;
+                  };
+                };
+
+                # Cargo optimizations for progressive loading
+                cargo = {
+                  buildScripts = {
+                    invocationStrategy = "once"; # Default is "per_workspace", faster caching
+                  };
+                };
+
+                # Import optimization for faster resolution
+                imports = {
+                  granularity = {
+                    group = "module";
+                  };
+                  prefix = "crate";
+                };
+
+                # Workspace symbol search optimization
+                workspace = {
+                  symbol = {
+                    search = {
+                      kind = "only_types";
+                      limit = 64;
+                    };
+                  };
+                };
+
+                # File watching optimization
+                files = {
+                  excludeDirs = [
+                    "target"
+                    "node_modules"
+                    ".git"
+                    "dist"
+                    "build"
+                  ];
+                };
+
+                # Disable expensive experimental features
+                diagnostics = {
+                  experimental = {
+                    enable = false;
+                  };
+                };
+
+                # Semantic highlighting optimizations
+                semanticHighlighting = {
+                  punctuation = {
+                    enable = false;
+                    specialization.enable = false;
+                  };
+                  operator = {
+                    specialization.enable = false;
+                  };
+                };
+
+                hover = {
+                  documentation = {
+                    keywords.enable = false;
                   };
                 };
               };
             };
-
             standalone = false;
           };
         };

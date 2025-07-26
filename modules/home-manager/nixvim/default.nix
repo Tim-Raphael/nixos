@@ -13,6 +13,7 @@
     ./modules/globals.nix
     ./modules/opts.nix
     ./modules/keymaps.nix
+    ./modules/auto-cmd.nix
 
     # PLUGINS
     ./modules/alpha.nix

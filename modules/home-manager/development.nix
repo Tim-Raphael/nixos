@@ -17,6 +17,7 @@
     yarn
     pnpm_10
     nodejs
+    nodePackages.typescript
     live-server
 
     # Rust

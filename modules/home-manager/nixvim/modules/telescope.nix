@@ -17,10 +17,6 @@
             ];
             order_by = "asc";
             search_by = "title";
-            show_workspace = false;
-            mappings = {
-              default = "change_working_directory";
-            };
           };
         };
 

@@ -9,9 +9,21 @@
       indent-o-matic.enable = true;
       web-devicons.enable = true;
       nvim-autopairs.enable = true;
+      colorizer.enable = true;
     };
 
     keymaps = lib.mkAfter [
+      {
+        mode = "n";
+        key = "tc";
+        action = "<cmd>ColorizerToggle<CR>";
+        options = {
+          desc = "Toggle Colorizer";
+          noremap = true;
+          silent = true;
+        };
+      }
+
       {
         mode = "n";
         key = "tf";
@@ -22,6 +34,7 @@
           silent = true;
         };
       }
+
       {
         mode = "n";
         key = "ta";

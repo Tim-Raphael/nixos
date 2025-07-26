@@ -118,8 +118,9 @@
             default_behavior = "Replace";
           };
 
+          # A bit annoying
           experimental = {
-            ghost_text = true; # Show preview of completion
+            ghost_text = false; # Show preview of completion
           };
 
           performance = {

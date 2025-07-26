@@ -23,6 +23,10 @@
       showbreak = "ͱ";
       showmode = false;
 
+      # Found out that this plays nice with darkmode themes, but not the other
+      # way around, so I'm going to leave it on light for now.
+      background = "light";
+
       # File
       swapfile = false;
       undofile = true; # enable persistent undo

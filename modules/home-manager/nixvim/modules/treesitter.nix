@@ -49,6 +49,7 @@
           silent = true;
         };
       }
+
       {
         mode = [
           "n"
@@ -58,6 +59,20 @@
         action = "zo";
         options = {
           desc = "Unfold";
+          noremap = true;
+          silent = true;
+        };
+      }
+
+      {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "<C-J>";
+        action = "zR";
+        options = {
+          desc = "Unfold All";
           noremap = true;
           silent = true;
         };

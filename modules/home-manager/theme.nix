@@ -15,8 +15,10 @@ let
   };
 
   # trying out new themes
+  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-material-dark-medium;
+  #colorScheme = inputs.nix-colors.colorSchemes.gruvbox-light-medium;
   #colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
-  colorScheme = inputs.nix-colors.colorSchemes.everforest;
+  #colorScheme = inputs.nix-colors.colorSchemes.everforest;
   #colorScheme = inputs.nix-colors.colorSchemes.nord;
 
   theme = {

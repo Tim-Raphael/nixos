@@ -15,6 +15,7 @@
       termguicolors = true; # eanble 24-bit colors
       number = true;
       relativenumber = true;
+      signcolumn = "yes"; # always show signs (no layout shifting)
       scrolloff = 10; # scroll offset
       colorcolumn = "+1";
       wrap = true;

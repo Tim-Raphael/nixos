@@ -41,7 +41,7 @@
           "n"
           "v"
         ];
-        key = "<C-k>";
+        key = "<A-k>";
         action = "zc";
         options = {
           desc = "Fold";
@@ -55,7 +55,7 @@
           "n"
           "v"
         ];
-        key = "<C-j>";
+        key = "<A-j>";
         action = "zo";
         options = {
           desc = "Unfold";
@@ -69,7 +69,7 @@
           "n"
           "v"
         ];
-        key = "<C-J>";
+        key = "<A-J>";
         action = "zR";
         options = {
           desc = "Unfold All";

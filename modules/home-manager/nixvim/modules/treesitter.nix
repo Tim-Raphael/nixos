@@ -16,6 +16,7 @@
         settings = {
           indent.enable = false;
           highlight.enable = true;
+          fold.enable = true; # add this
         };
       };
 
@@ -41,10 +42,10 @@
           "n"
           "v"
         ];
-        key = "<A-k>";
-        action = "zc";
+        key = "zz";
+        action = "za";
         options = {
-          desc = "Fold";
+          desc = "Toggle Fold";
           noremap = true;
           silent = true;
         };
@@ -55,21 +56,7 @@
           "n"
           "v"
         ];
-        key = "<A-j>";
-        action = "zo";
-        options = {
-          desc = "Unfold";
-          noremap = true;
-          silent = true;
-        };
-      }
-
-      {
-        mode = [
-          "n"
-          "v"
-        ];
-        key = "<A-J>";
+        key = "ZZ";
         action = "zR";
         options = {
           desc = "Unfold All";

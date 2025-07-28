@@ -9,7 +9,6 @@
 
       cmp-cmdline.enable = true;
       cmp-nvim-lua.enable = true; # Neovim Lua API completion
-      cmp-git.enable = true; # Git completion (branches, commits, etc.)
       cmp-emoji.enable = true; # Emoji completion :smile:
       cmp-calc.enable = true; # Calculator completion
       cmp-treesitter.enable = true;
@@ -156,12 +155,6 @@
         sources = {
           { name = 'buffer' }
         }
-      })
-
-      -- Git completion setup
-      require('cmp_git').setup({
-        filetypes = { 'gitcommit', 'octo' },
-        remotes = { 'upstream', 'origin' },
       })
 
       -- Auto-pairs integration

@@ -18,6 +18,7 @@
     waybar
     blueman
     dmenu-wayland
+    jq
     swaylock
     brightnessctl
   ];
@@ -62,7 +63,7 @@
             "${modifier}+Escape" = "exec swaylock";
             "${modifier}+Shift+s" = "exec grim -g $(slurp)";
             "${modifier}+d" =
-              "exec dmenu-wl_run -b -fn '${config.fonts.systemFont.main.name}' -nb '#${config.colorScheme.palette.base00}' -nf '#${config.colorScheme.palette.base07}' -sb '#${config.colorScheme.palette.base0B}' -sf '#${config.colorScheme.palette.base00}'";
+              "exec dmenu-wl_run -m $(swaymsg -t get_outputs | jq -r 'map(.focused) | index(true)') -b -fn '${config.fonts.systemFont.main.name}' -nb '#${config.colorScheme.palette.base00}' -nf '#${config.colorScheme.palette.base07}' -sb '#${config.colorScheme.palette.base0B}' -sf '#${config.colorScheme.palette.base00}'";
           };
 
           fonts = {

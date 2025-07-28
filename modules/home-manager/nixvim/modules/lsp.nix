@@ -100,12 +100,15 @@
                   };
                 };
 
-                # Cargo optimizations for progressive loading
+                # Cargo optimizations
                 cargo = {
                   buildScripts = {
+                    features = "all"; # Enable all feature flags
                     invocationStrategy = "once"; # Default is "per_workspace", faster caching
                   };
                 };
+
+                checkOnSave = true;
 
                 # Import optimization for faster resolution
                 imports = {
@@ -140,23 +143,6 @@
                 diagnostics = {
                   experimental = {
                     enable = false;
-                  };
-                };
-
-                # Semantic highlighting optimizations
-                semanticHighlighting = {
-                  punctuation = {
-                    enable = false;
-                    specialization.enable = false;
-                  };
-                  operator = {
-                    specialization.enable = false;
-                  };
-                };
-
-                hover = {
-                  documentation = {
-                    keywords.enable = false;
                   };
                 };
               };

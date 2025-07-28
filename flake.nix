@@ -7,6 +7,11 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,6 +26,7 @@
   outputs =
     {
       nixpkgs,
+      rust-overlay,
       ...
     }@inputs:
     let
@@ -35,6 +41,7 @@
             {
               nixpkgs.overlays = [
                 (import ./overlays/unstable.nix { inherit inputs; })
+                rust-overlay.overlays.default
               ];
             }
             hostPath

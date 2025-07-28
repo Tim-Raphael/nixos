@@ -5,7 +5,7 @@
     easyeffects
     pdfarranger
     gimp
-    unstable.darktable
+    darktable
     inkscape
     scribus
     shotcut

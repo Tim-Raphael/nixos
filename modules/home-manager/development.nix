@@ -13,6 +13,9 @@
     postman
     websocat
 
+    # Markdown
+    mdl
+
     # Web
     yarn
     pnpm_10
@@ -32,25 +35,20 @@
 
     # C
     clang
-    # gcc
-    # binutils
+
+    #Linker
+    mold
+    #lld
 
     # DB
     postgresql
     dbeaver-bin
 
-    # Container
-    lazydocker
-    podman-compose
-    podman-tui
-
     # Misc
     protobuf
     pkg-config
     openssl
-    mdl
-    lld
-    llvm
+    #gcc
   ];
 
   programs.git = {
@@ -82,6 +80,6 @@
   home.file.".cargo/config.toml".text = ''
     [target.x86_64-unknown-linux-gnu]
     linker = "clang"
-    rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+    rustflags = ["-C", "link-arg=-fuse-ld=mold"]
   '';
 }

@@ -24,13 +24,15 @@
     live-server
 
     # Rust
-    (rust-bin.stable."1.88.0".default.override {
-      extensions = [
-        "rust-src"
-        "rust-analyzer"
-      ];
-      targets = [ "x86_64-unknown-linux-gnu" ];
-    })
+    (rust-bin.selectLatestNightlyWith (
+      toolchain:
+      toolchain.default.override {
+        extensions = [
+          "rust-src"
+        ];
+        targets = [ "x86_64-unknown-linux-gnu" ];
+      }
+    ))
     taplo
 
     # C

@@ -38,6 +38,7 @@
           typescriptreact = [ "prettierd" ]; # Work
           nix = [ "nixfmt" ];
           rust = [ "rustfmt" ];
+          toml = [ "taplo" ];
           markdown = [ "biome" ];
           yaml = [ "yamlfmt" ];
           bash = [ "shfmt" ];

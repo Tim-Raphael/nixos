@@ -5,9 +5,7 @@
     plugins = {
       treesitter = {
         enable = true;
-
         folding = true;
-
         nixGrammars = true;
         nixvimInjections = true;
 
@@ -31,8 +29,8 @@
 
     opts = {
       foldenable = false; # disable autofolding
-      foldexpr = "nvim_treesitter#foldexpr()";
-      foldmethod = "expr";
+      #foldexpr = "nvim_treesitter#foldexpr()";
+      foldmethod = "indent";
     };
 
     keymaps = lib.mkAfter [

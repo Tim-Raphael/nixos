@@ -39,5 +39,16 @@
         silent = true;
       };
     }
+    # Lizard Mode
+    {
+      mode = "n";
+      key = "tl";
+      action = ":%s/./🦎/g<CR>";
+      options = {
+        desc = "Toggle Lizard Mode";
+        noremap = true;
+        silent = true;
+      };
+    }
   ];
 }

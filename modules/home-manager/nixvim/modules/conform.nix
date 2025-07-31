@@ -1,15 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.nixvim = {
-    extraPackages = with pkgs; [
-      biome
-      prettierd
-      nixfmt-rfc-style
-      rust-bin.nightly.latest.rustfmt
-      shfmt
-      yamlfmt
-    ];
+    extraPackages = lib.mkAfter (
+      with pkgs;
+      [
+        biome
+        prettierd
+        nixfmt-rfc-style
+        rust-bin.nightly.latest.rustfmt
+        shfmt
+        yamlfmt
+      ]
+    );
 
     plugins.conform-nvim = {
       enable = true;

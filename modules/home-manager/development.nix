@@ -28,7 +28,10 @@
       toolchain:
       toolchain.default.override {
         extensions = [
+          "rust-std"
           "rust-src"
+          "rustfmt"
+          "rust-analyzer"
         ];
         targets = [ "x86_64-unknown-linux-gnu" ];
       }
@@ -40,7 +43,7 @@
 
     #Linker
     mold
-    #lld
+    lld
 
     # DB
     postgresql
@@ -82,6 +85,6 @@
   home.file.".cargo/config.toml".text = ''
     [target.x86_64-unknown-linux-gnu]
     linker = "clang"
-    rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+    rustflags = ["-C", "link-arg=-fuse-ld=lld"]
   '';
 }

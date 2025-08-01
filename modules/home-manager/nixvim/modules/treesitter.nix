@@ -28,7 +28,9 @@
     };
 
     opts = {
-      foldenable = false; # disable autofolding
+      foldenable = true; # disable autofolding
+      foldlevel = 99;
+      foldlevelstart = 99;
       #foldexpr = "nvim_treesitter#foldexpr()";
       foldmethod = "indent";
     };

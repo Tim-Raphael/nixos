@@ -27,6 +27,9 @@
     ./modules/plugins.nix
     ./modules/treesitter.nix
     ./modules/telescope.nix
+    ./modules/toggleterm.nix
+    ./modules/spectre.nix
+    ./modules/obsidian.nix
   ];
 
   programs.nixvim.enable = true;

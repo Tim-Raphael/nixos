@@ -2,6 +2,16 @@
 
 {
   programs.nixvim.keymaps = [
+    # Reload nvim
+    {
+      key = "<C-S-r>";
+      action = "<cmd>luafile $MYVIMRC<CR>";
+      options = {
+        noremap = true;
+        silent = true;
+      };
+    }
+
     # Window navigation
     {
       mode = "n";
@@ -39,11 +49,48 @@
         silent = true;
       };
     }
+
+    # Tabs
+    {
+      key = "<C-w>";
+      action = ":wq<cr>";
+      options.silent = true;
+      options.desc = "Close Tab";
+    }
+    {
+      key = "<C-t>";
+      action = ":tabnew<cr>";
+      options.silent = true;
+      options.desc = "New Tab";
+    }
+    {
+      key = "<Tab>";
+      mode = "n";
+      action = ":tabnext<CR>";
+      options.silent = true;
+      options.desc = "Next Tab";
+    }
+    {
+      key = "<S-Tab>";
+      mode = "n";
+      action = ":tabprev<CR>";
+      options.silent = true;
+      options.desc = "Previous Tab";
+    }
+
     # Lizard Mode
     {
       mode = "n";
       key = "tl";
-      action = ":%s/./🦎/g<CR>";
+      action = {
+        __raw = ''
+          function()
+              vim.cmd(":%s/[^ \\t\\n\\r]/🦎/g")
+              vim.cmd("noh")
+              vim.cmd("normal! \\<C-o>")
+          end
+        '';
+      };
       options = {
         desc = "Toggle Lizard Mode";
         noremap = true;

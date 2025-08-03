@@ -62,7 +62,17 @@
             }
 
             {
-              __unkeyed = "filename";
+              __unkeyed.__raw = ''
+                function()
+                  local relative_path = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
+
+                  if #relative_path > 40 then
+                    return '..' .. string.sub(relative_path, -37)
+                  end
+
+                  return relative_path
+                end
+              '';
             }
 
             {
@@ -118,6 +128,33 @@
               icon = "";
             }
 
+          ];
+        };
+
+        tabline = {
+          lualine_a = [
+            {
+              __unkeyed-1.__raw = ''
+                function()
+                  return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+                end
+              '';
+              icon = "";
+              color.__raw = ''
+                function()
+                  local colors = require('base16-colorscheme').colors
+                  return { fg = colors.base01, bg = colors.base06 } 
+                end
+              '';
+            }
+          ];
+          lualine_b = [
+            {
+              __unkeyed-1 = "tabs";
+              mode = 2;
+              separator = "nil";
+              padding = 1;
+            }
           ];
         };
 

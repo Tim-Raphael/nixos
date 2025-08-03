@@ -11,6 +11,9 @@
       shiftwidth = 0; # use tabstop value for autoindent
       textwidth = 80;
 
+      # Search
+      ignorecase = true; # ignore case in search patterns
+
       # View
       termguicolors = true; # eanble 24-bit colors
       number = true;
@@ -23,6 +26,7 @@
       breakindent = true;
       showbreak = "ͱ";
       showmode = false;
+      conceallevel = 1;
 
       # Found out that this plays nice with darkmode themes, but not the other
       # way around, so I'm going to leave it on light for now.

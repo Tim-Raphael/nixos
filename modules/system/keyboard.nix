@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Console keymap
@@ -46,7 +46,9 @@
           "/dev/input/by-id/usb-Nordic_Semiconductor_NuPhy_Gem80_Dongle-event-kbd"
           "/dev/input/by-id/usb-Nordic_Semiconductor_NuPhy_Gem80_Dongle-if01-event-kbd"
         ];
+
         extraDefCfg = "process-unmapped-keys yes";
+
         config = ''
           (defsrc
             grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
@@ -59,7 +61,7 @@
           (deflayer base 
              _     _    _    _    _    _    _    _    _    _    _    _    _    _
              _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             @caps _    _    _    _    _    _    _    _    _    _    _    _
+             @caps _    _    _    @f   _    _    @j    _    _    _    _    _
              _     _    _    _    _    _    _    _    _    _    _    _
              _     _    _              _         _    _    _
           )
@@ -80,6 +82,21 @@
              _     _    _              _         _    _    _
           )
 
+          (deflayer lyrf 
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    @lcb @rcb _    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _
+             _     _    _              _         _    _    _
+          )
+
+          (deflayer lyrj 
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    @lbr @rbr _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _
+             _     _    _              _         _    _    _
+          )
 
           (defvar
             tap-time 200 
@@ -96,11 +113,22 @@
              Ae (unicode Ä)
              dsh (unicode –)
 
+             lbr [
+             rbr ]
+             lcb S-[ ;; left curly brace {
+             rcb S-] ;; right curly brace }
+
              swtlyrumlauts (layer-while-held umlauts)
              swtlyrumlautscap (layer-while-held umlautscap)
 
+             swtlyrf (layer-while-held lyrf)
+             swtlyrj (layer-while-held lyrj)
+
              caps (tap-hold $tap-time $hold-time esc @swtlyrumlauts)
              lsft (tap-hold $tap-time $hold-time - @swtlyrumlautscap)
+
+             f (tap-hold $tap-time $hold-time f @swtlyrf)
+             j (tap-hold $tap-time $hold-time j @swtlyrj)
           )
         '';
       };

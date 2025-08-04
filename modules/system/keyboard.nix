@@ -61,13 +61,13 @@
           (deflayer base 
              _     _    _    _    _    _    _    _    _    _    _    _    _    _
              _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             @caps _    _    _    @f   _    _    @j    _    _    _    _    _
+             @caps @a   @s   @d   @f   _    _    @j   @k   @l   @;   _    _
              _     _    _    _    _    _    _    _    _    _    _    _
              _     _    _              _         _    _    _
           )
 
           (deflayer umlauts 
-             _     _    _    _    _    _    _    _    _    _    _    @dsh _    _
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
              _     _    _    _    _    _    _    @ue  _    @oe  _    _    _    _
              @caps @ae  @ss  _    _    _    _    _    _    _    _    _    _
              @lsft _    _    _    _    _    _    _    _    _    _    _
@@ -82,19 +82,11 @@
              _     _    _              _         _    _    _
           )
 
-          (deflayer lyrf 
+          (deflayer smbls  
              _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    @lcb @rcb _    _    _    _
-             _     _    _    _    _    _    _    _    _    _    _    _
-             _     _    _              _         _    _    _
-          )
-
-          (deflayer lyrj 
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    @lbr @rbr _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    _    _    _    _    _
+             _     @exc @at  @hsh @dlr @prc @crt @and @str -    @pls _    _    _
+             _     @lab @rab @lbr @rbr @ppe \    @lcb @rcb @lb  @rb  =    _
+             _     1    2    3    4    5    6    7    8    9    0    _
              _     _    _              _         _    _    _
           )
 
@@ -104,6 +96,7 @@
           )
 
           (defalias
+             ;; KEYS
              ss (unicode ß)
              oe (unicode ö)
              ue (unicode ü)
@@ -111,24 +104,53 @@
              Oe (unicode Ö)
              Ue (unicode Ü)
              Ae (unicode Ä)
-             dsh (unicode –)
 
              lbr [
              rbr ]
-             lcb S-[ ;; left curly brace {
-             rcb S-] ;; right curly brace }
 
+             lcb S-[ ;; { 
+             rcb S-] ;; } 
+
+             lab S-, ;; < 
+             rab S-. ;; > 
+
+             exc S-1 ;; ! 
+             at S-2 ;; @ 
+             hsh S-3 ;; # 
+             dlr S-4 ;; $
+             prc S-5 ;; %
+             crt S-6 ;; ^ 
+             and S-7 ;; &
+             str S-8 ;; *
+             lb S-9 ;; ( 
+             rb S-0 ;; ) 
+
+             lds S-- ;; _ 
+             pls S-= ;; + 
+
+             ppe S-\ ;; | 
+
+             ;; MODIFIER
+             a (tap-hold $tap-time $hold-time a lctl)
+             ; (tap-hold $tap-time $hold-time ; rctl)
+
+             s (tap-hold $tap-time $hold-time s lmet)
+             l (tap-hold $tap-time $hold-time l rmet)
+
+             d (tap-hold $tap-time $hold-time d lalt)
+             k (tap-hold $tap-time $hold-time k ralt)
+
+             ;; LAYER
              swtlyrumlauts (layer-while-held umlauts)
              swtlyrumlautscap (layer-while-held umlautscap)
-
-             swtlyrf (layer-while-held lyrf)
-             swtlyrj (layer-while-held lyrj)
 
              caps (tap-hold $tap-time $hold-time esc @swtlyrumlauts)
              lsft (tap-hold $tap-time $hold-time - @swtlyrumlautscap)
 
-             f (tap-hold $tap-time $hold-time f @swtlyrf)
-             j (tap-hold $tap-time $hold-time j @swtlyrj)
+             swtlyrsmbls (layer-while-held smbls)
+
+             f (tap-hold $tap-time $hold-time f @swtlyrsmbls)
+             j (tap-hold $tap-time $hold-time j @swtlyrsmbls)
           )
         '';
       };

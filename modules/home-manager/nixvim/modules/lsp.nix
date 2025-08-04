@@ -71,7 +71,7 @@
     keymaps = lib.mkAfter [
       {
         mode = "n";
-        key = "K";
+        key = "<C-k>";
         action = "<CMD>lua vim.lsp.buf.hover({ border = 'single' })<CR>";
       }
 

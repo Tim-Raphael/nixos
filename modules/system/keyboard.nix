@@ -84,8 +84,8 @@
 
           (deflayer smbls  
              _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     @exc @at  @hsh @dlr @prc @crt @and @str -    @pls _    _    _
-             _     @lab @rab @lbr @rbr @ppe \    @lcb @rcb @lb  @rb  =    _
+             _     @exc @at  @hsh @dlr @prc @crt @and @str -    @pls \ _    _
+             _     @lab @rab @lbr @rbr @ppe @lds @lcb @rcb @lb  @rb  =    _
              _     1    2    3    4    5    6    7    8    9    0    _
              _     _    _              _         _    _    _
           )

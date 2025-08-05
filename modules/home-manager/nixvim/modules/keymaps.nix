@@ -77,18 +77,11 @@
       options.desc = "New Tab";
     }
     {
-      key = "<Tab>";
+      key = "<S-Tab>";
       mode = "n";
       action = ":tabnext<CR>";
       options.silent = true;
       options.desc = "Next Tab";
-    }
-    {
-      key = "<S-Tab>";
-      mode = "n";
-      action = ":tabprev<CR>";
-      options.silent = true;
-      options.desc = "Previous Tab";
     }
 
     # Lizard Mode

@@ -9,7 +9,6 @@
       tabstop = 4; # display tabs as 4 spaces
       softtabstop = -1; # use tabstop value for softtabstop
       shiftwidth = 0; # use tabstop value for autoindent
-      textwidth = 80;
 
       # Search
       ignorecase = true; # ignore case in search patterns
@@ -20,7 +19,7 @@
       relativenumber = true;
       signcolumn = "yes"; # always show signs (no layout shifting)
       scrolloff = 10; # scroll offset
-      colorcolumn = "+1";
+      colorcolumn = "81";
       wrap = true;
       linebreak = true;
       breakindent = true;

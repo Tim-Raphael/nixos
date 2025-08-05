@@ -18,6 +18,12 @@
         options.desc = "Open terminal";
         options.silent = true;
       }
+      {
+        key = "<leader>tt";
+        action = "<cmd>ToggleTerm direction=float<CR>";
+        options.desc = "Open scratchpad";
+        options.silent = true;
+      }
     ];
 
     extraConfigLuaPost = ''
@@ -27,11 +33,8 @@
         local opts = {buffer = 0}
 
         vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-
         vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
-
         vim.keymap.set('t', '<A-t>', [[<cmd>ToggleTerm<CR>]], opts)
-
         vim.keymap.set('t', '<C-h>', [[<cmd>wincmd h<CR>]], opts)
         vim.keymap.set('t', '<C-j>', [[<cmd>wincmd j<CR>]], opts)
         vim.keymap.set('t', '<C-k>', [[<cmd>wincmd k<CR>]], opts)

@@ -7,6 +7,11 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
+    fonts = {
+      url = "git+ssh://git@github.com/hemisphere-studio/fonts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,6 +46,7 @@
             {
               nixpkgs.overlays = [
                 (import ./overlays/unstable.nix { inherit inputs; })
+                inputs.fonts.overlays.default
                 rust-overlay.overlays.default
               ];
             }

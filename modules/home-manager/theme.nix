@@ -7,11 +7,11 @@
 
 let
   font = {
-    name = "JetBrainsMono Nerd Font Mono";
+    name = "BerkeleyMono Nerd Font";
     size-small = 12;
     size-medium = 18;
     size-large = 22;
-    pkg = pkgs.nerd-fonts.jetbrains-mono;
+    pkg = pkgs.berkeley-mono-nerd;
   };
 
   # trying out new themes

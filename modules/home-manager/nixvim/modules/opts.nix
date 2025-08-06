@@ -4,6 +4,7 @@
   programs.nixvim = {
     opts = {
       # Edit
+      mouse = "";
       autoindent = true; # uses indent from prev. line
       expandtab = true; # convert tabs into spaces
       tabstop = 4; # display tabs as 4 spaces

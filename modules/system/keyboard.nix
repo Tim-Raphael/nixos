@@ -59,11 +59,11 @@
           ) 
 
           (deflayer base 
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             nop0  nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0    _
+             _     _    _    _    _    _    _    _    _    _    _    nop0 nop0    nop0 
              @caps @a   @s   @d   @f   _    _    @j   @k   @l   @;   _    _
-             _     _    _    _    _    _    _    _    _    _    _    _
-             _     _    _              _         _    _    _
+             nop0  _    _    @c   @v   _    @n   @m   _    _    _    nop0 
+             nop0  nop0 nop0           _         nop0 nop0 nop0   
           )
 
           (deflayer umlauts 
@@ -82,11 +82,19 @@
              _     _    _              _         _    _    _
           )
 
-          (deflayer smbls  
+          (deflayer smbls1 
              _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     @exc @at  @hsh @dlr @prc @crt @and @str -    @pls \ _    _
+             _     @exc @at  @hsh @dlr @prc @crt @and @str -    @pls \    _    _
              _     @lab @rab @lbr @rbr @ppe @lds @lcb @rcb @lb  @rb  =    _
-             _     1    2    3    4    5    6    7    8    9    0    _
+             _     `    @tld _    _    _    _    _    _    _    _    _
+             _     _    _              _         _    _    _
+          )
+
+          (deflayer smbls2
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             _     1    2    3    4    5    6    7    8    9    0    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _
              _     _    _              _         _    _    _
           )
 
@@ -121,7 +129,7 @@
              prc S-5 ;; %
              crt S-6 ;; ^ 
              and S-7 ;; &
-             str S-8 ;; *
+             str S-8 ;; * 
              lb S-9 ;; ( 
              rb S-0 ;; ) 
 
@@ -129,16 +137,20 @@
              pls S-= ;; + 
 
              ppe S-\ ;; | 
+             tld S-` ;; ~ 
 
              ;; MODIFIER
-             a (tap-hold $tap-time $hold-time a lctl)
-             ; (tap-hold $tap-time $hold-time ; rctl)
+             a (tap-hold $tap-time $hold-time a lmet)
+             ; (tap-hold $tap-time $hold-time ; rmet)
 
-             s (tap-hold $tap-time $hold-time s lmet)
-             l (tap-hold $tap-time $hold-time l rmet)
+             s (tap-hold $tap-time $hold-time s lalt)
+             l (tap-hold $tap-time $hold-time l ralt)
 
-             d (tap-hold $tap-time $hold-time d lalt)
-             k (tap-hold $tap-time $hold-time k ralt)
+             d (tap-hold $tap-time $hold-time d lctl)
+             k (tap-hold $tap-time $hold-time k rctl)
+
+             f (tap-hold $tap-time $hold-time f lsft)
+             j (tap-hold $tap-time $hold-time j rsft)
 
              ;; LAYER
              swtlyrumlauts (layer-while-held umlauts)
@@ -147,10 +159,14 @@
              caps (tap-hold $tap-time $hold-time esc @swtlyrumlauts)
              lsft (tap-hold $tap-time $hold-time - @swtlyrumlautscap)
 
-             swtlyrsmbls (layer-while-held smbls)
+             swtlyrsmbls1 (layer-while-held smbls1)
+             swtlyrsmbls2 (layer-while-held smbls2)
 
-             f (tap-hold $tap-time $hold-time f @swtlyrsmbls)
-             j (tap-hold $tap-time $hold-time j @swtlyrsmbls)
+             v (tap-hold $tap-time $hold-time v @swtlyrsmbls1)
+             n (tap-hold $tap-time $hold-time n @swtlyrsmbls1)
+
+             c (tap-hold $tap-time $hold-time c @swtlyrsmbls2)
+             m (tap-hold $tap-time $hold-time m @swtlyrsmbls2)
           )
         '';
       };

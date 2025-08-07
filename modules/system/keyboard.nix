@@ -90,19 +90,19 @@
              _     _    _              _         _    _    _
           )
 
-          (deflayer smbls1 
+          (deflayer sym 
              _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     @exc @at  @hsh @dlr @prc @crt @and @str -    @pls \    _    _
-             _     @lab @rab @lbr @rbr @ppe @lds @lcb @rcb @lb  @rb  =    _
-             _     `    @tld _    _    _    _    _    _    _    _    _
+             _     @exc @at  @hsh @dlr @prc @crt @and @str @qts '    _    _    _
+             _     `    @tld \    @ppe    _    @lds -    @pls =    _    _    _ 
+             _     _    _    _    _    _    _    _    _    _    _    _
              _     _    _              _         _    _    _
           )
-
-          (deflayer smbls2
+           
+          (deflayer nav 
              _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     1    2    3    4    5    6    7    8    9    0    _    _    _
-             _     _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    @lcb @rcb 7    8    9    0    _    _    _
+             _     left down up   rght [    ]    4    5    6    -    @pls _
+             _     lctl -    @pls @lb  _    @rb  1    2    3    @str _ 
              _     _    _              _         _    _    _
           )
 
@@ -144,6 +144,7 @@
              lds S-- ;; _ 
              pls S-= ;; + 
 
+             qts S-' ;; " 
              ppe S-\ ;; | 
              tld S-` ;; ~ 
 
@@ -167,14 +168,14 @@
              caps (tap-hold $tap-time $hold-time esc @swtlyrumlauts)
              lsft (tap-hold $tap-time $hold-time - @swtlyrumlautscap)
 
-             swtlyrsmbls1 (layer-while-held smbls1)
-             swtlyrsmbls2 (layer-while-held smbls2)
+             swtlyrsym (layer-while-held sym)
+             swtlyrnav (layer-while-held nav)
 
-             v (tap-hold $tap-time $hold-time v @swtlyrsmbls1)
-             n (tap-hold $tap-time $hold-time n @swtlyrsmbls1)
+             v (tap-hold $tap-time $hold-time v @swtlyrsym)
+             n (tap-hold $tap-time $hold-time n @swtlyrsym)
 
-             c (tap-hold $tap-time $hold-time c @swtlyrsmbls2)
-             m (tap-hold $tap-time $hold-time m @swtlyrsmbls2)
+             c (tap-hold $tap-time $hold-time c @swtlyrnav)
+             m (tap-hold $tap-time $hold-time m @swtlyrnav)
 
              stb (layer-switch base)
              stn (layer-switch nrml)

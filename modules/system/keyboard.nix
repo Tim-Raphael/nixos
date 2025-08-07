@@ -58,12 +58,20 @@
             lctl lmet lalt           spc            ralt rmet rctl
           ) 
 
+          (deflayer nrml 
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _    _    _
+             @caps _    _    _    _    _    _    _    _    _    _    _    _
+             _     _    _    _    _    _    _    _    _    _    _    _
+             _     _    _              _         _    _    @stb
+          )
+
           (deflayer base 
              nop0  nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0    _
              _     _    _    _    _    _    _    _    _    _    _    nop0 nop0    nop0 
              @caps @a   @s   @d   @f   _    _    @j   @k   @l   @;   _    _
              nop0  _    _    @c   @v   _    @n   @m   _    _    _    nop0 
-             nop0  nop0 nop0           _         nop0 nop0 nop0   
+             nop0  nop0 nop0           _         nop0 nop0 @stn
           )
 
           (deflayer umlauts 
@@ -167,6 +175,9 @@
 
              c (tap-hold $tap-time $hold-time c @swtlyrsmbls2)
              m (tap-hold $tap-time $hold-time m @swtlyrsmbls2)
+
+             stb (layer-switch base)
+             stn (layer-switch nrml)
           )
         '';
       };

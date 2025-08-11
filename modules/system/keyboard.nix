@@ -59,59 +59,59 @@
           ) 
 
           (deflayer base 
-             nop0  nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0    _
-             _     _    _    _    _    _    _    _    _    _    _    nop0 nop0    nop0 
-             @caps @a   @s   @d   @f   _    _    @j   @k   @l   @;   _    _
-             nop0  _    _    @c   @v   _    @n   @m   _    _    _    nop0 
-             nop0  nop0 nop0           _         nop0 nop0 @stn
+            nop0  nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0    _
+            _     _    _    _    _    _    _    _    _    _    _    nop0 nop0    nop0 
+            @caps @a   @s   @d   @f   _    _    @j   @k   @l   @;   _    _
+            nop0  _    _    @c   @v   _    @n   @m   _    _    _    nop0 
+            nop0  nop0 nop0           _         nop0 nop0 @stn
           )
 
           (deflayer nrml 
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             @caps _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    _    _    _    _    _
-             _     _    _              _         _    _    @stb
+            _     _    _    _    _    _    _    _    _    _    _    _    _    _
+            _     _    _    _    _    _    _    _    _    _    _    _    _    _
+            @caps _    _    _    _    _    _    _    _    _    _    _    _
+            _     _    _    _    _    _    _    _    _    _    _    _
+            _     _    _              _         _    _    @stb
           )
 
           (deflayer umlauts 
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    @ue  _    @oe  _    _    _    _
-             @caps @ae  @ss  _    _    _    _    _    _    _    _    _    _
-             @lsft _    _    _    _    _    _    _    _    _    _    _
-             _     _    _              _              _    _    _
+            _     _    _    _    _    _    _    _    _    _    _    _    _    _
+            _     _    _    _    _    _    _    @ue  _    @oe  _    _    _    _
+            @caps @ae  @ss  _    _    _    _    _    _    _    _    _    _
+            @lsft _    _    _    _    _    _    _    _    _    _    _
+            _     _    _              _              _    _    _
           )
 
           (deflayer umlautscap 
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    @Ue  _    @Oe  _    _    _    _
-             _     @Ae  _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    _    _    _    _    _    _    _
-             _     _    _              _         _    _    _
+            _     _    _    _    _    _    _    _    _    _    _    _    _    _
+            _     _    _    _    _    _    _    @Ue  _    @Oe  _    _    _    _
+            _     @Ae  _    _    _    _    _    _    _    _    _    _    _
+            _     _    _    _    _    _    _    _    _    _    _    _
+            _     _    _              _         _    _    _
           )
 
           (deflayer sym 
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     @exc @at  @hsh @dlr @prc @crt @and @str @qts '    _    _    _
-             _     `    @tld \    @ppe    _    @lds -    @pls =    _    _    _ 
-             _     _    _    _    _    _    _    _    _    _    _    _
-             _     _    _              _         _    _    _
+            _     _    _    _    _    _    _    _    _    _    _    _    _    _
+            _     @exc @at  @hsh @dlr @prc @crt @and @str @qts '    _    _    _
+            _     @lab @lcb @lb  [    @ppe @lds ]    @rb  @rcb @rab _    _    
+            _     `    @tld \    _    _    -    @pls @str =    _    _
+            _     _    _              _         _    _    _
           )
            
           (deflayer nav 
-             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-             _     _    _    _    _    @lcb @rcb 7    8    9    0    _    _    _
-             _     left down up   rght [    ]    4    5    6    -    @pls _
-             _     lctl -    @pls @lb  _    @rb  1    2    3    @str _ 
-             _     _    _              _         _    _    _
+            _     _    _    _    _    _    _    _    _    _    _    _    _    _
+            _     _    _    _    _    _    @pls 7    8    9    0    _    _    _
+            _     left up   down rght _    -    4    5    6    =    _    _
+            _     lctl -    -    =    _    @str 1    2    3    _    _ 
+            _     _    _              _         _    _    _
           )
 
-          (defvar
-            tap-time 200 
-            hold-time 250
-          )
+           (defvar
+             tap-time 200 
+             hold-time 250
+           )
 
-          (defalias
+           (defalias
              ;; KEYS
              ss (unicode ß)
              oe (unicode ö)
@@ -179,7 +179,7 @@
 
              stb (layer-switch base)
              stn (layer-switch nrml)
-          )
+           )
         '';
       };
     };

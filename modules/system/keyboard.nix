@@ -59,11 +59,11 @@
           ) 
 
           (deflayer base 
-            nop0  nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0 nop0    _
-            _     _    _    _    _    _    _    _    _    _    _    nop0 nop0    nop0 
-            @caps @a   @s   @d   @f   _    _    @j   @k   @l   @;   _    _
-            nop0  _    _    @c   @v   _    @n   @m   _    _    _    nop0 
-            nop0  nop0 nop0           _         nop0 nop0 @stn
+            @no   @no  @no  @no  @no  @no  @no  @no  @no  @no  @no  @no  @no  @no 
+            @no   _    _    _    _    _    _    _    _    _    _    @no  @no  @no 
+            @caps @a   @s   @d   @f   _    _    @j   @k   @l   @;   _    @no 
+            @no   _    @x   @c   @v   _    @n   @m   @,   _    _    @no 
+            @no   @no  @no            _         @no  @no  @stn
           )
 
           (deflayer nrml 
@@ -93,16 +93,24 @@
           (deflayer sym 
             _     _    _    _    _    _    _    _    _    _    _    _    _    _
             _     @exc @at  @hsh @dlr @prc @crt @and @str @qts '    _    _    _
-            _     @lab @lcb @lb  [    @ppe @lds ]    @rb  @rcb @rab _    _    
+            _     @lab @lcb @lb  @lbr @ppe @lds @lbr @rb  @rcb @rab ret  _    
             _     `    @tld \    _    _    -    @pls @str =    _    _
             _     _    _              _         _    _    _
           )
            
           (deflayer nav 
             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-            _     _    _    _    _    _    @pls 7    8    9    0    _    _    _
-            _     left up   down rght _    -    4    5    6    =    _    _
-            _     lctl -    -    =    _    @str 1    2    3    _    _ 
+            _     f1   f2   f3   f4   _    _    pgdn pgup _    del  _    _    _
+            tab   f5   f6   f7   f8   _    left down up   rght bspc ret  _
+            _     f9   f10  f11  f12  _    _    _    _    _    _    _ 
+            _     _    _              _         _    _    _
+          )
+
+          (deflayer num 
+            _     _    _    _    _    _    _    _    _    _    _    _    _    _
+            _     _    _    _    _    _    @pls 7    8    9    @str _    _    _
+            _     _    _    _    _    _    -    @4   @5   @6   @0   ret  _
+            _     _    _    _    _    _    =    1    2    3    /    _ 
             _     _    _              _         _    _    _
           )
 
@@ -113,6 +121,8 @@
 
            (defalias
              ;; KEYS
+             no nop0
+
              ss (unicode ß)
              oe (unicode ö)
              ue (unicode ü)
@@ -121,12 +131,12 @@
              Ue (unicode Ü)
              Ae (unicode Ä)
 
+             lb S-9 ;; ( 
+             rb S-0 ;; ) 
              lbr [
              rbr ]
-
              lcb S-[ ;; { 
              rcb S-] ;; } 
-
              lab S-, ;; < 
              rab S-. ;; > 
 
@@ -138,8 +148,6 @@
              crt S-6 ;; ^ 
              and S-7 ;; &
              str S-8 ;; * 
-             lb S-9 ;; ( 
-             rb S-0 ;; ) 
 
              lds S-- ;; _ 
              pls S-= ;; + 
@@ -150,16 +158,24 @@
 
              ;; MODIFIER
              a (tap-hold $tap-time $hold-time a lmet)
+
              ; (tap-hold $tap-time $hold-time ; rmet)
+             0 (tap-hold $tap-time $hold-time 0 rmet)
 
              s (tap-hold $tap-time $hold-time s lalt)
+
              l (tap-hold $tap-time $hold-time l ralt)
+             6 (tap-hold $tap-time $hold-time 6 ralt)
 
              d (tap-hold $tap-time $hold-time d lctl)
+
              k (tap-hold $tap-time $hold-time k rctl)
+             5 (tap-hold $tap-time $hold-time 5 rctl)
 
              f (tap-hold $tap-time $hold-time f lsft)
+
              j (tap-hold $tap-time $hold-time j rsft)
+             4 (tap-hold $tap-time $hold-time 4 rsft)
 
              ;; LAYER
              swtlyrumlauts (layer-while-held umlauts)
@@ -170,12 +186,16 @@
 
              swtlyrsym (layer-while-held sym)
              swtlyrnav (layer-while-held nav)
+             swtlyrnum (layer-while-held num)
 
              v (tap-hold $tap-time $hold-time v @swtlyrsym)
              n (tap-hold $tap-time $hold-time n @swtlyrsym)
 
              c (tap-hold $tap-time $hold-time c @swtlyrnav)
              m (tap-hold $tap-time $hold-time m @swtlyrnav)
+             
+             x (tap-hold $tap-time $hold-time x @swtlyrnum)
+             , (tap-hold $tap-time $hold-time , @swtlyrnum)
 
              stb (layer-switch base)
              stn (layer-switch nrml)

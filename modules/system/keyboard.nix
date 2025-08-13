@@ -100,9 +100,9 @@
            
           (deflayer nav 
             _     _    _    _    _    _    _    _    _    _    _    _    _    _
-            _     f1   f2   f3   f4   _    _    pgdn pgup _    del  _    _    _
-            tab   f5   f6   f7   f8   _    left down up   rght bspc ret  _
-            _     f9   f10  f11  f12  _    _    _    _    _    _    _ 
+            _     f1   f2   f3   f4   _    _    pgdn pgup _    _    _    _    _
+            tab   @f5  @f6  @f7  @f8  _    left @dwn @up  @rgt @ret  _    _
+            _     f9   f10  f11  f12  _    bspc _    _    del  _    _ 
             _     _    _              _         _    _    _
           )
 
@@ -158,24 +158,32 @@
 
              ;; MODIFIER
              a (tap-hold $tap-time $hold-time a lmet)
+             f5 (tap-hold $tap-time $hold-time f5 lmet)
 
              ; (tap-hold $tap-time $hold-time ; rmet)
              0 (tap-hold $tap-time $hold-time 0 rmet)
+             ret (tap-hold $tap-time $hold-time ret rmet)
 
              s (tap-hold $tap-time $hold-time s lalt)
+             f6 (tap-hold $tap-time $hold-time f6 lalt)
 
              l (tap-hold $tap-time $hold-time l ralt)
              6 (tap-hold $tap-time $hold-time 6 ralt)
+             rgt (tap-hold $tap-time $hold-time rght ralt)
 
              d (tap-hold $tap-time $hold-time d lctl)
+             f7 (tap-hold $tap-time $hold-time f7 lctl)
 
              k (tap-hold $tap-time $hold-time k rctl)
              5 (tap-hold $tap-time $hold-time 5 rctl)
+             up (tap-hold $tap-time $hold-time up rctl)
 
              f (tap-hold $tap-time $hold-time f lsft)
+             f8 (tap-hold $tap-time $hold-time f8 lsft)
 
              j (tap-hold $tap-time $hold-time j rsft)
              4 (tap-hold $tap-time $hold-time 4 rsft)
+             dwn (tap-hold $tap-time $hold-time down rsft)
 
              ;; LAYER
              swtlyrumlauts (layer-while-held umlauts)

@@ -93,7 +93,7 @@
           (deflayer sym 
             _     _    _    _    _    _    _    _    _    _    _    _    _    _
             _     @exc @at  @hsh @dlr @prc @crt @and @str @qts '    _    _    _
-            _     @lab @lcb @lb  @lbr @ppe @lds @lbr @rb  @rcb @rab ret  _    
+            _     @lab @lcb @lb  @lbr @ppe @lds @rbr @rb  @rcb @rab ret  _    
             _     `    @tld \    _    _    -    @pls @str =    _    _
             _     _    _              _         _    _    _
           )

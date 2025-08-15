@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    kicad
     penpot-desktop
     easyeffects
     pdfarranger

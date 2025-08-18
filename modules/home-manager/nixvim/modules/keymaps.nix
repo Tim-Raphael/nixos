@@ -2,11 +2,23 @@
 
 {
   programs.nixvim.keymaps = [
-    # Reload nvim
+
+    {
+      mode = "i";
+      key = "<C-BS>";
+      action = "<C-w>";
+      options = {
+        desc = "Delete previous word.";
+        noremap = true;
+        silent = true;
+      };
+    }
+
     {
       key = "<C-S-r>";
       action = "<cmd>luafile $MYVIMRC<CR>";
       options = {
+        desc = "Reload nvim.";
         noremap = true;
         silent = true;
       };

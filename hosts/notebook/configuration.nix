@@ -23,6 +23,7 @@
     ../../modules/system/hardware.nix
     ../../modules/system/ssh.nix
     ../../modules/system/greetd.nix
+    ../../modules/system/steam.nix
 
     inputs.home-manager.nixosModules.home-manager
   ];

@@ -23,6 +23,7 @@
     hunspellDicts.de_DE
     hunspellDicts.en_US
     obs-studio
+    aseprite
     (texlive.combine {
       inherit (texlive)
         apa

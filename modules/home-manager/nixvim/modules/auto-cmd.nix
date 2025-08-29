@@ -14,7 +14,7 @@
       {
         event = [ "VimLeave" ];
         group = "directory_sync";
-        desc = "Write current directory to file for shell sync";
+        desc = "Write current directory to file for shell sync.";
         callback = {
           __raw = ''
             function()

@@ -8,7 +8,6 @@
     extraGroups = [
       "wheel"
       "networkmanager"
-      "uinput"
       "vboxusers"
       "kvm"
       "adbusers"

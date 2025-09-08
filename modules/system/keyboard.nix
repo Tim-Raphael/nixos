@@ -212,4 +212,21 @@
       };
     };
   };
+
+  systemd.services.kanata-internalKeyboard.serviceConfig = {
+    SupplementaryGroups = [
+      "input"
+      "uinput"
+    ];
+
+    NoNewPrivileges = true;
+    PrivateTmp = true;
+    ProtectSystem = "strict";
+    ProtectHome = true;
+
+    DeviceAllow = [
+      "/dev/input/* rw"
+      "/dev/uinput rw"
+    ];
+  };
 }

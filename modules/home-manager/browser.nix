@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     firefox
+    qutebrowser
   ];
 
   programs.chromium = {

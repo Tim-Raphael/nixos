@@ -89,11 +89,22 @@
       options.desc = "New Tab";
     }
     {
-      key = "<S-Tab>";
+      key = "<C-S-j>";
       mode = "n";
       action = ":tabnext<CR>";
-      options.silent = true;
-      options.desc = "Next Tab";
+      options = {
+        silent = true;
+        desc = "Next Tab";
+      };
+    }
+    {
+      key = "<C-S-k>";
+      mode = "n";
+      action = ":tabprev<CR>";
+      options = {
+        silent = true;
+        desc = "Previous Tab";
+      };
     }
 
     # Lizard Mode

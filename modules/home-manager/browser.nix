@@ -3,8 +3,20 @@
 {
   home.packages = with pkgs; [
     firefox
-    qutebrowser
   ];
+
+  programs.qutebrowser = {
+    enable = true;
+
+    keyBindings = {
+      normal = {
+        "<Ctrl-Shift-j>" = "tab-next";
+        "<Ctrl-Shift-h>" = "tab-prev";
+        "J" = "scroll-px 0 750";
+        "K" = "scroll-px 0 -750";
+      };
+    };
+  };
 
   programs.chromium = {
     enable = true;

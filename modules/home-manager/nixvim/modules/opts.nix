@@ -10,7 +10,7 @@
       tabstop = 4; # display tabs as 4 spaces
       softtabstop = -1; # use tabstop value for softtabstop
       shiftwidth = 0; # use tabstop value for autoindent
-      iskeyword = "-,_,.";
+      iskeyword = "@,48-57,192-255";
 
       # Search
       ignorecase = true; # ignore case in search patterns

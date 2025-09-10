@@ -18,7 +18,6 @@
     vlc
     opentabletdriver
     libreoffice-qt
-    languagetool
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_US
@@ -53,22 +52,6 @@
 
     Service = {
       ExecStart = "${pkgs.opentabletdriver}/bin/otd-daemon";
-      Restart = "on-failure";
-    };
-
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
-
-  systemd.user.services.languagetool-http-server = {
-    Unit = {
-      Description = "Languagetool HTTP Server";
-      After = [ "network.target" ];
-    };
-
-    Service = {
-      ExecStart = "${pkgs.languagetool}/bin/languagetool-http-server --port 1470";
       Restart = "on-failure";
     };
 

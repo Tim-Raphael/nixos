@@ -11,8 +11,6 @@
     inkscape
     scribus
     shotcut
-    imagemagick
-    ffmpeg_7
     pandoc
     obsidian
     vlc

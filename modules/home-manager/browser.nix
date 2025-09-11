@@ -8,6 +8,10 @@
   programs.qutebrowser = {
     enable = true;
 
+    extraConfig = ''
+      c.hints.padding = {"top": 1, "bottom": 1, "left": 1, "right": 1}
+    '';
+
     settings = {
       fonts = {
         default_family = "${config.fonts.systemFont.main.name}";
@@ -30,8 +34,8 @@
         prompts = "${toString config.fonts.systemFont.main.size-small}pt ${config.fonts.systemFont.main.name}";
         statusbar = "${toString config.fonts.systemFont.main.size-small}pt ${config.fonts.systemFont.main.name}";
         tabs = {
-          selected = "${toString config.fonts.systemFont.main.size-small}pt ${config.fonts.systemFont.main.name}";
-          unselected = "${toString config.fonts.systemFont.main.size-small}pt ${config.fonts.systemFont.main.name}";
+          selected = "${toString config.fonts.systemFont.main.size-medium}pt ${config.fonts.systemFont.main.name}";
+          unselected = "${toString config.fonts.systemFont.main.size-medium}pt ${config.fonts.systemFont.main.name}";
         };
         web = {
           family = {
@@ -155,7 +159,7 @@
           };
           insert = {
             fg = "#${config.colorScheme.palette.base00}";
-            bg = "#${config.colorScheme.palette.base0D}";
+            bg = "#${config.colorScheme.palette.base0B}";
           };
           passthrough = {
             fg = "#${config.colorScheme.palette.base00}";
@@ -195,16 +199,16 @@
         tabs = {
           bar.bg = "#${config.colorScheme.palette.base00}";
           indicator = {
-            start = "#${config.colorScheme.palette.base0D}";
-            stop = "#${config.colorScheme.palette.base0C}";
+            start = "#${config.colorScheme.palette.base0B}";
+            stop = "#${config.colorScheme.palette.base0B}";
             error = "#${config.colorScheme.palette.base08}";
           };
           odd = {
-            fg = "#${config.colorScheme.palette.base05}";
-            bg = "#${config.colorScheme.palette.base01}";
+            fg = "#${config.colorScheme.palette.base07}";
+            bg = "#${config.colorScheme.palette.base00}";
           };
           even = {
-            fg = "#${config.colorScheme.palette.base05}";
+            fg = "#${config.colorScheme.palette.base07}";
             bg = "#${config.colorScheme.palette.base00}";
           };
           pinned = {
@@ -213,28 +217,28 @@
               fg = "#${config.colorScheme.palette.base07}";
             };
             odd = {
-              bg = "#${config.colorScheme.palette.base0B}";
-              fg = "#${config.colorScheme.palette.base07}";
+              bg = "#${config.colorScheme.palette.base07}";
+              fg = "#${config.colorScheme.palette.base00}";
             };
             selected = {
               even = {
-                bg = "#${config.colorScheme.palette.base02}";
-                fg = "#${config.colorScheme.palette.base05}";
+                bg = "#${config.colorScheme.palette.base0B}";
+                fg = "#${config.colorScheme.palette.base00}";
               };
               odd = {
-                bg = "#${config.colorScheme.palette.base02}";
-                fg = "#${config.colorScheme.palette.base05}";
+                bg = "#${config.colorScheme.palette.base0B}";
+                fg = "#${config.colorScheme.palette.base00}";
               };
             };
           };
           selected = {
             odd = {
-              fg = "#${config.colorScheme.palette.base05}";
-              bg = "#${config.colorScheme.palette.base02}";
+              bg = "#${config.colorScheme.palette.base03}";
+              fg = "#${config.colorScheme.palette.base07}";
             };
             even = {
-              fg = "#${config.colorScheme.palette.base05}";
-              bg = "#${config.colorScheme.palette.base02}";
+              bg = "#${config.colorScheme.palette.base03}";
+              fg = "#${config.colorScheme.palette.base07}";
             };
           };
         };
@@ -245,8 +249,12 @@
           darkmode = {
             algorithm = "lightness-cielab";
             threshold = {
-              text = 150;
+              foreground = 150;
               background = 100;
+            };
+            policy = {
+              page = "smart";
+              images = "never";
             };
           };
           preferred_color_scheme = "dark";

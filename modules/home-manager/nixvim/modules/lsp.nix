@@ -40,6 +40,7 @@
           pyright.enable = true;
           tailwindcss.enable = true;
           terraformls.enable = true;
+          jdtls.enable = true;
 
           yamlls = {
             enable = true;

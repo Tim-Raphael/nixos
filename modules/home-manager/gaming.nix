@@ -1,5 +1,9 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ minecraft prismlauncher ];
+  home.packages = with pkgs; [
+    retroarch-full
+    minecraft
+    prismlauncher
+  ];
 }

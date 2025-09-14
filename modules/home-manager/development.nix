@@ -38,6 +38,9 @@
     # C
     clang
 
+    # Java
+    zulu24
+
     #Linker
     mold
     lld

@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    retroarch-full
+    pcsx2
     minecraft
     prismlauncher
   ];

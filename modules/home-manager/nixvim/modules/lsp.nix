@@ -2,7 +2,9 @@
 
 {
   programs.nixvim = {
-    extraPackages = lib.mkAfter [ pkgs.rust-bin.nightly.latest.rust-analyzer ];
+    extraPackages = lib.mkAfter [
+      pkgs.rust-bin.stable.latest.rust-analyzer
+    ];
 
     plugins = {
       lsp = {
@@ -62,7 +64,7 @@
         settings = {
           server = {
             cmd = [
-              "${pkgs.rust-bin.nightly.latest.rust-analyzer}/bin/rust-analyzer"
+              "${pkgs.rust-bin.stable.latest.rust-analyzer}/bin/rust-analyzer"
             ];
           };
         };

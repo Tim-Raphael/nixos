@@ -8,7 +8,7 @@
         biome
         prettierd
         nixfmt-rfc-style
-        rust-bin.nightly.latest.rustfmt
+        rust-bin.stable.latest.rustfmt
         shfmt
         yamlfmt
       ]

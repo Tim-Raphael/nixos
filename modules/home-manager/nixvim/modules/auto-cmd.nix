@@ -9,7 +9,6 @@
       };
     };
 
-    # Autocommand to write current directory on exit
     autoCmd = [
       # Close  all floating windows when opening oil (fix for lsp.buf.hover())
       {

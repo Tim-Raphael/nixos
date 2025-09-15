@@ -45,7 +45,7 @@
 
         settings = {
           defaults = {
-            layout_strategy = "horizontal";
+            layout_strategy = "vertical";
             borderchars = [
               "─"
               "│"

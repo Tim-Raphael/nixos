@@ -89,7 +89,7 @@
       options.desc = "New Tab";
     }
     {
-      key = "<C-S-j>";
+      key = "<C-l>";
       mode = "n";
       action = ":tabnext<CR>";
       options = {
@@ -98,7 +98,7 @@
       };
     }
     {
-      key = "<C-S-k>";
+      key = "<C-h>";
       mode = "n";
       action = ":tabprev<CR>";
       options = {

@@ -12,6 +12,22 @@
       c.hints.padding = {"top": 1, "bottom": 1, "left": 1, "right": 1}
     '';
 
+    keyBindings = {
+      normal = {
+        "<Space>g" = "cmd-set-text -s :open";
+        "<Space>f" = "cmd-set-text -s :tab-select";
+        "<Space>p" = "cmd-set-text -s :quickmark-load";
+
+        "<Ctrl-l>" = "tab-next";
+        "<Ctrl-h>" = "tab-prev";
+
+        "J" = "scroll-px 0 750";
+        "K" = "scroll-px 0 -750";
+
+        "td" = "config-cycle colors.webpage.darkmode.enabled false true";
+      };
+    };
+
     settings = {
       fonts = {
         default_family = "${config.fonts.systemFont.main.name}";
@@ -265,22 +281,6 @@
       tabs.show = "multiple";
       tabs.position = "top";
       statusbar.show = "always";
-    };
-
-    keyBindings = {
-      normal = {
-        "<Space>g" = "cmd-set-text -s :open";
-        "<Space>f" = "cmd-set-text -s :tab-select";
-        "<Space>p" = "cmd-set-text -s :quickmark-load";
-
-        "<Ctrl-Shift-j>" = "tab-next";
-        "<Ctrl-Shift-k>" = "tab-prev";
-
-        "J" = "scroll-px 0 750";
-        "K" = "scroll-px 0 -750";
-
-        "td" = "config-cycle colors.webpage.darkmode.enabled false true";
-      };
     };
   };
 

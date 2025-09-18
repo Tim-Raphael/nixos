@@ -18,8 +18,8 @@
         "<Space>f" = "cmd-set-text -s :tab-select";
         "<Space>p" = "cmd-set-text -s :quickmark-load";
 
-        "<Ctrl-l>" = "tab-next";
-        "<Ctrl-h>" = "tab-prev";
+        "<Ctrl-Shift-l>" = "tab-next";
+        "<Ctrl-Shift-h>" = "tab-prev";
 
         "J" = "scroll-px 0 750";
         "K" = "scroll-px 0 -750";

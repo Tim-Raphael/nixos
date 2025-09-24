@@ -62,7 +62,7 @@
         profile.name = "work";
         profile.outputs = [
           {
-            criteria = "DP-1";
+            criteria = "DP-2";
             status = "enable";
             mode = "2560x1440@59.951000Hz";
             position = "1280,0"; # 1920 / 1.5 = 1280

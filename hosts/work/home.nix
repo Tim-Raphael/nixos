@@ -34,10 +34,24 @@
     ../../modules/home-manager/communication.nix
     ../../modules/home-manager/multimedia.nix
     ../../modules/home-manager/kanshi.nix
-
-    (import ../../modules/home-manager/i3status.nix {
-      inherit pkgs lib config;
-      extraModuleList = [ ];
-    })
+    ../../modules/home-manager/i3status.nix
   ];
+
+  multimedia = {
+    office = {
+      libreoffice.enable = true;
+      pdf.enable = true;
+      notes.enable = true;
+    };
+    video = {
+      vlc.enable = true;
+      obs.enable = true;
+    };
+    audio = {
+      effects.enable = true;
+    };
+    graphics = {
+      penpot.enable = true;
+    };
+  };
 }

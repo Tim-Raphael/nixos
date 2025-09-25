@@ -37,4 +37,54 @@
     ../../modules/home-manager/kanshi.nix
     ../../modules/home-manager/i3status.nix
   ];
+
+  i3status = {
+    enable = true;
+
+    system = {
+      cpu = {
+        usage.enable = true;
+        temperature.enable = true;
+      };
+      disk = {
+        root.enable = true;
+      };
+    };
+
+    time = {
+      date.enable = true;
+      clock.enable = true;
+    };
+
+    audio = {
+      volume.enable = true;
+    };
+
+    network = {
+      wireless = {
+        enable = true;
+        interface = "wlp7s0";
+      };
+      ethernet = {
+        enable = true;
+        interface = "enp8s0";
+      };
+    };
+  };
+
+  multimedia = {
+    office = {
+      libreoffice.enable = true;
+      pdf.enable = true;
+      notes.enable = true;
+      latex.enable = true;
+    };
+    video = {
+      vlc.enable = true;
+      obs.enable = true;
+    };
+    audio = {
+      effects.enable = true;
+    };
+  };
 }

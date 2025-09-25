@@ -61,7 +61,6 @@
         thinkpad = mkSystem ./hosts/thinkpad/configuration.nix;
         tower = mkSystem ./hosts/tower/configuration.nix;
         notebook = mkSystem ./hosts/notebook/configuration.nix;
-        server = mkSystem ./hosts/server/configuration.nix;
       };
     };
 }

@@ -37,6 +37,36 @@
     ../../modules/home-manager/i3status.nix
   ];
 
+  i3status = {
+    enable = true;
+    system = {
+      cpu = {
+        usage.enable = true;
+        temperature.enable = true;
+      };
+      disk = {
+        root.enable = true;
+      };
+    };
+    time = {
+      date.enable = true;
+      clock.enable = true;
+    };
+    audio = {
+      volume.enable = true;
+    };
+    network = {
+      wireless = {
+        enable = true;
+        interface = "wlp2s0";
+      };
+      ethernet = {
+        enable = true;
+        interface = "enp1s0f0";
+      };
+    };
+  };
+
   multimedia = {
     office = {
       libreoffice.enable = true;

@@ -140,7 +140,10 @@
 
       -- Command line completion for ':'
       cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
+        mapping = cmp.mapping.preset.insert({
+          ["<Down>"] = { c = cmp.mapping.select_next_item() },
+          ["<Up>"] = { c = cmp.mapping.select_prev_item() },
+        }),
         sources = cmp.config.sources({
           { name = 'path' }
         }, {
@@ -151,11 +154,14 @@
 
       -- Command line completion for '/' and '?'
       cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
+        mapping = cmp.mapping.preset.insert({
+          ["<Down>"] = { c = cmp.mapping.select_next_item() },
+          ["<Up>"] = { c = cmp.mapping.select_prev_item() },
+        }),
         sources = {
           { name = 'buffer' }
         }
-      })
+      })      
 
       -- Auto-pairs integration
       local cmp_autopairs = require('nvim-autopairs.completion.cmp')

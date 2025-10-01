@@ -199,11 +199,11 @@
              v (tap-hold $tap-time $hold-time v @swtlyrsym)
              n (tap-hold $tap-time $hold-time n @swtlyrsym)
 
-             c (tap-hold $tap-time $hold-time c @swtlyrnav)
-             m (tap-hold $tap-time $hold-time m @swtlyrnav)
+             c (tap-hold $tap-time $hold-time c @swtlyrnum)
+             m (tap-hold $tap-time $hold-time m @swtlyrnum)
              
-             x (tap-hold $tap-time $hold-time x @swtlyrnum)
-             , (tap-hold $tap-time $hold-time , @swtlyrnum)
+             x (tap-hold $tap-time $hold-time x @swtlyrnav)
+             , (tap-hold $tap-time $hold-time , @swtlyrnav)
 
              stb (layer-switch base)
              stn (layer-switch nrml)

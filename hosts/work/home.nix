@@ -65,6 +65,9 @@
         interface = "enp1s0f0";
       };
     };
+    power = {
+      battery.enable = true;
+    };
   };
 
   multimedia = {

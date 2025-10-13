@@ -30,6 +30,7 @@
     ./modules/toggleterm.nix
     ./modules/spectre.nix
     ./modules/obsidian.nix
+    ./modules/vimtex.nix
   ];
 
   programs.nixvim.enable = true;

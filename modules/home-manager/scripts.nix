@@ -18,5 +18,9 @@
       source = ./scripts/nt.sh;
       executable = true;
     };
+    ".local/bin/update_system" = {
+      source = ./scripts/update_system.sh;
+      executable = true;
+    };
   };
 }

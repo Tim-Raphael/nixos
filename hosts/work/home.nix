@@ -75,6 +75,7 @@
       libreoffice.enable = true;
       pdf.enable = true;
       notes.enable = true;
+      latex.enable = true;
     };
     video = {
       vlc.enable = true;

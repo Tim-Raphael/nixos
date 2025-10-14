@@ -57,6 +57,7 @@
       nix.enable = true;
       crates.enable = true;
       typescript-tools.enable = true;
+      trouble.enable = true;
 
       rustaceanvim = {
         enable = true;

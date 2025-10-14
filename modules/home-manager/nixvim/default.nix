@@ -31,6 +31,7 @@
     ./modules/spectre.nix
     ./modules/obsidian.nix
     ./modules/vimtex.nix
+    ./modules/workspace-diagnostics.nix
   ];
 
   programs.nixvim.enable = true;

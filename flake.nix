@@ -8,7 +8,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
     fonts = {
-      url = "git+ssh://git@github.com/hemisphere-studio/fonts";
+      url = "git+ssh://git@github.com/hemisphere-systems/fonts?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

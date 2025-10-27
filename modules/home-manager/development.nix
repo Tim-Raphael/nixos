@@ -74,7 +74,7 @@
         defaultBranch = "main";
       };
       pull = {
-        rebase = false;
+        rebase = true;
       };
       core = {
         editor = "nvim";

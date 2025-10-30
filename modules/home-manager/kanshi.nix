@@ -11,16 +11,15 @@
           {
             criteria = "eDP-1";
             status = "enable";
+            position = "0,0";
+            scale = 1.0;
           }
         ];
       }
+
       {
         profile.name = "home_docked";
         profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "disable";
-          }
           {
             criteria = "DP-8";
             status = "enable";
@@ -65,15 +64,8 @@
             criteria = "DP-2";
             status = "enable";
             mode = "2560x1440@59.951000Hz";
-            position = "1280,0"; # 1920 / 1.5 = 1280
+            position = "0,0";
             scale = 1.0;
-          }
-          {
-            criteria = "eDP-1";
-            status = "enable";
-            mode = "1920x1200@60.000999Hz";
-            position = "0,400";
-            scale = 1.5;
           }
         ];
       }

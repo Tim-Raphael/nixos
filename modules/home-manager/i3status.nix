@@ -186,7 +186,7 @@ in
           "ethernet ${cfg.network.ethernet.interface}" = {
             position = 9;
             settings = {
-              format_up = "ETH:%quality at %essid, %ip";
+              format_up = "ETH: %ip";
               format_down = "";
             };
           };

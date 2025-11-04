@@ -44,6 +44,17 @@
           terraformls.enable = true;
           jdtls.enable = true;
 
+          sqls = {
+            enable = true;
+            settings = {
+              command = "sqls";
+              args = [
+                "-config"
+                "$HOME/.config/sqls/config.yml"
+              ];
+            };
+          };
+
           yamlls = {
             enable = true;
             settings = {

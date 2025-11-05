@@ -61,6 +61,12 @@
         profile.name = "work";
         profile.outputs = [
           {
+            criteria = "eDP-1";
+            status = "disable";
+            position = "0,0";
+            scale = 1.0;
+          }
+          {
             criteria = "DP-2";
             status = "enable";
             mode = "2560x1440@59.951000Hz";

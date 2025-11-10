@@ -28,6 +28,7 @@ in
       notes.enable = mkEnableOption "note-taking tools (Obsidian)";
       pdf.enable = mkEnableOption "PDF manipulation tools";
       pandoc.enable = mkEnableOption "Pandoc document converter";
+      presentation.enable = mkEnableOption "Presenterm";
     };
 
     video = {
@@ -120,6 +121,15 @@ in
 
     (mkIf cfg.office.pandoc.enable {
       home.packages = with pkgs; [ pandoc ];
+    })
+
+    (mkIf cfg.office.presentation.enable {
+      home.packages = with pkgs; [ presenterm ];
+      home.file.".config/presenterm/config.yaml".text = ''
+        options:
+          end_slide_shorthand: true
+          strict_front_matter_parsing: false
+      '';
     })
 
     # Video tools

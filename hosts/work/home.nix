@@ -76,6 +76,7 @@
       pdf.enable = true;
       notes.enable = true;
       latex.enable = true;
+      presentation.enable = true;
     };
     video = {
       vlc.enable = true;

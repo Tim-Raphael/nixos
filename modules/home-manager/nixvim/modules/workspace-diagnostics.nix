@@ -14,6 +14,7 @@ let
 in
 {
   programs.nixvim = {
+
     extraPlugins = [ workspace-diagnostics ];
 
     keymaps = [
@@ -32,7 +33,7 @@ in
     ];
 
     extraConfigLua = ''
-      vim.api.nvim_create_user_command('Scan', function (args)
+      vim.api.nvim_create_user_command("Scan", function (args)
         for _, client in ipairs(vim.lsp.buf_get_clients()) do
           require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
         end
@@ -40,31 +41,27 @@ in
         print("Scanning workspace.. 🔍")
       end, { desc = "Scan workspace for diagnostics" })
 
-      vim.fn.sign_define("DiagnosticSignError", {
-        texthl = "DiagnosticSignError",
-        text = "E",
-        numhl = "DiagnosticSignError",
-      })
-
-      vim.fn.sign_define("DiagnosticSignWarn", {
-        texthl = "DiagnosticSignWarn",
-        text = "W",
-        numhl = "DiagnosticSignWarn",
-      })
-
-      vim.fn.sign_define("DiagnosticSignInfo", {
-        texthl = "DiagnosticSignInfo",
-        text = "I",
-        numhl = "DiagnosticSignInfo",
-      })
-
-      vim.fn.sign_define("DiagnosticSignHint", {
-        texthl = "DiagnosticSignHint",
-        text = "H",
-        numhl = "DiagnosticSignHint",
-      })
-
       vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = "E",
+            [vim.diagnostic.severity.WARN] = "W",
+            [vim.diagnostic.severity.INFO] = "I",
+            [vim.diagnostic.severity.HINT] = "H",
+          },
+          texthl = {
+            [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+            [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+            [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+            [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+          },
+          numhl = {
+            [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+            [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+            [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+            [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+          },
+        },
         underline = true,
         virtual_text = {
           prefix = ">",

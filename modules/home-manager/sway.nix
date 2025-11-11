@@ -200,13 +200,10 @@
 
     settings = {
       default-timeout = 5000;
-
-      font = "#${config.fonts.systemFont.main.name}";
+      font = "${config.fonts.systemFont.main.name} ${toString config.fonts.systemFont.main.size-small}";
       border-color = "#${config.colorScheme.palette.base07}";
       background-color = "#${config.colorScheme.palette.base00}";
-
-      padding = "10";
-      size = config.fonts.systemFont.main.size-small;
+      padding = 10;
     };
   };
 
@@ -215,23 +212,16 @@
     settings = {
       font = "${config.fonts.systemFont.main.name}";
       size = config.fonts.systemFont.main.size-small;
-
       color = "${config.colorScheme.palette.base00}";
-
       inside-color = "${config.colorScheme.palette.base00}";
       inside-clear-color = "${config.colorScheme.palette.base07}";
       inside-ver-color = "${config.colorScheme.palette.base0D}";
       inside-wrong-color = "${config.colorScheme.palette.base08}";
-
       separator-color = "${config.colorScheme.palette.base07}";
-
       ring-color = "${config.colorScheme.palette.base07}";
-
       text-color = "${config.colorScheme.palette.base07}";
-
       key-hl-color = "${config.colorScheme.palette.base0B}";
       bs-hl-color = "${config.colorScheme.palette.base08}";
-
       line-uses-inside = true;
     };
   };

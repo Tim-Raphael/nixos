@@ -29,7 +29,6 @@
     ./modules/telescope.nix
     ./modules/toggleterm.nix
     ./modules/spectre.nix
-    ./modules/obsidian.nix
     ./modules/vimtex.nix
     ./modules/workspace-diagnostics.nix
   ];

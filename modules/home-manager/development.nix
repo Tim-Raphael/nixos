@@ -39,7 +39,7 @@
     clang
 
     # Java
-    zulu24
+    jdk24
 
     #Linker
     mold

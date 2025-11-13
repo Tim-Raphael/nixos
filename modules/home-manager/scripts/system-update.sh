@@ -42,17 +42,14 @@ else
     SKIP_GIT=false
 fi
 
-# Update flake.lock
 print_status "Updating flake.lock..."
 nix flake update
 
-# Rebuild and switch
 print_status "Rebuilding NixOS configuration for host: $FLAKE_HOST..."
 sudo nixos-rebuild switch --flake ~/nixos#$FLAKE_HOST
 
-# Collect garbage (older than 15 days)
-print_status "Collecting garbage (older than 15 days)..."
-sudo nix-collect-garbage --delete-older-than 15d
+print_status "Collecting garbage (older than 30 days)..."
+sudo nix-collect-garbage --delete-older-than 30d
 
 # Optimize nix store (optional, uncomment if desired)
 # print_status "Optimizing nix store..."
@@ -75,3 +72,4 @@ if [ "$SKIP_GIT" = false ]; then
 fi
 
 print_status "Update complete!"
+print_status "Run \`git push origin\` to sync changes."

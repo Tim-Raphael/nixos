@@ -2,24 +2,24 @@
 
 {
   home.file = {
-    ".local/bin/pre_commit" = {
-      source = ./scripts/pre_commit.sh;
+    ".local/bin/pre-commit" = {
+      source = ./pre-commit.sh;
       executable = true;
     };
     ".local/bin/volume" = {
-      source = ./scripts/volume.sh;
+      source = ./volume.sh;
       executable = true;
     };
     ".local/bin/fm" = {
-      source = ./scripts/fm.sh;
+      source = ./fm.sh;
       executable = true;
     };
     ".local/bin/nt" = {
-      source = ./scripts/nt.sh;
+      source = ./nt.sh;
       executable = true;
     };
-    ".local/bin/update_system" = {
-      source = ./scripts/update_system.sh;
+    ".local/bin/system-update" = {
+      source = ./system-update.sh;
       executable = true;
     };
   };

@@ -21,6 +21,12 @@
         profile.name = "home_docked";
         profile.outputs = [
           {
+            criteria = "eDP-1";
+            status = "disable";
+            position = "0,0";
+            scale = 1.0;
+          }
+          {
             criteria = "DP-8";
             status = "enable";
             mode = "1920x1080@60.000Hz";

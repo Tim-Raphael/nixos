@@ -78,49 +78,6 @@
             cmd = [
               "${pkgs.rust-bin.stable.latest.rust-analyzer}/bin/rust-analyzer"
             ];
-            default_settings = {
-              "rust-analyzer" = {
-                # Diagnostics - reduce noise
-                diagnostics = {
-                  disabled = [
-                    "unresolved-import"
-                  ];
-                };
-                # Cargo and check
-                cargo = {
-                  allFeatures = false;
-                  buildScripts = {
-                    enable = true;
-                    rebuildOnSave = false;
-                  };
-                  sysroot = "discover";
-                  features = "all";
-                };
-                # Proc macros
-                procMacro = {
-                  enable = true;
-                  ignored = {
-                    # Add problematic proc macros here if needed
-                  };
-                };
-                # Performance tuning
-                numThreads = 4;
-                files = {
-                  watcher = "client";
-                  excludeDirs = [
-                    ".git"
-                    "target"
-                    ".venv"
-                    "node_modules"
-                  ];
-                };
-                hover = {
-                  documentation = {
-                    enable = true;
-                  };
-                };
-              };
-            };
           };
         };
       };

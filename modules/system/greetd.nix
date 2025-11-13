@@ -1,5 +1,14 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
+let
+  gnome_enabled = config.desktopEnvironments.gnome.enable or false;
+  environments = lib.concatStringsSep "\n" ([ "sway" ] ++ lib.optionals gnome_enabled [ "gnome" ]);
+in
 {
   services.greetd = {
     enable = true;
@@ -7,18 +16,15 @@
       default_session = {
         command = ''
           ${pkgs.greetd.tuigreet}/bin/tuigreet \
-                --time \
-                --asterisks \
-                --user-menu \
-                --cmd sway 
-        '';
+                    --time \
+                    --asterisks \
+                    --user-menu \
+                    --cmd sway'';
       };
     };
   };
 
-  environment.etc."greetd/environments".text = ''
-    sway 
-  '';
+  environment.etc."greetd/environments".text = environments;
 
   systemd.services.greetd.serviceConfig = {
     Type = "idle";

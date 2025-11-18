@@ -6,6 +6,7 @@
     jmtpfs
     nautilus
     unzip
+    zip
     wineWowPackages.full
   ];
 }

@@ -27,13 +27,10 @@ in
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
     ../../modules/system/greetd.nix
-    ../../modules/system/desktop-environment.nix
 
     inputs.home-manager.nixosModules.home-manager
   ]
   ++ maybeSettings;
-
-  desktopEnvironments.gnome.enable = true;
 
   home-manager = {
     extraSpecialArgs = {

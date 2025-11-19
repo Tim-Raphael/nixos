@@ -53,10 +53,6 @@
               command = "alacritty --command ssh-add";
               always = true;
             }
-            {
-              command = "blueman-applet";
-              always = true;
-            }
           ];
 
           keybindings = lib.mkOptionDefault {

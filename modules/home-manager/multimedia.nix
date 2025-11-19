@@ -54,11 +54,7 @@ in
   };
 
   config = mkMerge [
-    # Graphics tools
-    (mkIf cfg.graphics.diagrams.enable {
-      home.packages = with pkgs; [ mermaid-cli ];
-    })
-
+    # Graphic tools
     (mkIf cfg.graphics.kicad.enable {
       home.packages = with pkgs; [ kicad ];
     })
@@ -129,7 +125,11 @@ in
     })
 
     (mkIf cfg.office.presentation.enable {
-      home.packages = with pkgs; [ presenterm ];
+      home.packages = with pkgs; [
+        presenterm
+        mermaid-cli
+        ghostty
+      ];
       home.file.".config/presenterm/config.yaml".text = ''
         options:
           end_slide_shorthand: true

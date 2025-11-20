@@ -2,7 +2,6 @@
 
 {
   programs.nixvim.keymaps = [
-
     {
       mode = "i";
       key = "<C-BS>";

@@ -31,6 +31,7 @@
     ./modules/spectre.nix
     ./modules/vimtex.nix
     ./modules/workspace-diagnostics.nix
+    ./modules/opencode.nix
   ];
 
   programs.nixvim.enable = true;

@@ -18,7 +18,6 @@ in
       raster.enable = mkEnableOption "raster graphics tools (GIMP, Darktable)";
       vector.enable = mkEnableOption "vector graphics tools (Inkscape, Scribus)";
       pixelArt.enable = mkEnableOption "pixel art tools (Aseprite)";
-      diagrams.enable = mkEnableOption "graph tools (mermaid cli)";
     };
 
     office = {
@@ -55,10 +54,6 @@ in
 
   config = mkMerge [
     # Graphics tools
-    (mkIf cfg.graphics.diagrams.enable {
-      home.packages = with pkgs; [ mermaid-cli ];
-    })
-
     (mkIf cfg.graphics.kicad.enable {
       home.packages = with pkgs; [ kicad ];
     })
@@ -129,7 +124,11 @@ in
     })
 
     (mkIf cfg.office.presentation.enable {
-      home.packages = with pkgs; [ presenterm ];
+      home.packages = with pkgs; [
+        unstable.presenterm
+        mermaid-cli
+        ghostty
+      ];
       home.file.".config/presenterm/config.yaml".text = ''
         options:
           end_slide_shorthand: true

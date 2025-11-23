@@ -89,7 +89,6 @@
     };
     graphics = {
       kicad.enable = true;
-      diagrams.enable = true;
     };
   };
 }

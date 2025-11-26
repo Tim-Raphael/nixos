@@ -76,7 +76,7 @@
         settings = {
           server = {
             cmd = [
-              "${pkgs.rust-bin.stable.latest.rust-analyzer}/bin/rust-analyzer"
+              "${pkgs.rust-bin.nightly.latest.rust-analyzer}/bin/rust-analyzer"
             ];
           };
         };

@@ -35,6 +35,8 @@
     })
     taplo
 
+    # Python
+    python314
     # C
     clang
 

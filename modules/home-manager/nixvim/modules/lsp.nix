@@ -1,29 +1,12 @@
-{ lib, pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.nixvim = {
-    extraPackages = lib.mkAfter [
-      pkgs.rust-bin.stable.latest.rust-analyzer
-    ];
-
     plugins = {
       lsp = {
         enable = true;
-        inlayHints = false;
-
+        inlayHints = false; # Toggle via th
         servers = {
-          clangd = {
-            enable = true;
-            filetypes = [
-              "c"
-              "cpp"
-              "objc"
-              "objcpp"
-              "cuda"
-              "hpp"
-            ];
-          };
-
           nixd = {
             enable = true;
             settings = {
@@ -32,52 +15,22 @@
               };
             };
           };
-
+          clangd.enable = true;
           cssls.enable = true;
           eslint.enable = true;
-          gopls.enable = true;
           html.enable = true;
           lua_ls.enable = true;
           markdown_oxide.enable = true;
           pyright.enable = true;
           tailwindcss.enable = true;
-          terraformls.enable = true;
-          jdtls.enable = true;
-
-          sqls = {
-            enable = true;
-            settings = {
-              command = "sqls";
-              args = [
-                "-config"
-                "$HOME/.config/sqls/config.yml"
-              ];
-            };
-          };
-
-          yamlls = {
-            enable = true;
-            settings = {
-              schemaStore.enable = false;
-            };
-          };
+          yamlls.enable = true;
         };
       };
 
-      lspkind.enable = true;
-      nix.enable = true;
-      crates.enable = true;
-      typescript-tools.enable = true;
-      trouble.enable = true;
-
       rustaceanvim = {
         enable = true;
-
         settings = {
           server = {
-            cmd = [
-              "${pkgs.rust-bin.stable.latest.rust-analyzer}/bin/rust-analyzer"
-            ];
             default_settings = {
               rust-analyzer = {
                 cargo = {
@@ -88,43 +41,41 @@
           };
         };
       };
+
+      lspkind.enable = true;
+      crates.enable = true;
     };
 
     keymaps = lib.mkAfter [
       {
         mode = "n";
+        key = "<C-r>";
+        action = "<CMD>lua vim.lsp.buf.rename()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<C-a>";
+        action = "<CMD>lua vim.lsp.buf.code_action()<CR>";
+      }
+      {
+        mode = "n";
         key = "<A-k>";
         action = "<CMD>lua vim.lsp.buf.hover({ border = 'single' })<CR>";
       }
-
       {
         mode = "n";
         key = "th";
         action = "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>";
       }
-
       {
         mode = "n";
         key = "gj";
         action = "<CMD>lua vim.diagnostic.goto_next({ float = { border = 'single' }})<CR>";
       }
-
       {
         mode = "n";
         key = "gk";
         action = "<CMD>lua vim.diagnostic.goto_prev({ float = { border = 'single' }})<CR>";
-      }
-
-      {
-        mode = "n";
-        key = "ga";
-        action = "<CMD>lua vim.lsp.buf.code_action()<CR>";
-      }
-
-      {
-        mode = "n";
-        key = "gr";
-        action = "<CMD>lua vim.lsp.buf.rename()<CR>";
       }
     ];
   };

@@ -8,7 +8,7 @@
         biome
         prettierd
         nixfmt-rfc-style
-        rust-bin.nightly.latest.rustfmt
+        taplo
         shfmt
         yamlfmt
       ]
@@ -16,22 +16,12 @@
 
     plugins.conform-nvim = {
       enable = true;
-
-      lazyLoad.settings = {
-        event = [
-          "BufReadPre"
-          "BufNewFile"
-        ];
-      };
-
       settings = {
+        notify_on_error = false;
         format_on_save = {
-          lspFallback = true;
+          lspFallback = false;
           timeoutMs = 500;
         };
-
-        notify_on_error = true;
-
         formatters_by_ft = {
           html = [ "biome" ];
           css = [ "biome" ];

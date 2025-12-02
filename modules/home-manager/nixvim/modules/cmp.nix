@@ -2,11 +2,12 @@
 {
   programs.nixvim = {
     plugins = {
+      nvim-autopairs.enable = true; # Additional dependency
+
       cmp-nvim-lsp.enable = true;
       cmp-path.enable = true;
       cmp-buffer.enable = true;
       cmp_luasnip.enable = true;
-
       cmp-cmdline.enable = true;
       cmp-nvim-lua.enable = true; # Neovim Lua API completion
       cmp-emoji.enable = true; # Emoji completion :smile:
@@ -24,7 +25,6 @@
       cmp = {
         enable = true;
         autoEnableSources = true;
-
         settings = {
           snippet = {
             expand = ''

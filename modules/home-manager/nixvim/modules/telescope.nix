@@ -1,12 +1,9 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   programs.nixvim = {
-    extraPackages = with pkgs; [ ripgrep ];
-
+    dependencies.ripgrep.enable = true;
     plugins = {
-      lsp.enable = true;
-
       telescope = {
         enable = true;
 
@@ -45,24 +42,64 @@
 
         settings = {
           defaults = {
-            layout_strategy = "vertical";
-            borderchars = [
-              "─"
-              "│"
-              "─"
-              "│"
-              "┌"
-              "┐"
-              "┘"
-              "└"
-            ];
-          };
-
-          pickers = {
-            colorscheme = {
-              enable_preview = true;
+            layout_strategy = "horizontal";
+            # Sort results from top to bottom
+            sorting_strategy = "ascending";
+            preview_cutoff = 1;
+            layout_config = {
+              preview_cutoff = 1;
+              horizontal = {
+                prompt_position = "top";
+              };
             };
+            results_title = false;
+            disable_devicons = true;
+            # Remove borders entirely for no padding between elements
+            borderchars = {
+              prompt = [
+                "─"
+                "│"
+                "─"
+                "│"
+                "┌"
+                "┐"
+                "┘"
+                "└"
+              ];
+              results = [
+                "─"
+                "│"
+                "─"
+                "│"
+                "┌"
+                "┐"
+                "┘"
+                "└"
+              ];
+              preview = [
+                "─"
+                "│"
+                "─"
+                "│"
+                "┌"
+                "┐"
+                "┘"
+                "└"
+              ];
+            };
+            mappings = {
+              i = {
+                "<esc>" = {
+                  __raw = ''
+                    function(...)
+                      return require("telescope.actions").close(...)
+                    end'';
+                };
 
+              };
+            };
+          };
+          pickers = {
             buffrs = {
               sort_lastused = true;
             };
@@ -80,14 +117,9 @@
             options.desc = "Grep";
           };
 
-          "<leader>ss" = {
+          "<leader>s" = {
             action = "treesitter";
             options.desc = "Symbol Search";
-          };
-
-          "<leader>sw" = {
-            action = "lsp_workspace_symbols";
-            options.desc = "Workspace symbols";
           };
 
           "<leader>b" = {
@@ -98,21 +130,6 @@
           "<leader>p" = {
             action = "project";
             options.desc = "Projects";
-          };
-
-          "<leader>B" = {
-            action = "git_branches";
-            options.desc = "Git Branches";
-          };
-
-          "<leader>C" = {
-            action = "git_commits";
-            options.desc = "Git Commits";
-          };
-
-          "<leader>S" = {
-            action = "git_status";
-            options.desc = "Git Status";
           };
 
           "<leader>d" = {
@@ -135,17 +152,12 @@
             options.desc = "Keymaps";
           };
 
-          "<leader>M" = {
-            action = "man_pages";
-            options.desc = "Man Pages";
-          };
-
           "gd" = {
             action = "lsp_definitions";
             options.desc = "Go to definition";
           };
 
-          "gf" = {
+          "gr" = {
             action = "lsp_references";
             options.desc = "Go to references";
           };
@@ -159,7 +171,6 @@
             action = "lsp_type_definitions";
             options.desc = "Go to type definitions";
           };
-
         };
       };
     };

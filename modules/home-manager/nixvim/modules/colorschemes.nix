@@ -8,13 +8,9 @@
       ${name} = "#${value}";
     }) config.colorScheme.palette;
 
-    setUpBar = true;
-
     settings = {
       telescope = false;
-      telescope_borders = true;
-      indentblankline = false;
-      notify = true;
+      telescope_borders = false;
       cmp = true;
     };
   };

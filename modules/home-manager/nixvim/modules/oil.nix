@@ -2,14 +2,28 @@
 
 {
   programs.nixvim = {
-    plugins.oil = {
-      enable = true;
+    plugins = {
+      web-devicons = {
+        enable = true;
+      };
 
-      settings = {
-        columns = [ "icon" ];
+      oil = {
+        enable = true;
 
-        view_options = {
-          show_hidden = true;
+        lazyLoad = {
+          enable = true;
+
+          settings = {
+            cmd = "Oil";
+            keys = [ "<C-n>" ];
+          };
+        };
+
+        settings = {
+          columns = [ "icon" ];
+          view_options = {
+            show_hidden = true;
+          };
         };
       };
     };

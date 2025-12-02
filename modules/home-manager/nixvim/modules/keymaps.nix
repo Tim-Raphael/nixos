@@ -7,7 +7,7 @@
       key = "<C-BS>";
       action = "<C-w>";
       options = {
-        desc = "Delete previous word.";
+        desc = "Delete previous word";
         noremap = true;
         silent = true;
       };
@@ -17,7 +17,7 @@
       key = "<C-S-r>";
       action = "<cmd>luafile $MYVIMRC<CR>";
       options = {
-        desc = "Reload nvim.";
+        desc = "Reload nvim";
         noremap = true;
         silent = true;
       };
@@ -129,26 +129,6 @@
       options = {
         silent = true;
         desc = "Previous Tab";
-      };
-    }
-
-    # Lizard Mode
-    {
-      mode = "n";
-      key = "tl";
-      action = {
-        __raw = ''
-          function()
-              vim.cmd(":%s/[^ \\t\\n\\r]/🦎/g")
-              vim.cmd("noh")
-              vim.cmd("normal! \\<C-o>")
-          end
-        '';
-      };
-      options = {
-        desc = "Toggle Lizard Mode";
-        noremap = true;
-        silent = true;
       };
     }
   ];

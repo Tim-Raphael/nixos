@@ -5,38 +5,33 @@
     opts = {
       # Edit
       mouse = "";
-      autoindent = true; # uses indent from prev. line
-      expandtab = true; # convert tabs into spaces
-      tabstop = 4; # display tabs as 4 spaces
-      softtabstop = -1; # use tabstop value for softtabstop
-      shiftwidth = 0; # use tabstop value for autoindent
-      iskeyword = "@,48-57,192-255";
-
-      # Search
-      ignorecase = true; # ignore case in search patterns
+      autoindent = true; # Uses indent from prev line
+      expandtab = true; # Convert tabs into spaces
+      tabstop = 4; # Display tabs as 4 spaces
+      softtabstop = -1; # Use tabstop value for softtabstop
+      shiftwidth = 0; # Use tabstop value for autoindent
+      swapfile = false;
+      undofile = true; # Enable persistent undo
+      updatetime = 100; # Faster completion
+      ignorecase = true; # Ignore case in search patterns
 
       # View
-      termguicolors = true; # eanble 24-bit colors
+      termguicolors = true; # Enable 24-bit colors
       number = true;
+      showmode = false; # Should live in lualine
       relativenumber = true;
-      signcolumn = "yes"; # always show signs (no layout shifting)
-      scrolloff = 10; # scroll offset
+      signcolumn = "yes"; # Always show signs (no layout shifting)
+      scrolloff = 10; # Scroll offset
       colorcolumn = "81";
       wrap = true;
       linebreak = true;
       breakindent = true;
       showbreak = "ͱ";
-      showmode = false;
-      #conceallevel = 1;
+      hidden = true;
 
-      # Found out that this plays nice with darkmode themes, but not the other
+      # Found out, that this plays nice with darkmode themes, but not the other
       # way around, so I'm going to leave it on light for now.
       background = "light";
-
-      # File
-      swapfile = false;
-      undofile = true; # enable persistent undo
-      updatetime = 100; # faster completion
     };
   };
 }

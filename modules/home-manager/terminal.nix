@@ -57,24 +57,5 @@
           set -gx GPG_TTY (tty)
       end
     '';
-
-    functions = {
-      # Function to sync terminal directory with nvim
-      nv = ''
-        # Run nvim with arguments
-        nvim $argv
-
-        # Check if nvim wrote its final directory
-        set nvim_dir_file "$HOME/.nvim_last_dir"
-        if test -f $nvim_dir_file
-            set nvim_dir (cat $nvim_dir_file)
-            if test -d $nvim_dir
-                cd $nvim_dir
-                echo "Changed to: $nvim_dir"
-            end
-            rm $nvim_dir_file 2>/dev/null
-        end
-      '';
-    };
   };
 }

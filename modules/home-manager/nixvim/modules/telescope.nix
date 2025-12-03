@@ -44,13 +44,9 @@
           defaults = {
             layout_strategy = "horizontal";
             # Sort results from top to bottom
-            sorting_strategy = "ascending";
             preview_cutoff = 1;
             layout_config = {
               preview_cutoff = 1;
-              horizontal = {
-                prompt_position = "top";
-              };
             };
             results_title = false;
             disable_devicons = true;

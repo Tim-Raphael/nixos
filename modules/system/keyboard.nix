@@ -8,14 +8,6 @@
     earlySetup = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    via
-  ];
-
-  # access keyboard configuration
-  hardware.keyboard.qmk.enable = true;
-  services.udev.packages = with pkgs; [ via ];
-
   services.kanata = {
     enable = true;
     keyboards = {
@@ -25,13 +17,6 @@
 
           "/dev/input/by-id/usb-SONiX_USB_DEVICE-event-if01"
           "/dev/input/by-id/usb-SONiX_USB_DEVICE-event-kbd"
-
-          "/dev/input/by-id/usb-Keychron_Keychron_V10-event-kbd"
-          "/dev/input/by-id/usb-Keychron_Keychron_V10-if02-event-kbd"
-
-          "/dev/input/by-id/usb-Ducky_Ducky_One_3̠_DK-V1.11-220819-event-if04"
-          "/dev/input/by-id/usb-Ducky_Ducky_One_3̠_DK-V1.11-220819-if01-event-kbd"
-          "/dev/input/by-id/usb-Ducky_Ducky_One_3̠_DK-V1.11-220819-if03-event-kbd"
 
           "/dev/input/by-id/usb-Cherry_USB_keyboard-event-if01"
           "/dev/input/by-id/usb-Cherry_USB_keyboard-event-kbd"

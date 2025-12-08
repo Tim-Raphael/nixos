@@ -11,22 +11,12 @@
     keymaps = lib.mkAfter [
       {
         mode = "n";
-        key = "<C-c>";
-        action = "<cmd>vertical Git commit<CR>";
-        options = {
-          desc = "Git commit";
-        };
-      }
-
-      {
-        mode = "n";
         key = "<C-S-s>";
         action = "<cmd>Gwrite<CR>";
         options = {
           desc = "Git stage file";
         };
       }
-
       {
         mode = "n";
         key = "<C-s>";
@@ -35,7 +25,6 @@
           desc = "Git stage hunk";
         };
       }
-
       {
         mode = "n";
         key = "<C-u>";
@@ -44,16 +33,15 @@
           desc = "Git unstage stage hunk";
         };
       }
-
       {
         mode = "n";
-        key = "<C-g>";
+        key = "tg";
+        # TODO: Pressing tg again should close git view
         action = "<cmd>vertical Git<CR>";
         options = {
-          desc = "Git View";
+          desc = "Toggle Git View";
         };
       }
-
       {
         mode = "n";
         key = "tb";

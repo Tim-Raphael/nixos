@@ -22,7 +22,9 @@
     ./modules/treesitter.nix
     ./modules/telescope.nix
     ./modules/conform.nix
-    ./modules/lualine.nix
+    ./modules/indent-o-matic.nix
+    #./modules/lualine.nix
+    ./modules/statusline.nix
     ./modules/lsp.nix
     ./modules/cmp.nix
     ./modules/fugitive.nix

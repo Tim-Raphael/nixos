@@ -43,46 +43,18 @@
         settings = {
           defaults = {
             layout_strategy = "horizontal";
-            # Sort results from top to bottom
-            preview_cutoff = 1;
-            layout_config = {
-              preview_cutoff = 1;
-            };
             results_title = false;
             disable_devicons = true;
-            # Remove borders entirely for no padding between elements
-            borderchars = {
-              prompt = [
-                "─"
-                "│"
-                "─"
-                "│"
-                "┌"
-                "┐"
-                "┘"
-                "└"
-              ];
-              results = [
-                "─"
-                "│"
-                "─"
-                "│"
-                "┌"
-                "┐"
-                "┘"
-                "└"
-              ];
-              preview = [
-                "─"
-                "│"
-                "─"
-                "│"
-                "┌"
-                "┐"
-                "┘"
-                "└"
-              ];
-            };
+            borderchars = [
+              "─"
+              "│"
+              "─"
+              "│"
+              "┌"
+              "┐"
+              "┘"
+              "└"
+            ];
             mappings = {
               i = {
                 "<esc>" = {

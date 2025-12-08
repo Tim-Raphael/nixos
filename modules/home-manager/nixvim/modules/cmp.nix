@@ -2,17 +2,24 @@
 {
   programs.nixvim = {
     plugins = {
-      nvim-autopairs.enable = true; # Additional dependency
+      # Additional dependency
+      nvim-autopairs.enable = true;
 
-      cmp-nvim-lsp.enable = true;
-      cmp-path.enable = true;
-      cmp-buffer.enable = true;
-      cmp_luasnip.enable = true;
-      cmp-cmdline.enable = true;
-      cmp-nvim-lua.enable = true; # Neovim Lua API completion
-      cmp-emoji.enable = true; # Emoji completion :smile:
-      cmp-calc.enable = true; # Calculator completion
+      # Autocomplete for:
+      # Treesitter (incremental parser)
       cmp-treesitter.enable = true;
+      # Language server suggestions
+      cmp-nvim-lsp.enable = true;
+      # File paths
+      cmp-path.enable = true;
+      # Items in current buffer.
+      cmp-buffer.enable = true;
+      # Luasnip (snippets)
+      cmp_luasnip.enable = true;
+      # The Neovim command line
+      cmp-cmdline.enable = true;
+      # Emoji completion :smile:
+      cmp-emoji.enable = true;
 
       luasnip = {
         enable = true;
@@ -40,6 +47,10 @@
               priority = 1000;
             }
             {
+              name = "treesitter";
+              priority = 900;
+            }
+            {
               name = "luasnip";
               priority = 750;
             }
@@ -61,14 +72,6 @@
               priority = 250;
             }
             {
-              name = "treesitter";
-              priority = 200;
-            }
-            {
-              name = "calc";
-              priority = 150;
-            }
-            {
               name = "emoji";
               priority = 100;
               keyword_length = 2;
@@ -86,8 +89,8 @@
           };
 
           window = {
-            scrollbar = false;
             completion = {
+              scrollbar = false;
               border = [
                 "┌"
                 "─"
@@ -100,6 +103,7 @@
               ];
             };
             documentation = {
+              scrollbar = false;
               border = [
                 "┌"
                 "─"
@@ -117,18 +121,9 @@
             default_behavior = "Replace";
           };
 
-          # A bit annoying
           experimental = {
-            ghost_text = false; # Show preview of completion
-          };
-
-          performance = {
-            debounce = 60;
-            throttle = 30;
-            fetching_timeout = 500;
-            confirm_resolve_timeout = 80;
-            async_budget = 1;
-            max_view_entries = 200;
+            # A bit too annoying
+            ghost_text = false;
           };
         };
       };

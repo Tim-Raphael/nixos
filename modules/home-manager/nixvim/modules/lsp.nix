@@ -5,7 +5,8 @@
     plugins = {
       lsp = {
         enable = true;
-        inlayHints = false; # Toggle via th
+        # Toggled via "th"
+        inlayHints = false;
         servers = {
           nixd = {
             enable = true;
@@ -15,30 +16,34 @@
               };
             };
           };
+          rust_analyzer = {
+            enable = true;
+            package = pkgs.rust-bin.stable.latest.default.override {
+              extensions = [
+                "rust-src"
+                "rust-analyzer"
+              ];
+            };
+            # Provided by default rust toolchain profile
+            installCargo = false;
+            installRustc = false;
+            settings = {
+              cargo.features = "all";
+              rustc.source = "discover";
+              check = {
+                command = "clippy";
+                features = "all";
+              };
+            };
+          };
           clangd.enable = true;
           cssls.enable = true;
           eslint.enable = true;
           html.enable = true;
           lua_ls.enable = true;
-          markdown_oxide.enable = true;
           pyright.enable = true;
           tailwindcss.enable = true;
           yamlls.enable = true;
-        };
-      };
-
-      rustaceanvim = {
-        enable = true;
-        settings = {
-          server = {
-            default_settings = {
-              rust-analyzer = {
-                cargo = {
-                  features = "all";
-                };
-              };
-            };
-          };
         };
       };
 
@@ -49,12 +54,12 @@
     keymaps = lib.mkAfter [
       {
         mode = "n";
-        key = "<C-r>";
+        key = "<leader>r";
         action = "<CMD>lua vim.lsp.buf.rename()<CR>";
       }
       {
         mode = "n";
-        key = "<C-a>";
+        key = "<leader>";
         action = "<CMD>lua vim.lsp.buf.code_action()<CR>";
       }
       {

@@ -6,7 +6,9 @@
 
     # TODO: Lazy load this (on command)
 
-    texlivePackage = null; # Use system texlive
+    # Use system texlive
+    texlivePackage = null;
+
     settings = {
       view_method = "zathura";
       compiler_method = "latexmk";

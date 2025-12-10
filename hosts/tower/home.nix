@@ -88,7 +88,7 @@
       effects.enable = true;
     };
     graphics = {
-      kicad.enable = true;
+      kicad.enable = false;
     };
   };
 }

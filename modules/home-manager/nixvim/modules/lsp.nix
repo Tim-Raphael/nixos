@@ -44,6 +44,7 @@
           pyright.enable = true;
           tailwindcss.enable = true;
           yamlls.enable = true;
+          jdtls.enable = true;
         };
       };
 

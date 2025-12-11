@@ -2,7 +2,11 @@
 
 {
   programs.nixvim = {
-    dependencies.ripgrep.enable = true;
+    dependencies = {
+      ripgrep.enable = true;
+      fd.enable = true;
+    };
+
     plugins = {
       telescope = {
         enable = true;
@@ -42,24 +46,68 @@
 
         settings = {
           defaults = {
-            layout_strategy = "horizontal";
+            layout_strategy = "flex";
+            sorting_strategy = "ascending";
+            initial_mode = "insert";
+            prompt_prefix = " > ";
+            selection_caret = " > ";
+            entry_prefix = "   ";
+            scroll_strategy = "cycle";
+            path_display = [ "truncate" ];
+
             results_title = false;
-            disable_devicons = true;
+            preview_title = false;
+            dynamic_preview_title = true;
+
+            layout_config = {
+              vertical = {
+                prompt_position = "top";
+                mirror = true;
+              };
+              horizontal = {
+                prompt_position = "top";
+                mirror = false;
+              };
+            };
+
+            borderchars = [
+              "─"
+              "│"
+              "─"
+              "│"
+              "┌"
+              "┐"
+              "┘"
+              "└"
+            ];
+
             mappings = {
               i = {
-                "<esc>" = {
-                  __raw = ''
-                    function(...)
-                      return require("telescope.actions").close(...)
-                    end'';
-                };
-
+                "<esc>".__raw = "require('telescope.actions').close";
+                # Ctrl-v for vertical split
+                "<C-v>".__raw = "require('telescope.actions').select_vertical";
+                # Ctrl-x for horizontal split
+                "<C-h>".__raw = "require('telescope.actions').select_horizontal";
               };
             };
           };
+
           pickers = {
             buffrs = {
               sort_lastused = true;
+              sort_mru = true;
+            };
+            find_files = {
+              find_command = [
+                "fd"
+                "--type"
+                "f"
+                "--strip-cwd-prefix"
+                "--hidden"
+                "--follow"
+                "--exclude"
+                ".git"
+              ];
             };
           };
         };

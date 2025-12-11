@@ -5,7 +5,8 @@
     blink-cmp = {
       enable = true;
       settings = {
-        # TODO
+        completion.list.selection.preselect = false;
+        keymap.preset = "enter";
       };
     };
   };

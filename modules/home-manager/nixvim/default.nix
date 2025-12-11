@@ -5,7 +5,7 @@
 
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
 
     # Lazy Load Provider
     ./modules/lazy-load.nix
@@ -23,10 +23,9 @@
     ./modules/telescope.nix
     ./modules/conform.nix
     ./modules/indent-o-matic.nix
-    #./modules/lualine.nix
     ./modules/statusline.nix
     ./modules/lsp.nix
-    ./modules/cmp.nix
+    ./modules/blink-cmp.nix
     ./modules/fugitive.nix
     ./modules/vimtex.nix
   ];

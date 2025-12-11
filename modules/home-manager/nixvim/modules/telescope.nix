@@ -45,16 +45,6 @@
             layout_strategy = "horizontal";
             results_title = false;
             disable_devicons = true;
-            borderchars = [
-              "─"
-              "│"
-              "─"
-              "│"
-              "┌"
-              "┐"
-              "┘"
-              "└"
-            ];
             mappings = {
               i = {
                 "<esc>" = {

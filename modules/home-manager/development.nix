@@ -41,7 +41,7 @@
     clang
 
     # Java
-    jdk24
+    javaPackages.compiler.openjdk25
 
     #Linker
     mold
@@ -61,17 +61,11 @@
   programs.git = {
     enable = true;
 
-    userName = "Tim-Raphael";
-    userEmail = "mail@tim-raphael.dev";
-
-    includes = [
-      {
-        condition = "gitdir:~/Documents/work/";
-        path = "~/Documents/work/.gitconfig";
-      }
-    ];
-
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Tim-Raphael";
+        email = "mail@tim-raphael.dev";
+      };
       init = {
         defaultBranch = "main";
       };
@@ -85,6 +79,13 @@
         default = "current";
       };
     };
+
+    includes = [
+      {
+        condition = "gitdir:~/Documents/work/";
+        path = "~/Documents/work/.gitconfig";
+      }
+    ];
   };
 
   home.file.".cargo/config.toml".text = ''

@@ -18,10 +18,11 @@
 
       treesitter-textobjects = {
         enable = true;
-
-        select = {
-          enable = true;
-          lookahead = true;
+        settings = {
+          select = {
+            enable = true;
+            lookahead = true;
+          };
         };
       };
     };

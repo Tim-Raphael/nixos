@@ -84,24 +84,22 @@
     {
       mode = "n";
       key = "rv";
-      action = ''
+      action.__raw = ''
         function()
           vim.api.nvim_feedkeys(":vertical resize ", "n", false)
         end
       '';
-      lua = true;
       options.silent = true;
       options.desc = "Resize Vertical";
     }
     {
       mode = "n";
       key = "rh";
-      action = ''
+      action.__raw = ''
         function()
           vim.api.nvim_feedkeys(":resize ", "n", false)
         end
       '';
-      lua = true;
       options.silent = true;
       options.desc = "Resize Horizontal";
     }

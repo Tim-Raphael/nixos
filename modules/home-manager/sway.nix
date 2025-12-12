@@ -134,6 +134,7 @@
           bars = [
             {
               statusCommand = "${pkgs.i3status}/bin/i3status";
+              position = "top";
 
               # Disabled for now, because some programs always spams my tray
               # with sad smileys (heulis).

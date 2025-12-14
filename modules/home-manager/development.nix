@@ -36,7 +36,12 @@
     taplo
 
     # Python
-    python314
+    (python3.withPackages (
+      ps: with ps; [
+        numpy
+      ]
+    ))
+
     # C
     clang
 

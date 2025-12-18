@@ -31,7 +31,8 @@
               cargo.features = "all";
               rustc.source = "discover";
               check = {
-                command = "clippy";
+                #command = "clippy";
+                command = "check";
                 features = "all";
               };
             };

@@ -38,5 +38,48 @@
     ../../modules/home-manager/i3status.nix
   ];
 
-  programs.home-manager.enable = true;
+  i3status = {
+    enable = true;
+    system = {
+      cpu = {
+        usage.enable = true;
+        temperature.enable = true;
+      };
+      disk = {
+        root.enable = true;
+      };
+    };
+    time = {
+      date.enable = true;
+      clock.enable = true;
+    };
+    audio = {
+      volume.enable = true;
+    };
+    network = {
+      wireless = {
+        enable = true;
+        interface = "wlo1";
+      };
+    };
+    power = {
+      battery = {
+        enable = true;
+        path = "/sys/class/power_supply/BAT1/uevent";
+      };
+    };
+  };
+
+  multimedia = {
+    office = {
+      libreoffice.enable = true;
+      pdf.enable = true;
+      notes.enable = true;
+      latex.enable = true;
+      presentation.enable = true;
+    };
+    video = {
+      vlc.enable = true;
+    };
+  };
 }

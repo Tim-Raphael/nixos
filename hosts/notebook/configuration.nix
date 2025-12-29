@@ -24,6 +24,7 @@
     ../../modules/system/ssh.nix
     ../../modules/system/greetd.nix
     ../../modules/system/steam.nix
+    ../../modules/system/swap.nix
 
     inputs.home-manager.nixosModules.home-manager
   ];

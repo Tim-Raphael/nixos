@@ -2,7 +2,6 @@
 
 {
   programs.nixvim.opts = {
-    mouse = "";
     # Uses indent from prev line
     autoindent = true;
     # Convert tabs into spaces

@@ -28,6 +28,7 @@
     ./modules/blink-cmp.nix
     ./modules/fugitive.nix
     ./modules/vimtex.nix
+    ./modules/nvim-surround.nix
   ];
 
   programs.nixvim = {

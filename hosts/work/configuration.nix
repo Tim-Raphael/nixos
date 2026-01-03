@@ -8,9 +8,10 @@ let
   maybeSettings = if builtins.pathExists ./settings.nix then [ ./settings.nix ] else [ ];
 in
 {
+  system.stateVersion = "25.05";
+
   imports = [
     ./hardware-configuration.nix
-
     ../../modules/system/base.nix
     ../../modules/system/bootloader.nix
     ../../modules/system/networking.nix
@@ -27,7 +28,6 @@ in
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
     ../../modules/system/greetd.nix
-
     inputs.home-manager.nixosModules.home-manager
   ]
   ++ maybeSettings;

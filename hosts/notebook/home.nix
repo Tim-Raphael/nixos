@@ -1,24 +1,13 @@
 {
-  config,
-  lib,
-  pkgs,
   ...
 }:
 
 {
-  home.username = "raphael";
-  home.homeDirectory = "/home/raphael";
-
-  home.stateVersion = "25.05";
-
-  home.packages = [ ];
-
-  home.sessionVariables = { };
-
-  home.file = { };
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowBroken = true;
+  home = {
+    stateVersion = "25.05";
+    username = "raphael";
+    homeDirectory = "/home/raphael";
+  };
 
   imports = [
     ../../modules/home-manager/theme.nix

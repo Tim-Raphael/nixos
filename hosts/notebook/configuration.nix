@@ -5,9 +5,15 @@
 }:
 
 {
+  system.stateVersion = "25.05";
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+  };
+
   imports = [
     ./hardware-configuration.nix
-
     ../../modules/system/base.nix
     ../../modules/system/bootloader.nix
     ../../modules/system/terminal.nix
@@ -25,7 +31,6 @@
     ../../modules/system/greetd.nix
     ../../modules/system/steam.nix
     ../../modules/system/swap.nix
-
     inputs.home-manager.nixosModules.home-manager
   ];
 

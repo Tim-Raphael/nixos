@@ -5,9 +5,11 @@
 }:
 
 {
+  # Pin the state version here.
+  #system.stateVerion = "xx.xx";
   imports = [
+    # When setting up a new system, copy over this file and adjust the path.
     /etc/nixos/hardware-configuration.nix
-
     ../../modules/system/base.nix
     ../../modules/system/bootloader.nix
     ../../modules/system/networking.nix
@@ -19,7 +21,6 @@
     ../../modules/system/dconf.nix
     ../../modules/system/ssh.nix
     ../../modules/system/terminal.nix
-
     inputs.home-manager.nixosModules.home-manager
   ];
 

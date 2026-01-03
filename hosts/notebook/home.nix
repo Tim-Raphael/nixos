@@ -70,8 +70,5 @@
     video = {
       vlc.enable = true;
     };
-    hardware = {
-      tablet.enable = true;
-    };
   };
 }

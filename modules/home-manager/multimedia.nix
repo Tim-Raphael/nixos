@@ -44,12 +44,6 @@ in
 
       effects.enable = mkEnableOption "audio effects processing (EasyEffects)";
     };
-
-    hardware = {
-      enable = mkEnableOption "multimedia hardware support";
-
-      tablet.enable = mkEnableOption "graphics tablet support (OpenTabletDriver)";
-    };
   };
 
   config = mkMerge [
@@ -152,27 +146,6 @@ in
     # Audio tools
     (mkIf cfg.audio.effects.enable {
       home.packages = with pkgs; [ easyeffects ];
-    })
-
-    # Hardware support
-    (mkIf cfg.hardware.tablet.enable {
-      home.packages = with pkgs; [ opentabletdriver ];
-
-      systemd.user.services.opentabletdriver = {
-        Unit = {
-          Description = "OpenTabletDriver Daemon";
-          After = [ "graphical-session.target" ];
-        };
-
-        Service = {
-          ExecStart = "${pkgs.opentabletdriver}/bin/otd-daemon";
-          Restart = "on-failure";
-        };
-
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
-      };
     })
   ];
 }

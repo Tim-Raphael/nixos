@@ -25,6 +25,7 @@
     ../../modules/system/virtualisation.nix
     ../../modules/system/ssh.nix
     ../../modules/system/greetd.nix
+    ../../modules/system/opentabletdriver.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 

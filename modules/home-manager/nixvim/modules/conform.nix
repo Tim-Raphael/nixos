@@ -11,7 +11,7 @@
         taplo
         shfmt
         yamlfmt
-        rust-bin.nightly.latest.rustfmt
+        rust-bin.stable."1.92.0".rustfmt
       ]
     );
 

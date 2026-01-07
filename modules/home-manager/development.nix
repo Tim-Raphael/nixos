@@ -24,7 +24,7 @@
     live-server
 
     # Rust
-    (rust-bin.nightly.latest.default.override {
+    (rust-bin.stable."1.92.0".default.override {
       extensions = [
         "rust-std"
         "rust-src"

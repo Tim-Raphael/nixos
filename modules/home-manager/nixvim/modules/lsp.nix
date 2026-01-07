@@ -18,7 +18,7 @@
           };
           rust_analyzer = {
             enable = true;
-            package = pkgs.rust-bin.stable.latest.default.override {
+            package = pkgs.rust-bin.nightly.latest.default.override {
               extensions = [
                 "rust-src"
                 "rust-analyzer"

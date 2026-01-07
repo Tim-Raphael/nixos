@@ -11,7 +11,7 @@
         taplo
         shfmt
         yamlfmt
-        rust-bin.stable.latest.rustfmt
+        rust-bin.nightly.latest.rustfmt
       ]
     );
 

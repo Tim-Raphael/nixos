@@ -64,6 +64,25 @@
       }
 
       {
+        profile.name = "home_2";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+            position = "0,0";
+            scale = 1.0;
+          }
+          {
+            criteria = "DP-2";
+            status = "enable";
+            mode = "3840x2160@59.997002Hz";
+            position = "0,0";
+            scale = 1.0;
+          }
+        ];
+      }
+
+      {
         profile.name = "work";
         profile.outputs = [
           {

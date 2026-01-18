@@ -29,6 +29,7 @@
     ./modules/fugitive.nix
     ./modules/vimtex.nix
     ./modules/nvim-surround.nix
+    ./modules/goyo.nix
   ];
 
   programs.nixvim = {

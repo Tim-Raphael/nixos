@@ -21,10 +21,6 @@
   # Paths to link
   environment.pathsToLink = [ "/libexec" ];
 
-  # Nixpkgs configuration
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowBroken = true;
-
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"

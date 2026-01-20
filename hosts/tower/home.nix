@@ -9,11 +9,6 @@
     homeDirectory = "/home/raphael";
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true;
-  };
-
   imports = [
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/nixvim

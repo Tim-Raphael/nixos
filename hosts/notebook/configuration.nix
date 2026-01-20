@@ -7,11 +7,6 @@
 {
   system.stateVersion = "25.05";
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true;
-  };
-
   imports = [
     ./hardware-configuration.nix
     ../../modules/system/base.nix

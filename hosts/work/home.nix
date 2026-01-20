@@ -76,4 +76,9 @@
       penpot.enable = true;
     };
   };
+
+  password = {
+    pass.enable = true;
+    keepass.enable = true;
+  };
 }

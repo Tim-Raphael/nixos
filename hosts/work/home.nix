@@ -1,17 +1,10 @@
-{
-  ...
-}:
+{ ... }:
 
 {
   home = {
     stateVersion = "25.05";
     username = "raphael";
     homeDirectory = "/home/raphael";
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true;
   };
 
   imports = [

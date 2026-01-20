@@ -5,5 +5,6 @@
     discord
     thunderbird
     element-desktop
+    nheko
   ];
 }

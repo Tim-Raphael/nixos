@@ -44,11 +44,21 @@
           modules = [
             { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
             {
-              nixpkgs.overlays = [
-                (import ./overlays/unstable.nix { inherit inputs; })
-                inputs.fonts.overlays.default
-                rust-overlay.overlays.default
-              ];
+              nixpkgs = {
+                overlays = [
+                  (import ./overlays/unstable.nix { inherit inputs; })
+                  inputs.fonts.overlays.default
+                  rust-overlay.overlays.default
+                ];
+                config = {
+                  allowUnfree = true;
+                  allowBroken = true;
+                  # Required by nheko
+                  permittedInsecurePackages = [
+                    "olm-3.2.16"
+                  ];
+                };
+              };
             }
             hostPath
           ];

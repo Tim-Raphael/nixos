@@ -27,17 +27,10 @@
             scale = 1.0;
           }
           {
-            criteria = "DP-8";
+            criteria = "DP-5";
             status = "enable";
-            mode = "1920x1080@60.000Hz";
+            mode = "3840x2160@120.000000";
             position = "0,0";
-            scale = 1.0;
-          }
-          {
-            criteria = "DP-7";
-            status = "enable";
-            mode = "1920x1080@144.013Hz";
-            position = "1920,0";
             scale = 1.0;
           }
         ];

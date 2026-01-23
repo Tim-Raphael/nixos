@@ -8,5 +8,4 @@
       element-desktop
     ];
   };
-  programs.nheko.enable = true;
 }

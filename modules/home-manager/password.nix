@@ -26,14 +26,7 @@ in
     })
 
     (mkIf cfg.keepass.enable {
-      programs.keepassxc = {
-        enable = true;
-        #autostart = true;
-        #settings = {
-        #  FdoSecrets.Enabled = true; # Enable Secret Service Integration
-        #};
-      };
-      #xdg.autostart.enable = true; # Enable creation of XDG autostart entries
+      home.packages = [ pkgs.keepassxc ];
     })
   ];
 }

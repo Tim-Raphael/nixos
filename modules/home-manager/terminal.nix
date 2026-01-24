@@ -1,5 +1,15 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
+let
+  systemFont = config.fonts.systemFont.main;
+  colorScheme = config.colorScheme.palette;
+  nixColorsLib = inputs.nix-colors.lib.contrib { inherit pkgs; };
+in
 {
   home.packages = with pkgs; [
     killall
@@ -13,36 +23,13 @@
     enable = true;
     settings = {
       font = {
-        normal.family = "${config.fonts.systemFont.main.name}";
-        size = config.fonts.systemFont.main.size-medium;
+        normal.family = "${systemFont.name}";
+        size = systemFont.size-medium;
       };
-
       colors = {
         primary = {
-          background = "#${config.colorScheme.palette.base00}";
-          foreground = "#${config.colorScheme.palette.base05}";
-        };
-
-        normal = {
-          black = "#${config.colorScheme.palette.base00}";
-          red = "#${config.colorScheme.palette.base08}";
-          green = "#${config.colorScheme.palette.base0B}";
-          yellow = "#${config.colorScheme.palette.base0A}";
-          blue = "#${config.colorScheme.palette.base0D}";
-          magenta = "#${config.colorScheme.palette.base0E}";
-          cyan = "#${config.colorScheme.palette.base0C}";
-          white = "#${config.colorScheme.palette.base05}";
-        };
-
-        bright = {
-          black = "#${config.colorScheme.palette.base03}";
-          red = "#${config.colorScheme.palette.base08}";
-          green = "#${config.colorScheme.palette.base0B}";
-          yellow = "#${config.colorScheme.palette.base0A}";
-          blue = "#${config.colorScheme.palette.base0D}";
-          magenta = "#${config.colorScheme.palette.base0E}";
-          cyan = "#${config.colorScheme.palette.base0C}";
-          white = "#${config.colorScheme.palette.base07}";
+          background = "#${colorScheme.base00}";
+          foreground = "#${colorScheme.base05}";
         };
       };
     };
@@ -50,12 +37,15 @@
 
   programs.fish = {
     enable = true;
-    shellInit = ''
-      if status is-interactive
-          set fish_greeting
-          set PATH $HOME/.local/bin $PATH # for some util scripts
-          set -gx GPG_TTY (tty)
-      end
+    interactiveShellInit = ''
+      set fish_greeting
+      set PATH $HOME/.local/bin $PATH # for some util scripts
+      set -gx GPG_TTY (tty)
+      sh ${
+        nixColorsLib.shellThemeFromScheme {
+          scheme = config.colorScheme;
+        }
+      }
     '';
   };
 }

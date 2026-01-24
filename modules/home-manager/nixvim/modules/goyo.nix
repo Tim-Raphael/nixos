@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 let
   goyo = pkgs.vimUtils.buildVimPlugin {
@@ -24,6 +29,18 @@ in
         options = {
           desc = "Toggle writing mode (Goyo)";
         };
+      }
+    ];
+    autoCmd = [
+      {
+        event = "User";
+        pattern = "GoyoLeave";
+        callback.__raw = ''
+          function()
+            vim.env.BAT_THEME = 'nix-${config.colorScheme.slug}'
+            vim.cmd.colorscheme('nix-${config.colorScheme.slug}')
+          end
+        '';
       }
     ];
   };

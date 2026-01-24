@@ -80,4 +80,8 @@
       kicad.enable = false;
     };
   };
+
+  password = {
+    pass.enable = true;
+  };
 }

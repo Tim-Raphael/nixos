@@ -26,7 +26,6 @@
     ../../modules/system/ssh.nix
     ../../modules/system/greetd.nix
     ../../modules/system/opentabletdriver.nix
-    ../../modules/system/looking-glass.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 

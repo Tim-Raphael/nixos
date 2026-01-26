@@ -10,7 +10,6 @@
 
     extraConfig = ''
       c.hints.padding = {"top": 1, "bottom": 1, "left": 1, "right": 1}
-      c.qt.force_software_rendering = "chromium"
     '';
 
     keyBindings = {

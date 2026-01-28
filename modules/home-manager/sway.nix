@@ -105,8 +105,8 @@ in
             focused = {
               background = "#${colorScheme.base07}";
               border = "#${colorScheme.base07}";
-              childBorder = "#${colorScheme.base0B}";
-              indicator = "#${colorScheme.base08}";
+              childBorder = "#${colorScheme.base07}";
+              indicator = "#${colorScheme.base07}";
               text = "#${colorScheme.base00}";
             };
 
@@ -158,6 +158,12 @@ in
                 size = config.fonts.systemFont.main.size-small * 1.0; # little hack to convert into float
               };
 
+              extraConfig = ''
+                status_padding 0 
+                status_edge_padding 3
+                separator_symbol "┃"
+              '';
+
               colors = {
                 background = "#${colorScheme.base00}";
                 focusedBackground = "#${colorScheme.base00}";
@@ -175,8 +181,8 @@ in
                 };
 
                 focusedWorkspace = {
-                  background = "#${colorScheme.base0B}";
-                  border = "#${colorScheme.base0B}";
+                  background = "#${colorScheme.base07}";
+                  border = "#${colorScheme.base07}";
                   text = "#${colorScheme.base00}";
                 };
 

@@ -69,13 +69,16 @@
       latex.enable = true;
       presentation.enable = true;
     };
+
     video = {
       vlc.enable = true;
       obs.enable = true;
     };
+
     audio = {
       effects.enable = true;
     };
+
     graphics = {
       kicad.enable = false;
     };

@@ -4,6 +4,7 @@
   pkgs,
   ...
 }:
+
 with lib;
 let
   cfg = config.multimedia;
@@ -76,9 +77,7 @@ in
 
     # Office tools
     (mkIf cfg.office.libreoffice.enable {
-      home.packages = with pkgs; [
-        libreoffice-qt
-      ];
+      home.packages = with pkgs; [ libreoffice-qt ];
     })
 
     (mkIf cfg.office.latex.enable {

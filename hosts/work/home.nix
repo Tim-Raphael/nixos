@@ -81,4 +81,25 @@
     pass.enable = true;
     keepass.enable = true;
   };
+
+  development = {
+    tools = {
+      postman.enable = true;
+      dbBeaver.enable = true;
+    };
+
+    versionControl = {
+      git.enable = true;
+      jujutsu.enable = true;
+    };
+
+    languages = {
+      rust = {
+        enable = true;
+        lld = true;
+      };
+      web.enable = true;
+      markdown.enable = true;
+    };
+  };
 }

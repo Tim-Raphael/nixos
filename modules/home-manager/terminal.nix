@@ -37,6 +37,7 @@ in
 
   programs.fish = {
     enable = true;
+
     interactiveShellInit = ''
       set fish_greeting
       set PATH $HOME/.local/bin $PATH # for some util scripts
@@ -46,6 +47,18 @@ in
           scheme = config.colorScheme;
         }
       }
+
+      # Automatically set JJ_CONFIG based on working directory
+      function __jj_config_on_variable_pwd --on-variable PWD
+        if string match -q "$HOME/Documents/work/*" $PWD
+          set -gx JJ_CONFIG "$HOME/Documents/work/.jjconfig.toml"
+        else
+          set -e JJ_CONFIG
+        end
+      end
+
+      # Run once on shell startup
+      __jj_config_on_variable_pwd
     '';
   };
 }

@@ -100,6 +100,10 @@ in
           push = {
             default = "current";
           };
+          ui = {
+            paginate = "never";
+            editor = "nvim";
+          };
         };
       };
     })

@@ -1,4 +1,5 @@
 # Config  
+
 A modular configuration for NixOS using flakes.
 
 ## Folder Structrue 
@@ -15,12 +16,14 @@ A modular configuration for NixOS using flakes.
 ```
 
 ### `hosts`
+
 Per-Host system configuration.
 
 - **default**: The default host configuration used to build the system for the
 first time.
 
 ### `modules`
+
 Contains reusable modules organnized into `home-manager` and `system`.
 
 - **driver**: Hardware specific driver.
@@ -28,9 +31,11 @@ Contains reusable modules organnized into `home-manager` and `system`.
 - **system**: Core system modules.
 
 ### `overlays`
+
 Contains Nix overlays.
 
 ## Usage
+
 `sudo nixos-rebuild switch --impure --flake github:Tim-Raphael/nixos#default`
 
 I'm using the --impure flag because the access to a absolute path

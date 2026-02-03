@@ -88,21 +88,17 @@ in
             name = "Tim-Raphael";
             email = "mail@tim-raphael.dev";
           };
-          init = {
-            defaultBranch = "main";
-          };
-          pull = {
-            rebase = true;
-          };
-          core = {
-            editor = "nvim";
-          };
-          push = {
-            default = "current";
+          git = {
+            push = "origin";
+            fetch = [
+              "origin"
+              "upstream"
+            ];
           };
           ui = {
             paginate = "never";
             editor = "nvim";
+            default-command = "log";
           };
         };
       };

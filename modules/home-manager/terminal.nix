@@ -50,8 +50,8 @@ in
 
       # Automatically set JJ_CONFIG based on working directory
       function __jj_config_on_variable_pwd --on-variable PWD
-        if string match -q "$HOME/Documents/work/*" $PWD
-          set -gx JJ_CONFIG "$HOME/Documents/work/.jjconfig.toml"
+        if string match -q "$HOME/wksp/ot*" -- $PWD
+          set -gx JJ_CONFIG "$HOME/wksp/ot/.jjconfig.toml"
         else
           set -e JJ_CONFIG
         end

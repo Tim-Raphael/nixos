@@ -87,4 +87,20 @@
   password = {
     pass.enable = true;
   };
+
+  development = {
+    versionControl = {
+      git.enable = true;
+      jujutsu.enable = true;
+    };
+
+    languages = {
+      rust = {
+        enable = true;
+        lld = true;
+      };
+      markdown.enable = true;
+      python.enable = true;
+    };
+  };
 }

@@ -102,5 +102,9 @@
       web.enable = true;
       markdown.enable = true;
     };
+
+    databases = {
+      postgresql.enable = true;
+    };
   };
 }

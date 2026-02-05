@@ -7,6 +7,88 @@
     };
 
     extraConfigLua = ''
+      -- Abbreviate file path for statusline display
+      -- Hides everything before the git root directory
+      -- Shows the git root and filename folder in full
+      -- Abbreviates all directories in between to a single letter
+      function _G.get_abbreviated_path()
+        -- Wrap in pcall to prevent errors from breaking statusline
+        local success, result = pcall(function()
+          local filepath = vim.fn.expand("%:p")
+          
+          if filepath == "" then
+            return "[No Name]"
+          end
+          
+          -- Find git root by traversing upward with safety limit
+          local git_root_path = nil
+          local current_path = filepath
+          local max_iterations = 50  -- Prevent infinite loops
+          local iterations = 0
+          
+          while current_path ~= "/" and current_path ~= "" and iterations < max_iterations do
+            iterations = iterations + 1
+            
+            local git_dir = current_path .. "/.git"
+            if vim.fn.isdirectory(git_dir) == 1 then
+              git_root_path = current_path
+              break
+            end
+            
+            local parent = vim.fn.fnamemodify(current_path, ":h")
+            
+            -- Break if we're not making progress (stuck at same path)
+            if parent == current_path then
+              break
+            end
+            
+            current_path = parent
+          end
+          
+          -- If not in a git repository, fall back to just the filename
+          if not git_root_path then
+            return vim.fn.expand("%:t")
+          end
+          
+          -- Get the relative path from git root
+          local relative_path = string.sub(filepath, #git_root_path + 2) -- +2 to skip the trailing slash
+          
+          -- Get git root directory name
+          local git_root_name = vim.fn.fnamemodify(git_root_path, ":t")
+          
+          -- Split relative path into components
+          local parts = {}
+          for part in string.gmatch(relative_path, "[^/]+") do
+            table.insert(parts, part)
+          end
+          
+          if #parts == 0 then
+            return git_root_name
+          end
+          
+          -- Build abbreviated path
+          local result = { "./" .. git_root_name }
+          
+          for i, part in ipairs(parts) do
+            if i > #parts - 2 then
+              -- Show only the last component (filename) in full
+              table.insert(result, part)
+            else
+              -- Abbreviate all directories to first character
+              table.insert(result, string.sub(part, 1, 1))
+            end
+          end
+          
+          return table.concat(result, "/")
+        end)
+        
+        -- If any error occurred, return a safe fallback
+        if not success then
+          return vim.fn.expand("%:t")  -- Just show filename
+        end
+        
+        return result
+      end
       -- LSP Progress Tracker
       -- Caches LSP progress state and spinner for statusline display
       -- Uses LspProgress autocmd events to detect when LSP clients are working
@@ -22,7 +104,7 @@
       local function update_spinner()
         _G.lsp_progress.spinner_index = 
           (_G.lsp_progress.spinner_index % #_G.lsp_progress.spinner_frames) + 1
-        vim.cmd('redrawstatus')
+        vim.cmd("redrawstatus")
       end
 
       -- Starts the spinner animation timer if not already running
@@ -31,7 +113,7 @@
           _G.lsp_progress.timer = vim.fn.timer_start(
             80,
             update_spinner,
-            { ['repeat'] = -1 }
+            { ["repeat"] = -1 }
           )
         end
       end
@@ -137,7 +219,7 @@
       local statusline_components = {
         ' %{v:lua.get_mode_display()} ',
         '%{v:lua.get_lsp_progress()} ',
-        '%f ',
+        '%{v:lua.get_abbreviated_path()} ',
         '%m ',
         '%r',
         '%=',

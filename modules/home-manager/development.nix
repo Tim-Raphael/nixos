@@ -188,6 +188,11 @@ in
       home.packages = with pkgs; [ clang ];
     })
 
+    # Databases
+    (mkIf cfg.databases.postgresql.enable {
+      home.packages = with pkgs; [ postgresql ];
+    })
+
     # Dependencies
     (mkIf cfg.deps.protobuf.enable {
       home.packages = with pkgs; [ protobuf ];

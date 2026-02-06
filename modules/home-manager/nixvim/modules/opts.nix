@@ -27,7 +27,7 @@
     signcolumn = "yes";
     # Scroll offset
     scrolloff = 10;
-    colorcolumn = "81";
+    colorcolumn = "81,101";
     wrap = true;
     linebreak = true;
     breakindent = true;

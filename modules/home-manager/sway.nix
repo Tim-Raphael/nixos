@@ -18,8 +18,6 @@ in
     grim
     slurp
     mako # notification system developed by swaywm maintainer
-    shotman # screenshot util
-    gtk4 # toolkit for creating graphical interfaces
     i3status
     waybar
     blueman

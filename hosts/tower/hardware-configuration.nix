@@ -44,10 +44,11 @@
     fsType = "ext4";
   };
 
-  fileSystems."/home/raphael/mnt/christine" = {
-    device = "/dev/disk/by-uuid/ad028a1c-2ae2-4fa6-946e-d14febfe2a2e";
-    fsType = "ext4";
-  };
+  # Rip christine
+  #fileSystems."/home/raphael/mnt/christine" = {
+  #  device = "/dev/disk/by-uuid/ad028a1c-2ae2-4fa6-946e-d14febfe2a2e";
+  #  fsType = "ext4";
+  #};
 
   swapDevices = [ ];
 

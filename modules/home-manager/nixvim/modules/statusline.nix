@@ -234,14 +234,12 @@
     autoCmd = [
       {
         event = [ "LspProgress" ];
-        callback = {
-          __raw = ''
-            function()
-              _G.update_lsp_status()
-              vim.cmd('redrawstatus')
-            end
-          '';
-        };
+        callback.__raw = ''
+          function()
+            _G.update_lsp_status()
+            vim.cmd('redrawstatus')
+          end
+        '';
       }
     ];
   };

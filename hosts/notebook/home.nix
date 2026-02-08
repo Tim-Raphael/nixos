@@ -25,6 +25,7 @@
     ../../modules/home-manager/crypt.nix
     ../../modules/home-manager/kanshi.nix
     ../../modules/home-manager/i3status.nix
+    ../../modules/home-manager/user-dirs.nix
   ];
 
   i3status = {
@@ -69,6 +70,13 @@
     };
     video = {
       vlc.enable = true;
+    };
+  };
+
+  development = {
+    versionControl = {
+      git.enable = true;
+      jujutsu.enable = true;
     };
   };
 }

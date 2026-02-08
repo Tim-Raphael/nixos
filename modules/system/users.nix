@@ -13,6 +13,8 @@
       "adbusers"
       "docker"
       "podman"
+      "input"
+      "uinput"
     ];
     ignoreShellProgramCheck = true;
     shell = pkgs.fish;

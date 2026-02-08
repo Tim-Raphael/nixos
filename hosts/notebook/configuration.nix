@@ -26,6 +26,8 @@
     ../../modules/system/greetd.nix
     ../../modules/system/steam.nix
     ../../modules/system/swap.nix
+    ../../modules/system/opentabletdriver.nix
+
     inputs.home-manager.nixosModules.home-manager
   ];
 

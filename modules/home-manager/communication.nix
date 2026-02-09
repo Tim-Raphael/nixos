@@ -6,6 +6,7 @@
       discord
       thunderbird
       element-desktop
+      mumble
     ];
   };
 }

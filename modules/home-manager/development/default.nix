@@ -10,6 +10,8 @@ let
   cfg = config.development;
 in
 {
+  imports = [ ./opencode.nix ];
+
   options.development = {
     tools = {
       enable = mkEnableOption "Development tools for testing and debugging";

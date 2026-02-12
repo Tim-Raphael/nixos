@@ -16,7 +16,7 @@
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/i3status.nix
     ../../modules/home-manager/terminal.nix
-    ../../modules/home-manager/development.nix
+    ../../modules/home-manager/development
     ../../modules/home-manager/scripts
     ../../modules/home-manager/utils.nix
     ../../modules/home-manager/browser.nix

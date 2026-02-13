@@ -80,30 +80,6 @@
       };
     }
 
-    # Resize
-    {
-      mode = "n";
-      key = "rv";
-      action.__raw = ''
-        function()
-          vim.api.nvim_feedkeys(":vertical resize ", "n", false)
-        end
-      '';
-      options.silent = true;
-      options.desc = "Resize Vertical";
-    }
-    {
-      mode = "n";
-      key = "rh";
-      action.__raw = ''
-        function()
-          vim.api.nvim_feedkeys(":resize ", "n", false)
-        end
-      '';
-      options.silent = true;
-      options.desc = "Resize Horizontal";
-    }
-
     # Tabs
     {
       key = "<C-t>";

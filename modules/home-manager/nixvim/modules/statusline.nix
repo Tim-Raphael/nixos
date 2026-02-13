@@ -92,11 +92,14 @@
       -- LSP Progress Tracker
       -- Caches LSP progress state and spinner for statusline display
       -- Uses LspProgress autocmd events to detect when LSP clients are working
+      -- Tracks individual tokens to handle overlapping operations correctly
       _G.lsp_progress = {
         spinner_index = 1,
         spinner_frames = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" },
         is_active = false,
         timer = nil,
+        -- Track active tokens per client: { [client_id] = { [token] = true } }
+        active_tokens = {},
       }
 
       -- Updates the spinner animation frame and redraws the statusline
@@ -136,29 +139,50 @@
         return " "
       end
 
-      -- Updates the LSP active state by checking all attached clients
+      -- Updates the LSP active state by processing progress notifications
       -- Called from the LspProgress autocmd to cache the state
-      -- Starts or stops the spinner timer based on whether LSP is active
+      -- Tracks individual tokens to handle overlapping operations correctly
+      -- Starts or stops the spinner timer based on whether any LSP is active
       _G.update_lsp_status = function()
-        local has_active = false
-        
-        -- Check all LSP clients attached to the current buffer
+        -- Process all pending progress notifications for all clients
         for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-          -- Iterate through client progress messages
+          -- Initialize token tracking for this client if needed
+          if not _G.lsp_progress.active_tokens[client.id] then
+            _G.lsp_progress.active_tokens[client.id] = {}
+          end
+
+          -- Iterate through client progress messages (consumes them)
           for progress in client.progress do
+            local token = progress.token
             local value = progress.value
-            -- If any progress is not "end", LSP is still working
-            if value and value.kind ~= "end" then
-              has_active = true
-              break
+
+            if token and value then
+              if value.kind == "begin" then
+                _G.lsp_progress.active_tokens[client.id][token] = true
+              elseif value.kind == "end" then
+                _G.lsp_progress.active_tokens[client.id][token] = nil
+              end
             end
           end
-          if has_active then break end
+
+          -- Clean up empty client entries
+          if vim.tbl_isempty(_G.lsp_progress.active_tokens[client.id]) then
+            _G.lsp_progress.active_tokens[client.id] = nil
+          end
         end
-        
+
+        -- Check if any client has active tokens
+        local has_active = false
+        for _, tokens in pairs(_G.lsp_progress.active_tokens) do
+          if not vim.tbl_isempty(tokens) then
+            has_active = true
+            break
+          end
+        end
+
         local was_active = _G.lsp_progress.is_active
         _G.lsp_progress.is_active = has_active
-        
+
         -- Start timer when becoming active, stop when becoming inactive
         if has_active and not was_active then
           start_spinner()
@@ -238,6 +262,19 @@
           function()
             _G.update_lsp_status()
             vim.cmd('redrawstatus')
+          end
+        '';
+      }
+      {
+        event = [ "LspDetach" ];
+        callback.__raw = ''
+          function(args)
+            local client_id = args.data.client_id
+            if client_id and _G.lsp_progress.active_tokens[client_id] then
+              _G.lsp_progress.active_tokens[client_id] = nil
+              _G.update_lsp_status()
+              vim.cmd('redrawstatus')
+            end
           end
         '';
       }

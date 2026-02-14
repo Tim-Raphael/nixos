@@ -26,6 +26,7 @@
     ../../modules/system/ssh.nix
     ../../modules/system/greetd.nix
     ../../modules/system/opentabletdriver.nix
+    ../../modules/system/android.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 

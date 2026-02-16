@@ -100,7 +100,10 @@ in
           ui = {
             paginate = "never";
             editor = "nvim";
-            default-command = "log";
+            default-command = [
+              "log"
+              "--reversed"
+            ];
           };
         };
       };

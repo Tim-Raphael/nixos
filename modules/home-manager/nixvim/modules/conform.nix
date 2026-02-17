@@ -11,7 +11,12 @@
         taplo
         shfmt
         yamlfmt
-        rust-bin.stable."1.92.0".rustfmt
+        (rust-bin.selectLatestNightlyWith (
+          toolchain:
+          toolchain.default.override {
+            extensions = [ "rustfmt" ];
+          }
+        ))
       ]
     );
 

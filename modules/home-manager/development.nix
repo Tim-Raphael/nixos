@@ -1,5 +1,6 @@
 {
   lib,
+  inputs,
   config,
   pkgs,
   ...
@@ -10,7 +11,7 @@ let
   cfg = config.development;
 in
 {
-  imports = [ ./opencode.nix ];
+  imports = [ inputs.opencode.homeModules.default ];
 
   options.development = {
     tools = {

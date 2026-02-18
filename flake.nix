@@ -26,6 +26,12 @@
       url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    opencode = {
+      url = "git+ssh://git@github.com/tim-raphael/opencode";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =

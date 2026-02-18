@@ -239,6 +239,29 @@
         "type": "github"
       }
     },
+    "opencode": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771426834,
+        "narHash": "sha256-DaN3B5XdpiIeRqliM/ON+T1OTCvV5xFcOuqjTm4w1xk=",
+        "ref": "refs/heads/main",
+        "rev": "8e16dd613d2345d6ef59b7fce81557ac6cd5ffcc",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/tim-raphael/opencode"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/tim-raphael/opencode"
+      }
+    },
     "root": {
       "inputs": {
         "fonts": "fonts",
@@ -247,6 +270,7 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
+        "opencode": "opencode",
         "rust-overlay": "rust-overlay"
       }
     },

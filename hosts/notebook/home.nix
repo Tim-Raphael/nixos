@@ -14,7 +14,7 @@
     ../../modules/home-manager/nixvim
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/terminal.nix
-    ../../modules/home-manager/development
+    ../../modules/home-manager/development.nix
     ../../modules/home-manager/scripts
     ../../modules/home-manager/utils.nix
     ../../modules/home-manager/browser.nix

@@ -10,7 +10,7 @@
   imports = [
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/nixvim
-    ../../modules/home-manager/development
+    ../../modules/home-manager/development.nix
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/scripts

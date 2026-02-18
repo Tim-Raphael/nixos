@@ -90,6 +90,8 @@
   };
 
   development = {
+    tools.opencode.enable = true;
+
     versionControl = {
       git.enable = true;
       jujutsu.enable = true;

@@ -36,8 +36,10 @@
           css = [ "biome" ];
           javascript = [ "biome" ];
           javascriptreact = [ "biome" ];
-          typescript = [ "prettierd" ]; # Work
-          typescriptreact = [ "prettierd" ]; # Work
+          typescript = [ "biome" ]; # Work
+          typescriptreact = [ "biome" ]; # Work
+          #typescript = [ "prettierd" ]; # Work
+          #typescriptreact = [ "prettierd" ]; # Work
           nix = [ "nixfmt" ];
           rust = [ "rustfmt" ];
           toml = [ "taplo" ];

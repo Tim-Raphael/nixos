@@ -249,17 +249,21 @@
         ]
       },
       "locked": {
-        "lastModified": 1771439901,
-        "narHash": "sha256-t564kwxRPPn9HIEKVApc0gVr8kGez3cxuUQXgPIJG3I=",
-        "ref": "refs/heads/main",
-        "rev": "b0578463561cbd3cba8040a342e619e52787273e",
-        "revCount": 5,
-        "type": "git",
-        "url": "ssh://git@github.com/tim-raphael/opencode"
+-        "lastModified": 1771426834,
+-        "narHash": "sha256-DaN3B5XdpiIeRqliM/ON+T1OTCvV5xFcOuqjTm4w1xk=",
++        "lastModified": 1771439901,
++        "narHash": "sha256-t564kwxRPPn9HIEKVApc0gVr8kGez3cxuUQXgPIJG3I=",
+         "ref": "refs/heads/main",
+-        "rev": "8e16dd613d2345d6ef59b7fce81557ac6cd5ffcc",
+-        "revCount": 2,
++        "rev": "b0578463561cbd3cba8040a342e619e52787273e",
++        "revCount": 5,
+         "type": "git",
+         "url": "ssh://git@github.com/tim-raphael/opencode"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/tim-raphael/opencode"
+        "path": "/home/raphael/wksp/opencode",
+        "type": "path"
       }
     },
     "root": {

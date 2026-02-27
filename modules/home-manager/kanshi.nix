@@ -18,7 +18,7 @@
       }
 
       {
-        profile.name = "home_docked";
+        profile.name = "home-docked";
         profile.outputs = [
           {
             criteria = "eDP-1";
@@ -27,7 +27,7 @@
             scale = 1.0;
           }
           {
-            criteria = "DP-3";
+            criteria = "DP-5";
             status = "enable";
             mode = "3840x2160@120.000000";
             position = "0,0";

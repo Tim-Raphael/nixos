@@ -199,16 +199,15 @@
   };
 
   systemd.services.kanata-internalKeyboard.serviceConfig = {
+    NoNewPrivileges = true;
+    PrivateTmp = true;
+    ProtectHome = true;
+    ProtectSystem = "strict";
+    Restart = "on-failure";
     SupplementaryGroups = [
       "input"
       "uinput"
     ];
-
-    NoNewPrivileges = true;
-    PrivateTmp = true;
-    ProtectSystem = "strict";
-    ProtectHome = true;
-
     DeviceAllow = [
       "/dev/input/* rw"
       "/dev/uinput rw"

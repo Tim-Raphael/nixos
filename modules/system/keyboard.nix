@@ -23,13 +23,6 @@
 
           "/dev/input/by-id/usb-Cherry_GmbH_CHERRY_Corded_Device-event-if01"
           "/dev/input/by-id/usb-Cherry_GmbH_CHERRY_Corded_Device-event-kbd"
-
-          "/dev/input/by-id/usb-NuPhy_NuPhy_Gem80_42003E000E5359583534332000000000-event-kbd"
-          "/dev/input/by-id/usb-NuPhy_NuPhy_Gem80_42003E000E5359583534332000000000-event-if02"
-          "/dev/input/by-id/usb-NuPhy_NuPhy_Gem80_42003E000E5359583534332000000000-if02-event-kbd"
-
-          "/dev/input/by-id/usb-Nordic_Semiconductor_NuPhy_Gem80_Dongle-event-kbd"
-          "/dev/input/by-id/usb-Nordic_Semiconductor_NuPhy_Gem80_Dongle-if01-event-kbd"
         ];
 
         extraDefCfg = "process-unmapped-keys yes";

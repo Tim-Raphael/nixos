@@ -18,18 +18,19 @@
     ./modules/keymaps.nix
 
     # Plugins
-    ./modules/oil.nix
-    ./modules/treesitter.nix
-    ./modules/telescope.nix
-    ./modules/conform.nix
-    ./modules/indent-o-matic.nix
-    ./modules/statusline.nix
-    ./modules/lsp.nix
     ./modules/blink-cmp.nix
+    ./modules/conform.nix
     ./modules/fugitive.nix
-    ./modules/vimtex.nix
-    ./modules/nvim-surround.nix
     ./modules/goyo.nix
+    ./modules/indent-o-matic.nix
+    ./modules/lsp.nix
+    ./modules/nvim-surround.nix
+    ./modules/oil.nix
+    ./modules/remote-ssh.nix
+    ./modules/statusline.nix
+    ./modules/telescope.nix
+    ./modules/treesitter.nix
+    ./modules/vimtex.nix
   ];
 
   programs.nixvim = {

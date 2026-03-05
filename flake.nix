@@ -32,6 +32,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    ocular.url = "git+ssh://git@github.com/hemisphere-systems/ocular";
   };
 
   outputs =

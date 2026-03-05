@@ -4,6 +4,9 @@
   ...
 }:
 
+let
+  vpn = inputs.ocular.lib.vpn;
+in
 {
   system.stateVersion = "25.05";
 
@@ -27,8 +30,16 @@
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
     ../../modules/system/greetd.nix
+
+    inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  ocular.vpn = {
+    enable = true;
+    peer = vpn.peers.void;
+    privateKeyFile = "/root/wireguard/keys/void.private";
+  };
 
   home-manager = {
     extraSpecialArgs = {

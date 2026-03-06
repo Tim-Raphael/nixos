@@ -20,13 +20,13 @@
     # Plugins
     ./modules/blink-cmp.nix
     ./modules/conform.nix
+    ./modules/distant.nix
     ./modules/fugitive.nix
     ./modules/goyo.nix
     ./modules/indent-o-matic.nix
     ./modules/lsp.nix
     ./modules/nvim-surround.nix
     ./modules/oil.nix
-    ./modules/remote-ssh.nix
     ./modules/statusline.nix
     ./modules/telescope.nix
     ./modules/treesitter.nix

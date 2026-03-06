@@ -18,6 +18,7 @@ in
     tree
     tealdeer
     mosh
+    distant
   ];
 
   programs.alacritty = {

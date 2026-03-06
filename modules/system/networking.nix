@@ -11,7 +11,10 @@
 
   networking.firewall = {
     enable = true;
-    # allowedUDPPorts = [ 8080 3000 ];
+    allowedUDPPorts = [
+      # mosh port
+      30001
+    ];
     # allowedTCPPorts = [ 8080 3000 ];
   };
 

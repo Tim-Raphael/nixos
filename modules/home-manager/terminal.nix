@@ -17,6 +17,7 @@ in
     sshfs
     tree
     tealdeer
+    mosh
   ];
 
   programs.alacritty = {

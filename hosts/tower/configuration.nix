@@ -4,6 +4,9 @@
   ...
 }:
 
+let
+  vpn = inputs.ocular.lib.vpn;
+in
 {
   system.stateVersion = "25.05";
 
@@ -28,8 +31,16 @@
     ../../modules/system/opentabletdriver.nix
     ../../modules/system/android.nix
     ../../modules/system/desktop-environment.nix
+
+    inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  ocular.vpn = {
+    enable = true;
+    peer = vpn.peers.lumen;
+    privateKeyFile = "/root/wireguard/keys/lumen.private";
+  };
 
   desktopEnvironments.gnome.enable = true;
 

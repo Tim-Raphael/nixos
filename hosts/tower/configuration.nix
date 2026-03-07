@@ -27,8 +27,11 @@
     ../../modules/system/greetd.nix
     ../../modules/system/opentabletdriver.nix
     ../../modules/system/android.nix
+    ../../modules/system/desktop-environment.nix
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  desktopEnvironments.gnome.enable = true;
 
   home-manager = {
     extraSpecialArgs = {

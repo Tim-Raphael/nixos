@@ -20,7 +20,6 @@
     # Plugins
     ./modules/blink-cmp.nix
     ./modules/conform.nix
-    ./modules/distant.nix
     ./modules/fugitive.nix
     ./modules/goyo.nix
     ./modules/indent-o-matic.nix

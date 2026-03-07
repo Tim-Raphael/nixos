@@ -102,6 +102,7 @@
         enable = true;
         lld = true;
       };
+      c.enable = true;
       markdown.enable = true;
       python.enable = true;
     };

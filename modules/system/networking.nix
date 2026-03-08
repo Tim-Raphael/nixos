@@ -13,7 +13,7 @@
     enable = true;
     allowedUDPPorts = [
       # mosh port
-      30001
+      60001
     ];
     # allowedTCPPorts = [ 8080 3000 ];
   };

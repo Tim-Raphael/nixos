@@ -16,8 +16,7 @@
             enable = true;
             settings = {
               base_dirs = [
-                "~/nixos"
-                "~/Documents"
+                "~/wksp"
               ];
               order_by = "asc";
               search_by = "title";

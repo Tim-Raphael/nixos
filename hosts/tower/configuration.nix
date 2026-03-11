@@ -60,6 +60,7 @@ in
     backupFileExtension = "backup";
     users = {
       "raphael" = import ./home.nix;
+      "remote" = import ./home-remote.nix;
     };
   };
 }

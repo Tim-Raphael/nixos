@@ -21,6 +21,7 @@ in
     ../../modules/system/keyboard.nix
     ../../modules/system/media.nix
     ../../modules/system/ssh.nix
+    ../../modules/system/remote-user.nix
     ../../modules/system/android.nix
     ../../modules/system/dconf.nix
     ../../modules/system/steam.nix
@@ -40,6 +41,13 @@ in
     enable = true;
     peer = vpn.peers.lumen;
     privateKeyFile = "/root/wireguard/keys/lumen.private";
+  };
+
+  remoteUser = {
+    enable = true;
+    authorizedKeys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJAxTlPKWtC6DN8Ii81peVUT4SyKvWGO7smSgK/UCjUO remote"
+    ];
   };
 
   desktopEnvironments.gnome.enable = true;

@@ -98,12 +98,36 @@ in
               "upstream"
             ];
           };
+          merge-tools.vimdiff = {
+            program = "nvim";
+            merge-args = [
+              "-d"
+              "$output"
+              "$left"
+              "$base"
+              "$right"
+            ];
+          };
+          remote = {
+            upstream.auto-track-bookmarks = "main";
+            origin.auto-track-bookmarks = "*";
+          };
           ui = {
             paginate = "never";
             editor = "nvim";
             default-command = [
               "log"
               "--reversed"
+            ];
+          };
+          aliases = {
+            sync = [
+              "util"
+              "exec"
+              "--"
+              "sh"
+              "-c"
+              "jj git fetch && jj rebase --skip-emptied -s 'roots(trunk()..mutable())' -d 'trunk()'"
             ];
           };
         };

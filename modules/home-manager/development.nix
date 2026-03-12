@@ -127,7 +127,7 @@ in
               "--"
               "sh"
               "-c"
-              "jj git fetch && jj rebase --skip-emptied -s 'roots(trunk()..mutable())' -d 'trunk()'"
+              "jj git fetch && jj rebase --skip-emptied -s 'roots(trunk()..mutable())' -d main"
             ];
           };
         };

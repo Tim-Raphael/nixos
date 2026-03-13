@@ -16,8 +16,14 @@
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/user-dirs.nix
-    ../../modules/home-manager/crypt.nix
   ];
+
+  programs.gpg = {
+    enable = true;
+    settings = {
+      pinentry-mode = "loopback";
+    };
+  };
 
   development = {
     tools = {

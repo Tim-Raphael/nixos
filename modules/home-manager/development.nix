@@ -108,10 +108,6 @@ in
               "$right"
             ];
           };
-          remote = {
-            upstream.auto-track-bookmarks = "main";
-            origin.auto-track-bookmarks = "*";
-          };
           ui = {
             paginate = "never";
             editor = "nvim";
@@ -127,7 +123,7 @@ in
               "--"
               "sh"
               "-c"
-              "jj git fetch && jj rebase --skip-emptied -s 'roots(trunk()..mutable())' -d main"
+              "jj git fetch --remote main@upstream; jj b set main -r main@upstream; jj rebase --skip-emptied -s 'roots(mutable())' -d main@upstream"
             ];
           };
         };

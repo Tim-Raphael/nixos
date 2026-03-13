@@ -31,10 +31,13 @@ in
     ../../modules/system/opentabletdriver.nix
     ../../modules/system/android.nix
     ../../modules/system/desktop-environment.nix
+    ../../modules/system/graphics.nix
 
     inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  graphics.nvidia.enable = true;
 
   ocular.vpn = {
     enable = true;

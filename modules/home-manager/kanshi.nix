@@ -40,10 +40,10 @@
         profile.name = "home";
         profile.outputs = [
           {
-            criteria = "DP-1";
+            criteria = "DP-4";
             status = "enable";
             mode = "3840x2160@120.000000Hz";
-            position = "1920,0";
+            position = "0,0";
             scale = 1.0;
           }
         ];

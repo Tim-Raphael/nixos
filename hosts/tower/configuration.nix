@@ -48,7 +48,8 @@ in
   users.remote = {
     enable = true;
     authorizedKeys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJAxTlPKWtC6DN8Ii81peVUT4SyKvWGO7smSgK/UCjUO remote"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJAxTlPKWtC6DN8Ii81peVUT4SyKvWGO7smSgK/UCjUO remote" # Work
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDoLckOQv/UQiFQqYn0Q2A4uoUXS1+O+0DBq1LfftJO/ raphael@nixos" # Testing
     ];
   };
 

@@ -1,5 +1,5 @@
 {
-  inputs,
+  pkgs,
   ...
 }:
 
@@ -16,6 +16,10 @@
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/user-dirs.nix
+  ];
+
+  home.packages = with pkgs; [
+    unison
   ];
 
   programs.gpg = {

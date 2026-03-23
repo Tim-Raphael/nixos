@@ -15,7 +15,6 @@
       # mosh port
       60001
     ];
-    # allowedTCPPorts = [ 8080 3000 ];
   };
 
   # Optional proxy configuration

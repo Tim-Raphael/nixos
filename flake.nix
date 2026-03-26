@@ -33,6 +33,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ocular.url = "git+ssh://git@github.com/hemisphere-systems/ocular";
   };
 
@@ -55,6 +60,7 @@
               nixpkgs = {
                 overlays = [
                   (import ./overlays/unstable.nix { inherit inputs; })
+                  inputs.nur.overlays.default
                   inputs.fonts.overlays.default
                   rust-overlay.overlays.default
                 ];

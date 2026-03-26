@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    firefox
-  ];
-
   programs.qutebrowser = {
     enable = true;
 
@@ -283,20 +279,19 @@
       statusbar.show = "always";
     };
   };
-
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "application/x-extension-htm" = "org.qutebrowser.qutebrowser.desktop";
-      "application/x-extension-html" = "org.qutebrowser.qutebrowser.desktop";
-      "application/x-extension-shtml" = "org.qutebrowser.qutebrowser.desktop";
-      "application/x-extension-xht" = "org.qutebrowser.qutebrowser.desktop";
-      "application/x-extension-xhtml" = "org.qutebrowser.qutebrowser.desktop";
-      "application/xhtml+xml" = "org.qutebrowser.qutebrowser.desktop";
-      "text/html" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/chrome" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+      "application/x-extension-htm" = "firefox.desktop";
+      "application/x-extension-html" = "firefox.desktop";
+      "application/x-extension-shtml" = "firefox.desktop";
+      "application/x-extension-xht" = "firefox.desktop";
+      "application/x-extension-xhtml" = "firefox.desktop";
+      "application/xhtml+xml" = "firefox.desktop";
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/chrome" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
     };
   };
 
@@ -321,5 +316,119 @@
       # LanguageTool
       { id = "oldceeleldhonbafppcapldpdifcinji"; }
     ];
+  };
+
+  programs.firefox = {
+    enable = true;
+
+    profiles.default = {
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        # Settings
+        #
+        # map <c-S-l> nextTab
+        # map <c-S-h> previousTab
+        #
+        # map <Space>g Vomnibar.activateInNewTab
+        # map <Space>f Vomnibar.activateTabSelection
+        # map <Space>p Vomnibar.activateBookmarks
+        #
+        # map J scrollPageDown
+        # map K scrollPageUp
+        vimium
+        ublock-origin
+        darkreader
+      ];
+
+      settings = {
+        "ui.prefersReducedMotion" = 1;
+        "toolkit.cosmeticAnimations.enabled" = false;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "browser.tabs.unloadOnLowMemory" = true;
+        "browser.startup.page" = 3;
+        "browser.compactmode.show" = true;
+        "browser.uidensity" = 1;
+        "browser.tabs.animate" = false;
+        "browser.panorama.animate_zoom" = false;
+        "browser.search.defaultenginename" = "DuckDuckGo";
+        "browser.search.selectedEngine" = "DuckDuckGo";
+      };
+
+      userChrome = ''
+        :root {
+          --bg:      #${config.colorScheme.palette.base00};
+          --bg-alt:  #${config.colorScheme.palette.base01};
+          --border:  #${config.colorScheme.palette.base02};
+          --fg:      #${config.colorScheme.palette.base05};
+          --accent:  #${config.colorScheme.palette.base0B};
+        }
+
+        /* Style tab bar instead of hiding it */
+        #TabsToolbar {
+          background: var(--bg) !important;
+          border-bottom: 1px solid var(--border) !important;
+        }
+
+        .tabbrowser-tab {
+          color: var(--fg) !important;
+        }
+
+        .tabbrowser-tab[selected] .tab-label {
+          color: var(--accent) !important;
+        }
+
+        .tab-background {
+          background: var(--bg) !important;
+          border: none !important;
+          box-shadow: none !important;
+        }
+
+        .tabbrowser-tab[selected] .tab-background {
+          background: var(--bg-alt) !important;
+        }
+
+        /* Hide sidebar header */
+        #sidebar-header { display: none !important; }
+
+        /* Slim navbar */
+        #nav-bar {
+          background: var(--bg) !important;
+          border-bottom: 1px solid var(--border) !important;
+          box-shadow: none !important;
+          padding: 2px 4px !important;
+        }
+
+        /* URL bar */
+        #urlbar {
+          background: var(--bg-alt) !important;
+          color: var(--fg) !important;
+          border: 1px solid var(--border) !important;
+          border-radius: 4px !important;
+        }
+        #urlbar:focus-within {
+          border-color: var(--accent) !important;
+        }
+
+        /* Hide toolbar icons you don't need */
+        #back-button,
+        #forward-button,
+        #stop-reload-button,
+        #home-button,
+        #fxa-toolbar-menu-button,
+        #unified-extensions-button {
+          display: none !important;
+        }
+
+        /* Menubar (if shown) */
+        #toolbar-menubar {
+          background: var(--bg) !important;
+        }
+
+        /* Disable all animations */
+        *, *::before, *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+      '';
+    };
   };
 }

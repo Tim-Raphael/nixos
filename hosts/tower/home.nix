@@ -17,7 +17,7 @@
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/scripts
     ../../modules/home-manager/utils.nix
-    ../../modules/home-manager/browser.nix
+    ../../modules/home-manager/browser
     ../../modules/home-manager/communication.nix
     ../../modules/home-manager/multimedia.nix
     ../../modules/home-manager/gaming.nix

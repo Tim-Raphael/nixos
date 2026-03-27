@@ -101,32 +101,32 @@ in
             background = "#${colorScheme.base00}";
 
             focused = {
-              background = "#${colorScheme.base07}";
-              border = "#${colorScheme.base07}";
+              background = "#${colorScheme.base0B}";
+              border = "#${colorScheme.base0B}";
               childBorder = "#${colorScheme.base0B}";
               indicator = "#${colorScheme.base08}";
               text = "#${colorScheme.base00}";
             };
 
             focusedInactive = {
-              background = "#${colorScheme.base00}";
-              border = "#${colorScheme.base00}";
+              background = "#${colorScheme.base03}";
+              border = "#${colorScheme.base03}";
               childBorder = "#${colorScheme.base03}";
               indicator = "#${colorScheme.base08}";
               text = "#${colorScheme.base07}";
             };
 
             placeholder = {
-              background = "#${colorScheme.base00}";
-              border = "#${colorScheme.base00}";
+              background = "#${colorScheme.base03}";
+              border = "#${colorScheme.base03}";
               childBorder = "#${colorScheme.base03}";
               indicator = "#${colorScheme.base08}";
               text = "#${colorScheme.base07}";
             };
 
             unfocused = {
-              background = "#${colorScheme.base00}";
-              border = "#${colorScheme.base00}";
+              background = "#${colorScheme.base03}";
+              border = "#${colorScheme.base03}";
               childBorder = "#${colorScheme.base03}";
               indicator = "#${colorScheme.base08}";
               text = "#${colorScheme.base07}";

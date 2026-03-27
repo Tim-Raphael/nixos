@@ -154,8 +154,8 @@ in
         };
         includes = [
           {
-            condition = "gitdir:~/Documents/work/";
-            path = "~/Documents/work/.gitconfig";
+            condition = "gitdir:~/wksp/ot/";
+            path = "~/wksp/ot/.gitconfig";
           }
         ];
       };

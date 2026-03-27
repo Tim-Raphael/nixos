@@ -322,90 +322,34 @@
     enable = true;
 
     profiles.default = {
+      search = {
+        default = "ddg";
+        force = true;
+      };
+
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-        # Settings
-        #
-        # map <c-S-l> nextTab
-        # map <c-S-h> previousTab
-        #
-        # map <Space>g Vomnibar.activateInNewTab
-        # map <Space>f Vomnibar.activateTabSelection
-        # map <Space>p Vomnibar.activateBookmarks
-        #
-        # map J scrollPageDown
-        # map K scrollPageUp
         vimium
         ublock-origin
-        darkreader
       ];
 
       settings = {
-        "ui.prefersReducedMotion" = 1;
-        "toolkit.cosmeticAnimations.enabled" = false;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "browser.tabs.unloadOnLowMemory" = true;
-        "browser.startup.page" = 3;
-        "browser.compactmode.show" = true;
-        "browser.uidensity" = 1;
-        "browser.tabs.animate" = false;
-        "browser.panorama.animate_zoom" = false;
-        "browser.search.defaultenginename" = "DuckDuckGo";
-        "browser.search.selectedEngine" = "DuckDuckGo";
       };
 
       userChrome = ''
         :root {
-          --bg:      #${config.colorScheme.palette.base00};
-          --bg-alt:  #${config.colorScheme.palette.base01};
-          --border:  #${config.colorScheme.palette.base02};
-          --fg:      #${config.colorScheme.palette.base05};
-          --accent:  #${config.colorScheme.palette.base0B};
+          --tab-border-radius: 0px;
         }
 
-        /* Style tab bar instead of hiding it */
-        #TabsToolbar {
-          background: var(--bg) !important;
-          border-bottom: 1px solid var(--border) !important;
-        }
-
-        .tabbrowser-tab {
-          color: var(--fg) !important;
-        }
-
-        .tabbrowser-tab[selected] .tab-label {
-          color: var(--accent) !important;
-        }
-
-        .tab-background {
-          background: var(--bg) !important;
-          border: none !important;
-          box-shadow: none !important;
-        }
-
-        .tabbrowser-tab[selected] .tab-background {
-          background: var(--bg-alt) !important;
-        }
-
-        /* Hide sidebar header */
-        #sidebar-header { display: none !important; }
-
-        /* Slim navbar */
         #nav-bar {
-          background: var(--bg) !important;
-          border-bottom: 1px solid var(--border) !important;
-          box-shadow: none !important;
-          padding: 2px 4px !important;
+          position: fixed !important;
+          bottom: 0 !important;
+          width: 100% !important;
+          height: 42px !important;
         }
 
-        /* URL bar */
-        #urlbar {
-          background: var(--bg-alt) !important;
-          color: var(--fg) !important;
-          border: 1px solid var(--border) !important;
-          border-radius: 4px !important;
-        }
-        #urlbar:focus-within {
-          border-color: var(--accent) !important;
+        #browser {
+          margin-bottom: 42px !important;
         }
 
         /* Hide toolbar icons you don't need */
@@ -414,21 +358,88 @@
         #stop-reload-button,
         #home-button,
         #fxa-toolbar-menu-button,
-        #unified-extensions-button {
+        #unified-extensions-button, 
+        #firefox-view-button,
+        #alltabs-button, 
+        #tabs-newtab-button,
+        #urlbar-searchmode-switcher {
           display: none !important;
         }
 
-        /* Menubar (if shown) */
-        #toolbar-menubar {
-          background: var(--bg) !important;
-        }
-
-        /* Disable all animations */
         *, *::before, *::after {
           animation: none !important;
           transition: none !important;
         }
       '';
     };
+  };
+
+  # Unset all default keybindings
+  home.file.".mozilla/firefox/default/customKeys.json".text = builtins.toJSON {
+    "key_newNavigatorTab" = { };
+    "key_newNavigator" = { };
+    "key_privatebrowsing" = { };
+    "focusURLBar" = { };
+    "openFileKb" = { };
+    "key_close" = { };
+    "key_closeWindow" = { };
+    "key_savePage" = { };
+    "printKb" = { };
+    "key_quitApplication" = { };
+    "key_undo" = { };
+    "key_redo" = { };
+    "key_cut" = { };
+    "key_copy" = { };
+    "key_paste" = { };
+    "key_delete" = { };
+    "key_find" = { };
+    "key_selectAll" = { };
+    "key_findAgain" = { };
+    "key_switchTextDirection" = { };
+    "key_gotoHistory" = { };
+    "viewBookmarksSidebarKb" = { };
+    "viewGenaiChatSidebarKb" = { };
+    "key_fullZoomEnlarge" = { };
+    "key_fullZoomReduce" = { };
+    "key_fullZoomReset" = { };
+    "key_enterFullScreen" = { };
+    "key_toggleReaderMode" = { };
+    "key_showAllTabs" = { };
+    "showAllHistoryKb" = { };
+    "key_sanitize" = { };
+    "key_restoreLastClosedTabOrWindowOrSession" = { };
+    "key_undoCloseWindow" = { };
+    "manBookmarkKb" = { };
+    "bookmarkAllTabsKb" = { };
+    "addBookmarkAsKb" = { };
+    "key_openDownloads" = { };
+    "key_openAddons" = { };
+    "key_viewInfo" = { };
+    "key_toggleToolbox" = { };
+    "key_aboutProcesses" = { };
+    "key_browserToolbox" = { };
+    "key_browserConsole" = { };
+    "key_responsiveDesignMode" = { };
+    "key_viewSource" = { };
+    "key_inspector" = { };
+    "key_toggleToolboxF12" = {
+      "keycode" = "VK_F12";
+    };
+    "key_accessibility" = { };
+    "key_dom" = { };
+    "key_storage" = { };
+    "key_performance" = { };
+    "key_styleeditor" = { };
+    "key_netmonitor" = { };
+    "key_jsdebugger" = { };
+    "key_webconsole" = { };
+    "goBackKb" = { };
+    "goForwardKb" = { };
+    "goHome" = { };
+    "key_reload" = { };
+    "key_reload2" = { };
+    "key_reload_skip_cache" = { };
+    "key_stop" = { };
+    "key_reload_skip_cache2" = { };
   };
 }

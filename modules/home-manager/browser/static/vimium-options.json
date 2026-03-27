@@ -1,0 +1,6 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here\n\nmap d removeTab\nmap u restoreTab\nmap <c-H> previousTab\nmap <c-L> nextTab\nmap <c-t> Vomnibar.activateInNewTab\n\nmap <Space>g Vomnibar.activate\nmap <Space>f Vomnibar.activateTabSelection\nmap <Space>p Vomnibar.activateBookmarks\n\nmap J scrollPageDown\nmap K scrollPageUp",
+  "scrollStepSize": 100,
+  "settingsVersion": "2.4.2",
+  "smoothScroll": false
+}

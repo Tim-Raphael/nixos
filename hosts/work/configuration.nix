@@ -35,6 +35,8 @@ in
     inputs.home-manager.nixosModules.home-manager
   ];
 
+  programs.wireshark.enable = true;
+
   ocular.vpn = {
     enable = true;
     peer = vpn.peers.void;

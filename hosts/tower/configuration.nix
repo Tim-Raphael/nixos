@@ -37,6 +37,8 @@ in
     inputs.home-manager.nixosModules.home-manager
   ];
 
+  programs.wireshark.enable = true;
+
   graphics.nvidia.enable = true;
 
   ocular.vpn = {

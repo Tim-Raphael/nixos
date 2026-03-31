@@ -53,6 +53,7 @@ in
           "docker"
           "podman"
           "input"
+          "wireshark"
           "uinput"
         ];
         ignoreShellProgramCheck = true;

@@ -30,6 +30,7 @@ in
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
     ../../modules/system/greetd.nix
+    ../../modules/system/swap.nix
 
     inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager

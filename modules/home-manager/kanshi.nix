@@ -27,7 +27,7 @@
             scale = 1.0;
           }
           {
-            criteria = "DP-5";
+            criteria = "DP-6";
             status = "enable";
             mode = "3840x2160@120.000000";
             position = "0,0";

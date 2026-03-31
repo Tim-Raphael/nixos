@@ -338,18 +338,46 @@
 
       userChrome = ''
         :root {
-          --tab-border-radius: 0px;
+          --color-bg: #${config.colorScheme.palette.base00};
+          --color-fg: #${config.colorScheme.palette.base07};
+          --color-hg: #${config.colorScheme.palette.base0B};
+
+          --toolbar-height: 42px;
+
+          --tab-border-radius: 0px !important;
+          --tab-block-margin: 0px !important; 
+          --tab-selected-bgcolor: var(--color-hg) !important;
+          --tab-selected-textcolor: var(--color-bg) !important;
+        }
+
+        :root {
+          &:where([customtitlebar]) {
+            --toolbox-bgcolor: var(--color-bg) !important;
+            --toolbox-textcolor: var(--color-fg) !important;
+            --toolbox-bgcolor-inactive: var(--color-bg) !important;
+            --toolbox-textcolor-inactive: var(--color-fg) !important;
+          }
+        }
+
+        #tabbrowser-tabs {
+          &[orient="horizontal"] {
+            --tab-max-width: none !important;
+          }
         }
 
         #nav-bar {
           position: fixed !important;
           bottom: 0 !important;
           width: 100% !important;
-          height: 42px !important;
+          height: var(--toolbar-height) !important;
+        }
+
+        #notification-popup {
+          margin-top: -300px !important;
         }
 
         #browser {
-          margin-bottom: 42px !important;
+          margin-bottom: var(--toolbar-height) !important;
         }
 
         /* Hide toolbar icons you don't need */

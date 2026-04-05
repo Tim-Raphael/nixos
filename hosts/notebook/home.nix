@@ -79,4 +79,8 @@
       jujutsu.enable = true;
     };
   };
+
+  password = {
+    pass.enable = true;
+  };
 }

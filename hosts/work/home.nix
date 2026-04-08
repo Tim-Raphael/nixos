@@ -28,6 +28,7 @@
   i3status = {
     enable = true;
     system = {
+      memory.enable = true;
       cpu = {
         usage.enable = true;
         temperature.enable = true;
@@ -42,16 +43,6 @@
     };
     audio = {
       volume.enable = true;
-    };
-    network = {
-      wireless = {
-        enable = true;
-        interface = "wlp2s0";
-      };
-      ethernet = {
-        enable = true;
-        interface = "enp1s0f0";
-      };
     };
     power = {
       battery.enable = true;

@@ -21,6 +21,8 @@ in
       disk = {
         root.enable = mkEnableOption "root filesystem usage display";
       };
+
+      memory.enable = mkEnableOption "Display memory usage";
     };
 
     time = {
@@ -130,23 +132,34 @@ in
           };
         })
 
+        (mkIf cfg.system.memory.enable {
+          "memory" = {
+            position = 4;
+            settings = {
+              format = "MEM: %used";
+              threshold_degraded = "10%";
+              threshold_critical = "5%";
+            };
+          };
+        })
+
         (mkIf cfg.time.date.enable {
           "tztime date" = {
-            position = 4;
+            position = 5;
             settings.format = "DATE: %Y-%m-%d";
           };
         })
 
         (mkIf cfg.time.clock.enable {
           "tztime local2" = {
-            position = 5;
+            position = 6;
             settings.format = "TIME: %H:%M:%S";
           };
         })
 
         (mkIf cfg.audio.volume.enable {
           "volume master" = {
-            position = 6;
+            position = 7;
             settings = {
               format = "VOL: %volume";
               device = "default";
@@ -158,7 +171,7 @@ in
 
         (mkIf cfg.power.battery.enable {
           "battery 0" = {
-            position = 7;
+            position = 8;
             settings = {
               format = "BAT: %percentage %remaining";
               format_down = "";
@@ -174,7 +187,7 @@ in
 
         (mkIf cfg.network.wireless.enable {
           "wireless ${cfg.network.wireless.interface}" = {
-            position = 8;
+            position = 9;
             settings = {
               format_up = "WLS:%quality at %essid, %ip";
               format_down = "";
@@ -184,7 +197,7 @@ in
 
         (mkIf cfg.network.ethernet.enable {
           "ethernet ${cfg.network.ethernet.interface}" = {
-            position = 9;
+            position = 10;
             settings = {
               format_up = "ETH: %ip";
               format_down = "";

@@ -9,8 +9,17 @@
 let
   colorScheme = config.colorScheme.palette;
   nixColorsLib = inputs.nix-colors.lib.contrib { inherit pkgs; };
+
+  ws1 = "1:terminal";
+  ws2 = "2:editor";
+  ws3 = "3:browser";
+  ws4 = "4:messages";
+  ws5 = "5:misc";
 in
 {
+  imports = [ ./i3status.nix ];
+}
+// {
   home.packages = with pkgs; [
     swayidle
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
@@ -67,9 +76,23 @@ in
 
           keybindings = lib.mkOptionDefault {
             "${modifier}+Escape" = "exec swaylock";
+
             "${modifier}+Shift+s" = "exec grim -g \"$(slurp)\" - | wl-copy";
+
             "${modifier}+d" =
               "exec dmenu-wl_run -m $(swaymsg -t get_outputs | jq -r 'map(.focused) | index(true)') -fn '${config.fonts.systemFont.main.name}' -nb '#${colorScheme.base00}' -nf '#${config.colorScheme.palette.base07}' -sb '#${config.colorScheme.palette.base0B}' -sf '#${config.colorScheme.palette.base00}'";
+
+            "${modifier}+1" = "workspace ${ws1}";
+            "${modifier}+2" = "workspace ${ws2}";
+            "${modifier}+3" = "workspace ${ws3}";
+            "${modifier}+4" = "workspace ${ws4}";
+            "${modifier}+5" = "workspace ${ws5}";
+
+            "${modifier}+Shift+1" = "move container to workspace ${ws1}";
+            "${modifier}+Shift+2" = "move container to workspace ${ws2}";
+            "${modifier}+Shift+3" = "move container to workspace ${ws3}";
+            "${modifier}+Shift+4" = "move container to workspace ${ws4}";
+            "${modifier}+Shift+5" = "move container to workspace ${ws5}";
           };
 
           fonts = {
@@ -150,6 +173,11 @@ in
               # with sad smileys (heulis).
               trayOutput = "none";
 
+              extraConfig = ''
+                strip_workspace_numbers no
+                separator_symbol " :: "
+              '';
+
               fonts = {
                 names = [ "${config.fonts.systemFont.main.name}" ];
                 style = "Regular";
@@ -163,8 +191,8 @@ in
                 focusedStatusline = "#${colorScheme.base07}";
                 statusline = "#${colorScheme.base07}";
 
-                focusedSeparator = "#${colorScheme.base07}";
-                separator = "#${colorScheme.base07}";
+                focusedSeparator = "#${colorScheme.base04}";
+                separator = "#${colorScheme.base04}";
 
                 urgentWorkspace = {
                   background = "#${colorScheme.base08}";

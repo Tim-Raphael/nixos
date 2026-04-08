@@ -373,7 +373,7 @@
         }
 
         #notification-popup {
-          margin-top: -300px !important;
+          margin-top: -600px !important;
         }
 
         #browser {

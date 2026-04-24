@@ -18,6 +18,7 @@ in
     tree
     tealdeer
     mosh
+    pay-respects
   ];
 
   programs.alacritty = {
@@ -60,6 +61,9 @@ in
 
       # Run once on shell startup
       __jj_config_on_variable_pwd
+
+      # Init pay-respects
+      pay-respects fish | source
     '';
   };
 }

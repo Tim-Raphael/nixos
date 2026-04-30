@@ -105,7 +105,10 @@ in
     })
 
     (mkIf cfg.office.notes.enable {
-      home.packages = with pkgs; [ obsidian ];
+      home.packages = with pkgs; [
+        obsidian
+        xournalpp
+      ];
     })
 
     (mkIf cfg.office.pdf.enable {

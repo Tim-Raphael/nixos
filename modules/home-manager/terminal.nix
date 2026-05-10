@@ -19,6 +19,7 @@ in
     tealdeer
     mosh
     pay-respects
+    nix-search
   ];
 
   programs.alacritty = {

@@ -32,6 +32,8 @@
     linebreak = true;
     breakindent = true;
     showbreak = "ͱ";
+    spell = true;
+    spelllang = "en_us";
     # Skip intro message
     shortmess = "ltToOCFI";
     # Found out, that this plays nice with darkmode themes, but not the other

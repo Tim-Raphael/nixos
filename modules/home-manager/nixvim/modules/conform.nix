@@ -10,7 +10,9 @@
         nixfmt-rfc-style
         taplo
         shfmt
-        yamlfmt
+        # Optional but useful for dictionary/spell completion docs.
+        wordnet
+        #yamlfmt
         (rust-bin.selectLatestNightlyWith (
           toolchain:
           toolchain.default.override {

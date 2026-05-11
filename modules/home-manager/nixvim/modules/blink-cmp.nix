@@ -11,6 +11,25 @@
       enable = true;
       settings = {
         keymap.preset = "enter";
+
+        sources = {
+          default = [
+            "lsp"
+            "path"
+            "snippets"
+            "buffer"
+            "spell"
+          ];
+
+          providers = {
+            spell = {
+              module = "blink-cmp-spell";
+              name = "Spell";
+              score_offset = 100;
+            };
+          };
+        };
+
         completion = {
           list.selection = {
             preselect = true;

@@ -14,7 +14,14 @@ in
 
     system = {
       cpu = {
-        temperature.enable = mkEnableOption "CPU temperature display";
+        temperature = {
+          enable = mkEnableOption "CPU temperature display";
+          path = mkOption {
+            type = types.nullOr types.str;
+            default = null;
+            description = "Path to CPU temperature sensor input file";
+          };
+        };
         usage.enable = mkEnableOption "CPU usage display";
       };
 
@@ -114,7 +121,12 @@ in
         (mkIf cfg.system.cpu.temperature.enable {
           "cpu_temperature 0" = {
             position = 1;
-            settings.format = "TEMP: %degrees°C";
+            settings = {
+              format = "TEMP: %degrees°C";
+            }
+            // optionalAttrs (cfg.system.cpu.temperature.path != null) {
+              path = cfg.system.cpu.temperature.path;
+            };
           };
         })
 

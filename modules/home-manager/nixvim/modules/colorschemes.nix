@@ -54,7 +54,9 @@ in
         hi @punctuation.delimiter   guifg=#${colorScheme.base0F} guibg=NONE gui=NONE guisp=NONE
         hi @punctuation.bracket     guifg=#${colorScheme.base05} guibg=NONE gui=NONE guisp=NONE
 
-        " Comments
+        " Comments (slightly dimmer)
+        hi Comment                  guifg=#${colorScheme.base03} guibg=NONE gui=NONE guisp=NONE
+        hi @comment                 guifg=#${colorScheme.base03} guibg=NONE gui=NONE guisp=NONE
         hi @comment.documentation   guifg=#${colorScheme.base03} guibg=NONE gui=italic guisp=NONE
 
         " Strings

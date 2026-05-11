@@ -34,11 +34,15 @@
     system = {
       cpu = {
         usage.enable = true;
-        temperature.enable = true;
+        temperature = {
+          enable = true;
+          path = "/sys/class/hwmon/hwmon1/temp1_input";
+        };
       };
       disk = {
         root.enable = true;
       };
+      memory.enable = true;
     };
 
     time = {
@@ -53,11 +57,11 @@
     network = {
       wireless = {
         enable = true;
-        interface = "wlp7s0";
+        interface = "wlp12s0";
       };
       ethernet = {
         enable = true;
-        interface = "enp8s0";
+        interface = "eno1";
       };
     };
   };

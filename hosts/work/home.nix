@@ -62,6 +62,7 @@
       obs.enable = true;
     };
     audio = {
+      noise.enable = true;
       effects.enable = true;
     };
     graphics = {

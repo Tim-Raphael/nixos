@@ -43,6 +43,7 @@ in
     audio = {
       enable = mkEnableOption "audio tools";
 
+      noise.enable = mkEnableOption "sox for noise generation (sox -n -d synth pinknoise lowpass 1000 vol 1)";
       effects.enable = mkEnableOption "audio effects processing (EasyEffects)";
     };
   };
@@ -146,6 +147,10 @@ in
     })
 
     # Audio tools
+    (mkIf cfg.audio.noise.enable {
+      home.packages = with pkgs; [ sox ];
+    })
+
     (mkIf cfg.audio.effects.enable {
       home.packages = with pkgs; [ easyeffects ];
     })

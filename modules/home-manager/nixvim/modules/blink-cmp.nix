@@ -3,7 +3,6 @@
 {
   programs.nixvim.plugins = {
     blink-cmp-dictionary.enable = true;
-    blink-cmp-spell.enable = true;
     # TODO: Lazylaod when opening a .tex file.
     blink-cmp-latex.enable = true;
 
@@ -18,16 +17,7 @@
             "path"
             "snippets"
             "buffer"
-            "spell"
           ];
-
-          providers = {
-            spell = {
-              module = "blink-cmp-spell";
-              name = "Spell";
-              score_offset = 100;
-            };
-          };
         };
 
         completion = {

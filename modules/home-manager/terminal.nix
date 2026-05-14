@@ -45,21 +45,17 @@ in
       set fish_greeting
       set PATH $HOME/.local/bin $PATH # for some util scripts
       set -gx GPG_TTY (tty)
-      ${nixColorsLib.shellThemeFromScheme {
-        scheme = config.colorScheme;
-      }}
+      sh ${
+        nixColorsLib.shellThemeFromScheme {
+          scheme = config.colorScheme;
+        }
+      }
 
-      # Automatically set JJ_CONFIG based on working directory
-      function __jj_config_on_variable_pwd --on-variable PWD
-        if string match -q "$HOME/wksp/ot*" -- $PWD
-          set -gx JJ_CONFIG "$HOME/wksp/ot/.jjconfig.toml"
-        else
-          set -e JJ_CONFIG
-        end
+      # Use vim key-bindings
+      function fish_user_key_bindings
+          fish_default_key_bindings -M insert
+          fish_vi_key_bindings --no-erase insert
       end
-
-      # Run once on shell startup
-      __jj_config_on_variable_pwd
 
       # Init pay-respects
       pay-respects fish | source

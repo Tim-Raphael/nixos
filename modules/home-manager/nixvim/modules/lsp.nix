@@ -48,6 +48,32 @@
           tailwindcss.enable = true;
           yamlls.enable = true;
           jdtls.enable = true;
+          typos_lsp = {
+            enable = true;
+            settings = {
+              init_options = {
+                config = ''
+                  [default]
+                  locale = "en-us"
+                '';
+              };
+            };
+          };
+          ltex_plus = {
+            enable = true;
+            settings = {
+              ltex = {
+                enabled = [
+                  "markdown"
+                  "tex"
+                  "latex"
+                ];
+                language = "en-US";
+                additionalRules.motherTongue = "de-DE";
+              };
+            };
+          };
+
         };
       };
 

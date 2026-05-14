@@ -45,11 +45,9 @@ in
       set fish_greeting
       set PATH $HOME/.local/bin $PATH # for some util scripts
       set -gx GPG_TTY (tty)
-      sh ${
-        nixColorsLib.shellThemeFromScheme {
-          scheme = config.colorScheme;
-        }
-      }
+      ${nixColorsLib.shellThemeFromScheme {
+        scheme = config.colorScheme;
+      }}
 
       # Automatically set JJ_CONFIG based on working directory
       function __jj_config_on_variable_pwd --on-variable PWD

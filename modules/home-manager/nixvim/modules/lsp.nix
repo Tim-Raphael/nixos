@@ -2,6 +2,10 @@
 
 {
   programs.nixvim = {
+    extraPackages = lib.mkAfter [
+      pkgs.ltex-ls-plus
+    ];
+
     plugins = {
       lsp = {
         enable = true;
@@ -61,6 +65,7 @@
           };
           ltex_plus = {
             enable = true;
+            package = null;
             settings = {
               ltex = {
                 enabled = [

@@ -40,7 +40,7 @@
         profile.name = "home";
         profile.outputs = [
           {
-            criteria = "DP-4";
+            criteria = "DP-3";
             status = "enable";
             mode = "3840x2160@120.000000Hz";
             position = "0,0";

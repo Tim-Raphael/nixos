@@ -82,6 +82,7 @@
 
     audio = {
       effects.enable = true;
+      noise.enable = true;
     };
 
     graphics = {

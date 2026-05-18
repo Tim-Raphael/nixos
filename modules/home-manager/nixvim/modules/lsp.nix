@@ -52,17 +52,6 @@
           tailwindcss.enable = true;
           yamlls.enable = true;
           jdtls.enable = true;
-          typos_lsp = {
-            enable = true;
-            settings = {
-              init_options = {
-                config = ''
-                  [default]
-                  locale = "en-us"
-                '';
-              };
-            };
-          };
           ltex_plus = {
             enable = true;
             package = null;

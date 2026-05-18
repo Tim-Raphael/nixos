@@ -23,25 +23,6 @@
       };
     }
 
-    # Scroll
-    {
-      key = "<S-j>";
-      action = "<C-d>"; # half page (full page: <C-b>)
-      options = {
-        noremap = true;
-        silent = true;
-      };
-    }
-
-    {
-      key = "<S-k>";
-      action = "<C-u>"; # half page (full page: <C-b>)
-      options = {
-        noremap = true;
-        silent = true;
-      };
-    }
-
     # Window navigation
     {
       mode = "n";

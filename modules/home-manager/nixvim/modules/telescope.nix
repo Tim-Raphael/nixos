@@ -109,7 +109,6 @@
                 "--strip-cwd-prefix"
                 "--hidden"
                 "--follow"
-                "--no-ignore"
                 "--exclude"
                 ".git"
               ];
@@ -121,6 +120,11 @@
           "<leader>f" = {
             action = "find_files";
             options.desc = "Find Files";
+          };
+
+          "<leader>F" = {
+            action = "find_files hidden=true no_ignore=true";
+            options.desc = "Find Files (all)";
           };
 
           "<leader>g" = {

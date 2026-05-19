@@ -9,7 +9,11 @@
     blink-cmp = {
       enable = true;
       settings = {
-        keymap.preset = "enter";
+        keymap = {
+          preset = "enter";
+          "<C-j>" = [ "select_next" "fallback" ];
+          "<C-k>" = [ "select_prev" "fallback" ];
+        };
 
         sources = {
           default = [

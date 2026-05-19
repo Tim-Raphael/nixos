@@ -109,6 +109,7 @@
                 "--strip-cwd-prefix"
                 "--hidden"
                 "--follow"
+                "--no-ignore"
                 "--exclude"
                 ".git"
               ];

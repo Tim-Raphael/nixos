@@ -87,6 +87,9 @@
                 "<C-v>".__raw = "require('telescope.actions').select_vertical";
                 # Ctrl-x for horizontal split
                 "<C-h>".__raw = "require('telescope.actions').select_horizontal";
+                # Ctrl-j/k to move through Telescope results
+                "<C-j>".__raw = "require('telescope.actions').move_selection_next";
+                "<C-k>".__raw = "require('telescope.actions').move_selection_previous";
               };
             };
           };

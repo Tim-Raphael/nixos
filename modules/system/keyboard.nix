@@ -23,6 +23,8 @@
 
           "/dev/input/by-id/usb-Cherry_GmbH_CHERRY_Corded_Device-event-if01"
           "/dev/input/by-id/usb-Cherry_GmbH_CHERRY_Corded_Device-event-kbd"
+
+          "/dev/input/by-id/usb-NuPhy_NuPhy_Gem80_42003E000E5359583534332000000000-if02-event-kbd"
         ];
 
         extraDefCfg = "process-unmapped-keys yes";

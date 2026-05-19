@@ -36,12 +36,16 @@
             lctl lmet lalt           spc            ralt rmet rctl
           ) 
 
+          (defalias
+            capsesc (tap-hold 200 200 esc caps)
+          )
+
           (deflayer nrml 
-            _     _    _    _    _    _    _    _    _    _    _    _    _    _
-            _     _    _    _    _    _    _    _    _    _    _    _    _    _
-            esc  _    _    _    _    _    _    _    _    _    _    _    _
-            _     _    _    _    _    _    _    _    _    _    _    _
-            _     _    _              _         _    _    - 
+            _        _    _    _    _    _    _    _    _    _    _    _    _    _
+            _        _    _    _    _    _    _    _    _    _    _    _    _    _
+            @capsesc _    _    _    _    _    _    _    _    _    _    _    _
+            _        _    _    _    _    _    _    _    _    _    _    _
+            _        _    _              _         _    _    - 
           )
         '';
       };

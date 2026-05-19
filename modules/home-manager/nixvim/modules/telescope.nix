@@ -90,6 +90,8 @@
                 # Ctrl-j/k to move through Telescope results
                 "<C-j>".__raw = "require('telescope.actions').move_selection_next";
                 "<C-k>".__raw = "require('telescope.actions').move_selection_previous";
+                # Mirror keymaps.nix: Ctrl+Backspace deletes previous word
+                "<C-BS>".__raw = "function() vim.api.nvim_input('<C-w>') end";
               };
             };
           };

@@ -15,7 +15,10 @@
 
     extraLayouts.us-umlaut-alt = {
       description = "English (US, international with German umlaut)";
-      languages = [ "eng" "deu" ];
+      languages = [
+        "eng"
+        "deu"
+      ];
       symbolsFile = pkgs.writeText "xkb-us-umlaut-alt" ''
         default partial alphanumeric_keys
         xkb_symbols "basic" {

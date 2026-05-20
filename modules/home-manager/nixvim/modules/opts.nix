@@ -2,8 +2,13 @@
 
 {
   programs.nixvim.opts = {
-    # Uses indent from prev line
+    # Uses indent from previous line
     autoindent = true;
+    # Smarter language-aware indentation on new lines
+    smartindent = true;
+    # Keep indentation shape when creating/reindenting lines
+    copyindent = true;
+    preserveindent = true;
     # Convert tabs into spaces
     expandtab = true;
     # Display tabs as 4 spaces

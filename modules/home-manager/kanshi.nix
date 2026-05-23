@@ -37,6 +37,19 @@ in
         ];
         profile.exec = [ "~/.config/${best_mode_path}" ];
       }
+
+      {
+        profile.name = "home";
+        profile.outputs = [
+          {
+            criteria = "*";
+            status = "enable";
+            position = "0,0";
+            scale = 1.0;
+          }
+        ];
+        profile.exec = [ "~/.config/${best_mode_path}" ];
+      }
     ];
   };
 

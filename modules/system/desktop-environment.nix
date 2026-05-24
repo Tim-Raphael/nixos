@@ -17,11 +17,8 @@ in
   config = mkIf cfg.gnome.enable {
     services = {
       geoclue2.enable = true;
-      xserver = {
-        enable = true;
-        displayManager.gdm.enable = true;
-        desktopManager.gnome.enable = true;
-      };
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
       gnome.gcr-ssh-agent.enable = false;
     };
 

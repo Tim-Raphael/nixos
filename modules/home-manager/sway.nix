@@ -118,6 +118,8 @@ in
 
           input = {
             "*" = {
+              xkb_layout = "us";
+              xkb_options = "compose:ralt"; # For writing umlaute like ü (ralt -> " -> u)
               pointer_accel = "1";
               accel_profile = "flat";
             };

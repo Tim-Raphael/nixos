@@ -8,33 +8,6 @@
     earlySetup = true;
   };
 
-  # Graphical keymap: US intl with direct German umlauts on Alt
-  services.xserver.xkb = {
-    layout = "us-umlaut-alt";
-    variant = "basic";
-
-    extraLayouts.us-umlaut-alt = {
-      description = "English (US, international with German umlaut)";
-      languages = [
-        "eng"
-        "deu"
-      ];
-      symbolsFile = pkgs.writeText "xkb-us-umlaut-alt" ''
-        default partial alphanumeric_keys
-        xkb_symbols "basic" {
-          include "us(altgr-intl)"
-          include "level3(ralt_switch)"
-          name[Group1] = "English (US, international with German umlaut)";
-          key <AD03> { [ e, E, EuroSign, cent ] };
-          key <AD07> { [ u, U, udiaeresis, Udiaeresis ] };
-          key <AD09> { [ o, O, odiaeresis, Odiaeresis ] };
-          key <AC01> { [ a, A, adiaeresis, Adiaeresis ] };
-          key <AC02> { [ s, S, ssharp ] };
-        };
-      '';
-    };
-  };
-
   services.kanata = {
     enable = true;
     keyboards = {

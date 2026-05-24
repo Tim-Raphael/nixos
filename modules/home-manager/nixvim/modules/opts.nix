@@ -4,11 +4,8 @@
   programs.nixvim.opts = {
     # Uses indent from previous line
     autoindent = true;
-    # Smarter language-aware indentation on new lines
-    smartindent = true;
     # Keep indentation shape when creating/reindenting lines
     copyindent = true;
-    preserveindent = true;
     # Convert tabs into spaces
     expandtab = true;
     # Display tabs as 4 spaces
@@ -17,6 +14,7 @@
     softtabstop = -1;
     # Use tabstop value for autoindent
     shiftwidth = 0;
+    # Disable swapfile (causes conflicts)
     swapfile = false;
     # Enable persistent undo
     undofile = true;

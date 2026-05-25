@@ -7,14 +7,9 @@
         enable = true;
         nixGrammars = true;
         nixvimInjections = true;
-
         grammarPackages = pkgs.vimPlugins.nvim-treesitter.passthru.allGrammars;
-
-        settings = {
-          highlight.enable = true;
-        };
+        settings.highlight.enable = true;
       };
-
       treesitter-textobjects = {
         enable = true;
         settings = {

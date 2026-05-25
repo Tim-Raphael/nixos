@@ -22,6 +22,7 @@
     ./modules/conform.nix
     ./modules/fugitive.nix
     ./modules/goyo.nix
+    ./modules/indent-o-matic.nix
     ./modules/lsp.nix
     ./modules/nvim-surround.nix
     ./modules/oil.nix

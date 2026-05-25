@@ -11,8 +11,14 @@
       settings = {
         keymap = {
           preset = "enter";
-          "<C-j>" = [ "select_next" "fallback" ];
-          "<C-k>" = [ "select_prev" "fallback" ];
+          "<C-j>" = [
+            "select_next"
+            "fallback"
+          ];
+          "<C-k>" = [
+            "select_prev"
+            "fallback"
+          ];
         };
 
         sources = {
@@ -30,6 +36,7 @@
             auto_insert = false;
           };
         };
+
         cmdline = {
           completion = {
             menu = {
@@ -40,7 +47,18 @@
               auto_insert = true;
             };
           };
-          keymap.preset = "default";
+
+          keymap = {
+            preset = "default";
+            "<C-j>" = [
+              "select_next"
+              "fallback"
+            ];
+            "<C-k>" = [
+              "select_prev"
+              "fallback"
+            ];
+          };
         };
       };
     };

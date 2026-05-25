@@ -148,7 +148,8 @@ in
           "memory" = {
             position = 4;
             settings = {
-              format = "MEM: %used";
+              memory_used_method = "memavailable";
+              format = "MEM: %used/%total";
               threshold_degraded = "10%";
               threshold_critical = "5%";
             };

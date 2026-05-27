@@ -5,7 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nix-colors.url = "github:misterio77/nix-colors";
+    stylix = {
+      url = "github:nix-community/stylix/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     fonts = {
       url = "git+ssh://git@github.com/hemisphere-systems/fonts?ref=main";
@@ -42,27 +45,24 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      rust-overlay,
-      ...
-    }@inputs:
+    { ... }@inputs:
     let
       mkSystem =
         hostPath:
-        nixpkgs.lib.nixosSystem {
+        inputs.nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
           };
+
           modules = [
-            { nix.nixPath = [ "nixpkgs=${nixpkgs}" ]; }
+            { nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; }
             {
               nixpkgs = {
                 overlays = [
                   (import ./overlays/unstable.nix { inherit inputs; })
                   inputs.nur.overlays.default
                   inputs.fonts.overlays.default
-                  rust-overlay.overlays.default
+                  inputs.rust-overlay.overlays.default
                 ];
                 config = {
                   allowUnfree = true;

@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 with lib;
@@ -80,19 +79,19 @@ in
     colors = {
       good = mkOption {
         type = types.str;
-        default = config.colorScheme.palette.base0B or "00ff00";
+        default = config.lib.stylix.colors.base0B or "00ff00";
         description = "Color for good status";
       };
 
       degraded = mkOption {
         type = types.str;
-        default = config.colorScheme.palette.base0A or "ffff00";
+        default = config.lib.stylix.colors.base0A or "ffff00";
         description = "Color for degraded status";
       };
 
       bad = mkOption {
         type = types.str;
-        default = config.colorScheme.palette.base08 or "ff0000";
+        default = config.lib.stylix.colors.base08 or "ff0000";
         description = "Color for bad status";
       };
     };

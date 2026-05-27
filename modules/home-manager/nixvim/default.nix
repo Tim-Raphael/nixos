@@ -11,7 +11,6 @@
     ./modules/lazy-load.nix
 
     # Settings
-    ./modules/colorschemes.nix
     ./modules/clipboard.nix
     ./modules/globals.nix
     ./modules/opts.nix

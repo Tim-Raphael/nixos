@@ -1,15 +1,10 @@
 {
-  config,
   pkgs,
-  inputs,
+  config,
+  lib,
   ...
 }:
 
-let
-  systemFont = config.fonts.systemFont.main;
-  colorScheme = config.colorScheme.palette;
-  nixColorsLib = inputs.nix-colors.lib.contrib { inherit pkgs; };
-in
 {
   home.packages = with pkgs; [
     killall
@@ -22,21 +17,7 @@ in
     nix-search
   ];
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font = {
-        normal.family = "${systemFont.name}";
-        size = systemFont.size-medium;
-      };
-      colors = {
-        primary = {
-          background = "#${colorScheme.base00}";
-          foreground = "#${colorScheme.base05}";
-        };
-      };
-    };
-  };
+  programs.alacritty.enable = true;
 
   programs.fish = {
     enable = true;
@@ -45,11 +26,6 @@ in
       set fish_greeting
       set PATH $HOME/.local/bin $PATH # for some util scripts
       set -gx GPG_TTY (tty)
-      sh ${
-        nixColorsLib.shellThemeFromScheme {
-          scheme = config.colorScheme;
-        }
-      }
 
       # Use vim key-bindings
       function fish_user_key_bindings

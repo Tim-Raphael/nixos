@@ -20,7 +20,7 @@
     # Plugins
     ./modules/blink-cmp.nix
     ./modules/conform.nix
-    ./modules/fugitive.nix
+    ./modules/gitsigns.nix
     ./modules/goyo.nix
     ./modules/indent-o-matic.nix
     ./modules/lsp.nix

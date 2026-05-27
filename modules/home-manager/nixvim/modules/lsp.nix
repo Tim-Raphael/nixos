@@ -52,22 +52,7 @@
           tailwindcss.enable = true;
           yamlls.enable = true;
           jdtls.enable = true;
-          ltex_plus = {
-            enable = true;
-            package = null;
-            settings = {
-              ltex = {
-                enabled = [
-                  "markdown"
-                  "tex"
-                  "latex"
-                ];
-                language = "en-US";
-                additionalRules.motherTongue = "de-DE";
-              };
-            };
-          };
-
+          typos_lsp.enable = true;
         };
       };
 

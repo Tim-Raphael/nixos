@@ -21,7 +21,6 @@
     ./modules/blink-cmp.nix
     ./modules/conform.nix
     ./modules/gitsigns.nix
-    ./modules/goyo.nix
     ./modules/indent-o-matic.nix
     ./modules/lsp.nix
     ./modules/nvim-surround.nix

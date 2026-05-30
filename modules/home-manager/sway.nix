@@ -6,8 +6,8 @@
 }:
 
 let
-  colors = config.lib.stylix.colors;
-  fonts = config.stylix.fonts;
+  color = config.lib.stylix.colors;
+  font = config.stylix.fonts;
 
   ws1 = "1:terminal";
   ws2 = "2:editor";
@@ -38,6 +38,12 @@ in
     swaylock
     brightnessctl
   ];
+
+  stylix.targets = {
+    sway.enable = false;
+    swaylock.enable = false;
+    mako.enable = false;
+  };
 
   wayland = {
     windowManager.sway = {
@@ -83,7 +89,7 @@ in
             "${modifier}+Shift+s" = "exec grim -g \"$(slurp)\" - | wl-copy";
 
             "${modifier}+d" =
-              "exec dmenu-wl_run -m $(swaymsg -t get_outputs | jq -r 'map(.focused) | index(true)') -fn '${fonts.monospace.name}' -nb '#${colors.base00}' -nf '#${colors.base07}' -sb '#${colors.base0A}' -sf '#${colors.base00}'";
+              "exec dmenu-wl_run -m $(swaymsg -t get_outputs | jq -r 'map(.focused) | index(true)') -fn '${font.monospace.name}' -nb '#${color.base00}' -nf '#${color.base07}' -sb '#${color.base0B}' -sf '#${color.base00}'";
 
             "${modifier}+1" = "workspace ${ws1}";
             "${modifier}+2" = "workspace ${ws2}";
@@ -108,6 +114,12 @@ in
             "${modifier}+Shift+0" = "move container to workspace ${ws0}";
           };
 
+          fonts = {
+            names = [ "${font.monospace.name}" ];
+            style = "Regular";
+            size = font.sizes.desktop * 1.0; # little hack to convert into float
+          };
+
           input = {
             "*" = {
               xkb_layout = "us";
@@ -119,7 +131,7 @@ in
 
           output = {
             "*" = {
-              #bg = "#${colors.base00} solid_color";
+              bg = "#${color.base00} solid_color";
             };
           };
 
@@ -129,49 +141,49 @@ in
             inner = 16;
           };
 
-          #colors = {
-          #  background = "#${colors.base00}";
+          colors = {
+            background = "#${color.base00}";
 
-          #  focused = {
-          #    background = "#${colors.base0A}";
-          #    border = "#${colors.base0A}";
-          #    childBorder = "#${colors.base0A}";
-          #    indicator = "#${colors.base08}";
-          #    text = "#${colors.base00}";
-          #  };
+            focused = {
+              background = "#${color.base0B}";
+              border = "#${color.base0B}";
+              childBorder = "#${color.base0B}";
+              indicator = "#${color.base08}";
+              text = "#${color.base00}";
+            };
 
-          #  focusedInactive = {
-          #    background = "#${colors.base03}";
-          #    border = "#${colors.base03}";
-          #    childBorder = "#${colors.base03}";
-          #    indicator = "#${colors.base08}";
-          #    text = "#${colors.base07}";
-          #  };
+            focusedInactive = {
+              background = "#${color.base03}";
+              border = "#${color.base03}";
+              childBorder = "#${color.base03}";
+              indicator = "#${color.base08}";
+              text = "#${color.base07}";
+            };
 
-          #  placeholder = {
-          #    background = "#${colors.base03}";
-          #    border = "#${colors.base03}";
-          #    childBorder = "#${colors.base03}";
-          #    indicator = "#${colors.base08}";
-          #    text = "#${colors.base07}";
-          #  };
+            placeholder = {
+              background = "#${color.base03}";
+              border = "#${color.base03}";
+              childBorder = "#${color.base03}";
+              indicator = "#${color.base08}";
+              text = "#${color.base07}";
+            };
 
-          #  unfocused = {
-          #    background = "#${colors.base03}";
-          #    border = "#${colors.base03}";
-          #    childBorder = "#${colors.base03}";
-          #    indicator = "#${colors.base08}";
-          #    text = "#${colors.base07}";
-          #  };
+            unfocused = {
+              background = "#${color.base03}";
+              border = "#${color.base03}";
+              childBorder = "#${color.base03}";
+              indicator = "#${color.base08}";
+              text = "#${color.base07}";
+            };
 
-          #  urgent = {
-          #    background = "#${colors.base08}";
-          #    border = "#${colors.base08}";
-          #    childBorder = "#${colors.base08}";
-          #    indicator = "#${colors.base0A}";
-          #    text = "#${colors.base07}";
-          #  };
-          #};
+            urgent = {
+              background = "#${color.base08}";
+              border = "#${color.base08}";
+              childBorder = "#${color.base08}";
+              indicator = "#${color.base0A}";
+              text = "#${color.base07}";
+            };
+          };
 
           bars = [
             {
@@ -188,49 +200,49 @@ in
               '';
 
               fonts = {
+                names = [ "${font.monospace.name}" ];
                 style = "Regular";
-                names = [ "${fonts.monospace.name}" ];
-                size = fonts.sizes.desktop * 1.0; # little hack to convert into float
+                size = font.sizes.desktop * 1.0; # little hack to convert into float
               };
 
               colors = {
-                background = "#${colors.base00}";
-                focusedBackground = "#${colors.base00}";
+                background = "#${color.base00}";
+                focusedBackground = "#${color.base00}";
 
-                focusedStatusline = "#${colors.base07}";
-                statusline = "#${colors.base07}";
+                focusedStatusline = "#${color.base07}";
+                statusline = "#${color.base07}";
 
-                focusedSeparator = "#${colors.base04}";
-                separator = "#${colors.base04}";
+                focusedSeparator = "#${color.base04}";
+                separator = "#${color.base04}";
 
                 urgentWorkspace = {
-                  background = "#${colors.base08}";
-                  border = "#${colors.base08}";
-                  text = "#${colors.base00}";
+                  background = "#${color.base08}";
+                  border = "#${color.base08}";
+                  text = "#${color.base00}";
                 };
 
                 focusedWorkspace = {
-                  background = "#${colors.base0A}";
-                  border = "#${colors.base0A}";
-                  text = "#${colors.base00}";
+                  background = "#${color.base0B}";
+                  border = "#${color.base0B}";
+                  text = "#${color.base00}";
                 };
 
                 activeWorkspace = {
-                  background = "#${colors.base00}";
-                  border = "#${colors.base00}";
-                  text = "#${colors.base07}";
+                  background = "#${color.base00}";
+                  border = "#${color.base00}";
+                  text = "#${color.base07}";
                 };
 
                 inactiveWorkspace = {
-                  background = "#${colors.base00}";
-                  border = "#${colors.base00}";
-                  text = "#${colors.base07}";
+                  background = "#${color.base00}";
+                  border = "#${color.base00}";
+                  text = "#${color.base07}";
                 };
 
                 bindingMode = {
-                  background = "#${colors.base00}";
-                  border = "#${colors.base00}";
-                  text = "#${colors.base07}";
+                  background = "#${color.base00}";
+                  border = "#${color.base00}";
+                  text = "#${color.base07}";
                 };
               };
             }
@@ -243,23 +255,29 @@ in
     enable = true;
     settings = {
       default-timeout = 5000;
+      font = "${font.monospace.name} ${toString font.sizes.desktop}";
+      border-color = "#${color.base07}";
+      background-color = "#${color.base00}";
+      padding = 10;
     };
   };
 
   programs.swaylock = {
     enable = true;
-    #settings = {
-    #  color = "${colors.base00}";
-    #  inside-color = "${colors.base00}";
-    #  inside-clear-color = "${colors.base07}";
-    #  inside-ver-color = "${colors.base0D}";
-    #  inside-wrong-color = "${colors.base08}";
-    #  separator-color = "${colors.base07}";
-    #  ring-color = "${colors.base07}";
-    #  text-color = "${colors.base07}";
-    #  key-hl-color = "${colors.base0A}";
-    #  bs-hl-color = "${colors.base08}";
-    #  line-uses-inside = true;
-    #};
+    settings = {
+      font = "${font.monospace.name}";
+      size = font.sizes.desktop;
+      color = "${color.base00}";
+      inside-color = "${color.base00}";
+      inside-clear-color = "${color.base07}";
+      inside-ver-color = "${color.base0D}";
+      inside-wrong-color = "${color.base08}";
+      separator-color = "${color.base07}";
+      ring-color = "${color.base07}";
+      text-color = "${color.base07}";
+      key-hl-color = "${color.base0B}";
+      bs-hl-color = "${color.base08}";
+      line-uses-inside = true;
+    };
   };
 }

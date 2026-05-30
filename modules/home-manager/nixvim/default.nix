@@ -23,6 +23,7 @@
     ./modules/indent-o-matic.nix
     ./modules/lsp.nix
     ./modules/nvim-surround.nix
+    ./modules/obsidian.nix
     ./modules/oil.nix
     ./modules/statusline.nix
     ./modules/telescope.nix

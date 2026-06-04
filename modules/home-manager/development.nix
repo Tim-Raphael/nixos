@@ -52,7 +52,7 @@ in
     };
 
     databases = {
-      enable = mkEnableOption "Enable datbases";
+      enable = mkEnableOption "Enable databases";
 
       postgresql.enable = mkEnableOption "Enable Postgresql";
     };
@@ -152,6 +152,7 @@ in
             default = "current";
           };
         };
+        ignores = [ ".wt/" ];
         includes = [
           {
             condition = "gitdir:~/wksp/ot/";

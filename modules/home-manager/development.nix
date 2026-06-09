@@ -133,7 +133,7 @@ in
     (mkIf cfg.versionControl.git.enable {
       programs.git = {
         enable = true;
-
+        ignores = [ ".plan/" ];
         settings = {
           user = {
             name = "Tim-Raphael";

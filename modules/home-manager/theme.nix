@@ -18,26 +18,27 @@ in
       enable = true;
       polarity = "dark";
 
-      base16Scheme = {
-        scheme = "Gruvbox Dark Midnight";
-        author = "/";
-        base00 = "000000"; # ----
-        base01 = "1e1d1c"; # ---
-        base02 = "2d2a29"; # --
-        base03 = "3a3632"; # -
-        base04 = "bdae93"; # +
-        base05 = "d5c4a1"; # ++
-        base06 = "ebdbb2"; # +++
-        base07 = "fbf1c7"; # ++++
-        base08 = "fb4934"; # red
-        base09 = "fe8019"; # orange
-        base0A = "fabd2f"; # yellow
-        base0B = "b8bb26"; # green
-        base0C = "8ec07c"; # aqua/cyan
-        base0D = "83a598"; # blue
-        base0E = "d3869b"; # purple
-        base0F = "d65d0e"; # brown
-      };
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+      #base16Scheme = {
+      #  scheme = "Gruvbox Dark Midnight";
+      #  author = "/";
+      #  base00 = "000000"; # ----
+      #  base01 = "1e1d1c"; # ---
+      #  base02 = "2d2a29"; # --
+      #  base03 = "3a3632"; # -
+      #  base04 = "bdae93"; # +
+      #  base05 = "d5c4a1"; # ++
+      #  base06 = "ebdbb2"; # +++
+      #  base07 = "fbf1c7"; # ++++
+      #  base08 = "fb4934"; # red
+      #  base09 = "fe8019"; # orange
+      #  base0A = "fabd2f"; # yellow
+      #  base0B = "b8bb26"; # green
+      #  base0C = "8ec07c"; # aqua/cyan
+      #  base0D = "83a598"; # blue
+      #  base0E = "d3869b"; # purple
+      #  base0F = "d65d0e"; # brown
+      #};
 
       fonts = {
         monospace = {

@@ -21,11 +21,11 @@
 
         config = ''
           (defsrc
-            esc caps lalt ralt lmet rmet
+            lalt ralt lmet rmet
           )
 
           (deflayer nrml
-            caps esc lmet rmet lalt ralt
+            lmet rmet lalt ralt
           )
         '';
       };

@@ -20,8 +20,10 @@
               };
             };
           };
+
           rust_analyzer = {
             enable = true;
+
             package = pkgs.rust-bin.stable.latest.minimal.override {
               extensions = [
                 "rust-src"
@@ -29,19 +31,22 @@
               ];
               targets = [ "x86_64-unknown-linux-gnu" ];
             };
+
             # Provided by default rust toolchain profile
             installCargo = false;
             installRustc = false;
+
             settings = {
               cargo.features = "all";
               rustc.source = "discover";
+
               check = {
-                #command = "clippy";
                 command = "check";
                 features = "all";
               };
             };
           };
+
           clangd.enable = true;
           cssls.enable = true;
           vtsls.enable = true;
@@ -68,13 +73,8 @@
       }
       {
         mode = "n";
-        key = "<leader>";
+        key = "<leader>a";
         action = "<CMD>lua vim.lsp.buf.code_action()<CR>";
-      }
-      {
-        mode = "n";
-        key = "<A-k>";
-        action = "<CMD>lua vim.lsp.buf.hover({ border = 'single' })<CR>";
       }
       {
         mode = "n";

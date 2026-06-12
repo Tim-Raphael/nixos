@@ -117,6 +117,11 @@
         };
 
         keymaps = {
+          "<leader>m" = {
+            action = "marks";
+            options.desc = "Search Marks";
+          };
+
           "<leader>f" = {
             action = "find_files";
             options.desc = "Find Files";
@@ -135,6 +140,11 @@
           "<leader>s" = {
             action = "treesitter";
             options.desc = "Symbol Search";
+          };
+
+          "<leader>S" = {
+            action = "lsp_dynamic_workspace_symbols";
+            options.desc = "Workspace Symbol Search";
           };
 
           "<leader>b" = {

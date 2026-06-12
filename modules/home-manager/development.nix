@@ -152,7 +152,6 @@ in
             default = "current";
           };
         };
-        ignores = [ ".wt/" ];
         includes = [
           {
             condition = "gitdir:~/wksp/ot/";

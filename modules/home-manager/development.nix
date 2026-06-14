@@ -151,6 +151,14 @@ in
           push = {
             default = "current";
           };
+          remote = {
+            "upstream" = {
+              fetch = "+refs/heads/*:refs/remotes/upstream/*";
+            };
+            "origin" = {
+              fetch = "+refs/heads/*:refs/remotes/origin/*";
+            };
+          };
         };
         includes = [
           {

@@ -117,6 +117,11 @@
         };
 
         keymaps = {
+          "<leader>c" = {
+            action = "resume";
+            options.desc = "Continue Search";
+          };
+
           "<leader>m" = {
             action = "marks";
             options.desc = "Search Marks";

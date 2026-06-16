@@ -179,7 +179,7 @@ in
         yarn
         pnpm_10
         nodejs
-        nodePackages.typescript
+        typescript
         live-server
       ];
     })

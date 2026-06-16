@@ -6,6 +6,5 @@
     nautilus
     unzip
     zip
-    wineWowPackages.full
   ];
 }

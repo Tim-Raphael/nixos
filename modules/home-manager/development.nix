@@ -148,6 +148,13 @@ in
           core = {
             editor = "nvim";
           };
+          merge = {
+            tool = "vimdiff";
+          };
+          mergetool = {
+            vimdiff.path = "nvim";
+            keepBackup = false;
+          };
           push = {
             default = "current";
           };

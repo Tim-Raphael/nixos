@@ -11,7 +11,9 @@
 
   networking.firewall = {
     enable = true;
+    allowedTCPPorts = [ 40000 ];
     allowedUDPPorts = [
+      40000
       # mosh port
       60001
     ];

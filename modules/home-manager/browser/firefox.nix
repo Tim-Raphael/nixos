@@ -5,6 +5,7 @@
 
   programs.firefox = {
     enable = true;
+    configPath = ".mozilla/firefox";
     profiles.main = {
       search = {
         default = "ddg";

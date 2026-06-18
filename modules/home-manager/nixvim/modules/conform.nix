@@ -7,7 +7,7 @@
       [
         biome
         prettierd
-        nixfmt-rfc-style
+        nixfmt
         taplo
         shfmt
         # Optional but useful for dictionary/spell completion docs.

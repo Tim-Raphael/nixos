@@ -54,7 +54,7 @@ in
     ];
   };
 
-  desktopEnvironments.gnome.enable = true;
+  desktopEnvironments.gnome.enable = false;
 
   home-manager = {
     extraSpecialArgs = {

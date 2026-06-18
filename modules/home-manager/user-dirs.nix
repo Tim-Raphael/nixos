@@ -7,6 +7,7 @@ in
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
+    setSessionVariables = true;
     desktop = "${homeDirectory}/dskt";
     documents = "${homeDirectory}/docs";
     download = "${homeDirectory}/dwnl";

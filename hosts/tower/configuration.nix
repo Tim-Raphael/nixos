@@ -40,6 +40,8 @@ in
   programs.wireshark.enable = true;
   environment.systemPackages = with pkgs; [ wireshark ];
 
+  graphics.nvidia.enable = true;
+
   ocular.vpn = {
     enable = true;
     peer = vpn.peers.lumen;
@@ -54,7 +56,7 @@ in
     ];
   };
 
-  desktopEnvironments.gnome.enable = false;
+  desktopEnvironments.gnome.enable = true;
 
   home-manager = {
     extraSpecialArgs = {

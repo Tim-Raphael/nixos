@@ -19,7 +19,7 @@ in
                     --time \
                     --asterisks \
                     --user-menu \
-                    --cmd sway
+                    --cmd "sway --unsupported-gpu"
         '';
       };
     };

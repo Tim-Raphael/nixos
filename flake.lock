@@ -579,11 +579,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782153822,
-        "narHash": "sha256-an43ZvhxjzdTRZZ92dk87PJC32XRsq7QnJKJuq80vzo=",
+        "lastModified": 1782301807,
+        "narHash": "sha256-gPdsufz38uAW6JxjIg1mX4WTe2gyPB9f0JDD9GHhVsU=",
         "ref": "refs/heads/main",
-        "rev": "5f9724031a65d782868ff08b07708520317221a1",
-        "revCount": 44,
+        "rev": "d471356ac8d2217ed925652ca481b11c7b57a05d",
+        "revCount": 47,
         "type": "git",
         "url": "ssh://git@github.com/tim-raphael/opencode"
       },

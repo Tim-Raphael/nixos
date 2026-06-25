@@ -81,6 +81,16 @@
         key = "th";
         action = "<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>";
       }
+      {
+        mode = "n";
+        key = "gj";
+        action = "<CMD>lua vim.diagnostic.goto_next({ float = { border = 'single' }})<CR>";
+      }
+      {
+        mode = "n";
+        key = "gk";
+        action = "<CMD>lua vim.diagnostic.goto_prev({ float = { border = 'single' }})<CR>";
+      }
     ];
   };
 }

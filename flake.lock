@@ -579,17 +579,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1782301807,
-        "narHash": "sha256-gPdsufz38uAW6JxjIg1mX4WTe2gyPB9f0JDD9GHhVsU=",
-        "ref": "refs/heads/main",
-        "rev": "d471356ac8d2217ed925652ca481b11c7b57a05d",
-        "revCount": 47,
+        "lastModified": 1782390980,
+        "narHash": "sha256-m2V5o+Pdjh9/iIMRDySKJywGgqj8C9OhziTu/+ud2e8=",
+        "ref": "refs/heads/coco-index",
+        "rev": "bc913af3f5469b7027118fbbc3144c395cbf11dd",
+        "revCount": 48,
         "type": "git",
-        "url": "ssh://git@github.com/tim-raphael/opencode"
+        "url": "file:///home/raphael/wksp/opencode/main"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git@github.com/tim-raphael/opencode"
+        "url": "file:///home/raphael/wksp/opencode/main"
       }
     },
     "pixel": {

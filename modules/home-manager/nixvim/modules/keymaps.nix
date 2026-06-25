@@ -3,6 +3,17 @@
 {
   programs.nixvim.keymaps = [
     {
+      mode = "x";
+      key = "<leader>p";
+      action = "\"_dP";
+      options = {
+        desc = "Delete into blank registry and paste from clipboard";
+        noremap = true;
+        silent = true;
+      };
+    }
+
+    {
       mode = "i";
       key = "<C-BS>";
       action = "<C-w>";

@@ -31,7 +31,7 @@
     };
 
     opencode = {
-      url = "git+ssh://git@github.com/tim-raphael/opencode";
+      url = "git+file:///home/raphael/wksp/opencode/main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };

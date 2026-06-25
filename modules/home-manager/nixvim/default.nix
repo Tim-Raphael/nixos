@@ -20,8 +20,7 @@
     ./modules/autopairs.nix
     ./modules/blink-cmp.nix
     ./modules/conform.nix
-    ./modules/gitsigns.nix
-    ./modules/fugitive.nix
+    ./modules/git.nix
     ./modules/indent-o-matic.nix
     ./modules/lsp.nix
     ./modules/surround.nix

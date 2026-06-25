@@ -84,12 +84,12 @@
       {
         mode = "n";
         key = "gj";
-        action = "<CMD>lua vim.diagnostic.goto_next({ float = { border = 'single' }})<CR>";
+        action = "<CMD>lua vim.diagnostic.jump({ count = 1, float = { border = 'single' }})<CR>";
       }
       {
         mode = "n";
         key = "gk";
-        action = "<CMD>lua vim.diagnostic.goto_prev({ float = { border = 'single' }})<CR>";
+        action = "<CMD>lua vim.diagnostic.jump({ count = -1, float = { border = 'single' }})<CR>";
       }
     ];
   };

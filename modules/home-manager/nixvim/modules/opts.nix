@@ -41,5 +41,13 @@
     # way around, so I'm going to leave it on light for now.
     #background = "light";
     winborder = "single";
+    # Hopefully fixes some issues I had with vimdiff
+    diffopt = [
+      "internal"
+      "filler"
+      "closeoff"
+      "algorithm:histogram"
+      "indent-heuristic"
+    ];
   };
 }

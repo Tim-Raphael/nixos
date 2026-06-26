@@ -35,5 +35,6 @@
   programs.nixvim = {
     enable = true;
     viAlias = true;
+    nixpkgs.useGlobalPackages = true;
   };
 }

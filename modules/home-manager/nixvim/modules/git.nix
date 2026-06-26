@@ -6,18 +6,10 @@
       # TODO: Lazy load fugitive
       fugitive.enable = true;
       gitsigns.enable = true;
+      git-conflict.enable = true;
     };
 
     keymaps = lib.mkAfter [
-      {
-        mode = "n";
-        key = "<leader>vm";
-        action = "<cmd>Git mergetool | Gvdiffsplit! |  wincmd J | wincmd k | wincmd J<CR>";
-        options = {
-          desc = "Git open mergetool";
-        };
-      }
-
       {
         mode = "n";
         key = "<leader>vS";
@@ -46,7 +38,6 @@
       {
         mode = "n";
         key = "<leader>vv";
-        # TODO: Pressing tg again should close git view
         action = "<cmd>vertical Git<CR>";
         options = {
           desc = "Toggle Git View";

@@ -24,7 +24,6 @@
     ./modules/grug-far.nix
     ./modules/indent-o-matic.nix
     ./modules/lsp.nix
-    ./modules/obsidian.nix
     ./modules/oil.nix
     ./modules/statusline.nix
     ./modules/surround.nix

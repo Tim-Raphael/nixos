@@ -21,12 +21,13 @@
     ./modules/blink-cmp.nix
     ./modules/conform.nix
     ./modules/git.nix
+    ./modules/grug-far.nix
     ./modules/indent-o-matic.nix
     ./modules/lsp.nix
-    ./modules/surround.nix
     ./modules/obsidian.nix
     ./modules/oil.nix
     ./modules/statusline.nix
+    ./modules/surround.nix
     ./modules/telescope.nix
     ./modules/treesitter.nix
     ./modules/vimtex.nix

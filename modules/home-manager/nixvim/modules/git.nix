@@ -12,6 +12,24 @@
     keymaps = lib.mkAfter [
       {
         mode = "n";
+        key = "<leader>vD";
+        action = "<cmd>Gvdiffsplit!<CR>";
+        options = {
+          desc = "Git diff split";
+        };
+      }
+
+      {
+        mode = "n";
+        key = "<leader>vd";
+        action = "<cmd>Gvdiffsplit<CR>";
+        options = {
+          desc = "Git diff split";
+        };
+      }
+
+      {
+        mode = "n";
         key = "<leader>vS";
         action = "<cmd>Gwrite<CR>";
         options = {

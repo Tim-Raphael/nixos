@@ -152,7 +152,7 @@ in
     })
 
     (mkIf cfg.audio.effects.enable {
-      home.packages = with pkgs; [ easyeffects ];
+      services.easyeffects.enable = true;
     })
   ];
 }

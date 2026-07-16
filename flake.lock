@@ -585,11 +585,11 @@
         "rev": "4763bf3b91998f7994d6f00022bb8d2c25de45d9",
         "revCount": 50,
         "type": "git",
-        "url": "file:///home/raphael/wksp/opencode/main"
+        "url": "ssh://git@github.com/tim-raphael/opencode"
       },
       "original": {
         "type": "git",
-        "url": "file:///home/raphael/wksp/opencode/main"
+        "url": "ssh://git@github.com/tim-raphael/opencode"
       }
     },
     "pixel": {

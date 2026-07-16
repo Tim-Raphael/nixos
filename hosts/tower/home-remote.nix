@@ -14,6 +14,7 @@
     ../../modules/home-manager/nixvim
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/development.nix
+    ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/user-dirs.nix
     ../../modules/home-manager/crypt.nix
@@ -24,22 +25,11 @@
       opencode.enable = true;
     };
 
+    direnv.enable = true;
+
     versionControl = {
       git.enable = true;
       jujutsu.enable = true;
-    };
-
-    languages = {
-      rust = {
-        enable = true;
-        lld = true;
-      };
-      web.enable = true;
-      markdown.enable = true;
-    };
-
-    databases = {
-      postgresql.enable = true;
     };
   };
 }

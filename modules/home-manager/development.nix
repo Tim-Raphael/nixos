@@ -60,6 +60,7 @@ in
           ];
           userSettings = {
             "editor.lineNumbers" = "relative";
+            "window.zoomLevel" = 2.5;
             "chat.agent.enabled" = true;
             "chat.defaultMode" = "agent";
             "vim.useSystemClipboard" = true;

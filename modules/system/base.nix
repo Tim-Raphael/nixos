@@ -21,6 +21,12 @@
   # Paths to link
   environment.pathsToLink = [ "/libexec" ];
 
+  # Make Electron apps (VS Code, etc.) use native Wayland so they pick up the
+  # compositor's scale factor. Without this they run via XWayland at 96 DPI,
+  # which makes fonts appear small on HiDPI displays and prevents
+  # --force-device-scale-factor from having any effect.
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"

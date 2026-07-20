@@ -80,7 +80,8 @@
     tools = {
       postman.enable = true;
       dbBeaver.enable = true;
-      opencode.enable = true;
+      claudeCode.enable = true;
+      copilot.enable = true;
     };
 
     direnv.enable = true;

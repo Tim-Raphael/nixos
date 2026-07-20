@@ -569,29 +569,6 @@
         "url": "ssh://git@github.com/hemisphere-systems/ocular"
       }
     },
-    "opencode": {
-      "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1782809943,
-        "narHash": "sha256-ahIdsJKB60yE2bo+VzmtDZa1NjNAnNcRDKOgM7114wc=",
-        "ref": "refs/heads/main",
-        "rev": "4763bf3b91998f7994d6f00022bb8d2c25de45d9",
-        "revCount": 50,
-        "type": "git",
-        "url": "ssh://git@github.com/tim-raphael/opencode"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/tim-raphael/opencode"
-      }
-    },
     "pixel": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -639,7 +616,6 @@
         "nixvim": "nixvim",
         "nur": "nur",
         "ocular": "ocular",
-        "opencode": "opencode",
         "rust-overlay": "rust-overlay",
         "stylix": "stylix"
       }

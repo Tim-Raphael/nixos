@@ -96,7 +96,10 @@
   };
 
   development = {
-    tools.opencode.enable = true;
+    tools = {
+      claudeCode.enable = true;
+      copilot.enable = true;
+    };
 
     direnv.enable = true;
 

@@ -1,6 +1,5 @@
 {
   lib,
-  inputs,
   config,
   pkgs,
   ...
@@ -11,8 +10,6 @@ let
   cfg = config.development;
 in
 {
-  imports = [ inputs.opencode.homeModules.default ];
-
   options.development = {
     tools = {
       enable = mkEnableOption "Development tools for testing and debugging";
@@ -20,6 +17,8 @@ in
       postman.enable = mkEnableOption "Enable Postman";
       websocat.enable = mkEnableOption "Enable Websocat";
       dbBeaver.enable = mkEnableOption "Enable DB-Beaver";
+      claudeCode.enable = mkEnableOption "Enable Claude Code CLI";
+      copilot.enable = mkEnableOption "Enable VS Code with GitHub Copilot";
     };
 
     versionControl = {
@@ -42,6 +41,33 @@ in
 
     (mkIf cfg.tools.dbBeaver.enable {
       home.packages = with pkgs; [ dbeaver-bin ];
+    })
+
+    # Claude Code frequently ships breaking changes; track unstable to stay current.
+    (mkIf cfg.tools.claudeCode.enable {
+      home.packages = [ pkgs.unstable.claude-code ];
+    })
+
+    (mkIf cfg.tools.copilot.enable {
+      programs.vscode = {
+        enable = true;
+        package = pkgs.unstable.vscode;
+        profiles.default = {
+          extensions = with pkgs.unstable.vscode-extensions; [
+            github.copilot
+            github.copilot-chat
+            vscodevim.vim
+          ];
+          userSettings = {
+            "editor.lineNumbers" = "relative";
+            "chat.agent.enabled" = true;
+            "chat.defaultMode" = "agent";
+            "vim.useSystemClipboard" = true;
+            "vim.hlsearch" = true;
+            "vim.leader" = "<space>";
+          };
+        };
+      };
     })
 
     # Version Control

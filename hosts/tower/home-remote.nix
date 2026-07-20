@@ -22,7 +22,7 @@
 
   development = {
     tools = {
-      opencode.enable = true;
+      claudeCode.enable = true;
     };
 
     direnv.enable = true;

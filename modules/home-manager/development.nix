@@ -48,28 +48,41 @@ in
       home.packages = [ pkgs.unstable.claude-code ];
     })
 
-    (mkIf cfg.tools.copilot.enable {
-      programs.vscode = {
-        enable = true;
-        package = pkgs.unstable.vscode;
-        profiles.default = {
-          extensions = with pkgs.unstable.vscode-extensions; [
-            github.copilot
-            github.copilot-chat
-            vscodevim.vim
-          ];
-          userSettings = {
-            "editor.lineNumbers" = "relative";
-            "window.zoomLevel" = 2.5;
-            "chat.agent.enabled" = true;
-            "chat.defaultMode" = "agent";
-            "vim.useSystemClipboard" = true;
-            "vim.hlsearch" = true;
-            "vim.leader" = "<space>";
+    (mkIf cfg.tools.copilot.enable (
+      let
+        baseFont = 12;
+      in
+      {
+        programs.vscode = {
+          enable = true;
+          package = pkgs.unstable.vscode;
+          profiles.default = {
+            extensions = with pkgs.unstable.vscode-extensions; [
+              github.copilot
+              github.copilot-chat
+              vscodevim.vim
+            ];
+            userSettings = {
+              "editor.lineNumbers" = "relative";
+              "window.zoomLevel" = 2.5;
+              "editor.fontSize" = lib.mkForce baseFont;
+              "debug.console.fontSize" = lib.mkForce baseFont;
+              "markdown.preview.fontSize" = lib.mkForce baseFont;
+              "terminal.integrated.fontSize" = lib.mkForce baseFont;
+              "chat.editor.fontSize" = lib.mkForce baseFont;
+              "editor.minimap.sectionHeaderFontSize" = lib.mkForce (baseFont * 9.0 / 14.0);
+              "scm.inputFontSize" = lib.mkForce (baseFont * 13.0 / 14.0);
+              "screencastMode.fontSize" = lib.mkForce (baseFont * 56.0 / 14.0);
+              "chat.agent.enabled" = true;
+              "chat.defaultMode" = "agent";
+              "vim.useSystemClipboard" = true;
+              "vim.hlsearch" = true;
+              "vim.leader" = "<space>";
+            };
           };
         };
-      };
-    })
+      }
+    ))
 
     # Version Control
     (mkIf cfg.versionControl.jujutsu.enable {

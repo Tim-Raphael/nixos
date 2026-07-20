@@ -53,6 +53,20 @@ in
         baseFont = 12;
       in
       {
+        home.packages = with pkgs; [
+          nixd
+          rust-analyzer
+          clang-tools
+          vscode-langservers-extracted
+          vtsls
+          lua-language-server
+          pyright
+          tailwindcss-language-server
+          yaml-language-server
+          jdt-language-server
+          typos-lsp
+        ];
+
         programs.vscode = {
           enable = true;
           package = pkgs.unstable.vscode;
@@ -61,6 +75,16 @@ in
               github.copilot
               github.copilot-chat
               vscodevim.vim
+
+              jnoortheen.nix-ide
+              rust-lang.rust-analyzer
+              llvm-vs-code-extensions.vscode-clangd
+              dbaeumer.vscode-eslint
+              sumneko.lua
+              ms-pyright.pyright
+              bradlc.vscode-tailwindcss
+              redhat.vscode-yaml
+              redhat.java
             ];
             userSettings = {
               "editor.lineNumbers" = "relative";

@@ -160,7 +160,10 @@ in
     (mkIf cfg.versionControl.git.enable {
       programs.git = {
         enable = true;
-        ignores = [ ".tmp/" ];
+        ignores = [
+          ".tmp/"
+          ".claude/"
+        ];
         settings = {
           user = {
             name = "Tim-Raphael";

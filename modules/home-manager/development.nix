@@ -53,6 +53,8 @@ in
         baseFont = 12;
       in
       {
+        stylix.targets.vscode.enable = false;
+
         home.packages = with pkgs; [
           nixd
           rust-analyzer
@@ -72,10 +74,8 @@ in
           package = pkgs.unstable.vscode;
           profiles.default = {
             extensions = with pkgs.unstable.vscode-extensions; [
-              github.copilot
               github.copilot-chat
               vscodevim.vim
-
               jnoortheen.nix-ide
               rust-lang.rust-analyzer
               llvm-vs-code-extensions.vscode-clangd

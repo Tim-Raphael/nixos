@@ -117,7 +117,7 @@
         };
 
         keymaps = {
-          "<leader>c" = {
+          "<leader>." = {
             action = "resume";
             options.desc = "Continue Search";
           };

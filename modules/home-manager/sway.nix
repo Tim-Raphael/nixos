@@ -11,14 +11,14 @@ let
 
   ws1 = "1:terminal";
   ws2 = "2:editor";
-  ws3 = "3:browser";
-  ws4 = "4:messages";
+  ws3 = "3:agent";
+  ws4 = "4:browser";
   ws5 = "5:misc";
   ws6 = "6:misc";
   ws7 = "7:misc";
-  ws8 = "8:misc";
-  ws9 = "9:misc";
-  ws0 = "0:misc";
+  ws8 = "8:message";
+  ws9 = "9:note";
+  ws0 = "0:todo";
 in
 {
   imports = [ ./i3status.nix ];
@@ -68,7 +68,7 @@ in
           inherit modifier;
 
           terminal = "alacritty";
-          defaultWorkspace = "1";
+          defaultWorkspace = ws1;
 
           startup = [
             { command = "alacritty --command ssh-add"; }

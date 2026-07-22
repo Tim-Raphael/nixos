@@ -11,7 +11,6 @@
     tree
     tealdeer
     mosh
-    pay-respects
     nix-search
   ];
 
@@ -31,9 +30,6 @@
           fish_default_key_bindings -M insert
           fish_vi_key_bindings --no-erase insert
       end
-
-      # Init pay-respects
-      pay-respects fish | source
 
       # Remember last directory
       function __remember_pwd --on-variable PWD

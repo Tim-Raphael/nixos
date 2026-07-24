@@ -174,6 +174,12 @@ in
           push = {
             default = "current";
           };
+          alias = {
+            quicksave = "!f(){ git add . && git commit && git push; };f";
+            qs = "!f(){ git add . && git commit && git push; };f";
+            savepoint = "!f(){ pre-commit && git add . && git commit && git push; };f";
+            sp = "!f(){ pre-commit && git add . && git commit && git push; };f";
+          };
           remote = {
             "upstream" = {
               fetch = "+refs/heads/*:refs/remotes/upstream/*";

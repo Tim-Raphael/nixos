@@ -180,14 +180,6 @@ in
             savepoint = "!f(){ pre-commit && git add . && git commit && git push; };f";
             sp = "!f(){ pre-commit && git add . && git commit && git push; };f";
           };
-          remote = {
-            "upstream" = {
-              fetch = "+refs/heads/*:refs/remotes/upstream/*";
-            };
-            "origin" = {
-              fetch = "+refs/heads/*:refs/remotes/origin/*";
-            };
-          };
         };
         includes = [
           {

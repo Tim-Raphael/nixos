@@ -1,5 +1,23 @@
-{ pkgs, ... }:
+{ ... }:
 
+let
+  # systemd sandboxing shared by each kanata instance.
+  hardening = {
+    NoNewPrivileges = true;
+    PrivateTmp = true;
+    ProtectHome = true;
+    ProtectSystem = "strict";
+    Restart = "on-failure";
+    SupplementaryGroups = [
+      "input"
+      "uinput"
+    ];
+    DeviceAllow = [
+      "/dev/input/* rw"
+      "/dev/uinput rw"
+    ];
+  };
+in
 {
   # Console keymap
   console = {
@@ -19,6 +37,7 @@
 
         extraDefCfg = "process-unmapped-keys yes";
 
+        # Alt <-> Meta swap on the bottom row, shared by every physical keyboard.
         config = ''
           (defsrc
             lalt ralt lmet rmet
@@ -29,22 +48,27 @@
           )
         '';
       };
+
+      # NuPhy Air 60 V2 (2.4GHz dongle). Its switches chatter, producing
+      # double key presses, so this instance debounces it.
+      nuphy = {
+        devices = [
+          "/dev/input/by-id/usb-Nordic_Semiconductor_NuPhy_Air60_V2_Dongle-event-kbd"
+        ];
+
+        extraDefCfg = ''
+          process-unmapped-keys yes
+          debounce-duration 50 
+          debounce-algorithm asym_eager_defer_pk
+        '';
+        config = ''
+          (defsrc)
+          (deflayer nrml)
+        '';
+      };
     };
   };
 
-  systemd.services.kanata-internalKeyboard.serviceConfig = {
-    NoNewPrivileges = true;
-    PrivateTmp = true;
-    ProtectHome = true;
-    ProtectSystem = "strict";
-    Restart = "on-failure";
-    SupplementaryGroups = [
-      "input"
-      "uinput"
-    ];
-    DeviceAllow = [
-      "/dev/input/* rw"
-      "/dev/uinput rw"
-    ];
-  };
+  systemd.services.kanata-internalKeyboard.serviceConfig = hardening;
+  systemd.services.kanata-nuphy.serviceConfig = hardening;
 }

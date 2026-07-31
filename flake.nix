@@ -5,6 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Pinned solely to source a working docker-compose v2 — see
+    # overlays/docker-compose-pin.nix for the why. Drop once the v5 regression is fixed.
+    nixpkgs-compose.url = "github:nixos/nixpkgs/nixos-25.05";
+
     stylix = {
       url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,6 +59,7 @@
                 overlays = [
                   (import ./overlays/unstable.nix { inherit inputs; })
                   (import ./overlays/kanata-debounce.nix { inherit inputs; })
+                  (import ./overlays/docker-compose-pin.nix { inherit inputs; })
                   inputs.nur.overlays.default
                   inputs.fonts.overlays.default
                   inputs.rust-overlay.overlays.default

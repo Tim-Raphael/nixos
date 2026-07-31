@@ -11,6 +11,10 @@
 
   networking.firewall = {
     enable = true;
+    trustedInterfaces = [
+      "docker0"
+      "br-otte"
+    ];
     allowedTCPPorts = [ 40000 ];
     allowedUDPPorts = [
       40000

@@ -71,7 +71,7 @@ in
           defaultWorkspace = ws1;
 
           startup = [
-            { command = "alacritty --command ssh-add"; }
+            { command = "alacritty --command ssh-add ~/.ssh/github"; }
             {
               command = ''
                 swayidle -w \

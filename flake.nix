@@ -59,7 +59,7 @@
                 overlays = [
                   (import ./overlays/unstable.nix { inherit inputs; })
                   (import ./overlays/kanata-debounce.nix { inherit inputs; })
-                  (import ./overlays/docker-compose-pin.nix { inherit inputs; })
+                  #(import ./overlays/docker-compose-pin.nix { inherit inputs; })
                   inputs.nur.overlays.default
                   inputs.fonts.overlays.default
                   inputs.rust-overlay.overlays.default

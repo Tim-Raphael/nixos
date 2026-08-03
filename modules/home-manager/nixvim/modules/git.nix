@@ -12,6 +12,15 @@
     keymaps = lib.mkAfter [
       {
         mode = "n";
+        key = "<leader>vm";
+        action = "<cmd>Git mergetool<CR>";
+        options = {
+          desc = "Git mergetool";
+        };
+      }
+
+      {
+        mode = "n";
         key = "<leader>vD";
         action = "<cmd>Gvdiffsplit!<CR>";
         options = {

@@ -177,8 +177,8 @@ in
           alias = {
             quicksave = "!f(){ git add . && git commit && git push; };f";
             qs = "!f(){ git add . && git commit && git push; };f";
-            savepoint = "!f(){ pre-commit && git add . && git commit && git push; };f";
-            sp = "!f(){ pre-commit && git add . && git commit && git push; };f";
+            savepoint = "!f(){ git add . &&  pre-commit && git commit && git push; };f";
+            sp = "!f(){ git add . &&  pre-commit && git commit && git push; };f";
           };
         };
         includes = [

@@ -13,9 +13,12 @@
     enable = true;
     trustedInterfaces = [
       "docker0"
-      "br-otte"
+      "br-opentalk-env"
     ];
-    allowedTCPPorts = [ 40000 ];
+    allowedTCPPorts = [
+      40000
+      8000
+    ];
     allowedUDPPorts = [
       40000
       # mosh port

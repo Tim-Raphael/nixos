@@ -83,11 +83,12 @@ in
               "editor.minimap.sectionHeaderFontSize" = lib.mkForce (baseFont * 9.0 / 14.0);
               "scm.inputFontSize" = lib.mkForce (baseFont * 13.0 / 14.0);
               "screencastMode.fontSize" = lib.mkForce (baseFont * 56.0 / 14.0);
-              "chat.agent.enabled" = true;
-              "chat.defaultMode" = "agent";
-              "vim.useSystemClipboard" = true;
-              "vim.hlsearch" = true;
-              "vim.leader" = "<space>";
+              "workbench.statusBar.visible" = false;
+              "window.menuBarVisibility" = "compact";
+              "window.commandCenter" = false;
+              "workbench.navigationControl.enabled" = false;
+              "workbench.layoutControl.enabled" = false;
+              "workbench.browser.showInTitleBar" = false;
             };
           };
         };

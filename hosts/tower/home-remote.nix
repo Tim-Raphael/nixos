@@ -20,6 +20,10 @@
     ../../modules/home-manager/crypt.nix
   ];
 
+  editor = {
+    zed.enable = true;
+  };
+
   development = {
     tools = {
       claudeCode.enable = true;

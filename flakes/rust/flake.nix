@@ -39,10 +39,12 @@
           default = pkgs.mkShell {
             packages = [
               toolchain
-              pkgs.taplo
-              pkgs.pkg-config
+              pkgs.cargo-edit
+              pkgs.cargo-release
               pkgs.openssl
+              pkgs.pkg-config
               pkgs.protobuf
+              pkgs.taplo
               # `lld` was previously wired in globally via ~/.cargo/config.toml.
               # Kept per-project via env vars below so it doesn't leak into
               # non-flake shells.

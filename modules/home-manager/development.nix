@@ -70,6 +70,8 @@ in
         };
       in
       {
+        stylix.targets.zed.enable = false;
+
         programs.zed-editor = {
           enable = true;
 

@@ -82,6 +82,7 @@
       dbBeaver.enable = true;
       claudeCode.enable = true;
       copilot.enable = true;
+      zed.enable = true;
     };
 
     direnv.enable = true;

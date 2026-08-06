@@ -11,7 +11,7 @@
 
   imports = [
     ../../modules/home-manager/theme.nix
-    ../../modules/home-manager/nixvim
+    ../../modules/home-manager/editor
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/development.nix
@@ -95,10 +95,13 @@
     pass.enable = true;
   };
 
+  editor = {
+    vscode.enable = true;
+  };
+
   development = {
     tools = {
       claudeCode.enable = true;
-      copilot.enable = true;
     };
 
     direnv.enable = true;

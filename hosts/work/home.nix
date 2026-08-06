@@ -9,7 +9,7 @@
 
   imports = [
     ../../modules/home-manager/theme.nix
-    ../../modules/home-manager/nixvim
+    ../../modules/home-manager/editor
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/sway.nix
@@ -76,13 +76,16 @@
     keepass.enable = true;
   };
 
+  editor = {
+    vscode.enable = true;
+    zed.enable = true;
+  };
+
   development = {
     tools = {
       postman.enable = true;
       dbBeaver.enable = true;
       claudeCode.enable = true;
-      copilot.enable = true;
-      zed.enable = true;
     };
 
     direnv.enable = true;

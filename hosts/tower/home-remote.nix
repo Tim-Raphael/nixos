@@ -11,7 +11,7 @@
   };
 
   imports = [
-    ../../modules/home-manager/nixvim
+    ../../modules/home-manager/editor
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/direnv.nix

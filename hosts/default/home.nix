@@ -9,7 +9,7 @@
   };
 
   imports = [
-    ../../modules/home-manager/nixvim
+    ../../modules/home-manager/editor
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/i3status.nix
     ../../modules/home-manager/terminal.nix

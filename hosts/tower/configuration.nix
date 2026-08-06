@@ -21,6 +21,7 @@ in
     ../../modules/system/keyboard.nix
     ../../modules/system/media.nix
     ../../modules/system/ssh.nix
+    ../../modules/system/nix-ld.nix
     ../../modules/system/android.nix
     ../../modules/system/dconf.nix
     ../../modules/system/steam.nix

@@ -32,6 +32,7 @@ in
     ../../modules/system/greetd.nix
     ../../modules/system/swap.nix
     ../../modules/system/opentabletdriver.nix
+    ../../modules/system/nix-ld.nix
 
     inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager

@@ -19,9 +19,11 @@ let
     pyright = "${pkgs.pyright}/bin/pyright-langserver";
     vtsls = "${pkgs.vtsls}/bin/vtsls";
     eslint = "${pkgs.vscode-langservers-extracted}/bin/vscode-eslint-language-server";
-    "vscode-css-language-server" = "${pkgs.vscode-langservers-extracted}/bin/vscode-css-language-server";
+    "vscode-css-language-server" =
+      "${pkgs.vscode-langservers-extracted}/bin/vscode-css-language-server";
     "yaml-language-server" = "${pkgs.yaml-language-server}/bin/yaml-language-server";
-    "tailwindcss-language-server" = "${pkgs.tailwindcss-language-server}/bin/tailwindcss-language-server";
+    "tailwindcss-language-server" =
+      "${pkgs.tailwindcss-language-server}/bin/tailwindcss-language-server";
     "bash-language-server" = "${pkgs.bash-language-server}/bin/bash-language-server";
     lua-language-server = "${pkgs.lua-language-server}/bin/lua-language-server";
     taplo = "${pkgs.taplo}/bin/taplo";
@@ -31,7 +33,7 @@ in
   options.editor.zed.enable = mkEnableOption "Zed";
 
   config = mkIf cfg.enable {
-    stylix.targets.zed.enable = false;
+    stylix.targets.zed.enable = true;
 
     programs.zed-editor = {
       enable = true;

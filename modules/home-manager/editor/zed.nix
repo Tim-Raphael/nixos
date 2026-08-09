@@ -35,6 +35,17 @@ in
   config = mkIf cfg.enable {
     stylix.targets.zed.enable = true;
 
+    # Zed's Linux font loader (fontdb, via cosmic-text) doesn't read
+    # fontconfig or the ~/.nix-profile/share/fonts dir that stylix installs
+    # into — it only scans ~/.local/share/fonts and a couple of /usr dirs.
+    # Without this it can't resolve `buffer_font_family` and silently falls
+    # back to its bundled Zed Plex Mono, which ships ligatures. Mirror the
+    # stylix monospace family into an XDG font dir Zed actually scans.
+    xdg.dataFile."fonts/${config.stylix.fonts.monospace.name}" = {
+      source = "${config.stylix.fonts.monospace.package}/share/fonts";
+      recursive = true;
+    };
+
     programs.zed-editor = {
       enable = true;
 
@@ -87,6 +98,8 @@ in
             "space shift-s" = "project_symbols::Toggle"; # Workspace Symbol Search
             "space b" = "tab_switcher::Toggle"; # Buffers
             "space p" = "projects::OpenRecent"; # Projects
+            "space w" = "projects::OpenRecent"; # Search Projects
+            "space shift-w" = "projects::OpenRemote"; # Remote Workspaces
             "space d" = "diagnostics::DeployCurrentFile"; # Document Diagnostics
             "space shift-d" = "diagnostics::Deploy"; # Diagnostics (all)
 
@@ -136,6 +149,36 @@ in
             "ctrl-backspace" = "editor::DeleteToPreviousWordStart";
           };
         }
+        # Project-wide pickers, available when no buffer is focused.
+        {
+          context = "Workspace && !Editor";
+          bindings = {
+            "space f" = "file_finder::Toggle"; # Find Files
+            "space shift-f" = "file_finder::Toggle"; # Find Files (all)
+            "space g" = "pane::DeploySearch"; # Grep
+            "space shift-s" = "project_symbols::Toggle"; # Workspace Symbol Search
+            "space b" = "tab_switcher::Toggle"; # Buffers
+            "space p" = "projects::OpenRecent"; # Projects
+            "space w" = "projects::OpenRecent"; # Search Projects
+            "space shift-w" = "projects::OpenRemote"; # Remote Workspaces
+            "space shift-d" = "diagnostics::Deploy"; # Diagnostics (all)
+          };
+        }
+        # Default esc in project search only toggles focus between the query
+        # bar and results; make it close the whole search tab instead. Both
+        # contexts are needed to cover query-bar and results focus.
+        {
+          context = "ProjectSearchBar";
+          bindings = {
+            "escape" = "pane::CloseActiveItem";
+          };
+        }
+        {
+          context = "ProjectSearchView";
+          bindings = {
+            "escape" = "pane::CloseActiveItem";
+          };
+        }
       ];
 
       userSettings = {
@@ -144,6 +187,20 @@ in
 
         # Match the relative line numbers used in the VS Code setup.
         relative_line_numbers = true;
+
+        # Preview tabs (on by default). Open file-finder picks as a preview
+        # tab so single results don't pile up, and live-preview project
+        # search results as you move through them in the multibuffer.
+        preview_tabs = {
+          enable_preview_from_file_finder = true;
+          enable_preview_multibuffer_from_code_navigation = true;
+        };
+
+        # Disable programming ligatures.
+        buffer_font_features = {
+          calt = false;
+          liga = false;
+        };
 
         # GitHub Copilot inline suggestions. Sign in via the command
         # palette ("copilot: sign in") on first launch.

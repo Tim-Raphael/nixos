@@ -106,6 +106,11 @@ in
             # the default ctrl-backtick to toggle it closed from within.
             "space t" = "terminal_panel::Toggle";
 
+            # Toggle the agent panel running Claude Code over the ACP bridge,
+            # and open the thread history to switch between past threads.
+            "space c" = "agent::ToggleFocus";
+            "space C" = "agent::OpenHistory";
+
             # LSP actions.
             "space r" = "editor::Rename";
             "space a" = "editor::ToggleCodeActions";
@@ -169,6 +174,8 @@ in
             "space d" = "diagnostics::Deploy";
             "space D" = "diagnostics::Deploy";
             "space t" = "terminal_panel::Toggle";
+            "space c" = "agent::ToggleFocus";
+            "space C" = "agent::OpenHistory";
           };
         }
         {
@@ -257,6 +264,12 @@ in
           calt = false;
           liga = false;
         };
+
+        # Enlarge the agent panel text. Responses otherwise inherit the
+        # stylix UI size (16) and user messages fall back to Zed's default
+        # of 12, so set both so the whole conversation reads bigger.
+        agent_ui_font_size = 18;
+        agent_buffer_font_size = 18;
 
         # GitHub Copilot inline suggestions. Sign in via the command
         # palette ("copilot: sign in") on first launch.

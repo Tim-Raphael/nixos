@@ -107,9 +107,9 @@ in
             "space t" = "terminal_panel::Toggle";
 
             # Toggle the agent panel running Claude Code over the ACP bridge,
-            # and open the thread history to switch between past threads.
+            # and toggle the thread history to switch between past threads.
             "space c" = "agent::ToggleFocus";
-            "space C" = "agent::OpenHistory";
+            "space C" = "agents_sidebar::ToggleThreadHistory";
 
             # LSP actions.
             "space r" = "editor::Rename";
@@ -175,7 +175,7 @@ in
             "space D" = "diagnostics::Deploy";
             "space t" = "terminal_panel::Toggle";
             "space c" = "agent::ToggleFocus";
-            "space C" = "agent::OpenHistory";
+            "space C" = "agents_sidebar::ToggleThreadHistory";
           };
         }
         {
@@ -236,7 +236,7 @@ in
         taplo
 
         nixfmt
-        biome
+        #biome
         prettierd
         shfmt
 

@@ -53,6 +53,8 @@ in
     ];
   };
 
+  users.users.remote.extraGroups = [ "docker" ];
+
   desktopEnvironments.gnome.enable = true;
 
   home-manager = {

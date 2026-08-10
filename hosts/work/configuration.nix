@@ -51,6 +51,7 @@ in
       inherit inputs;
       inherit pkgs;
     };
+    backupFileExtension = "backup";
     users = {
       "raphael" = import ./home.nix;
     };

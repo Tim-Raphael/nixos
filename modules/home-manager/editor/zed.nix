@@ -107,9 +107,11 @@ in
             "space t" = "terminal_panel::Toggle";
 
             # Toggle the agent panel running Claude Code over the ACP bridge,
-            # and toggle the thread history to switch between past threads.
-            "space c" = "agent::ToggleFocus";
-            "space C" = "agents_sidebar::ToggleThreadHistory";
+            # and toggle the workspace sidebar listing projects and threads.
+            # The sidebar's own thread actions only fire while it holds focus,
+            # so use the Workspace-level toggle, which dispatches from here.
+            "space c" = "agent::Toggle";
+            "space C" = "multi_workspace::ToggleWorkspaceSidebar";
 
             # LSP actions.
             "space r" = "editor::Rename";
@@ -127,7 +129,7 @@ in
             "g k" = "editor::GoToPreviousDiagnostic";
 
             # Git, mapped to the fugitive and gitsigns equivalents.
-            "space v v" = "git_panel::ToggleFocus";
+            "space V" = "git_panel::Toggle";
             "space v s" = "git::StageAndNext";
             "space v u" = "git::UnstageAndNext";
             "space v S" = "git::StageFile";
@@ -147,7 +149,7 @@ in
             "ctrl-shift-h" = "pane::ActivatePreviousItem";
 
             # File tree, standing in for the oil parent-directory view.
-            "ctrl-n" = "project_panel::ToggleFocus";
+            "ctrl-n" = "project_panel::Toggle";
           };
         }
         {
@@ -174,8 +176,8 @@ in
             "space d" = "diagnostics::Deploy";
             "space D" = "diagnostics::Deploy";
             "space t" = "terminal_panel::Toggle";
-            "space c" = "agent::ToggleFocus";
-            "space C" = "agents_sidebar::ToggleThreadHistory";
+            "space c" = "agent::Toggle";
+            "space C" = "multi_workspace::ToggleWorkspaceSidebar";
           };
         }
         {

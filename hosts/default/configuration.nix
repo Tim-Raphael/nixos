@@ -5,8 +5,8 @@
 }:
 
 {
-  # Pin the state version here.
-  #system.stateVerion = "xx.xx";
+  system.stateVersion = "25.05";
+
   imports = [
     # When setting up a new system, copy over this file and adjust the path.
     /etc/nixos/hardware-configuration.nix

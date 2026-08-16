@@ -6,7 +6,11 @@
   # Enable Printing
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ brlaser brgenml1lpr brgenml1cupswrapper ];
+    drivers = with pkgs; [
+      brlaser
+      brgenml1lpr
+      brgenml1cupswrapper
+    ];
   };
 
   # Enable autodiscovery of network printers

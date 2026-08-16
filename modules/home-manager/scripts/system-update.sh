@@ -34,14 +34,6 @@ if [ ! -f "flake.nix" ]; then
     exit 1
 fi
 
-# Check if git repo
-if [ ! -d ".git" ]; then
-    print_warning "Not a git repository. Skipping git operations."
-    SKIP_GIT=true
-else
-    SKIP_GIT=false
-fi
-
 print_status "Updating flake.lock..."
 nix flake update
 
@@ -53,22 +45,20 @@ sudo nix-collect-garbage --delete-older-than 30d
 
 # Optimize nix store (optional, uncomment if desired)
 # print_status "Optimizing nix store..."
-# sudo nix-store --optimize
+sudo nix-store --optimize
 
 # Git operations
-if [ "$SKIP_GIT" = false ]; then
-    print_status "Staging flake.lock..."
-    git add flake.lock
+print_status "Staging flake.lock..."
+git add flake.lock
 
-    # Check if there are changes to commit
-    if git diff --cached --quiet; then
-        print_warning "No changes to commit"
-    else
-        print_status "Committing changes..."
-        COMMIT_MSG="chore: update \`flake.lock\` - $(date '+%Y-%m-%d')"
-        git commit -m "$COMMIT_MSG"
-        print_status "Committed: $COMMIT_MSG"
-    fi
+# Check if there are changes to commit
+if git diff --cached --quiet; then
+    print_warning "No changes to commit"
+else
+    print_status "Committing changes..."
+    COMMIT_MSG="Update \`flake.lock\` - $(date '+%Y-%m-%d')"
+    git commit -m "$COMMIT_MSG"
+    print_status "Committed: $COMMIT_MSG"
 fi
 
 print_status "Update complete!"

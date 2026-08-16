@@ -127,7 +127,7 @@
       preCommitCheck = inputs.git-hooks.lib.${system}.run {
         src = ./.;
         hooks = {
-          nixfmt-rfc-style.enable = true;
+          nixfmt.enable = true;
           flake-profiles = {
             enable = true;
             name = "flake profiles compile";

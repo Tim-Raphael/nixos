@@ -88,6 +88,7 @@
 
     graphics = {
       kicad.enable = false;
+      raster.enable = true;
     };
   };
 

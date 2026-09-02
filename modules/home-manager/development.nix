@@ -47,6 +47,8 @@ in
       programs.claude-code = {
         enable = true;
 
+        package = pkgs.unstable.claude-code;
+
         context = ''
           # Code
           - Always structure your code in an easy-to-read sequential order instead of
@@ -71,7 +73,15 @@ in
         '';
 
         settings = {
-          defaultMode = "bypassPermissions";
+          env = {
+            # The login shell is fish, which Claude Code cannot drive. It only
+            # accepts an override whose path contains "bash" or "zsh", and
+            # falls back to probing /bin and /usr/bin otherwise.
+            CLAUDE_CODE_SHELL = "${pkgs.bashInteractive}/bin/bash";
+          };
+          permissions = {
+            defaultMode = "bypassPermissions";
+          };
           includeCoAuthoredBy = false;
           model = "opus";
         };

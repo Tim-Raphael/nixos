@@ -1,10 +1,15 @@
 { pkgs, ... }:
 
 {
-  stylix.targets.firefox.profileNames = [ "main" ];
+  # Firefox keeps its own chrome styling; only the reader mode and font
+  # overrides from stylix would apply here and they clash with the defaults.
+  stylix.targets.firefox.enable = false;
 
   programs.firefox = {
     enable = true;
+    # Vertical tabs and the sidebar revamp land in the release channel later
+    # than upstream ships them, so track unstable.
+    package = pkgs.unstable.firefox;
     configPath = ".mozilla/firefox";
     profiles.main = {
       search = {
@@ -18,18 +23,10 @@
         ];
       };
       settings = {
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "sidebar.revamp" = true;
+        "sidebar.verticalTabs" = true;
+        "sidebar.visibility" = "always-show";
       };
-      userChrome = ''
-        #tabbrowser-tabs {
-          &[orient="horizontal"] {
-           --tab-max-width: none !important;
-          }
-          .tab-label-container {
-            height: unset !important;
-          }
-        }
-      '';
     };
   };
 

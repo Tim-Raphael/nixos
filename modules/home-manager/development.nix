@@ -80,10 +80,10 @@ in
             CLAUDE_CODE_SHELL = "${pkgs.bashInteractive}/bin/bash";
           };
           permissions = {
-            defaultMode = "bypassPermissions";
+            defaultMode = "auto";
           };
           includeCoAuthoredBy = false;
-          model = "opus";
+          model = "sonnet";
         };
       };
     })

@@ -65,7 +65,12 @@
       {
         mode = "n";
         key = "<leader>vv";
-        action = "<cmd>vertical Git<CR>";
+        action.__raw = ''
+          function()
+            vim.cmd("vertical Git")
+            vim.cmd("vertical resize " .. math.floor(vim.o.columns / 3))
+          end
+        '';
         options = {
           desc = "Toggle Git View";
         };

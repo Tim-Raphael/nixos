@@ -1,0 +1,47 @@
+name: checks
+
+# Runs on every push to main, and on PRs that target main so both jobs gate a
+# merge before it lands.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # The light tier. `nix develop` runs the git-hooks.nix shellHook, which
+  # generates .pre-commit-config.yaml and provides the pinned pre-commit plus
+  # hooks, so this is identical to what runs on a local commit.
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v30
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Run pre-commit
+        run: nix develop --command pre-commit run --all-files --show-diff-on-failure --color always
+
+  # The heavy tier. It evaluates the bootstrap host down to its toplevel
+  # derivation, which fails on any module or type error without paying for a
+  # build. The four other hosts cannot run here, because they pull the private
+  # hemisphere fonts/ocular repos over SSH that CI has no key for.
+  bootstrap-profile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v30
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Evaluate the bootstrap profile
+        run: nix build --print-build-logs .#checks.x86_64-linux.bootstrap-profile

@@ -62,11 +62,14 @@
         notebook = ./hosts/notebook/configuration.nix;
       };
 
+      # The bootstrap host reads its hardware profile from a path outside the
+      # flake, which pure evaluation forbids. Taking that path as an argument
+      # lets the profile check substitute a stand-in for it.
       mkSystem =
-        name: hostPath:
+        name: hostPath: hardwareProfile:
         inputs.nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs;
+            inherit inputs hardwareProfile;
           };
 
           modules = [
@@ -124,30 +127,41 @@
         '';
       };
 
+      # The heavy tier of the profile check, and the only host CI can run. The
+      # four others pull the private hemisphere fonts and ocular repos over ssh,
+      # which no runner holds a key for. Discarding the string context of the
+      # derivation path forces the evaluation without building the system.
+      bootstrapProfile =
+        let
+          bootstrap = mkSystem "default" hostModules.default ./checks/hardware-profile.nix;
+          drvPath = bootstrap.config.system.build.toplevel.drvPath;
+        in
+        pkgs.runCommand "bootstrap-profile" { } ''
+          echo ${builtins.unsafeDiscardStringContext drvPath} > $out
+        '';
+
       preCommitCheck = inputs.git-hooks.lib.${system}.run {
         src = ./.;
         hooks = {
           nixfmt.enable = true;
-          flake-profiles = {
-            enable = true;
-            name = "flake profiles compile";
-            entry = "${buildProfiles}/bin/build-profiles";
-            files = "\\.nix$";
-            pass_filenames = false;
-          };
         };
       };
     in
     {
-      nixosConfigurations = builtins.mapAttrs mkSystem hostModules;
+      nixosConfigurations = builtins.mapAttrs (
+        name: hostPath: mkSystem name hostPath /etc/nixos/hardware-configuration.nix
+      ) hostModules;
 
-      checks.${system}.pre-commit = preCommitCheck;
+      checks.${system} = {
+        pre-commit = preCommitCheck;
+        bootstrap-profile = bootstrapProfile;
+      };
 
       formatter.${system} = pkgs.nixfmt-rfc-style;
 
       devShells.${system}.default = pkgs.mkShell {
         inherit (preCommitCheck) shellHook;
-        packages = preCommitCheck.enabledPackages;
+        packages = preCommitCheck.enabledPackages ++ [ buildProfiles ];
       };
     };
 }

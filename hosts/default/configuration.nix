@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  hardwareProfile,
   ...
 }:
 
@@ -8,8 +9,10 @@
   system.stateVersion = "25.05";
 
   imports = [
-    # When setting up a new system, copy over this file and adjust the path.
-    /etc/nixos/hardware-configuration.nix
+    # `nixos-generate-config` writes this profile to /etc/nixos on the target
+    # machine, and flake.nix passes that path in. The profile check swaps in
+    # checks/hardware-profile.nix, since pure evaluation cannot read /etc.
+    hardwareProfile
     ../../modules/system/base.nix
     ../../modules/system/bootloader.nix
     ../../modules/system/networking.nix

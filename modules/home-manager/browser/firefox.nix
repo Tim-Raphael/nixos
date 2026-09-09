@@ -13,8 +13,15 @@
     configPath = ".mozilla/firefox";
     profiles.main = {
       search = {
-        default = "ddg";
         force = true;
+        default = "kagi";
+        engines = {
+          kagi = {
+            name = "Kagi";
+            urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
+            definedAliases = [ "@kagi" ];
+          };
+        };
       };
       extensions = {
         packages = with pkgs.nur.repos.rycee.firefox-addons; [

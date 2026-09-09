@@ -10,6 +10,7 @@
         nixfmt
         taplo
         shfmt
+        buf
         # Optional but useful for dictionary/spell completion docs.
         wordnet
         #yamlfmt
@@ -49,6 +50,7 @@
           yaml = [ "yamlfmt" ];
           bash = [ "shfmt" ];
           sh = [ "shfmt" ];
+          proto = [ "buf" ];
         };
       };
     };

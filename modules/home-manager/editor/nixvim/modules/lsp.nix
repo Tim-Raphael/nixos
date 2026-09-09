@@ -58,6 +58,7 @@
           yamlls.enable = true;
           jdtls.enable = true;
           typos_lsp.enable = true;
+          protols.enable = true;
         };
       };
 

@@ -11,20 +11,18 @@
     # than upstream ships them, so track unstable.
     package = pkgs.unstable.firefox;
     configPath = ".mozilla/firefox";
-    policies = {
-      SearchEngines = {
-        Add = [
-          {
-            Name = "Kagi";
-            URLTemplate = "https://kagi.com/search?q={searchTerms}";
-            Method = "GET";
-            Alias = "@kagi";
-          }
-        ];
-        Default = "Kagi";
-      };
-    };
     profiles.main = {
+      search = {
+        force = true;
+        default = "kagi";
+        engines = {
+          kagi = {
+            name = "Kagi";
+            urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
+            definedAliases = [ "@kagi" ];
+          };
+        };
+      };
       extensions = {
         packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin

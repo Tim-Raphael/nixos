@@ -12,17 +12,6 @@
     package = pkgs.unstable.firefox;
     configPath = ".mozilla/firefox";
     profiles.main = {
-      search = {
-        force = true;
-        default = "kagi";
-        engines = {
-          kagi = {
-            name = "Kagi";
-            urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
-            definedAliases = [ "@kagi" ];
-          };
-        };
-      };
       extensions = {
         packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin

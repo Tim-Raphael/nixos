@@ -40,6 +40,7 @@ in
   ];
 
   programs.wireshark.enable = true;
+  services.fwupd.enable = true;
 
   ocular.vpn = {
     enable = true;

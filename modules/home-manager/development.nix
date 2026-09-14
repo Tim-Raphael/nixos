@@ -18,6 +18,7 @@ in
       websocat.enable = mkEnableOption "Enable Websocat";
       dbBeaver.enable = mkEnableOption "Enable DB-Beaver";
       claudeCode.enable = mkEnableOption "Enable Claude Code CLI";
+      codex.enable = mkEnableOption "Enable Codex CLI";
     };
 
     versionControl = {
@@ -86,6 +87,11 @@ in
           model = "sonnet";
         };
       };
+    })
+
+    # Codex frequently ships breaking changes; track unstable to stay current.
+    (mkIf cfg.tools.codex.enable {
+      home.packages = with pkgs; [ unstable.codex ];
     })
 
     # Version Control

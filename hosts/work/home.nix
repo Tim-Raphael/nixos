@@ -86,6 +86,7 @@
       postman.enable = true;
       dbBeaver.enable = true;
       claudeCode.enable = true;
+      codex.enable = true;
     };
 
     direnv.enable = true;

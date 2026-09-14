@@ -27,6 +27,7 @@
   development = {
     tools = {
       claudeCode.enable = true;
+      codex.enable = true;
     };
 
     direnv.enable = true;

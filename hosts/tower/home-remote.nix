@@ -14,6 +14,7 @@
     ../../modules/home-manager/editor
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/development.nix
+    ../../modules/home-manager/agents
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/user-dirs.nix
@@ -25,16 +26,17 @@
   };
 
   development = {
-    tools = {
-      claudeCode.enable = true;
-      codex.enable = true;
-    };
-
     direnv.enable = true;
 
     versionControl = {
       git.enable = true;
       jujutsu.enable = true;
     };
+  };
+
+  agents = {
+    claude.enable = true;
+    codex.enable = true;
+    copilot.enable = true;
   };
 }

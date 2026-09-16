@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }:
@@ -14,6 +13,6 @@ in
 
   config = mkIf cfg.enable {
     stylix.targets.zed.enable = false;
-    programs.zed.enable = true;
+    programs.zed-editor.enable = true;
   };
 }

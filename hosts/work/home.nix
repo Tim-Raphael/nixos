@@ -11,6 +11,7 @@
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/editor
     ../../modules/home-manager/development.nix
+    ../../modules/home-manager/agents
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/terminal.nix
@@ -85,8 +86,6 @@
     tools = {
       postman.enable = true;
       dbBeaver.enable = true;
-      claudeCode.enable = true;
-      codex.enable = true;
     };
 
     direnv.enable = true;
@@ -95,5 +94,11 @@
       git.enable = true;
       jujutsu.enable = true;
     };
+  };
+
+  agents = {
+    claude.enable = true;
+    codex.enable = true;
+    copilot.enable = true;
   };
 }

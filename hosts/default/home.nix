@@ -1,14 +1,16 @@
 {
   pkgs,
   inputs,
+  user,
+  userDir,
   ...
 }:
 
 {
   home = {
     stateVersion = "25.05";
-    username = "raphael";
-    homeDirectory = "/home/raphael";
+    username = user;
+    homeDirectory = userDir;
   };
 
   imports = [

@@ -29,11 +29,14 @@
 
   home-manager = {
     extraSpecialArgs = {
-      inherit inputs;
-      inherit pkgs;
+      inherit inputs pkgs;
     };
     users = {
-      "raphael" = import ./home.nix;
+      "root" = import ./home.nix {
+        inherit pkgs inputs;
+        user = "root";
+        userDir = "/root";
+      };
     };
   };
 }

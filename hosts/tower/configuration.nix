@@ -65,7 +65,14 @@ in
     };
     backupFileExtension = "backup";
     users = {
-      "raphael" = import ./home.nix;
+      "raphael" = import ./home.nix {
+        user = "raphael";
+        userDir = "/home/raphael";
+      };
+      "root" = import ./home.nix {
+        user = "root";
+        userDir = "/root";
+      };
       "remote" = import ./home-remote.nix;
     };
   };

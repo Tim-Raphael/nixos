@@ -17,6 +17,9 @@
       export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
       export GPG_TTY="$(tty)"
 
+      bindkey -M emacs '^W' backward-kill-word
+      bindkey -M viins '^W' backward-kill-word
+
       autoload -Uz add-zsh-hook vcs_info
       setopt PROMPT_PERCENT
 

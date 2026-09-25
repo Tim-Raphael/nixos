@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
   programs.zsh = {
@@ -24,13 +24,17 @@
       setopt PROMPT_PERCENT
 
       zstyle ':vcs_info:*' enable git
-      zstyle ':vcs_info:git:*' formats ' (%b)'
-      zstyle ':vcs_info:git:*' actionformats ' (%b|%a)'
+      zstyle ':vcs_info:git:*' formats '%b'
+      zstyle ':vcs_info:git:*' actionformats '%b|%a'
 
       function __update_prompt() {
         emulate -L zsh
         vcs_info
-        PROMPT="%F{white}%~%f%F{green}''${vcs_info_msg_0_//\%/%%}%f %F{white}λ%f "
+        local git_prompt=""
+        if [[ -n "$vcs_info_msg_0_" ]]; then
+          git_prompt=" %F{#${config.lib.stylix.colors.base04}}::%f %F{green}''${vcs_info_msg_0_//\%/%%}%f"
+        fi
+        PROMPT="%F{white}%~%f''${git_prompt} %F{#${config.lib.stylix.colors.base04}}λ%f "
       }
 
       add-zsh-hook precmd __update_prompt

@@ -19,7 +19,7 @@
     ../../modules/home-manager/editor
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/i3status.nix
-    ../../modules/home-manager/terminal.nix
+    ../../modules/home-manager/terminal
     ../../modules/home-manager/browser
     ../../modules/home-manager/password.nix
     ../../modules/home-manager/crypt.nix

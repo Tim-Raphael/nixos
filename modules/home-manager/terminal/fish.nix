@@ -1,23 +1,11 @@
 {
-  pkgs,
+  lib,
   ...
 }:
 
 {
-  home.packages = with pkgs; [
-    killall
-    tmate
-    sshfs
-    tree
-    tealdeer
-    mosh
-    nix-search
-  ];
-
-  programs.alacritty.enable = true;
-
   programs.fish = {
-    enable = true;
+    enable = lib.mkDefault false;
 
     interactiveShellInit = ''
       set fish_greeting

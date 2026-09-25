@@ -12,7 +12,7 @@
 
   imports = [
     ../../modules/home-manager/editor
-    ../../modules/home-manager/terminal.nix
+    ../../modules/home-manager/terminal
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/agents
     ../../modules/home-manager/direnv.nix

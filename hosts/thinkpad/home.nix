@@ -25,7 +25,7 @@
     ../../modules/home-manager/password.nix
     ../../modules/home-manager/scripts
     ../../modules/home-manager/sway.nix
-    ../../modules/home-manager/terminal.nix
+    ../../modules/home-manager/terminal
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/utils.nix
   ];

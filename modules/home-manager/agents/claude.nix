@@ -23,9 +23,7 @@ in
 
       settings = {
         env = {
-          # The login shell is fish, which Claude Code cannot drive. It only
-          # accepts an override whose path contains "bash" or "zsh", and
-          # falls back to probing /bin and /usr/bin otherwise.
+          # An explicit store path avoids probing /bin and /usr/bin on NixOS.
           CLAUDE_CODE_SHELL = "${pkgs.bashInteractive}/bin/bash";
         };
         permissions = {

@@ -15,7 +15,7 @@
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/editor
     ../../modules/home-manager/sway.nix
-    ../../modules/home-manager/terminal.nix
+    ../../modules/home-manager/terminal
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/scripts

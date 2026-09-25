@@ -1,8 +1,5 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    alacritty
-    fish
-  ];
+  environment.systemPackages = [ pkgs.alacritty ];
 }

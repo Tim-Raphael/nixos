@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 
@@ -41,7 +40,6 @@ in
 
   config = lib.mkMerge [
     (mkIf cfg.raphael.enable {
-      programs.fish.enable = true;
       users.users.raphael = {
         isNormalUser = true;
         description = "raphael";
@@ -57,18 +55,14 @@ in
           "wireshark"
           "uinput"
         ];
-        ignoreShellProgramCheck = true;
-        shell = pkgs.fish;
       };
     })
 
     (mkIf cfg.remote.enable {
-      programs.fish.enable = true;
       users.users.${cfg.remote.username} = {
         isNormalUser = true;
         description = "Remote access user";
         extraGroups = [ "wheel" ];
-        shell = pkgs.fish;
         openssh.authorizedKeys.keys = cfg.remote.authorizedKeys;
       };
       services.openssh.settings.AllowUsers = [

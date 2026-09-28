@@ -19,6 +19,10 @@
 
       bindkey -M emacs '^W' backward-kill-word
       bindkey -M viins '^W' backward-kill-word
+      bindkey -M emacs '^[[1;5D' backward-word
+      bindkey -M emacs '^[[1;5C' forward-word
+      bindkey -M viins '^[[1;5D' backward-word
+      bindkey -M viins '^[[1;5C' forward-word
 
       autoload -Uz add-zsh-hook vcs_info
       setopt PROMPT_PERCENT

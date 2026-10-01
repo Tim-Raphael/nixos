@@ -9,6 +9,23 @@ in
 
     settings = [
       {
+        profile.name = "beamer";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "enable";
+            position = "0,0";
+            scale = 1.0;
+          }
+          {
+            criteria = "HDMI-A-1";
+            status = "enable";
+            position = "0,1080";
+            scale = 1.0;
+          }
+        ];
+      }
+      {
         profile.name = "undocked";
         profile.outputs = [
           {

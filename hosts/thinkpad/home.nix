@@ -13,7 +13,7 @@
   };
 
   imports = [
-    ../../modules/home-manager/browser
+    ../../modules/home-manager/browser.nix
     ../../modules/home-manager/communication.nix
     ../../modules/home-manager/crypt.nix
     ../../modules/home-manager/development.nix

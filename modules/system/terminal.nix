@@ -1,5 +1,10 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [ pkgs.alacritty ];
+  programs.fish.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    tealdeer
+    alacritty
+  ];
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -15,19 +15,24 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
 
+    # Enable screenshare
+    wlr = {
+      enable = true;
+      settings.screencast = {
+        chooser_type = "simple";
+        chooser_cmd = "${pkgs.slurp}/bin/slurp -f 'Monitor: %o' -or";
+      };
+    };
     extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
     ];
-
     config = {
-      common = {
+      common.default = [ "gtk" ];
+      sway = {
+        default = [ "gtk" ];
         "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-        "org.freedesktop.impl.portal.Request" = [ "wlr" ];
-        default = [ "wlr" ];
       };
     };
   };

@@ -66,6 +66,7 @@
     video = {
       vlc.enable = true;
       obs.enable = true;
+      shotcut.enable = true;
     };
     audio = {
       noise.enable = true;

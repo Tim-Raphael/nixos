@@ -19,41 +19,6 @@ let
   ws8 = "8:message";
   ws9 = "9:note";
   ws0 = "0:todo";
-
-  # Saves/restores the layout and running programs of every workspace, so we
-  # can snapshot the session before shutdown and replay it on the next login.
-  swayWorkspacesSave = pkgs.writeShellApplication {
-    name = "sway-workspaces-save";
-    runtimeInputs = [
-      pkgs.sway
-      pkgs.jq
-      pkgs.i3-resurrect
-    ];
-    text = ''
-      mapfile -t workspaces < <(swaymsg -t get_workspaces | jq -r '.[].name')
-
-      for workspace in "''${workspaces[@]}"; do
-        i3-resurrect save -w "$workspace"
-      done
-    '';
-  };
-
-  swayWorkspacesRestore = pkgs.writeShellApplication {
-    name = "sway-workspaces-restore";
-    runtimeInputs = [
-      pkgs.i3-resurrect
-    ];
-    text = ''
-      # Give outputs/bar a moment to settle before placing windows.
-      sleep 2
-
-      mapfile -t workspaces < <(i3-resurrect ls workspaces 2>/dev/null | awk '{print $2}' | sort -u)
-
-      for workspace in "''${workspaces[@]}"; do
-        i3-resurrect restore -w "$workspace"
-      done
-    '';
-  };
 in
 {
   imports = [ ./i3status.nix ];
@@ -72,29 +37,7 @@ in
     jq
     swaylock
     brightnessctl
-    i3-resurrect
-    swayWorkspacesSave
-    swayWorkspacesRestore
   ];
-
-  # sway-session.target is stopped right before sway exits (see sway's
-  # systemd.enable integration), so tying ExecStop to it saves the layout
-  # on both logout and shutdown.
-  systemd.user.services.sway-workspaces-save = {
-    Unit = {
-      Description = "Save sway workspace layout before the session ends";
-      PartOf = [ "sway-session.target" ];
-    };
-    Service = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStart = "${pkgs.coreutils}/bin/true";
-      ExecStop = "${swayWorkspacesSave}/bin/sway-workspaces-save";
-    };
-    Install = {
-      WantedBy = [ "sway-session.target" ];
-    };
-  };
 
   services.wlsunset = {
     enable = true;
@@ -139,7 +82,6 @@ in
 
           startup = [
             { command = "alacritty --command ssh-add ~/.ssh/github"; }
-            { command = "${swayWorkspacesRestore}/bin/sway-workspaces-restore"; }
             {
               command = ''
                 swayidle -w \

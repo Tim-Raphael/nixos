@@ -13,6 +13,7 @@
     enable = true;
     trustedInterfaces = [
       "docker0"
+      "br-+"
       "br-opentalk-env"
     ];
     allowedTCPPorts = [

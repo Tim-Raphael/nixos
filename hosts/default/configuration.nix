@@ -21,6 +21,7 @@
     ../../modules/system/security.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/media.nix
+    ../../modules/system/desktop
     ../../modules/system/dconf.nix
     ../../modules/system/ssh.nix
     ../../modules/system/terminal.nix

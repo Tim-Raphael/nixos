@@ -137,9 +137,18 @@
       # four others pull the private hemisphere fonts and ocular repos over ssh,
       # which no runner holds a key for. Discarding the string context of the
       # derivation path forces the evaluation without building the system.
+      bootstrap = mkSystem "default" hostModules.default ./checks/hardware-profile.nix;
+      niriProfile = bootstrap.extendModules {
+        modules = [
+          {
+            niri.enable = true;
+            sway.enable = false;
+          }
+        ];
+      };
+
       bootstrapProfile =
         let
-          bootstrap = mkSystem "default" hostModules.default ./checks/hardware-profile.nix;
           drvPath = bootstrap.config.system.build.toplevel.drvPath;
         in
         pkgs.runCommand "bootstrap-profile" { } ''
@@ -161,6 +170,17 @@
       checks.${system} = {
         pre-commit = preCommitCheck;
         bootstrap-profile = bootstrapProfile;
+        desktop-profiles = import ./checks/desktop-profiles.nix {
+          inherit pkgs bootstrap;
+        };
+        niri-config =
+          let
+            desktop = niriProfile.config.home-manager.users.root;
+          in
+          pkgs.runCommand "niri-config" { } ''
+            ${pkgs.niri}/bin/niri validate --config ${desktop.xdg.configFile."niri/config.kdl".source}
+            touch $out
+          '';
       };
 
       formatter.${system} = pkgs.nixfmt-rfc-style;

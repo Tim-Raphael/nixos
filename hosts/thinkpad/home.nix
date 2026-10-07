@@ -19,14 +19,14 @@
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/editor
     ../../modules/home-manager/gaming.nix
-    ../../modules/home-manager/i3status.nix
-    ../../modules/home-manager/kanshi.nix
+    ../../modules/home-manager/desktop/i3status.nix
+    ../../modules/home-manager/desktop/kanshi.nix
     ../../modules/home-manager/multimedia.nix
     ../../modules/home-manager/password.nix
     ../../modules/home-manager/scripts
-    ../../modules/home-manager/sway.nix
+    ../../modules/home-manager/desktop
     ../../modules/home-manager/terminal.nix
-    ../../modules/home-manager/theme.nix
+    ../../modules/home-manager/desktop/theme.nix
     ../../modules/home-manager/utils.nix
   ];
 

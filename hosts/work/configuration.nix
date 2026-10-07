@@ -9,6 +9,7 @@ let
 in
 {
   system.stateVersion = "25.05";
+  niri.enable = true;
 
   imports = [
     ./hardware-configuration.nix
@@ -23,6 +24,7 @@ in
     ../../modules/system/security.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/media.nix
+    ../../modules/system/desktop
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
     ../../modules/system/syncthing.nix
@@ -30,7 +32,7 @@ in
     ../../modules/system/terminal.nix
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
-    ../../modules/system/greetd.nix
+    ../../modules/system/desktop/greetd.nix
     ../../modules/system/swap.nix
     ../../modules/system/opentabletdriver.nix
     ../../modules/system/nix-ld.nix

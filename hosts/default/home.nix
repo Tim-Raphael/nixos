@@ -17,8 +17,8 @@
     inputs.stylix.homeModules.stylix
 
     ../../modules/home-manager/editor
-    ../../modules/home-manager/sway.nix
-    ../../modules/home-manager/i3status.nix
+    ../../modules/home-manager/desktop
+    ../../modules/home-manager/desktop/i3status.nix
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/browser.nix
     ../../modules/home-manager/password.nix

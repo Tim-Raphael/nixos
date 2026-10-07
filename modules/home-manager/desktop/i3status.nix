@@ -103,7 +103,7 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && config.sway.enable) {
     programs.i3status = {
       enable = true;
       enableDefault = false;

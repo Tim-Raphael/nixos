@@ -20,12 +20,13 @@
     ../../modules/system/bluetooth.nix
     ../../modules/system/keyboard.nix
     ../../modules/system/media.nix
+    ../../modules/system/desktop
     ../../modules/system/ssh.nix
     ../../modules/system/syncthing.nix
     ../../modules/system/security.nix
     ../../modules/system/hardware.nix
     ../../modules/system/ssh.nix
-    ../../modules/system/greetd.nix
+    ../../modules/system/desktop/greetd.nix
 
     inputs.home-manager.nixosModules.home-manager
   ];

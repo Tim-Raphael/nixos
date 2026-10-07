@@ -26,7 +26,7 @@
     ../../modules/home-manager/scripts
     ../../modules/home-manager/desktop
     ../../modules/home-manager/terminal.nix
-    ../../modules/home-manager/desktop/theme.nix
+    ../../modules/home-manager/desktop/themes
     ../../modules/home-manager/utils.nix
   ];
 

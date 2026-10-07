@@ -15,6 +15,7 @@
 
   imports = [
     inputs.stylix.homeModules.stylix
+    ../../modules/home-manager/desktop/themes/appearance.nix
 
     ../../modules/home-manager/editor
     ../../modules/home-manager/desktop
@@ -28,10 +29,6 @@
   # The default host must build without the private hemisphere fonts flake, so
   # it themes with a public nerd font instead of BerkeleyMono.
   stylix = {
-    enable = true;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-
     fonts.monospace = {
       name = "JetBrainsMono Nerd Font";
       package = pkgs.nerd-fonts.jetbrains-mono;

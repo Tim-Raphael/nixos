@@ -12,7 +12,7 @@
   };
 
   imports = [
-    ../../modules/home-manager/desktop/theme.nix
+    ../../modules/home-manager/desktop/themes
     ../../modules/home-manager/editor
     ../../modules/home-manager/desktop
     ../../modules/home-manager/terminal.nix

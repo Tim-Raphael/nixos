@@ -137,7 +137,7 @@ in
 
             output = {
               "*" = {
-                bg = "#${color.base00} solid_color";
+                bg = "${config.stylix.image} ${config.stylix.imageScalingMode}";
               };
             };
 

@@ -168,6 +168,31 @@
       ) hostModules;
 
       checks.${system} = {
+        wallpaper-contrast =
+          pkgs.runCommand "wallpaper-contrast"
+            {
+              nativeBuildInputs = [
+                pkgs.nodejs
+                pkgs.quickshell
+              ];
+            }
+            ''
+              node ${./checks/wallpaper-contrast.cjs} ${./modules/home-manager/desktop/themes/wallpaper/Contrast.js}
+              cp ${./modules/home-manager/desktop/themes/wallpaper/BarContrast.qml} BarContrast.qml
+              cp ${./modules/home-manager/desktop/themes/wallpaper/Contrast.js} Contrast.js
+              cp ${./checks/wallpaper-contrast.qml} shell.qml
+              cp ${./checks/wallpaper-contrast.svg} contrast.svg
+              export XDG_RUNTIME_DIR="$TMPDIR/runtime"
+              mkdir -m 700 "$XDG_RUNTIME_DIR"
+              QT_QPA_PLATFORM=offscreen QT_QUICK_BACKEND=software quickshell -p "$PWD/shell.qml"
+              touch $out
+            '';
+        wallpaper-position =
+          pkgs.runCommand "wallpaper-position" { nativeBuildInputs = [ pkgs.nodejs ]; }
+            ''
+              node ${./checks/wallpaper-position.cjs} ${./modules/home-manager/desktop/themes/wallpaper/Position.js}
+              touch $out
+            '';
         pre-commit = preCommitCheck;
         bootstrap-profile = bootstrapProfile;
         desktop-profiles = import ./checks/desktop-profiles.nix {

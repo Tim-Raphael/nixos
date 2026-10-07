@@ -32,9 +32,19 @@
     ./modules/vimtex.nix
   ];
 
+  stylix.targets.nixvim.enable = false;
+
   programs.nixvim = {
     enable = true;
     viAlias = true;
     nixpkgs.useGlobalPackages = true;
+    opts.background = "light";
+    colorschemes.gruvbox-material = {
+      enable = true;
+      settings = {
+        background = "medium";
+        foreground = "material";
+      };
+    };
   };
 }

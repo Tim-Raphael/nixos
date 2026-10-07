@@ -37,9 +37,6 @@
     showbreak = "ͱ";
     # Skip intro message
     shortmess = "ltToOCFI";
-    # Found out, that this plays nice with darkmode themes, but not the other
-    # way around, so I'm going to leave it on light for now.
-    #background = "light";
     winborder = "single";
     # Hopefully fixes some issues I had with vimdiff
     diffopt = [

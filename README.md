@@ -63,16 +63,29 @@ Greetd defaults to Sway when enabled, otherwise Niri. Press F3 to choose an enab
 session before logging in. F2 edits the launch command. On the tower, select an
 enabled session in GDM. From a TTY, run `niri-session` when Niri is enabled.
 
-Niri combines the existing Gruvbox palette and monospace typography with floating
-Waybar panels, a centered clock, thin green-to-aqua window borders, soft shadows,
-and a centered Fuzzel application launcher. Waybar and the power menu use SVG
-squircle surfaces. The pinned Niri and Fuzzel renderers still use circular window
-corners, so those retain native rounding. True squircle window clipping requires
-a compositor patch.
+Niri uses a light wallpaper-derived palette, Inter desktop typography, and a
+30-pixel macOS-style menu bar. The session menu, active application, Files, and
+Windows controls sit on the left. Status icons, search, settings, and the clock
+sit on the right. Waybar is transparent and chooses light or dark text from the
+wallpaper behind each monitor's bar. Stylix supplies its fonts and fallback colors.
+Frosted surfaces, subtle white borders, and compositor blur style the launcher,
+notifications, power menu, and translucent terminal. Terminal typography stays monospace.
+Alacritty and Fish use Gruvbox Material Dark with medium contrast.
+Neovim uses Gruvbox Material Light with medium contrast.
+The session menu uses a lambda symbol.
+
+The theme module and wallpapers live in `modules/home-manager/desktop/themes`.
+Select an image in `wallpaper.nix` from its `backgrounds` directory.
+The single Blobs light vector is rendered at 8192 × 8192. Niri keeps it behind the
+workspace animation with 12 percent overscan and small offsets on both axes.
+Each monitor tracks its own workspace and horizontal viewport, including touchpad
+scrolling and centering. Sway displays the image statically.
+See the theme's `README.md` for the wallpaper source and movement details.
 
 Empty inactive workspaces are collapsed to keep the bar compact. Named workspace
 shortcuts remain stable as Niri adds dynamic workspaces. Windows use 16-pixel gaps.
-Click the lambda to launch an application and hover SYS for system telemetry.
+Click the search icon to launch an application and hover the pulse icon for
+system telemetry. Files opens the file manager and Windows toggles the overview.
 
 Super is the modifier for these shortcuts.
 
@@ -111,12 +124,13 @@ Three-finger touchpad swipes scroll columns and workspaces. Four-finger swipes
 open and close overview. Super plus the mouse wheel moves between workspaces,
 and adding Shift moves between columns. Niri's animations remain enabled.
 
-Click VOL for application volumes, microphones, and output selection. Middle-click
-VOL for native PipeWire controls and right-click it to mute. Hover ⌘ to
-reveal the desktop controls. Click BT for pairing,
-NET/WIFI/ETH for connection editing, and DISPLAY for monitor arrangement, resolution,
-rotation, and scaling. NetworkManager prompts for network credentials through its
-session agent. POWER opens lock, suspend, logout, reboot, and shutdown controls.
+Click the speaker for application volumes, microphones, and output selection.
+Middle-click it for native PipeWire controls and right-click it to mute.
+Hover the sliders to reveal display, idle, and power controls. The Bluetooth and
+network icons open their settings. The display icon opens monitor arrangement,
+resolution, rotation, and scaling. NetworkManager prompts for credentials through
+its session agent. The Apple and power icons open lock, suspend, logout, reboot,
+and shutdown controls.
 The tray stays hidden, matching the existing Sway preference.
 
 Blueman's applet and AutoConnect plugin run in both desktops, including with the
@@ -126,9 +140,9 @@ when the adapter powers on, and every minute. Device selections remain managed
 by Blueman and are preserved across rebuilds.
 
 The session locks after ten minutes and powers displays off ten seconds later.
-It also locks before suspend. Click IDLE to temporarily inhibit automatic locking.
-Manual locking and locking before suspend remain available. Existing notification
-styling, night-light schedule, umlaut keymap, SSH key prompt, and Kanshi profiles
+It also locks before suspend. Click the idle icon to temporarily inhibit automatic locking.
+Manual locking and locking before suspend remain available. The night-light
+schedule, umlaut keymap, SSH key prompt, and Kanshi profiles
 are shared with Sway. Wdisplays changes are temporary. Edit
 `modules/home-manager/desktop/kanshi.nix` to persist a docking profile, since reconnecting
 a display reapplies that profile.
@@ -141,6 +155,10 @@ Run `nix build .#checks.x86_64-linux.niri-config` to validate an explicitly enab
 Niri profile with the pinned Niri version. Run
 `nix build .#checks.x86_64-linux.desktop-profiles` to check Sway-only, Niri-only,
 combined, and disabled desktop configurations, including greeter selection.
+Run `nix build .#checks.x86_64-linux.wallpaper-position` to verify wallpaper offsets
+with simulated workspace and viewport events.
+Run `nix build .#checks.x86_64-linux.wallpaper-contrast` to verify automatic
+Waybar text contrast and sampling of the moving wallpaper.
 The bootstrap profile check evaluates the default Sway desktop without private
 fonts. After logging in, check Bluetooth pairing,
 audio device switching, screen sharing, display hotplug, and suspend/resume on

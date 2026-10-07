@@ -16,7 +16,7 @@
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/agents
     ../../modules/home-manager/direnv.nix
-    ../../modules/home-manager/desktop/theme.nix
+    ../../modules/home-manager/desktop/themes
     ../../modules/home-manager/user-dirs.nix
     ../../modules/home-manager/crypt.nix
   ];

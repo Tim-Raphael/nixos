@@ -6,9 +6,14 @@
 }:
 
 let
-  colors = config.lib.stylix.colors;
+  colors = config.stylix.base16.mkSchemeAttrs "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
 in
 {
+  stylix.targets = {
+    alacritty.colors.override = colors;
+    fish.colors.override = colors;
+  };
+
   home.packages = with pkgs; [
     tealdeer
   ];
@@ -38,6 +43,12 @@ in
 
   programs.alacritty = {
     enable = true;
-    settings.terminal.shell.program = "${pkgs.fish}/bin/fish";
+    settings = {
+      terminal.shell.program = "${pkgs.fish}/bin/fish";
+      window.padding = {
+        x = 10;
+        y = 10;
+      };
+    };
   };
 }

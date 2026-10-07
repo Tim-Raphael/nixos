@@ -9,6 +9,11 @@ let
   color = config.lib.stylix.colors;
   font = config.stylix.fonts;
   status = config.i3status;
+  contrastStyle = "${config.xdg.cacheHome}/waybar-wallpaper.css";
+  initializeContrastStyle = pkgs.writeShellScript "initialize-waybar-contrast" ''
+    ${pkgs.coreutils}/bin/mkdir -p ${lib.escapeShellArg config.xdg.cacheHome}
+    ${pkgs.coreutils}/bin/touch ${lib.escapeShellArg contrastStyle}
+  '';
   rgb = base: "${color.${"${base}-rgb-r"}}, ${color.${"${base}-rgb-g"}}, ${color.${"${base}-rgb-b"}}";
   squircle =
     name: fill: stroke:
@@ -18,26 +23,27 @@ let
           fill="${fill}" stroke="${stroke}" stroke-width="1"/>
       </svg>
     '';
-  panel = squircle "panel" "#${color.base00}f2" "#${color.base03}b0";
-  surface = squircle "surface" "#${color.base01}" "#${color.base03}";
-  hover = squircle "hover" "#${color.base02}" "#${color.base04}";
-  active = squircle "active" "#${color.base0B}" "#${color.base0C}";
-  urgent = squircle "urgent" "#${color.base08}" "#${color.base08}";
+  surface = squircle "surface" "#${color.base00}b8" "#ffffffc0";
+  hover = squircle "hover" "#${color.base00}ed" "#ffffffff";
 in
 {
   imports = [ ./i3status.nix ];
 
   config = lib.mkIf config.niri.enable {
-    stylix.targets.waybar.enable = false;
+    stylix.targets.waybar = {
+      enable = true;
+      font = "sansSerif";
+      addCss = false;
+    };
     programs.wlogout = {
       enable = true;
       style = ''
         * {
-          font-family: "${font.monospace.name}";
+          font-family: "${font.sansSerif.name}", "Symbols Nerd Font Mono", sans-serif;
           font-size: ${toString font.sizes.desktop}pt;
         }
         window {
-          background-color: rgba(${rgb "base00"}, 0.88);
+          background-color: rgba(${rgb "base00"}, 0.3);
         }
         button {
           color: #${color.base05};
@@ -46,8 +52,8 @@ in
           border-radius: 0;
           border-image: url("${surface}") 28 fill / 28px;
           margin: 12px;
-        background-image: none;
-          box-shadow: none;
+          background-image: none;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
         button:hover, button:focus {
           color: #${color.base07};
@@ -98,28 +104,59 @@ in
       settings.mainBar = {
         layer = "top";
         position = "top";
-        height = 38;
-        margin-top = 10;
-        margin-left = 16;
-        margin-right = 16;
-        spacing = 4;
+        height = 30;
+        reload_style_on_change = true;
+        spacing = 2;
         modules-left = [
-          "custom/launcher"
-          "niri/workspaces"
+          "custom/lambda"
+          "niri/window"
+          "custom/files"
+          "custom/overview"
         ];
-        modules-center =
-          lib.optional (!status.enable || status.time.date.enable) "clock#date"
-          ++ lib.optional (!status.enable || status.time.clock.enable) "clock#time";
+        modules-center = [ ];
         modules-right = [
           "group/system"
+          "niri/workspaces"
+          "bluetooth"
           "pulseaudio"
           "battery"
         ]
         ++ lib.optional (status.network.wireless.enable || status.network.ethernet.enable) "network"
-        ++ [ "group/settings" ];
+        ++ [
+          "custom/launcher"
+          "group/settings"
+        ]
+        ++ lib.optional (!status.enable || status.time.date.enable) "clock#date"
+        ++ lib.optional (!status.enable || status.time.clock.enable) "clock#time";
 
-        "custom/launcher" = {
+        "custom/lambda" = {
           format = "λ";
+          tooltip-format = "Session menu";
+          on-click = "${pkgs.wlogout}/bin/wlogout --buttons-per-row 5";
+        };
+        "niri/window" = {
+          format = "{app_id}";
+          max-length = 24;
+          rewrite = {
+            "Alacritty" = "Terminal";
+            "(zen|zen-beta|firefox)" = "Browser";
+            "(dev.zed.Zed|code|Code)" = "Editor";
+            "org.gnome.Nautilus" = "Files";
+            "org.gnome.(.*)" = "$1";
+          };
+        };
+        "custom/files" = {
+          format = "Files";
+          tooltip-format = "Open file manager";
+          on-click = "${pkgs.nautilus}/bin/nautilus";
+        };
+        "custom/overview" = {
+          format = "Windows";
+          tooltip-format = "Toggle workspace overview";
+          on-click = "${pkgs.niri}/bin/niri msg action toggle-overview";
+        };
+        "custom/launcher" = {
+          format = "";
           tooltip-format = "Launch application · Super + D";
           on-click = "${pkgs.fuzzel}/bin/fuzzel";
         };
@@ -139,7 +176,7 @@ in
           ++ lib.optional status.system.memory.enable "memory";
         };
         "custom/system" = {
-          format = "SYS";
+          format = "";
           tooltip-format = "Hover for system telemetry";
         };
 
@@ -155,21 +192,20 @@ in
           ]
           ++ lib.optional (!status.network.wireless.enable && !status.network.ethernet.enable) "network"
           ++ [
-            "bluetooth"
             "custom/displays"
             "idle_inhibitor"
             "custom/power"
           ];
         };
         "custom/settings" = {
-          format = "⌘";
+          format = "";
           tooltip-format = "Hover for network, Bluetooth, displays, idle, and power controls";
           on-click = "${pkgs.wdisplays}/bin/wdisplays";
           on-click-right = "${pkgs.wlogout}/bin/wlogout --buttons-per-row 5";
         };
 
         "niri/workspaces" = {
-          format = "{value}";
+          format = "•";
           all-outputs = true;
           disable-markup = true;
         };
@@ -209,20 +245,32 @@ in
           tooltip = false;
         };
         pulseaudio = {
-          format = "VOL {volume}%";
-          format-muted = "VOL off";
+          format = "{icon}";
+          format-muted = "󰖁";
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
           scroll-step = 5;
           max-volume = 100;
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           on-click-right = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           on-click-middle = "${pkgs.pwvucontrol}/bin/pwvucontrol";
-          tooltip-format = "{desc}";
+          tooltip-format = "{desc} · {volume}%";
         };
         battery = {
           interval = 30;
-          format = "BAT {capacity}%";
-          format-charging = "BAT {capacity}% +";
-          format-full = "BAT {capacity}%";
+          format = "{capacity}% {icon}";
+          format-charging = "{capacity}% ";
+          format-full = "{capacity}% ";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           tooltip-format = "{timeTo}";
           format-time = "{H}h{M}m";
           states = {
@@ -234,47 +282,48 @@ in
           bat = builtins.baseNameOf (builtins.dirOf status.power.battery.path);
         };
         network = {
-          format-wifi = "WIFI {signalStrength}%";
-          format-ethernet = "ETH";
-          format-disconnected = "NET off";
+          format-wifi = "";
+          format-ethernet = "󰈀";
+          format-disconnected = "󰖪";
           tooltip-format-wifi = "{essid}\n{ifname}\n{ipaddr}/{cidr}\n{bandwidthDownBytes} down / {bandwidthUpBytes} up";
           tooltip-format = "{ifname}\n{ipaddr}/{cidr}\n{bandwidthDownBytes} down / {bandwidthUpBytes} up";
           on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
         };
         bluetooth = {
-          format = "BT {status}";
-          format-connected = "BT {num_connections}";
-          format-disabled = "BT off";
+          format = "";
+          format-connected = "󰂱";
+          format-disabled = "󰂲";
+          tooltip-format = "Bluetooth {status}";
           on-click = "${pkgs.blueman}/bin/blueman-manager";
           tooltip-format-connected = "{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}";
         };
         "custom/displays" = {
-          format = "DISPLAY";
+          format = "";
           on-click = "${pkgs.wdisplays}/bin/wdisplays";
-          tooltip = false;
+          tooltip-format = "Display settings";
         };
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
-            activated = "AWAKE";
-            deactivated = "IDLE";
+            activated = "";
+            deactivated = "󰒲";
           };
           tooltip-format-activated = "Automatic locking paused";
           tooltip-format-deactivated = "Automatic locking enabled";
         };
         "custom/power" = {
-          format = "POWER";
+          format = "";
           on-click = "${pkgs.wlogout}/bin/wlogout --buttons-per-row 5";
           on-click-right = "${pkgs.swaylock}/bin/swaylock -f";
-          tooltip = false;
+          tooltip-format = "Session menu · Right-click to lock";
         };
       };
 
       style = ''
+        @import url("${contrastStyle}");
+
         * {
-          font-family: "${font.monospace.name}";
-          font-size: ${toString font.sizes.desktop}pt;
           font-weight: normal;
           min-height: 0;
           border: none;
@@ -288,16 +337,14 @@ in
         }
         .modules-left, .modules-center, .modules-right {
           background: transparent;
-          border: 1px solid transparent;
-          border-image: url("${panel}") 28 fill / 16px;
-          padding: 4px 8px;
+          padding: 0 10px;
         }
         #workspaces button {
-          padding: 2px 9px;
-          margin: 0 2px;
-          color: #${color.base04};
+          padding: 0 4px;
+          margin: 4px 0;
+          color: inherit;
           background: transparent;
-          border: 1px solid transparent;
+          border-radius: 6px;
           transition: color 160ms ease;
         }
         #workspaces button.empty:not(.active):not(.urgent) {
@@ -311,49 +358,54 @@ in
           font-size: 0;
         }
         #workspaces button.active {
-          color: #${color.base07};
-          border-image: url("${surface}") 28 fill / 10px;
+          background: alpha(currentColor, 0.12);
         }
         #workspaces button:hover {
-          color: #${color.base07};
-          border-image: url("${hover}") 28 fill / 10px;
+          background: alpha(currentColor, 0.18);
         }
         #workspaces button.focused {
-          color: #${color.base00};
-          border-image: url("${active}") 28 fill / 10px;
+          background: alpha(currentColor, 0.15);
         }
         #workspaces button.urgent {
-          color: #${color.base00};
-          border-image: url("${urgent}") 28 fill / 10px;
+          color: #${color.base08};
+          background: rgba(${rgb "base08"}, 0.15);
         }
-        #custom-launcher, #custom-settings {
-          color: #${color.base0B};
-          font-size: 16pt;
+        #custom-lambda {
+          font-size: 15pt;
           padding: 0 10px;
         }
+        #window {
+          font-weight: bold;
+          padding: 0 10px;
+        }
+        #custom-files, #custom-overview {
+          padding: 0 10px;
+        }
+        #custom-launcher, #custom-settings,
         #custom-system, #temperature, #cpu, #disk, #memory,
         #pulseaudio, #battery, #network, #bluetooth,
         #custom-displays, #idle_inhibitor, #custom-power {
-          font-size: ${toString (font.sizes.desktop - 1)}pt;
-          padding: 0 8px;
-        }
-        #custom-system, #temperature, #cpu, #disk, #memory, #clock.date {
-          color: #${color.base04};
+          padding: 0 7px;
         }
         #clock {
           padding: 0 6px;
         }
         #clock.time {
-          color: #${color.base07};
-          font-weight: bold;
+          font-weight: 500;
         }
+        #custom-lambda, #custom-files, #custom-overview,
+        #custom-launcher, #custom-settings, #custom-system,
+        #pulseaudio, #network, #bluetooth, #custom-displays,
+        #idle_inhibitor, #custom-power {
+          border-radius: 6px;
+          margin: 2px 0;
+          transition: background-color 160ms ease;
+        }
+        #custom-lambda:hover, #custom-files:hover, #custom-overview:hover,
         #custom-launcher:hover, #custom-settings:hover, #custom-system:hover,
         #pulseaudio:hover, #network:hover, #bluetooth:hover,
         #custom-displays:hover, #idle_inhibitor:hover, #custom-power:hover {
-          border-image: url("${hover}") 28 fill / 10px;
-        }
-        #pulseaudio, #network, #bluetooth, #battery.charging, #battery.full {
-          color: #${color.base0B};
+          background-color: alpha(currentColor, 0.18);
         }
         #battery.warning, #memory.warning, #idle_inhibitor.activated {
           color: #${color.base0A};
@@ -363,10 +415,10 @@ in
           color: #${color.base08};
         }
         tooltip {
-          background: transparent;
-          color: #${color.base07};
-          border: 1px solid transparent;
-          border-image: url("${panel}") 28 fill / 16px;
+          background: rgba(${rgb "base00"}, 0.92);
+          color: #${color.base05};
+          border: 1px solid rgba(255, 255, 255, 0.75);
+          border-radius: 12px;
         }
         tooltip label {
           padding: 10px 14px;
@@ -376,7 +428,16 @@ in
 
     systemd.user.services.waybar = {
       Unit.ConditionEnvironment = lib.mkForce "XDG_CURRENT_DESKTOP=niri";
+      Service.ExecStartPre = [ "${initializeContrastStyle}" ];
       Install.WantedBy = lib.mkForce [ "graphical-session.target" ];
+    };
+
+    systemd.user.services.niri-wallpaper.Service = {
+      ExecStartPre = [ "${initializeContrastStyle}" ];
+      Environment = [
+        "WALLPAPER_CONTRAST_CSS=${contrastStyle}"
+        "WAYBAR_HEIGHT=${toString config.programs.waybar.settings.mainBar.height}"
+      ];
     };
   };
 }

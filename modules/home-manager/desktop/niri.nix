@@ -63,16 +63,29 @@ in
       wdisplays
       nautilus
       playerctl
+      nerd-fonts.symbols-only
     ];
+
+    stylix.opacity.terminal = 0.86;
+
+    services.mako.settings = {
+      font = lib.mkForce "${font.sansSerif.name} ${toString (font.sizes.desktop + 1)}";
+      background-color = lib.mkForce "#${color.base00}d9";
+      text-color = "#${color.base05}";
+      border-color = lib.mkForce "#ffffffb3";
+      border-size = 1;
+      border-radius = 18;
+      padding = lib.mkForce "16";
+    };
 
     stylix.targets.fuzzel.enable = false;
     programs.fuzzel = {
       enable = true;
       settings = {
         main = {
-          font = "${font.monospace.name}:size=${toString font.sizes.desktop}";
+          font = "${font.sansSerif.name}:size=${toString (font.sizes.desktop + 3)}";
           terminal = "${pkgs.alacritty}/bin/alacritty -e";
-          prompt = "λ  ";
+          prompt = "⌕  ";
           placeholder = "Search applications";
           icon-theme = "Adwaita";
           width = 42;
@@ -82,20 +95,20 @@ in
           inner-pad = 12;
         };
         colors = {
-          background = "${color.base00}f5";
+          background = "${color.base00}d9";
           text = "${color.base05}ff";
-          prompt = "${color.base0B}ff";
+          prompt = "${color.base05}ff";
           placeholder = "${color.base04}ff";
           input = "${color.base07}ff";
           match = "${color.base0C}ff";
-          selection = "${color.base02}ff";
+          selection = "${color.base02}b3";
           selection-text = "${color.base07}ff";
           selection-match = "${color.base0B}ff";
-          border = "${color.base03}ff";
+          border = "ffffffc0";
         };
         border = {
           width = 1;
-          radius = 18;
+          radius = 22;
         };
       };
     };
@@ -123,6 +136,21 @@ in
 
     systemd.user.services = {
       swayidle.Unit.ConditionEnvironment = lib.mkForce "XDG_CURRENT_DESKTOP=niri";
+
+      niri-wallpaper = {
+        Unit = {
+          Description = "Desktop wallpaper for Niri";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+          ConditionEnvironment = "XDG_CURRENT_DESKTOP=niri";
+        };
+        Service = {
+          ExecStart = "${pkgs.quickshell}/bin/quickshell -p ${./themes/wallpaper}";
+          Environment = [ "WALLPAPER_IMAGE=${config.stylix.image}" ];
+          Restart = "on-failure";
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
+      };
 
       niri-polkit = {
         Unit = {
@@ -176,7 +204,7 @@ in
 
       layout {
           gaps 16
-          background-color "#${color.base00}"
+          background-color "transparent"
           center-focused-column "on-overflow"
           preset-column-widths {
               proportion 0.33333
@@ -187,17 +215,17 @@ in
           focus-ring { off; }
           border {
               width 1
-              active-gradient from="#${color.base0B}" to="#${color.base0C}" angle=135
-              inactive-color "#${color.base03}80"
+              active-gradient from="#ffffffd9" to="#${color.base0D}80" angle=135
+              inactive-color "#ffffff55"
               urgent-color "#${color.base08}"
           }
           shadow {
               on
-              softness 24
+              softness 32
               spread 2
               offset x=0 y=6
-              color "#00000055"
-              inactive-color "#00000030"
+              color "#00000035"
+              inactive-color "#00000020"
           }
           tab-indicator {
               active-color "#${color.base0B}"
@@ -214,13 +242,61 @@ in
       overview { backdrop-color "#${color.base00}"; }
       screenshot-path null
 
+      blur {
+          passes 3
+          offset 3.0
+          noise 0.015
+          saturation 1.15
+      }
+
+      layer-rule {
+          match namespace="^spatial-wallpaper$"
+          place-within-backdrop true
+      }
+
+      layer-rule {
+          match namespace="^(launcher|logout_dialog|notifications)$"
+          background-effect {
+              blur true
+              xray true
+          }
+      }
+
+      layer-rule {
+          match namespace="^launcher$"
+          geometry-corner-radius 22
+          shadow {
+              on
+              softness 32
+              spread 2
+              offset x=0 y=8
+              color "#00000030"
+          }
+      }
+
+      layer-rule {
+          match namespace="^waybar$"
+          popups {
+              background-effect { blur true; }
+          }
+      }
+
       ${workspaceConfig}
 
       spawn-sh-at-startup "alacritty --command ssh-add ~/.ssh/github"
 
       window-rule {
-          geometry-corner-radius 14
+          geometry-corner-radius 18
           clip-to-geometry true
+          draw-border-with-background false
+      }
+
+      window-rule {
+          match app-id="^Alacritty$"
+          background-effect {
+              blur true
+              xray true
+          }
       }
 
       window-rule {

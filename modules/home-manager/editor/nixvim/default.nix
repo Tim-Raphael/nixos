@@ -38,7 +38,7 @@
     enable = true;
     viAlias = true;
     nixpkgs.useGlobalPackages = true;
-    opts.background = "light";
+    opts.background = "dark";
     colorschemes.gruvbox-material = {
       enable = true;
       settings = {

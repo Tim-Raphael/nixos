@@ -9,22 +9,7 @@ let
   color = config.lib.stylix.colors;
   font = config.stylix.fonts;
   status = config.i3status;
-  contrastStyle = "${config.xdg.cacheHome}/waybar-wallpaper.css";
-  initializeContrastStyle = pkgs.writeShellScript "initialize-waybar-contrast" ''
-    ${pkgs.coreutils}/bin/mkdir -p ${lib.escapeShellArg config.xdg.cacheHome}
-    ${pkgs.coreutils}/bin/touch ${lib.escapeShellArg contrastStyle}
-  '';
   rgb = base: "${color.${"${base}-rgb-r"}}, ${color.${"${base}-rgb-g"}}, ${color.${"${base}-rgb-b"}}";
-  squircle =
-    name: fill: stroke:
-    pkgs.writeText "${name}-squircle.svg" ''
-      <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-        <path d="M 28 1 H 68 C 91 1 95 5 95 28 V 68 C 95 91 91 95 68 95 H 28 C 5 95 1 91 1 68 V 28 C 1 5 5 1 28 1 Z"
-          fill="${fill}" stroke="${stroke}" stroke-width="1"/>
-      </svg>
-    '';
-  surface = squircle "surface" "#${color.base00}b8" "#ffffffc0";
-  hover = squircle "hover" "#${color.base00}ed" "#ffffffff";
 in
 {
   imports = [ ./i3status.nix ];
@@ -47,17 +32,16 @@ in
         }
         button {
           color: #${color.base05};
-          background-color: transparent;
-          border: 1px solid transparent;
-          border-radius: 0;
-          border-image: url("${surface}") 28 fill / 28px;
+          background-color: rgba(${rgb "base00"}, 0.72);
+          border: 1px solid rgba(255, 255, 255, 0.75);
+          border-radius: 24px;
           margin: 12px;
           background-image: none;
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
         button:hover, button:focus {
           color: #${color.base07};
-          border-image-source: url("${hover}");
+          background-color: rgba(${rgb "base00"}, 0.93);
         }
       '';
       layout = [
@@ -105,7 +89,6 @@ in
         layer = "top";
         position = "top";
         height = 30;
-        reload_style_on_change = true;
         spacing = 2;
         modules-left = [
           "custom/lambda"
@@ -321,8 +304,6 @@ in
       };
 
       style = ''
-        @import url("${contrastStyle}");
-
         * {
           font-weight: normal;
           min-height: 0;
@@ -333,7 +314,10 @@ in
         }
         window#waybar {
           background: transparent;
-          color: #${color.base05};
+          color: #f5f5f5;
+        }
+        window#waybar label {
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
         }
         .modules-left, .modules-center, .modules-right {
           background: transparent;
@@ -428,16 +412,7 @@ in
 
     systemd.user.services.waybar = {
       Unit.ConditionEnvironment = lib.mkForce "XDG_CURRENT_DESKTOP=niri";
-      Service.ExecStartPre = [ "${initializeContrastStyle}" ];
       Install.WantedBy = lib.mkForce [ "graphical-session.target" ];
-    };
-
-    systemd.user.services.niri-wallpaper.Service = {
-      ExecStartPre = [ "${initializeContrastStyle}" ];
-      Environment = [
-        "WALLPAPER_CONTRAST_CSS=${contrastStyle}"
-        "WAYBAR_HEIGHT=${toString config.programs.waybar.settings.mainBar.height}"
-      ];
     };
   };
 }

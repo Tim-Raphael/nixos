@@ -31,7 +31,6 @@ in
   stylix = {
     enable = true;
     polarity = "light";
-    # Render the vector at 8K to leave room for the wallpaper's zoom.
     image = pkgs.runCommand "wallpaper.png" { nativeBuildInputs = [ pkgs.librsvg ]; } ''
       rsvg-convert --width 8192 --height 8192 ${wallpaper} --output "$out"
     '';

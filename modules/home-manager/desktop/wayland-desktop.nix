@@ -48,6 +48,7 @@ in
         border-color = "#${color.base07}";
         background-color = "#${color.base00}";
         padding = 10;
+        on-notify = "exec ${pkgs.pipewire}/bin/pw-play --media-role Notification --volume 0.35 ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga";
       };
     };
 

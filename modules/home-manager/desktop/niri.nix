@@ -18,30 +18,17 @@ let
         size = 24;
       };
   umlautKeymap = import ./umlaut-keymap.nix { inherit pkgs; };
-  workspaces = [
-    "1:terminal"
-    "2:editor"
-    "3:agent"
-    "4:browser"
-    "5:misc"
-    "6:misc"
-    "7:misc"
-    "8:message"
-    "9:note"
-    "0:todo"
-  ];
-  workspaceConfig = lib.concatMapStringsSep "\n" (name: ''workspace "${name}"'') workspaces;
   workspaceBinds = lib.concatMapStringsSep "\n" (
-    name:
+    index:
     let
-      key = builtins.substring 0 1 name;
+      key = if index == 10 then "0" else toString index;
     in
     ''
-      Mod+${key} { focus-workspace "${name}"; }
-      Mod+Shift+${key} { move-window-to-workspace "${name}"; }
-      Mod+Ctrl+${key} { move-column-to-workspace "${name}"; }
+      Mod+${key} { focus-workspace ${toString index}; }
+      Mod+Shift+${key} { move-window-to-workspace ${toString index}; }
+      Mod+Ctrl+${key} { move-column-to-workspace ${toString index}; }
     ''
-  ) workspaces;
+  ) (lib.range 1 10);
 in
 {
   imports = [
@@ -70,7 +57,7 @@ in
 
     services.mako.settings = {
       font = lib.mkForce "${font.sansSerif.name} ${toString (font.sizes.desktop + 1)}";
-      background-color = lib.mkForce "#${color.base00}d9";
+      background-color = lib.mkForce "#${color.base00}";
       text-color = "#${color.base05}";
       border-color = lib.mkForce "#ffffffb3";
       border-size = 1;
@@ -145,8 +132,7 @@ in
           ConditionEnvironment = "XDG_CURRENT_DESKTOP=niri";
         };
         Service = {
-          ExecStart = "${pkgs.quickshell}/bin/quickshell -p ${./themes/wallpaper}";
-          Environment = [ "WALLPAPER_IMAGE=${config.stylix.image}" ];
+          ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${config.stylix.image} -m ${config.stylix.imageScalingMode}";
           Restart = "on-failure";
         };
         Install.WantedBy = [ "graphical-session.target" ];
@@ -250,12 +236,12 @@ in
       }
 
       layer-rule {
-          match namespace="^spatial-wallpaper$"
+          match namespace="^wallpaper$"
           place-within-backdrop true
       }
 
       layer-rule {
-          match namespace="^(launcher|logout_dialog|notifications)$"
+          match namespace="^(launcher|logout_dialog)$"
           background-effect {
               blur true
               xray true
@@ -280,8 +266,6 @@ in
               background-effect { blur true; }
           }
       }
-
-      ${workspaceConfig}
 
       spawn-sh-at-startup "alacritty --command ssh-add ~/.ssh/github"
 

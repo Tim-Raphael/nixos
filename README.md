@@ -66,24 +66,23 @@ enabled session in GDM. From a TTY, run `niri-session` when Niri is enabled.
 Niri uses a light wallpaper-derived palette, Inter desktop typography, and a
 30-pixel macOS-style menu bar. The session menu, active application, Files, and
 Windows controls sit on the left. Status icons, search, settings, and the clock
-sit on the right. Waybar is transparent and chooses light or dark text from the
-wallpaper behind each monitor's bar. Stylix supplies its fonts and fallback colors.
+sit on the right. Waybar uses a transparent background with light text and
+fonts supplied by Stylix.
 Frosted surfaces, subtle white borders, and compositor blur style the launcher,
 notifications, power menu, and translucent terminal. Terminal typography stays monospace.
-Alacritty and Fish use Gruvbox Material Dark with medium contrast.
-Neovim uses Gruvbox Material Light with medium contrast.
+Alacritty, Fish, and Neovim use Gruvbox Material Dark with medium contrast.
 The session menu uses a lambda symbol.
 
 The theme module and wallpapers live in `modules/home-manager/desktop/themes`.
 Select an image in `wallpaper.nix` from its `backgrounds` directory.
-The single Blobs light vector is rendered at 8192 × 8192. Niri keeps it behind the
-workspace animation with 12 percent overscan and small offsets on both axes.
-Each monitor tracks its own workspace and horizontal viewport, including touchpad
-scrolling and centering. Sway displays the image statically.
-See the theme's `README.md` for the wallpaper source and movement details.
+The single Blobs light vector is rendered at 8192 × 8192 and displayed statically
+with swaybg in Niri and Sway. Wallpaper and bar configuration live in Nix.
+In Niri, the wallpaper stays fixed while workspaces move or enter overview.
+See the theme's `README.md` for the wallpaper source.
 
-Empty inactive workspaces are collapsed to keep the bar compact. Named workspace
-shortcuts remain stable as Niri adds dynamic workspaces. Windows use 16-pixel gaps.
+Niri creates and removes workspaces dynamically. Empty inactive workspaces are
+hidden from the bar. Number shortcuts refer to the current workspace positions
+on the focused monitor, with 0 selecting position 10. Windows use 16-pixel gaps.
 Click the search icon to launch an application and hover the pulse icon for
 system telemetry. Files opens the file manager and Windows toggles the overview.
 
@@ -92,9 +91,9 @@ Super is the modifier for these shortcuts.
 | Shortcut | Action |
 | --- | --- |
 | Super + Enter / D | Terminal / application launcher |
-| Super + 1 through 0 | Focus the corresponding named workspace |
-| Super + Shift + 1 through 0 | Move the window to a named workspace |
-| Super + Ctrl + 1 through 0 | Move the entire column to a named workspace |
+| Super + 1 through 0 | Focus workspace position 1 through 10 |
+| Super + Shift + 1 through 0 | Move the window to workspace position 1 through 10 |
+| Super + Ctrl + 1 through 0 | Move the entire column to workspace position 1 through 10 |
 | Super + arrows or H J K L | Focus columns horizontally and windows vertically |
 | Super + Shift + arrows or H J K L | Move columns horizontally and windows vertically |
 | Super + Ctrl + arrows | Focus another monitor |
@@ -155,10 +154,6 @@ Run `nix build .#checks.x86_64-linux.niri-config` to validate an explicitly enab
 Niri profile with the pinned Niri version. Run
 `nix build .#checks.x86_64-linux.desktop-profiles` to check Sway-only, Niri-only,
 combined, and disabled desktop configurations, including greeter selection.
-Run `nix build .#checks.x86_64-linux.wallpaper-position` to verify wallpaper offsets
-with simulated workspace and viewport events.
-Run `nix build .#checks.x86_64-linux.wallpaper-contrast` to verify automatic
-Waybar text contrast and sampling of the moving wallpaper.
 The bootstrap profile check evaluates the default Sway desktop without private
 fonts. After logging in, check Bluetooth pairing,
 audio device switching, screen sharing, display hotplug, and suspend/resume on

@@ -7,6 +7,21 @@
       fd.enable = true;
     };
 
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>G";
+        action.__raw = ''
+          function()
+            require('telescope.builtin').live_grep({
+              additional_args = { '--hidden', '--no-ignore', '--glob', '!.git' },
+            })
+          end
+        '';
+        options.desc = "Grep (all)";
+      }
+    ];
+
     plugins = {
       telescope = {
         enable = true;

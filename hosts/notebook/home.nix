@@ -14,7 +14,7 @@
   imports = [
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/editor
-    ../../modules/home-manager/sway.nix
+    ../../modules/home-manager/desktop
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/direnv.nix
@@ -27,16 +27,15 @@
     ../../modules/home-manager/password.nix
     ../../modules/home-manager/crypt.nix
     ../../modules/home-manager/kanshi.nix
-    ../../modules/home-manager/i3status.nix
     ../../modules/home-manager/user-dirs.nix
   ];
 
   i3status = {
     enable = true;
     system = {
+      memory.enable = true;
       cpu = {
         usage.enable = true;
-        temperature.enable = true;
       };
       disk = {
         root.enable = true;
@@ -45,15 +44,6 @@
     time = {
       date.enable = true;
       clock.enable = true;
-    };
-    audio = {
-      volume.enable = true;
-    };
-    network = {
-      wireless = {
-        enable = true;
-        interface = "wlo1";
-      };
     };
     power = {
       battery = {

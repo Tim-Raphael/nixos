@@ -17,7 +17,7 @@
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/agents
     ../../modules/home-manager/direnv.nix
-    ../../modules/home-manager/sway.nix
+    ../../modules/home-manager/desktop
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/scripts
     ../../modules/home-manager/utils.nix
@@ -27,7 +27,6 @@
     ../../modules/home-manager/communication.nix
     ../../modules/home-manager/multimedia.nix
     ../../modules/home-manager/kanshi.nix
-    ../../modules/home-manager/i3status.nix
     ../../modules/home-manager/user-dirs.nix
   ];
 
@@ -37,7 +36,6 @@
       memory.enable = true;
       cpu = {
         usage.enable = true;
-        temperature.enable = true;
       };
       disk = {
         root.enable = true;
@@ -46,9 +44,6 @@
     time = {
       date.enable = true;
       clock.enable = true;
-    };
-    audio = {
-      volume.enable = true;
     };
     power = {
       battery.enable = true;

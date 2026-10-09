@@ -14,7 +14,7 @@
   imports = [
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/editor
-    ../../modules/home-manager/sway.nix
+    ../../modules/home-manager/desktop
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/development.nix
     ../../modules/home-manager/agents
@@ -28,7 +28,6 @@
     ../../modules/home-manager/password.nix
     ../../modules/home-manager/crypt.nix
     ../../modules/home-manager/kanshi.nix
-    ../../modules/home-manager/i3status.nix
     ../../modules/home-manager/user-dirs.nix
   ];
 
@@ -38,10 +37,6 @@
     system = {
       cpu = {
         usage.enable = true;
-        temperature = {
-          enable = true;
-          path = "/sys/class/hwmon/hwmon1/temp1_input";
-        };
       };
       disk = {
         root.enable = true;
@@ -54,20 +49,6 @@
       clock.enable = true;
     };
 
-    audio = {
-      volume.enable = true;
-    };
-
-    network = {
-      wireless = {
-        enable = true;
-        interface = "wlp12s0";
-      };
-      ethernet = {
-        enable = true;
-        interface = "eno1";
-      };
-    };
   };
 
   multimedia = {

@@ -49,8 +49,6 @@ let
   ws0 = "0:todo";
 in
 {
-  imports = [ ./i3status.nix ];
-
   home.packages = with pkgs; [
     swayidle
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout

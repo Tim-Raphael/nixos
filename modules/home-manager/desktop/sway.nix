@@ -15,23 +15,27 @@ let
       xkb_types {
         include "complete"
         type "MAC_UMLAUT" {
-          modifiers = Shift+Lock+Mod1;
+          modifiers = Shift+Lock+LevelThree;
           map[None] = Level1;
           map[Shift] = Level2;
           map[Lock] = Level2;
           map[Shift+Lock] = Level1;
-          map[Mod1] = Level3;
-          map[Shift+Mod1] = Level3;
-          map[Lock+Mod1] = Level3;
-          map[Shift+Lock+Mod1] = Level3;
+          map[LevelThree] = Level3;
+          map[Shift+LevelThree] = Level3;
+          map[Lock+LevelThree] = Level3;
+          map[Shift+Lock+LevelThree] = Level3;
         };
       };
       xkb_compatibility { include "complete" };
       xkb_symbols {
-        include "pc+us+inet(evdev)+compose(ralt)"
+        include "pc+us+inet(evdev)+compose(ralt)+level3(lalt_switch)"
         key <AD07> {
           type[Group1] = "MAC_UMLAUT",
           symbols[Group1] = [ u, U, dead_diaeresis ]
+        };
+        key <AC02> {
+          type[Group1] = "MAC_UMLAUT",
+          symbols[Group1] = [ s, S, ssharp ]
         };
       };
     };

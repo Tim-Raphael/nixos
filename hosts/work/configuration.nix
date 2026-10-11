@@ -25,7 +25,6 @@ in
     ../../modules/system/media.nix
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
-    ../../modules/system/syncthing.nix
     ../../modules/system/virtualisation.nix
     ../../modules/system/terminal.nix
     ../../modules/system/printer.nix

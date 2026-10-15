@@ -1,7 +1,12 @@
 { pkgs, ... }:
 
 {
-  programs.fish.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableGlobalCompInit = false;
+  };
+
+  users.defaultUserShell = pkgs.zsh;
 
   environment.systemPackages = with pkgs; [
     tealdeer

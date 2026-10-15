@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -13,31 +12,39 @@ in
     tealdeer
   ];
 
-  programs.fish = {
+  programs.zsh = {
     enable = true;
+    dotDir = "${config.xdg.configHome}/zsh";
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    defaultKeymap = "viins";
 
-    interactiveShellInit = lib.mkAfter ''
-      set -g fish_greeting
+    envExtra = ''
+      if [[ ! -o interactive ]]; then
+        emulate sh
+      fi
     '';
 
-    functions.fish_prompt = ''
-      set_color normal
-      printf '%s' (prompt_pwd --dir-length=0)
-      set -l git_prompt (fish_git_prompt '%s')
-      if test -n "$git_prompt"
-        set_color ${colors.base04}
-        printf ' :: '
-        set_color ${colors.base0B}
-        printf '%s' "$git_prompt"
-      end
-      set_color normal
-      printf ' λ '
-      set_color normal
+    initContent = ''
+      autoload -Uz vcs_info add-zsh-hook
+      zstyle ':vcs_info:*' enable git
+      zstyle ':vcs_info:git:*' formats '%b'
+      zstyle ':vcs_info:git:*' actionformats '%b|%a'
+
+      update_prompt() {
+        vcs_info
+        PROMPT='%~'
+        if [[ -n "$vcs_info_msg_0_" ]]; then
+          PROMPT+="%F{#${colors.base04}} :: %F{#${colors.base0B}}''${vcs_info_msg_0_//\%/%%}"
+        fi
+        PROMPT+='%f λ '
+      }
+      add-zsh-hook precmd update_prompt
     '';
   };
 
   programs.alacritty = {
     enable = true;
-    settings.terminal.shell.program = "${pkgs.fish}/bin/fish";
+    settings.terminal.shell.program = "${pkgs.zsh}/bin/zsh";
   };
 }

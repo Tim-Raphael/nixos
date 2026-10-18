@@ -40,6 +40,7 @@ in
 
   programs.wireshark.enable = true;
   services.fwupd.enable = true;
+  environment.systemPackages = with pkgs; [ openfortivpn ];
 
   ocular.vpn = {
     enable = true;

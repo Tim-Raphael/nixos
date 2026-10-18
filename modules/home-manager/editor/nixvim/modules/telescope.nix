@@ -100,11 +100,8 @@
                 "<esc>".__raw = "require('telescope.actions').close";
                 # Ctrl-v for vertical split
                 "<C-v>".__raw = "require('telescope.actions').select_vertical";
-                # Ctrl-x for horizontal split
-                "<C-h>".__raw = "require('telescope.actions').select_horizontal";
-                # Ctrl-j/k to move through Telescope results
-                "<C-j>".__raw = "require('telescope.actions').move_selection_next";
-                "<C-k>".__raw = "require('telescope.actions').move_selection_previous";
+                # Ctrl-s for horizontal split
+                "<C-s>".__raw = "require('telescope.actions').select_horizontal";
                 # Mirror keymaps.nix: Ctrl+Backspace deletes previous word
                 "<C-BS>".__raw = "function() vim.api.nvim_input('<C-w>') end";
               };

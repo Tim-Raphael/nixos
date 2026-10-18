@@ -17,7 +17,7 @@ in
     dotDir = "${config.xdg.configHome}/zsh";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    defaultKeymap = "viins";
+    defaultKeymap = "emacs";
 
     envExtra = ''
       if [[ ! -o interactive ]]; then
@@ -26,6 +26,11 @@ in
     '';
 
     initContent = ''
+      bindkey '^[[1;5D' backward-word
+      bindkey '^[[1;5C' forward-word
+      bindkey '^H' backward-kill-word
+      bindkey '^[[127;5u' backward-kill-word
+
       autoload -Uz vcs_info add-zsh-hook
       zstyle ':vcs_info:*' enable git
       zstyle ':vcs_info:git:*' formats '%b'

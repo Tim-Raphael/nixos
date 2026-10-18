@@ -9,17 +9,7 @@
     blink-cmp = {
       enable = true;
       settings = {
-        keymap = {
-          preset = "enter";
-          "<C-j>" = [
-            "select_next"
-            "fallback"
-          ];
-          "<C-k>" = [
-            "select_prev"
-            "fallback"
-          ];
-        };
+        keymap.preset = "enter";
 
         sources = {
           default = [
@@ -38,26 +28,13 @@
         };
 
         cmdline = {
+          keymap.preset = "default";
           completion = {
-            menu = {
-              auto_show = true;
-            };
+            menu.auto_show = true;
             list.selection = {
               preselect = false;
               auto_insert = true;
             };
-          };
-
-          keymap = {
-            preset = "default";
-            "<C-j>" = [
-              "select_next"
-              "fallback"
-            ];
-            "<C-k>" = [
-              "select_prev"
-              "fallback"
-            ];
           };
         };
       };

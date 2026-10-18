@@ -78,7 +78,6 @@
 
   editor = {
     vscode.enable = true;
-    zed.enable = true;
   };
 
   development = {

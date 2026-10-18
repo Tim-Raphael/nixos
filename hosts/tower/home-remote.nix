@@ -21,10 +21,6 @@
     ../../modules/home-manager/crypt.nix
   ];
 
-  editor = {
-    zed.enable = true;
-  };
-
   development = {
     direnv.enable = true;
 

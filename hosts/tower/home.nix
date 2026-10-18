@@ -81,7 +81,6 @@
   };
 
   editor = {
-    zed.enable = true;
     vscode.enable = true;
   };
 

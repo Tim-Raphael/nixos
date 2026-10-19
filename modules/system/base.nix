@@ -1,6 +1,8 @@
 { ... }:
 
 {
+  programs.nix-ld.enable = true;
+
   # Time zone
   time.timeZone = "Europe/Berlin";
 

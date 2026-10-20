@@ -29,13 +29,15 @@ in
     ../../modules/system/terminal.nix
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
-    ../../modules/system/greetd.nix
     ../../modules/system/swap.nix
     ../../modules/system/opentabletdriver.nix
+    ../../modules/system/desktop-environment.nix
 
     inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  desktopEnvironments.gnome.enable = true;
 
   programs.wireshark.enable = true;
   services.fwupd.enable = true;

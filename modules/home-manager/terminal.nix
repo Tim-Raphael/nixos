@@ -48,8 +48,10 @@ in
     '';
   };
 
-  programs.alacritty = {
+  programs.ghostty = {
     enable = true;
-    settings.terminal.shell.program = "${pkgs.zsh}/bin/zsh";
+    settings.command = "${pkgs.zsh}/bin/zsh";
   };
+
+  stylix.targets.ghostty.enable = true;
 }

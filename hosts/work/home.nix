@@ -19,7 +19,6 @@
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/desktop
     ../../modules/home-manager/terminal.nix
-    ../../modules/home-manager/scripts
     ../../modules/home-manager/utils.nix
     ../../modules/home-manager/browser.nix
     ../../modules/home-manager/password.nix

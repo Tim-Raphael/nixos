@@ -27,7 +27,6 @@ in
     ../../modules/system/terminal.nix
     ../../modules/system/virtualisation.nix
     ../../modules/system/ssh.nix
-    ../../modules/system/greetd.nix
     ../../modules/system/opentabletdriver.nix
     ../../modules/system/android.nix
     ../../modules/system/desktop-environment.nix

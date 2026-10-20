@@ -24,6 +24,7 @@
     ignorecase = true;
     # Enable 24-bit colors
     termguicolors = true;
+    termsync = true;
     number = true;
     relativenumber = true;
     # Always show signs (no layout shifting)

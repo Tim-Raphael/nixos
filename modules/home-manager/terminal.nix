@@ -48,10 +48,14 @@ in
     '';
   };
 
+  stylix.targets.ghostty.enable = true;
   programs.ghostty = {
     enable = true;
-    settings.command = "${pkgs.zsh}/bin/zsh";
+    settings = {
+      command = "${pkgs.zsh}/bin/zsh";
+      cursor-style = "block";
+      cursor-style-blink = false;
+      shell-integration-features = "no-cursor";
+    };
   };
-
-  stylix.targets.ghostty.enable = true;
 }

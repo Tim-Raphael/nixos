@@ -107,11 +107,11 @@ in
         {
           inherit modifier;
 
-          terminal = "alacritty";
+          terminal = "ghostty";
           defaultWorkspace = ws1;
 
           startup = [
-            { command = "alacritty --command ssh-add ~/.ssh/github"; }
+            { command = "ghostty --command=ssh-add ~/.ssh/github"; }
             {
               command = ''
                 swayidle -w \

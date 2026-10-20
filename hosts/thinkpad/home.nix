@@ -22,7 +22,6 @@
     ../../modules/home-manager/kanshi.nix
     ../../modules/home-manager/multimedia.nix
     ../../modules/home-manager/password.nix
-    ../../modules/home-manager/scripts
     ../../modules/home-manager/desktop
     ../../modules/home-manager/terminal.nix
     ../../modules/home-manager/theme.nix

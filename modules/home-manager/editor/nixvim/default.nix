@@ -37,4 +37,6 @@
     viAlias = true;
     nixpkgs.useGlobalPackages = true;
   };
+
+  stylix.targets.nixvim.enable = true;
 }

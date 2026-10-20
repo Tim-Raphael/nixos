@@ -69,6 +69,7 @@ in
 
       userSettings = lib.mkDefault {
         "diffEditor.renderSideBySide" = false;
+        "editor.fontFamily" = config.stylix.fonts.monospace.name;
         "workbench.activityBar.location" = "top";
         "window.commandCenter" = false;
         "chat.titleBar.openInAgentsWindow.enabled" = false;

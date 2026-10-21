@@ -53,6 +53,7 @@
   multimedia = {
     office = {
       libreoffice.enable = true;
+      zotero.enable = true;
       pdf.enable = true;
       notes.enable = true;
       latex.enable = true;

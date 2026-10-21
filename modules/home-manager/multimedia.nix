@@ -25,6 +25,7 @@ in
       enable = mkEnableOption "office and document tools";
 
       libreoffice.enable = mkEnableOption "LibreOffice suite";
+      zotero.enable = mkEnableOption "Zotero reference manager";
       latex.enable = mkEnableOption "LaTeX distribution and tools";
       notes.enable = mkEnableOption "note-taking tools (Obsidian)";
       pdf.enable = mkEnableOption "PDF manipulation tools";
@@ -79,6 +80,10 @@ in
     # Office tools
     (mkIf cfg.office.libreoffice.enable {
       home.packages = with pkgs; [ libreoffice-qt ];
+    })
+
+    (mkIf cfg.office.zotero.enable {
+      home.packages = with pkgs; [ zotero ];
     })
 
     (mkIf cfg.office.latex.enable {

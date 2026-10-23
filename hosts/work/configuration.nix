@@ -33,6 +33,8 @@ in
     ../../modules/system/opentabletdriver.nix
     ../../modules/system/desktop-environment.nix
 
+    ../../modules/system/kubernetes.nix
+
     inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager
   ];

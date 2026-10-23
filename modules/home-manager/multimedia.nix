@@ -8,6 +8,16 @@
 with lib;
 let
   cfg = config.multimedia;
+  betterBibtex = pkgs.fetchurl {
+    url = "https://github.com/retorquere/zotero-better-bibtex/releases/download/v9.0.71/zotero-better-bibtex-9.0.71.xpi";
+    hash = "sha256-v2GhaQ3IorerCb6d4siZhvT7bUlcgkB9ibECsm+6qdU=";
+  };
+  zoteroWithBetterBibtex = pkgs.zotero.overrideAttrs (old: {
+    postInstall = (old.postInstall or "") + ''
+      install -Dm444 ${betterBibtex} \
+        "$out/lib/distribution/extensions/better-bibtex@iris-advies.com.xpi"
+    '';
+  });
 in
 {
   options.multimedia = {
@@ -25,9 +35,8 @@ in
       enable = mkEnableOption "office and document tools";
 
       libreoffice.enable = mkEnableOption "LibreOffice suite";
-      zotero.enable = mkEnableOption "Zotero reference manager";
       latex.enable = mkEnableOption "LaTeX distribution and tools";
-      notes.enable = mkEnableOption "note-taking tools (Obsidian)";
+      notes.enable = mkEnableOption "note-taking tools (Obsidian, Xournal++, Zotero with Better BibTeX)";
       pdf.enable = mkEnableOption "PDF manipulation tools";
       pandoc.enable = mkEnableOption "Pandoc document converter";
       presentation.enable = mkEnableOption "Presenterm";
@@ -82,10 +91,6 @@ in
       home.packages = with pkgs; [ libreoffice-qt ];
     })
 
-    (mkIf cfg.office.zotero.enable {
-      home.packages = with pkgs; [ zotero ];
-    })
-
     (mkIf cfg.office.latex.enable {
       home.packages = with pkgs; [
         (texlive.combine {
@@ -114,6 +119,7 @@ in
       home.packages = with pkgs; [
         obsidian
         xournalpp
+        zoteroWithBetterBibtex
       ];
     })
 

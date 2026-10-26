@@ -24,11 +24,6 @@ in
 
     environment = {
       gnome.excludePackages = with pkgs; [
-        gnome-maps
-        gnome-weather
-        gnome-contacts
-        gnome-online-accounts
-        gnome-calendar
         evolution
         evolution-data-server
         geary

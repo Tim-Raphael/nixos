@@ -26,6 +26,7 @@ in
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix
     ../../modules/system/virtualisation.nix
+    ../../modules/system/postgresql.nix
     ../../modules/system/terminal.nix
     ../../modules/system/printer.nix
     ../../modules/system/ssh.nix

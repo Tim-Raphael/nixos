@@ -112,10 +112,13 @@ in
             editor = "nvim";
           };
           merge = {
-            tool = "vimdiff";
+            tool = "diffview";
           };
           mergetool = {
-            vimdiff.path = "nvim";
+            diffview = {
+              cmd = ''nvim -c 'execute "DiffviewOpen -- " . fnameescape(argv(0))' -- "$MERGED"'';
+              trustExitCode = false;
+            };
             keepBackup = false;
           };
           push = {

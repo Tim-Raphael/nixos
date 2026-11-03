@@ -8,6 +8,16 @@
 with lib;
 let
   cfg = config.editor.vscode;
+  rustToolchain = pkgs.rust-bin.selectLatestNightlyWith (
+    toolchain:
+    toolchain.default.override {
+      extensions = [
+        "rust-analyzer"
+        "rust-src"
+        "rustfmt"
+      ];
+    }
+  );
 in
 {
   options.editor.vscode.enable = mkEnableOption "VS Code";
@@ -20,6 +30,7 @@ in
       buf
       clang-tools
       eslint
+      gcc
       jdt-language-server
       lua-language-server
       ltex-ls-plus
@@ -28,7 +39,7 @@ in
       prettierd
       protols
       pyright
-      rust-analyzer
+      rustToolchain
       shfmt
       tailwindcss-language-server
       taplo
@@ -37,12 +48,6 @@ in
       vscode-langservers-extracted
       yaml-language-server
       yamlfmt
-      (rust-bin.selectLatestNightlyWith (
-        toolchain:
-        toolchain.default.override {
-          extensions = [ "rustfmt" ];
-        }
-      ))
     ];
 
     programs.vscode = {
@@ -69,9 +74,13 @@ in
         ];
 
         userSettings = lib.mkDefault {
-          "diffEditor.renderSideBySide" = false;
+          "diffEditor.renderSideBySide" = true;
+          "diffEditor.useInlineViewWhenSpaceIsLimited" = true;
           "editor.fontFamily" = config.stylix.fonts.monospace.name;
+          "rust-analyzer.server.path" = "${rustToolchain}/bin/rust-analyzer";
           "workbench.activityBar.location" = "top";
+          "workbench.editor.enablePreview" = false;
+          "workbench.editor.enablePreviewFromQuickOpen" = false;
           "window.commandCenter" = false;
           "chat.titleBar.openInAgentsWindow.enabled" = false;
           "window.menuBarVisibility" = "compact";

@@ -3,6 +3,51 @@
 {
   programs.nixvim.keymaps = [
     {
+      mode = [
+        "n"
+        "x"
+      ];
+      key = "<leader>y";
+      action.__raw = ''
+        function()
+          local path = vim.fn.expand('%:p')
+          if path == "" or vim.bo.buftype ~= "" then
+            vim.notify("Current buffer has no file path", vim.log.levels.WARN)
+            return
+          end
+
+          local cwd = vim.fn.getcwd()
+          local root = cwd == "/" and "/" or cwd .. "/"
+          if path:sub(1, #root) == root then
+            path = "/" .. path:sub(#root + 1)
+          end
+
+          local first_line = vim.fn.line('.')
+          local last_line = first_line
+          local mode = vim.fn.mode()
+          if mode == "v" or mode == "V" or mode == "\22" then
+            local anchor = vim.fn.line('v')
+            first_line = math.min(first_line, anchor)
+            last_line = math.max(last_line, anchor)
+          end
+
+          local location = path .. ":" .. first_line
+          if last_line ~= first_line then
+            location = location .. "-" .. last_line
+          end
+
+          vim.fn.setreg('+', location)
+          vim.fn.setreg('"', location)
+        end
+      '';
+      options = {
+        desc = "Copy file path and line range";
+        noremap = true;
+        silent = true;
+      };
+    }
+
+    {
       mode = "x";
       key = "<leader>p";
       action = "\"_dP";

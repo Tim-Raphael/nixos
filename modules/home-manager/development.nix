@@ -133,12 +133,12 @@ in
         };
         includes = [
           {
-            condition = "gitdir:~/wksp/gh/";
-            path = "~/wksp/gh/.gitconfig";
+            condition = "gitdir:~/Workspace/github/";
+            path = "~/Workspace/github/.gitconfig";
           }
           {
-            condition = "gitdir:~/wksp/ot/";
-            path = "~/wksp/ot/.gitconfig";
+            condition = "gitdir:~/Workspace/opentalk/";
+            path = "~/Workspace/opentalk/.gitconfig";
           }
         ];
       };

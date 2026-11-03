@@ -49,35 +49,37 @@ in
       enable = true;
       package = pkgs.unstable.vscode;
 
-      extensions = with pkgs.vscode-extensions; [
-        biomejs.biome
-        bradlc.vscode-tailwindcss
-        dbaeumer.vscode-eslint
-        esbenp.prettier-vscode
-        jnoortheen.nix-ide
-        llvm-vs-code-extensions.vscode-clangd
-        ms-python.python
-        redhat.java
-        redhat.vscode-yaml
-        rust-lang.rust-analyzer
-        streetsidesoftware.code-spell-checker
-        sumneko.lua
-        tamasfe.even-better-toml
-        valentjn.vscode-ltex
-        vscodevim.vim
-      ];
+      profiles.default = {
+        extensions = with pkgs.vscode-extensions; [
+          biomejs.biome
+          bradlc.vscode-tailwindcss
+          dbaeumer.vscode-eslint
+          esbenp.prettier-vscode
+          jnoortheen.nix-ide
+          llvm-vs-code-extensions.vscode-clangd
+          ms-python.python
+          redhat.java
+          redhat.vscode-yaml
+          rust-lang.rust-analyzer
+          streetsidesoftware.code-spell-checker
+          sumneko.lua
+          tamasfe.even-better-toml
+          valentjn.vscode-ltex
+          vscodevim.vim
+        ];
 
-      userSettings = lib.mkDefault {
-        "diffEditor.renderSideBySide" = false;
-        "editor.fontFamily" = config.stylix.fonts.monospace.name;
-        "workbench.activityBar.location" = "top";
-        "window.commandCenter" = false;
-        "chat.titleBar.openInAgentsWindow.enabled" = false;
-        "window.menuBarVisibility" = "compact";
-        "workbench.browser.showInTitleBar" = false;
-        "claudeCode.hideOnboarding" = true;
-        "workbench.layoutControl.enabled" = false;
-        "workbench.statusBar.visible" = false;
+        userSettings = lib.mkDefault {
+          "diffEditor.renderSideBySide" = false;
+          "editor.fontFamily" = config.stylix.fonts.monospace.name;
+          "workbench.activityBar.location" = "top";
+          "window.commandCenter" = false;
+          "chat.titleBar.openInAgentsWindow.enabled" = false;
+          "window.menuBarVisibility" = "compact";
+          "workbench.browser.showInTitleBar" = false;
+          "claudeCode.hideOnboarding" = true;
+          "workbench.layoutControl.enabled" = false;
+          "workbench.statusBar.visible" = false;
+        };
       };
     };
   };

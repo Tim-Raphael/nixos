@@ -163,7 +163,7 @@
         bootstrap-profile = bootstrapProfile;
       };
 
-      formatter.${system} = pkgs.nixfmt-rfc-style;
+      formatter.${system} = pkgs.nixfmt;
 
       devShells.${system}.default = pkgs.mkShell {
         inherit (preCommitCheck) shellHook;

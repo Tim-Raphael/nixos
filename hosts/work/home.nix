@@ -76,7 +76,7 @@
   };
 
   editor = {
-    vscode.enable = true;
+    vscode.enable = false;
   };
 
   development = {

@@ -51,11 +51,13 @@ in
   stylix.targets.ghostty.enable = true;
   programs.ghostty = {
     enable = true;
+    enableZshIntegration = true;
     settings = {
       command = "${pkgs.zsh}/bin/zsh";
       cursor-style = "block";
       cursor-style-blink = false;
-      shell-integration-features = "no-cursor";
+      shell-integration = "zsh";
+      shell-integration-features = "no-cursor,ssh-env,ssh-terminfo";
     };
   };
 }

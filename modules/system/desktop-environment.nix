@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 
@@ -22,14 +21,15 @@ in
       gnome.gcr-ssh-agent.enable = false;
     };
 
-    environment = {
-      gnome.excludePackages = with pkgs; [
-        evolution
-        evolution-data-server
-        geary
-        epiphany
-        totem
-      ];
+    # User services need permission to request negative niceness.
+    systemd.services."user@".serviceConfig.LimitNICE = -11;
+
+    systemd.user.services."org.gnome.Shell@" = {
+      overrideStrategy = "asDropin";
+      serviceConfig.Nice = -11;
     };
+
+    # CPU shares between slices are independent of process niceness.
+    systemd.user.slices.session.sliceConfig.CPUWeight = 1000;
   };
 }

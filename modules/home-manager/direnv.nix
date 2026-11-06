@@ -24,7 +24,7 @@ in
 
     flakesPath = mkOption {
       type = types.str;
-      default = "${config.home.homeDirectory}/nixos/main/flakes";
+      default = "${config.home.homeDirectory}/Workspace/github/nixos/main/flakes";
       description = ''
         Absolute path to the directory holding the per-language flakes
         (one subdirectory per language, each with its own flake.nix).

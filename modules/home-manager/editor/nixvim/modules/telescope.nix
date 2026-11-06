@@ -27,17 +27,6 @@
         enable = true;
 
         extensions = {
-          project = {
-            enable = true;
-            settings = {
-              base_dirs = [
-                "~/wksp"
-              ];
-              order_by = "asc";
-              search_by = "title";
-            };
-          };
-
           fzf-native = {
             enable = true;
             settings = {

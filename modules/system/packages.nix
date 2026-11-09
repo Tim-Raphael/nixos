@@ -2,11 +2,12 @@
 
 {
   environment.systemPackages = with pkgs; [
+    chatgpt
+    cups
+    docker-compose
     kubectl
     kubernetes
     kubernetes-helm
-    cups
-    docker-compose
     openfortivpn
     wireshark
   ];

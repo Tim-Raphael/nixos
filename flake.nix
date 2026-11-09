@@ -94,8 +94,9 @@
                   inputs.fonts.overlays.default
                 ];
                 config = {
-                  allowUnfree = true;
                   allowBroken = true;
+                  allowUnfree = true;
+                  allowUnsupportedSystem = true;
                   # Required by nheko
                   permittedInsecurePackages = [
                     "olm-3.2.16"

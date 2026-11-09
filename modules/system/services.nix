@@ -23,44 +23,6 @@
       };
     };
 
-    services = {
-      geoclue2.enable = true;
-      desktopManager.gnome.enable = true;
-      gnome.gcr-ssh-agent.enable = false;
-      pulseaudio.enable = false;
-      dbus.enable = true;
-      pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-      };
-    };
-
-    services.greetd = {
-      enable = true;
-      settings.default_session.command = ''
-        ${pkgs.tuigreet}/bin/tuigreet \
-                  --time \
-                  --asterisks \
-                  --user-menu \
-                  --cmd "sway --unsupported-gpu"
-      '';
-    };
-
-    environment.etc."greetd/environments".text = "sway\ngnome";
-
-    # TTY settings keep boot messages away from the login screen.
-    systemd.services.greetd.serviceConfig = {
-      Type = "idle";
-      StandardInput = "tty";
-      StandardOutput = "tty";
-      StandardError = "journal";
-      TTYReset = true;
-      TTYVHangup = true;
-      TTYVTDisallocate = true;
-    };
-
     # Pods need to reach the local API server.
     networking.firewall.allowedTCPPorts = [ 6443 ];
     services.k3s = {

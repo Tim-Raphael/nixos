@@ -95,7 +95,6 @@
   # Container tooling is used across these machines.
   virtualisation = {
     docker.enable = true;
-    podman.enable = true;
     containers.enable = true;
   };
 

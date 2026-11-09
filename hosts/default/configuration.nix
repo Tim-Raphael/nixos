@@ -13,17 +13,7 @@
     # machine, and flake.nix passes that path in. The profile check swaps in
     # checks/hardware-profile.nix, since pure evaluation cannot read /etc.
     hardwareProfile
-    ../../modules/system/base.nix
-    ../../modules/system/bootloader.nix
-    ../../modules/system/networking.nix
-    ../../modules/system/bluetooth.nix
-    ../../modules/system/users.nix
-    ../../modules/system/security.nix
-    ../../modules/system/keyboard.nix
-    ../../modules/system/media.nix
-    ../../modules/system/dconf.nix
-    ../../modules/system/ssh.nix
-    ../../modules/system/terminal.nix
+    ../../modules/system
     inputs.home-manager.nixosModules.home-manager
   ];
 

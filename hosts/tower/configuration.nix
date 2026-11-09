@@ -12,31 +12,11 @@ in
 
   imports = [
     ./hardware-configuration.nix
-    ../../modules/system/base.nix
-    ../../modules/system/bootloader.nix
-    ../../modules/system/networking.nix
-    ../../modules/system/bluetooth.nix
-    ../../modules/system/users.nix
-    ../../modules/system/security.nix
-    ../../modules/system/keyboard.nix
-    ../../modules/system/media.nix
-    ../../modules/system/ssh.nix
-    ../../modules/system/android.nix
-    ../../modules/system/dconf.nix
-    ../../modules/system/steam.nix
-    ../../modules/system/terminal.nix
-    ../../modules/system/virtualisation.nix
-    ../../modules/system/ssh.nix
-    ../../modules/system/opentabletdriver.nix
-    ../../modules/system/android.nix
-    ../../modules/system/desktop-environment.nix
+    ../../modules/system
 
     inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager
   ];
-
-  programs.wireshark.enable = true;
-  environment.systemPackages = with pkgs; [ wireshark ];
 
   ocular.vpn = {
     enable = true;
@@ -52,8 +32,6 @@ in
   };
 
   users.users.remote.extraGroups = [ "docker" ];
-
-  desktopEnvironments.gnome.enable = true;
 
   home-manager = {
     extraSpecialArgs = {

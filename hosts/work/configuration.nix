@@ -12,39 +12,14 @@ in
 
   imports = [
     ./hardware-configuration.nix
-    ./vpn.nix
 
-    ../../modules/system/base.nix
-    ../../modules/system/bootloader.nix
-    ../../modules/system/networking.nix
-    ../../modules/system/bluetooth.nix
-    ../../modules/system/dconf.nix
-    ../../modules/system/users.nix
-    ../../modules/system/security.nix
-    ../../modules/system/keyboard.nix
-    ../../modules/system/media.nix
-    ../../modules/system/printer.nix
-    ../../modules/system/ssh.nix
-    ../../modules/system/virtualisation.nix
-    ../../modules/system/postgresql.nix
-    ../../modules/system/terminal.nix
-    ../../modules/system/printer.nix
-    ../../modules/system/ssh.nix
-    ../../modules/system/swap.nix
-    ../../modules/system/opentabletdriver.nix
-    ../../modules/system/desktop-environment.nix
-
-    ../../modules/system/kubernetes.nix
+    ../../modules/system
 
     inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  desktopEnvironments.gnome.enable = true;
-
-  programs.wireshark.enable = true;
-  services.fwupd.enable = true;
-  environment.systemPackages = with pkgs; [ openfortivpn ];
+  local.workServices.enable = true;
 
   ocular.vpn = {
     enable = true;

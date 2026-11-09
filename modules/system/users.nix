@@ -65,10 +65,6 @@ in
         extraGroups = [ "wheel" ];
         openssh.authorizedKeys.keys = cfg.remote.authorizedKeys;
       };
-      services.openssh.settings.AllowUsers = [
-        "raphael"
-        cfg.remote.username
-      ];
     })
   ];
 }

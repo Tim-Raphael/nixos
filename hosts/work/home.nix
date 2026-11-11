@@ -12,21 +12,21 @@
   };
 
   imports = [
-    ../../modules/home-manager/theme.nix
-    ../../modules/home-manager/editor
-    ../../modules/home-manager/development.nix
-    ../../modules/home-manager/agents
-    ../../modules/home-manager/direnv.nix
-    ../../modules/home-manager/desktop
-    ../../modules/home-manager/terminal.nix
-    ../../modules/home-manager/utils.nix
-    ../../modules/home-manager/browser.nix
-    ../../modules/home-manager/password.nix
-    ../../modules/home-manager/crypt.nix
-    ../../modules/home-manager/communication.nix
-    ../../modules/home-manager/multimedia.nix
-    ../../modules/home-manager/kanshi.nix
-    ../../modules/home-manager/user-dirs.nix
+    ../../modules/home/theme.nix
+    ../../modules/home/editor
+    ../../modules/home/development.nix
+    ../../modules/home/agents
+    ../../modules/home/direnv.nix
+    ../../modules/home/desktop
+    ../../modules/home/terminal.nix
+    ../../modules/home/utils.nix
+    ../../modules/home/browser.nix
+    ../../modules/home/password.nix
+    ../../modules/home/crypt.nix
+    ../../modules/home/communication.nix
+    ../../modules/home/multimedia.nix
+    ../../modules/home/kanshi.nix
+    ../../modules/home/user-dirs.nix
   ];
 
   i3status = {

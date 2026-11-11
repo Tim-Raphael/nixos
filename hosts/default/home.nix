@@ -16,12 +16,12 @@
   imports = [
     inputs.stylix.homeModules.stylix
 
-    ../../modules/home-manager/editor
-    ../../modules/home-manager/desktop
-    ../../modules/home-manager/terminal.nix
-    ../../modules/home-manager/browser.nix
-    ../../modules/home-manager/password.nix
-    ../../modules/home-manager/crypt.nix
+    ../../modules/home/editor
+    ../../modules/home/desktop
+    ../../modules/home/terminal.nix
+    ../../modules/home/browser.nix
+    ../../modules/home/password.nix
+    ../../modules/home/crypt.nix
   ];
 
   # The default host must build without the private hemisphere fonts flake, so

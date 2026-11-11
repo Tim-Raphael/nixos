@@ -13,19 +13,19 @@
   };
 
   imports = [
-    ../../modules/home-manager/browser.nix
-    ../../modules/home-manager/communication.nix
-    ../../modules/home-manager/crypt.nix
-    ../../modules/home-manager/development.nix
-    ../../modules/home-manager/editor
-    ../../modules/home-manager/gaming.nix
-    ../../modules/home-manager/kanshi.nix
-    ../../modules/home-manager/multimedia.nix
-    ../../modules/home-manager/password.nix
-    ../../modules/home-manager/desktop
-    ../../modules/home-manager/terminal.nix
-    ../../modules/home-manager/theme.nix
-    ../../modules/home-manager/utils.nix
+    ../../modules/home/browser.nix
+    ../../modules/home/communication.nix
+    ../../modules/home/crypt.nix
+    ../../modules/home/development.nix
+    ../../modules/home/editor
+    ../../modules/home/gaming.nix
+    ../../modules/home/kanshi.nix
+    ../../modules/home/multimedia.nix
+    ../../modules/home/password.nix
+    ../../modules/home/desktop
+    ../../modules/home/terminal.nix
+    ../../modules/home/theme.nix
+    ../../modules/home/utils.nix
   ];
 
   programs.home-manager.enable = true;

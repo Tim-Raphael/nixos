@@ -11,14 +11,14 @@
   };
 
   imports = [
-    ../../modules/home-manager/editor
-    ../../modules/home-manager/terminal.nix
-    ../../modules/home-manager/development.nix
-    ../../modules/home-manager/agents
-    ../../modules/home-manager/direnv.nix
-    ../../modules/home-manager/theme.nix
-    ../../modules/home-manager/user-dirs.nix
-    ../../modules/home-manager/crypt.nix
+    ../../modules/home/editor
+    ../../modules/home/terminal.nix
+    ../../modules/home/development.nix
+    ../../modules/home/agents
+    ../../modules/home/direnv.nix
+    ../../modules/home/theme.nix
+    ../../modules/home/user-dirs.nix
+    ../../modules/home/crypt.nix
   ];
 
   development = {

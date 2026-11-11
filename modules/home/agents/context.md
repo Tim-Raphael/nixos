@@ -1,6 +1,7 @@
 # Code
 - Always structure your code in an easy-to-read sequential order instead of
   finding a clever, concise solution
+- One line of code should always aim to do just one thing
 - Keep your comments short
 - Never use comments to explain what your code does
 - Use comments to explain why your code does something if additional

@@ -9,7 +9,7 @@
 
   imports = [
     ./hardware-configuration.nix
-    ../../modules/system
+    ../../modules/system/default.nix
 
     inputs.home-manager.nixosModules.home-manager
   ];

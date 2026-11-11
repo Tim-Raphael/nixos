@@ -12,7 +12,7 @@ in
 
   imports = [
     ./hardware-configuration.nix
-    ../../modules/system
+    ../../modules/system/default.nix
 
     inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager

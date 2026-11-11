@@ -12,9 +12,7 @@ in
 
   imports = [
     ./hardware-configuration.nix
-
     ../../modules/system/default.nix
-
     inputs.ocular.nixosModules.vpn
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -26,6 +24,13 @@ in
     peer = vpn.peers.void;
     privateKeyFile = "/root/wireguard/keys/void.private";
   };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024;
+    }
+  ];
 
   home-manager = {
     extraSpecialArgs = {

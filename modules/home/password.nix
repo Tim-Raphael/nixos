@@ -18,6 +18,7 @@ in
   config = mkMerge [
     (mkIf cfg.pass.enable {
       home.packages = with pkgs; [
+        wl-clipboard
         pass
         gnupg
         pinentry-tty

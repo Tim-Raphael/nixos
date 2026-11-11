@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    chatgpt
     cups
     docker-compose
     kubectl

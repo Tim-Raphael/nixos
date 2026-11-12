@@ -2,11 +2,16 @@
 
 {
   environment.systemPackages = with pkgs; [
-    cups
+
+    # Docker
     docker-compose
+
+    # Kubernetes
     kubectl
     kubernetes
     kubernetes-helm
+
+    # Netwoking
     openfortivpn
     wireshark
   ];

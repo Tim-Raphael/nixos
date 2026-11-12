@@ -43,22 +43,6 @@
       ];
     };
 
-    services.printing = {
-      enable = true;
-      drivers = with pkgs; [
-        brlaser
-        brgenml1lpr
-        brgenml1cupswrapper
-      ];
-    };
-
-    # Avahi discovers printers on the local network.
-    services.avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
-
     services.fwupd.enable = lib.mkIf config.local.workServices.enable true;
 
     services.openvpn.servers = lib.mkIf config.local.workServices.enable {

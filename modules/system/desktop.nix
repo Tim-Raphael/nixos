@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   # Desktop environment
@@ -16,12 +16,4 @@
       pulse.enable = true;
     };
   };
-
-  environment.gnome.excludePackages = with pkgs; [
-    evolution
-    evolution-data-server
-    geary
-    epiphany
-    totem
-  ];
 }

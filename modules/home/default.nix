@@ -5,7 +5,8 @@
     ./theme.nix
     ./editor
     ./development.nix
-    ./agents
+    ./language.nix
+    ./agent
     ./direnv.nix
     ./terminal.nix
     ./utils.nix
@@ -14,8 +15,6 @@
     ./crypt.nix
     ./communication.nix
     ./multimedia.nix
-    ./kanshi.nix
-    ./user-dirs.nix
   ];
 
   multimedia = {

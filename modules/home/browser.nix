@@ -2,7 +2,6 @@
 
 {
   imports = [ inputs.zen-browser.homeModules.beta ];
-  stylix.targets.zen-browser.enable = false;
   programs.zen-browser.enable = true;
 
   # Set zen as default browser

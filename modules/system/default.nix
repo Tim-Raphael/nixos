@@ -84,13 +84,16 @@
     dedicatedServer.openFirewall = true;
   };
 
-  # The swap file provides memory headroom on these machines.
-  #swapDevices = [
-  #  {
-  #    device = "/var/lib/swapfile";
-  #    size = 16 * 1024;
-  #  }
-  #];
+  # The swap file provides memory used for caching pages.
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024;
+    }
+  ];
+
+  # Clever compression of memory pages; trading clock cycles against memory.
+  zramSwap.enable = true;
 
   # Container tooling is used across these machines.
   virtualisation = {

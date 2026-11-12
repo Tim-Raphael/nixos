@@ -26,7 +26,7 @@
     # Pods need to reach the local API server.
     networking.firewall.allowedTCPPorts = [ 6443 ];
     services.k3s = {
-      enable = true;
+      enable = false;
       role = "server";
     };
 

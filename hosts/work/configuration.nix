@@ -25,13 +25,6 @@ in
     privateKeyFile = "/root/wireguard/keys/void.private";
   };
 
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 8 * 1024;
-    }
-  ];
-
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;

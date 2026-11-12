@@ -42,8 +42,6 @@
     keepass.enable = true;
   };
 
-  editor.vscode.enable = false;
-
   development = {
     tools = {
       postman.enable = true;
@@ -54,11 +52,5 @@
       git.enable = true;
       jujutsu.enable = true;
     };
-  };
-
-  agents = {
-    claude.enable = true;
-    codex.enable = true;
-    copilot.enable = true;
   };
 }

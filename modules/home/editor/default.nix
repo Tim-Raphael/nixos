@@ -4,8 +4,11 @@
 
 {
   imports = [
-    # Vim (nixvim) is always on; VS Code is gated behind an option.
     ./nixvim
-    ./vscode.nix
   ];
+
+  programs = {
+    vscode.enable = true;
+    helix.enable = true;
+  };
 }

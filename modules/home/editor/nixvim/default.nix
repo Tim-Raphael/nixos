@@ -6,30 +6,29 @@
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
-
     # Lazy Load Provider
-    ./modules/lazy-load.nix
+    ./lazy-load.nix
 
     # Settings
-    ./modules/clipboard.nix
-    ./modules/globals.nix
-    ./modules/opts.nix
-    ./modules/keymaps.nix
+    ./clipboard.nix
+    ./globals.nix
+    ./opts.nix
+    ./keymaps.nix
 
     # Plugins
-    ./modules/autopairs.nix
-    ./modules/blink-cmp.nix
-    ./modules/conform.nix
-    ./modules/git.nix
-    ./modules/grug-far.nix
-    ./modules/indent-o-matic.nix
-    ./modules/lsp.nix
-    ./modules/oil.nix
-    ./modules/statusline.nix
-    ./modules/surround.nix
-    ./modules/telescope.nix
-    ./modules/treesitter.nix
-    ./modules/vimtex.nix
+    ./autopairs.nix
+    ./blink-cmp.nix
+    ./conform.nix
+    ./git.nix
+    ./grug-far.nix
+    ./indent-o-matic.nix
+    ./lsp.nix
+    ./oil.nix
+    ./statusline.nix
+    ./surround.nix
+    ./telescope.nix
+    ./treesitter.nix
+    ./vimtex.nix
   ];
 
   programs.nixvim = {

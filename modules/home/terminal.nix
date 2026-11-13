@@ -57,21 +57,18 @@
       shell-integration = "zsh";
       shell-integration-features = "no-cursor,ssh-env,ssh-terminfo";
 
-      # tmux key-bindings
       keybind = [
-        "ctrl+b>c=new_tab"
+        "ctrl+b>t=new_tab"
         "ctrl+b>n=next_tab"
         "ctrl+b>p=previous_tab"
-        "ctrl+b>%=new_split:right"
-        "ctrl+b>\"=new_split:down"
-        "ctrl+b>o=goto_split:next"
-        "ctrl+b>arrow_left=goto_split:left"
-        "ctrl+b>arrow_down=goto_split:down"
-        "ctrl+b>arrow_up=goto_split:up"
-        "ctrl+b>arrow_right=goto_split:right"
-        "ctrl+b>z=toggle_split_zoom"
-        "ctrl+b>x=close_surface"
-        "ctrl+b>ctrl+b=text:\\x02"
+
+        "ctrl+b>v=new_split:right"
+        "ctrl+b>s=new_split:down"
+
+        "ctrl+b>h=goto_split:left"
+        "ctrl+b>j=goto_split:down"
+        "ctrl+b>k=goto_split:up"
+        "ctrl+b>l=goto_split:right"
       ];
     };
   };

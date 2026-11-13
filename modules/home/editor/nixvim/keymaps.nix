@@ -79,53 +79,16 @@
       };
     }
 
-    # Window navigation
+    # Tabs and Panes
     {
-      mode = "n";
-      key = "<C-h>";
-      action = "<C-w>h";
-      options = {
-        noremap = true;
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-j>";
-      action = "<C-w>j";
-      options = {
-        noremap = true;
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-k>";
-      action = "<C-w>k";
-      options = {
-        noremap = true;
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-l>";
-      action = "<C-w>l";
-      options = {
-        noremap = true;
-        silent = true;
-      };
-    }
-
-    # Tabs
-    {
-      key = "<C-t>";
+      key = "<C-w>t";
       action = ":tabnew<cr>";
       options.silent = true;
       options.desc = "New Tab";
     }
+
     {
-      key = "<C-S-l>";
+      key = "<C-w>n";
       mode = "n";
       action = ":tabnext<CR>";
       options = {
@@ -133,8 +96,9 @@
         desc = "Next Tab";
       };
     }
+
     {
-      key = "<C-S-h>";
+      key = "<C-w>p";
       mode = "n";
       action = ":tabprev<CR>";
       options = {

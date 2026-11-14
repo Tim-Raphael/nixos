@@ -23,32 +23,6 @@
           cwd_prompt = false;
           prompt = "> ";
         };
-
-        winopts = {
-          height = 0.8;
-          width = 0.8;
-          row = 0.5;
-          col = 0.5;
-          border = "single";
-          backdrop = 100;
-          title_flags = false;
-
-          preview = {
-            border = "single";
-            layout = "horizontal";
-            horizontal = "right:50%";
-          };
-        };
-
-        fzf_opts = {
-          "--layout" = "reverse";
-          "--info" = "inline-right";
-        };
-
-        files = {
-          hidden = false;
-          fd_opts = "--color=never --type f --strip-cwd-prefix --follow --exclude .git";
-        };
       };
 
       keymaps = {

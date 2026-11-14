@@ -1,52 +1,18 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 
 {
   programs.nixvim = {
-    extraPackages = lib.mkAfter [
-      pkgs.ltex-ls-plus
-    ];
-
     plugins = {
       lsp = {
         enable = true;
-        # Toggled via "th"
-        inlayHints = false;
         servers = {
-          nixd = {
-            enable = true;
-            settings = {
-              options = {
-                nixpkgs.expr = "import <nixpkgs> { }";
-              };
-            };
-          };
-
+          nixd.enable = true;
           rust_analyzer = {
             enable = true;
-
-            package = pkgs.rust-bin.stable.latest.minimal.override {
-              extensions = [
-                "rust-src"
-                "rust-analyzer"
-              ];
-              targets = [ "x86_64-unknown-linux-gnu" ];
-            };
-
-            # Provided by default rust toolchain profile
+            # The home Rust toolchain already provides Cargo and rustc.
             installCargo = false;
             installRustc = false;
-
-            settings = {
-              cargo.features = "all";
-              rustc.source = "discover";
-
-              check = {
-                command = "check";
-                features = "all";
-              };
-            };
           };
-
           clangd.enable = true;
           cssls.enable = true;
           vtsls.enable = true;
@@ -93,5 +59,61 @@
         action = "<CMD>lua vim.diagnostic.jump({ count = -1, float = { border = 'single' }})<CR>";
       }
     ];
+
+    extraConfigLua = ''
+      local workspace_markers = {
+        nixd = { "flake.nix", "default.nix", "shell.nix" },
+        rust_analyzer = { "Cargo.toml", "rust-project.json" },
+        clangd = { ".clangd", "compile_commands.json", "compile_flags.txt", "CMakeLists.txt" },
+        vtsls = { "tsconfig.json", "jsconfig.json", "package.json" },
+        pyright = { "pyproject.toml", "pyrightconfig.json", "setup.py", "requirements.txt" },
+        lua_ls = { ".luarc.json", ".luarc.jsonc" },
+        jdtls = { "pom.xml", "build.gradle", "build.gradle.kts" },
+        protols = { "buf.yaml" },
+      }
+
+      local function start_workspace_servers()
+        local cwd = vim.fn.getcwd()
+        local bufnr = vim.api.nvim_get_current_buf()
+
+        for name, markers in pairs(workspace_markers) do
+          local marker = vim.fs.find(markers, { path = cwd, upward = true, type = "file" })[1]
+          if marker and vim.lsp.is_enabled(name) then
+            local config = vim.deepcopy(vim.lsp.config[name])
+            local marker_bufnr = vim.fn.bufadd(marker)
+
+            local function start(root_dir)
+              vim.schedule(function()
+                if not root_dir or not vim.api.nvim_buf_is_valid(bufnr) then
+                  return
+                end
+
+                config.root_dir = root_dir
+                local filetype = vim.bo[bufnr].filetype
+                local attach = filetype == "" or vim.tbl_contains(config.filetypes or {}, filetype)
+                vim.lsp.start(config, { bufnr = bufnr, attach = attach })
+              end)
+            end
+
+            -- Keep server-specific workspace and monorepo resolution.
+            if type(config.root_dir) == "function" then
+              config.root_dir(marker_bufnr, start)
+            else
+              local root_dir = config.root_dir
+              if not root_dir and config.root_markers then
+                root_dir = vim.fs.root(marker, config.root_markers)
+              end
+              start(root_dir or vim.fs.dirname(marker))
+            end
+          end
+        end
+      end
+
+      vim.api.nvim_create_autocmd("VimEnter", {
+        group = vim.api.nvim_create_augroup("WorkspaceLsp", { clear = true }),
+        once = true,
+        callback = start_workspace_servers,
+      })
+    '';
   };
 }

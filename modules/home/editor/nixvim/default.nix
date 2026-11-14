@@ -19,6 +19,7 @@
     ./autopairs.nix
     ./blink-cmp.nix
     ./conform.nix
+    ./fzf-lua.nix
     ./git.nix
     ./grug-far.nix
     ./indent-o-matic.nix
@@ -26,7 +27,6 @@
     ./oil.nix
     ./statusline.nix
     ./surround.nix
-    ./telescope.nix
     ./treesitter.nix
     ./vimtex.nix
   ];

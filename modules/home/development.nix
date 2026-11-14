@@ -94,8 +94,7 @@ in
       programs.git = {
         enable = true;
         ignores = [
-          ".tmp/"
-          ".claude/"
+          ".agent/"
         ];
         settings = {
           user = {

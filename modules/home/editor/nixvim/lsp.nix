@@ -72,39 +72,80 @@
         protols = { "buf.yaml" },
       }
 
+      local function find_workspace_marker(directory, markers, callback)
+        local index = 1
+
+        local function check_next()
+          local marker = markers[index]
+          if not marker then
+            local parent = vim.fs.dirname(directory)
+            if parent and parent ~= directory then
+              find_workspace_marker(parent, markers, callback)
+            end
+            return
+          end
+
+          local path = vim.fs.joinpath(directory, marker)
+          vim.uv.fs_stat(path, function(err, stat)
+            if not err and stat.type == "file" then
+              vim.schedule(function()
+                callback(path)
+              end)
+              return
+            end
+
+            index = index + 1
+            check_next()
+          end)
+        end
+
+        check_next()
+      end
+
       local function start_workspace_servers()
         local cwd = vim.fn.getcwd()
         local bufnr = vim.api.nvim_get_current_buf()
 
         for name, markers in pairs(workspace_markers) do
-          local marker = vim.fs.find(markers, { path = cwd, upward = true, type = "file" })[1]
-          if marker and vim.lsp.is_enabled(name) then
-            local config = vim.deepcopy(vim.lsp.config[name])
-            local marker_bufnr = vim.fn.bufadd(marker)
-
-            local function start(root_dir)
-              vim.schedule(function()
-                if not root_dir or not vim.api.nvim_buf_is_valid(bufnr) then
-                  return
-                end
-
-                config.root_dir = root_dir
-                local filetype = vim.bo[bufnr].filetype
-                local attach = filetype == "" or vim.tbl_contains(config.filetypes or {}, filetype)
-                vim.lsp.start(config, { bufnr = bufnr, attach = attach })
-              end)
-            end
-
-            -- Keep server-specific workspace and monorepo resolution.
-            if type(config.root_dir) == "function" then
-              config.root_dir(marker_bufnr, start)
-            else
-              local root_dir = config.root_dir
-              if not root_dir and config.root_markers then
-                root_dir = vim.fs.root(marker, config.root_markers)
+          if vim.lsp.is_enabled(name) then
+            find_workspace_marker(cwd, markers, function(marker)
+              if vim.fn.getcwd() ~= cwd or not vim.api.nvim_buf_is_valid(bufnr) then
+                return
               end
-              start(root_dir or vim.fs.dirname(marker))
-            end
+              if not vim.lsp.is_enabled(name) then
+                return
+              end
+
+              local config = vim.deepcopy(vim.lsp.config[name])
+              local marker_bufnr = vim.fn.bufadd(marker)
+
+              local function start(root_dir)
+                vim.schedule(function()
+                  if not root_dir or not vim.api.nvim_buf_is_valid(bufnr) then
+                    return
+                  end
+                  if vim.fn.getcwd() ~= cwd or not vim.lsp.is_enabled(name) then
+                    return
+                  end
+
+                  config.root_dir = root_dir
+                  local filetype = vim.bo[bufnr].filetype
+                  local attach = filetype == "" or vim.tbl_contains(config.filetypes or {}, filetype)
+                  vim.lsp.start(config, { bufnr = bufnr, attach = attach })
+                end)
+              end
+
+              -- Keep server-specific workspace and monorepo resolution.
+              if type(config.root_dir) == "function" then
+                config.root_dir(marker_bufnr, start)
+              else
+                local root_dir = config.root_dir
+                if not root_dir and config.root_markers then
+                  root_dir = vim.fs.root(marker, config.root_markers)
+                end
+                start(root_dir or vim.fs.dirname(marker))
+              end
+            end)
           end
         end
       end
@@ -112,7 +153,9 @@
       vim.api.nvim_create_autocmd("VimEnter", {
         group = vim.api.nvim_create_augroup("WorkspaceLsp", { clear = true }),
         once = true,
-        callback = start_workspace_servers,
+        callback = function()
+          vim.defer_fn(start_workspace_servers, 100)
+        end,
       })
     '';
   };

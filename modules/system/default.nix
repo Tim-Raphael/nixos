@@ -41,6 +41,12 @@
     "flakes"
   ];
 
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 30d";
+  };
+
   # GRUB detects the other operating systems on these machines.
   boot.loader = {
     efi.canTouchEfiVariables = true;

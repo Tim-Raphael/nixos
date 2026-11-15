@@ -2,6 +2,9 @@
 
 {
   environment.systemPackages = with pkgs; [
+    # Terminal
+    watchexec
+    tealdeer
 
     # Docker
     docker-compose

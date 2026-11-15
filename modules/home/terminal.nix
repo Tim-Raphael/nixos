@@ -5,10 +5,6 @@
 }:
 
 {
-  home.packages = with pkgs; [
-    tealdeer
-  ];
-
   programs.zsh = {
     enable = true;
 

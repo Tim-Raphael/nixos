@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   programs.nixvim = {
     dependencies = {
@@ -7,21 +5,43 @@
       fd.enable = true;
     };
 
-    extraPackages = [ pkgs.bat ];
-
     extraConfigLua = ''
       require('fzf-lua').register_ui_select()
     '';
 
     plugins.fzf-lua = {
       enable = true;
-      profile = "max-perf";
+      profile = "default";
 
       settings = {
+        hls = {
+          border = "Comment";
+          preview_border = "Comment";
+        };
+        winopts = {
+          backdrop = false;
+          border = "single";
+          preview = {
+            default = "builtin";
+            border = "single";
+          };
+        };
+        previewers.builtin = {
+          syntax = true;
+          treesitter.enabled = true;
+        };
+        fzf_colors.pointer = [
+          "fg"
+          "Normal"
+        ];
+        fzf_opts."--pointer" = ">";
+
         defaults = {
+          git_icons = false;
+          file_icons = false;
           headers = false;
           cwd_prompt = false;
-          prompt = "> ";
+          prompt = "";
         };
       };
 

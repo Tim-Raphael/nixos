@@ -32,7 +32,7 @@ in
             if require('diffview.lib').get_current_view() then
               vim.cmd('DiffviewClose')
             else
-              vim.cmd('DiffviewFileHistory')
+              vim.cmd('DiffviewOpen HEAD')
             end
           end
         '';

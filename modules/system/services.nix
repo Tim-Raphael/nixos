@@ -32,15 +32,12 @@
 
     # Keep the database definition ready for manual activation.
     services.postgresql = {
-      enable = false;
+      enable = true;
       package = pkgs.postgresql_17;
-      ensureDatabases = [ "misc" ];
-      ensureUsers = [
-        {
-          name = "misc";
-          ensureDBOwnership = true;
-        }
-      ];
+      authentication = pkgs.lib.mkOverride 10 ''
+        #type database  DBuser  auth-method
+        local all       all     trust
+      '';
     };
 
     services.fwupd.enable = lib.mkIf config.local.workServices.enable true;

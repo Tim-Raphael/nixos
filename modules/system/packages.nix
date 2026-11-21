@@ -5,6 +5,7 @@
     # Terminal
     watchexec
     tealdeer
+    just
 
     # Docker
     docker-compose

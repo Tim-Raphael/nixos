@@ -14,7 +14,7 @@
 
     # Web
     nodejs
-    pnpm_10
+    pnpm
     typescript
   ];
 }

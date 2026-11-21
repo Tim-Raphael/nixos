@@ -33,7 +33,6 @@
       noise.enable = true;
       effects.enable = true;
     };
-    graphics.penpot.enable = true;
   };
 
   password = {

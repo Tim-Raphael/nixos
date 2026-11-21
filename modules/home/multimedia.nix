@@ -25,7 +25,6 @@ in
       enable = mkEnableOption "graphics and design tools";
 
       kicad.enable = mkEnableOption "KiCad EDA suite";
-      penpot.enable = mkEnableOption "Penpot design tool";
       raster.enable = mkEnableOption "raster graphics tools (GIMP, Darktable)";
       vector.enable = mkEnableOption "vector graphics tools (Inkscape, Scribus)";
       pixelArt.enable = mkEnableOption "pixel art tools (Aseprite)";
@@ -62,10 +61,6 @@ in
     # Graphics tools
     (mkIf cfg.graphics.kicad.enable {
       home.packages = with pkgs; [ kicad ];
-    })
-
-    (mkIf cfg.graphics.penpot.enable {
-      home.packages = with pkgs; [ penpot-desktop ];
     })
 
     (mkIf cfg.graphics.raster.enable {

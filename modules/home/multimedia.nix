@@ -111,6 +111,10 @@ in
     })
 
     (mkIf cfg.office.notes.enable {
+      home.file."Zotero/storage".source = config.lib.file.mkOutOfStoreSymlink (
+        "${config.home.homeDirectory}/Workspace/github/notes/main/literature/zotero"
+      );
+
       home.packages = with pkgs; [
         obsidian
         xournalpp

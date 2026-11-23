@@ -3,9 +3,10 @@
 {
   environment.systemPackages = with pkgs; [
     # Terminal
-    watchexec
-    tealdeer
+    glab
     just
+    tealdeer
+    watchexec
 
     # Docker
     docker-compose

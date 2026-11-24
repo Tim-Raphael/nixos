@@ -317,13 +317,14 @@
       "locked": {
         "lastModified": 1779640644,
         "narHash": "sha256-bdtbo9mRZuamEdTL5zFgfLNvYh/gmq7ILWUgO8bq2p8=",
-        "ref": "refs/heads/main",
+        "ref": "main",
         "rev": "5c6d88006e3db7bff2523e2ceaced07d25192615",
         "revCount": 8,
         "type": "git",
         "url": "ssh://git@github.com/hemisphere-systems/fonts"
       },
       "original": {
+        "ref": "main",
         "type": "git",
         "url": "ssh://git@github.com/hemisphere-systems/fonts"
       }

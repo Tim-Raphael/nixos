@@ -2,8 +2,13 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # Terminal
+    # Version Control
+    git
+    git-lfs
     glab
+    github-cli
+
+    # Terminal
     just
     tealdeer
     watchexec

@@ -96,6 +96,8 @@ in
         ignores = [
           ".agent/"
         ];
+        lfs.enable = true;
+
         settings = {
           user = {
             name = "Tim-Raphael";

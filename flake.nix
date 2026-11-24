@@ -11,7 +11,7 @@
     };
 
     fonts = {
-      url = "git+ssh://git@github.com/hemisphere-systems/fonts";
+      url = "git+ssh://git@github.com/hemisphere-systems/fonts?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

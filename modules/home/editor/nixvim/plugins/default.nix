@@ -15,7 +15,7 @@
     grug-far.enable = true;
     indent-o-matic.enable = true;
     lz-n.enable = true;
-    nvim-autopairs.enable = true;
+    #nvim-autopairs.enable = true;
     nvim-surround.enable = true;
   };
 }

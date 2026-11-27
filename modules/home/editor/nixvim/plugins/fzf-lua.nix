@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   programs.nixvim = {
     dependencies = {
@@ -11,34 +12,46 @@
 
     plugins.fzf-lua = {
       enable = true;
-      profile = "default";
 
       settings = {
+        # The "border-fused" profile adds a title to every picker, which can only
+        # be removed by skipping the profile and loading just its window options
+        __unkeyed_profile = lib.mkForce false;
+        winopts.__raw = ''
+          vim.tbl_deep_extend(
+            "force",
+            require("fzf-lua.utils").load_profiles("border-fused", 1).winopts,
+            { preview = { scrollbar = false } }
+          )
+        '';
+
+        # Without highlight-derived colors fzf uses its dark default palette
+        fzf_colors = {
+          __unkeyed_derive = true;
+          # "-1" resolves to the terminal default instead of the window background
+          "bg+" = [
+            "bg"
+            "FzfLuaFzfNormal"
+          ];
+          gutter = [
+            "bg"
+            "FzfLuaFzfNormal"
+          ];
+        };
+
+        fzf_opts = {
+          "--pointer" = ">";
+          "--gutter" = " ";
+          "--no-scrollbar" = true;
+        };
+
+        # Live pickers color the query with a hardcoded PaleVioletRed1
         hls = {
-          border = "Comment";
-          preview_border = "Comment";
+          live_prompt = "Normal";
+          live_sym = "Normal";
         };
-        winopts = {
-          backdrop = false;
-          border = "single";
-          preview = {
-            default = "builtin";
-            border = "single";
-          };
-        };
-        previewers.builtin = {
-          syntax = true;
-          treesitter.enabled = true;
-        };
-        fzf_colors.pointer = [
-          "fg"
-          "Normal"
-        ];
-        fzf_opts."--pointer" = ">";
 
         defaults = {
-          git_icons = false;
-          file_icons = false;
           headers = false;
           cwd_prompt = false;
           prompt = "";

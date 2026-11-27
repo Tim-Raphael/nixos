@@ -8,6 +8,9 @@
     glab
     github-cli
 
+    # Browser
+    firefox
+
     # Terminal
     just
     tealdeer

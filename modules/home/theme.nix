@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -17,23 +18,23 @@ in
     stylix = {
       enable = true;
       autoEnable = false;
-      polarity = "dark";
+      polarity = "light";
 
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/nord-light.yaml";
+
+      targets.gnome = {
+        enable = true;
+        polarity.enable = true;
+      };
 
       fonts = {
         monospace = {
           name = "BerkeleyMono Nerd Font";
           package = pkgs.berkeley-mono-nerd;
         };
-        serif = config.stylix.fonts.monospace;
-        sansSerif = config.stylix.fonts.monospace;
         emoji = config.stylix.fonts.monospace;
 
         sizes = {
-          applications = 16;
-          desktop = 12;
-          popups = 16;
           terminal = 16;
         };
       };
@@ -52,11 +53,7 @@ in
       };
     };
 
-    # Apply your color scheme via dconf for consistency
-    dconf.settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-      };
-    };
+    # Stylix writes "default", which keeps the GNOME Shell dark since GNOME 47
+    dconf.settings."org/gnome/desktop/interface".color-scheme = lib.mkForce "prefer-light";
   };
 }
